@@ -317,3 +317,13 @@ When the base is closed, an error message "Unable to stop embedded Tomcat" is di
 When the base is closed, Tomcat has its own shutdown logic. However, koupleless adds additional shutdown logic, causing the base to attempt a second shutdown. This message is just a warning and does not affect the normal shutdown of the base.
 #### Solution
 No action is required.
+
+```markdown
+### Module compile includes Tomcat causing startup error `Caused by: java.lang.Error: factory already defined`
+#### Phenomenon
+You can see the detailed error stack trace [here](https://github.com/sofastack/sofa-ark/issues/185).
+#### Reason
+The module compile introduces Tomcat, and upon module startup, Tomcat is reinitialized. At this time, `TomcatURLStreamHandlerFactory` tries to register itself via `URL::setURLStreamHandlerFactory` to URL, but since the base has already registered once, the duplicated registration throws an error. For more details, see [here](https://github.com/spring-projects/spring-boot/issues/10529).
+#### Solution
+Resolve the issue by setting `TomcatURLStreamHandlerFactory.disable()` in the code.
+```

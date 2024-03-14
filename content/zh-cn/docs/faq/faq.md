@@ -337,3 +337,13 @@ builder.build().run(args);
 
 #### 解决方式
 无需处理
+
+### 模块compile引入 tomcat启动导致报错 `Caused by: java.lang.Error: factory already defined`
+#### 现象
+详细报错堆栈可以看[这里](https://github.com/sofastack/sofa-ark/issues/185)
+
+#### 原因
+模块 compile 引入了 tomcat，模块启动时 tomcat 会再次初始化，这时 TomcatURLStreamHandlerFactory 通过 URL::setURLStreamHandlerFactory 注册进 URL, 然后由于基座已经注册过一次，重复注册报错，详细看[这里](https://github.com/spring-projects/spring-boot/issues/10529) 
+
+#### 解决方式
+通过代码设置 `TomcatURLStreamHandlerFactory.disable()`
