@@ -23,7 +23,12 @@ There can be two ways for development verification:
 2. K8S Cluster Environment Development Verification
 
 ### Local Environment Development Verification
-#### Installation
+#### Installation Way: Using golang tool chain
+
+1. Download the corresponding Golang version from the Golang official website: https://go.dev/. The version needs to be above 1.21.
+2. Execute the command `go install github.com/koupleless/arkctl@arkctl-release-0.2.0 to` install the arkctl tool.
+
+#### Installation Way: From binary
 1. Download [arkctl](https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.1) according to the actual operating system.
 2. Unzip the corresponding binary and place it in the appropriate system variable PATH.
 3. After the base and module are refactored, and the base is started, arkctl can be used to quickly build and deploy, deploying the module to the base.

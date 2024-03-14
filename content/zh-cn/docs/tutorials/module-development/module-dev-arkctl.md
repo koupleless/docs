@@ -6,18 +6,8 @@ weight: 400
 ---
 
 ## Arkctl 工具安装
-
 Arkctl 模块安装主要提供自动打包和部署能力，自动打包调用 mvn 命令构建模块 jar包，自动部署调用 [arklet](module-debug.md) 提供的 api 接口进行部署。如果不想使用命令行工具，也可以直接使用 arklet 提供的 api 接口发起部署操作。
-
-方法一：
-
-1. 本地安装 go 环境，go 依赖版本在 1.21 以上。
-2. 执行 go install `todo 独立的 arkctl go 仓库` 命令，安装 arkctl 工具。
-
-方法二：
-
-1. 在 [二进制列表](https://github.com/koupleless/arkctl/releases/tag/arkctl-release-0.2.0) 中下载对应的二进制并加入到本地
-   path 中。
+安装方式可以参照文档：[arkctl 安装](../build_and_deploy.md) 的*本地环境开发验证*小节。
 
 ### 本地快速部署
 
