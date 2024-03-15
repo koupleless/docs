@@ -327,3 +327,25 @@ The module compile introduces Tomcat, and upon module startup, Tomcat is reiniti
 #### Solution
 Resolve the issue by setting `TomcatURLStreamHandlerFactory.disable()` in the code.
 ```
+
+### Module Startup Error in `JdkDynamicAopProxy.getProxy` Showing "xxx referenced from a method is not visible from class loader"
+
+#### Cause
+The version of spring-core is 6.0.9 which contains a bug in its internal logic. Here, even if `BizClassLoader` is passed in, due to `BizClassLoader` not having a parent, the class loader is forcibly switched to the base ClassLoader.
+
+```java
+public Object getProxy(@Nullable ClassLoader classLoader) {
+    if (logger.isDebugEnabled()) {
+        logger.debug("Creating JDK dynamic proxy: " + this.advised.getTargetSource());
+    }
+    if (classLoader == null || classLoader.getParent() == null) {
+        // JDK bootstrap loader or platform loader
+        // Use a higher-level loader which can see spring infrastructure classes
+        classLoader = getClass().getClassLoader();
+    }
+    return Proxy.newProxyInstance(classLoader, this.proxiedInterfaces, this);
+}
+```
+
+#### Solution
+Update to a newer version of spring-core, such as 6.0.11.
