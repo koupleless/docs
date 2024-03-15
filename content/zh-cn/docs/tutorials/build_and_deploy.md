@@ -28,7 +28,12 @@ weight: 500
 
 ### 本地环境开发验证
 
-#### 安装
+#### 安装方法: 使用 golang 工具链
+
+1. 在 [golang 官网](https://go.dev/) 下载对应的 golang 版本，版本需要在 1.21 以上。
+2. 执行 `go install github.com/koupleless/arkctl@arkctl-release-0.2.0` 命令，安装 arkctl 工具。
+
+#### 安装方法: 下载二进制
 
 1. 根据实际运行操作系统，[下载 arkctl ](https://github.com/koupleless/arkctl/releases/tag/arkctl-release-0.2.0)。
 2. 将对应的二进制解压并放到合适的系统变量 PATH 下。
