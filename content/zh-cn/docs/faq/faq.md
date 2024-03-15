@@ -347,3 +347,23 @@ builder.build().run(args);
 
 #### 解决方式
 通过代码设置 `TomcatURLStreamHandlerFactory.disable()`
+
+### 模块启动在 `JdkDynamicAopProxy.getProxy` 报错 `xxx referenced from a method is not visible from class loader`
+#### 原因
+spring-core 是 6.0.9 的版本，内部逻辑存在bug，这里即使传入 BizClassLoader，也会引入 BizClassLoader 没有 parent 而强制切换 classLoader 成了 基座 ClassLoader
+```java
+public Object getProxy(@Nullable ClassLoader classLoader) {
+    if (logger.isDebugEnabled()) {
+        logger.debug("Creating JDK dynamic proxy: " + this.advised.getTargetSource());
+    }
+    if (classLoader == null || classLoader.getParent() == null) {
+        // JDK bootstrap loader or platform loader
+        // use higher-level loader which can see spring infrastructure classes
+        classLoader = getClass().getClassLoader();
+    }
+    return Proxy.newProxyInstance(classLoader, this.proxiedInterfaces, this);
+}
+```
+
+#### 解决方式
+使用 spring-core 更新版本，例如 6.0.11
