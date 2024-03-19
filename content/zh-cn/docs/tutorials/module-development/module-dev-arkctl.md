@@ -45,7 +45,35 @@ arkctl deploy /path/to/your/pre/built/bundle-biz.jar
 
 命令执行完成后即部署成功，用户可以进行相关的模块功能调试验证。
 
-#### 场景 3: 模块 jar 包构建 + 部署到远程运行的 k8s 基座中。
+#### 场景 3: 部署一个本地还未构建的 jar 包到本地运行的基座中。
+
+准备：
+1. 在本地启动一个基座
+
+执行命令：
+```shell
+arkctl deploy ./path/to/your/biz/
+```
+
+注意该命令适用于模块可以独立构建的（可以在biz目录里成功执行 mvn package 等命令），则该命令会自动构建该模块，并部署到基座中。
+#### 场景 4: 在多模块的 Maven 项目中，在 Root 构建并部署子模块的 jar 包。
+
+准备：
+
+1. 在本地启动一个基座。
+2. 打开一个多模块 Maven 项目仓库。
+
+执行命令：
+
+```shell
+# 需要在仓库的根目录下执行。
+# 比如，如果是 maven 项目，需要在根 pom.xml 所在的目录下执行。
+arkctl deploy --sub ./path/to/your/sub/module
+```
+
+命令执行完成后即部署成功，用户可以进行相关的模块功能调试验证。
+
+#### 场景 5: 模块 jar 包构建 + 部署到远程运行的 k8s 基座中。
 
 准备:
 
@@ -63,22 +91,10 @@ arkctl deploy --pod {namespace}/{podName}
 
 命令执行完成后即部署成功，用户可以进行相关的模块功能调试验证。
 
-#### 场景 4: 在多模块的 Maven 项目中，在 Root 构建并部署子模块的 jar 包。
+#### 场景 6： 如何更快的使用该命令
+可以在 IDEA 里新建一个 Shell Script，配置好运行的目录，然后输入 arkctl 相应的命令，如下图即可。
 
-准备：
-
-1. 在本地启动一个基座。
-2. 打开一个多模块 Maven 项目仓库。
-
-执行命令：
-
-```shell
-# 需要在仓库的根目录下执行。
-# 比如，如果是 maven 项目，需要在根 pom.xml 所在的目录下执行。
-arkctl deploy --sub ./path/to/your/sub/module
-```
-
-命令执行完成后即部署成功，用户可以进行相关的模块功能调试验证。
+<img src="/img/arkctl-shell-starter.png">
 
 ### 模块本地调试
 
