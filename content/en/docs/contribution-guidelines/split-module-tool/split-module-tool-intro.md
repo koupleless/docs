@@ -52,8 +52,8 @@ First, we will analyze which classes and beans QuartzJobController depends on.
 
 **Method 1: Using IntelliJ IDEA Ultimate, perform bean and class analysis on the controller to obtain the following bean dependency diagram and class dependency diagram.**
 
-|![](/docs/contribution-guidelines/split-module-tool/imgs/Bean-dependency.webp)| ![](/docs/contribution-guidelines/split-module-tool/imgs/class-dependency.webp) |
-|-- |---------------------------------------------------------------------------------|
+| ![](/docs/contribution-guidelines/split-module-tool/imgs/bean-dependency.webp) | ![](/docs/contribution-guidelines/split-module-tool/imgs/class-dependency.webp) |
+|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 
 - Advantage: Comprehensive analysis with the help of IntelliJ IDEA Ultimate
 - Disadvantage: Requires analysis of each class file, and the bean dependency diagram may not be very readable.

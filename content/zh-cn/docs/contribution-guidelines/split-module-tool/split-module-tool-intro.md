@@ -52,8 +52,8 @@ weight: 1
 **方式一：使用 Idea 专业版，对 Controller 做 Bean 分析和类分析，得到以下 Bean 依赖图和类依赖关系图**
 
 
-|![](/docs/contribution-guidelines/split-module-tool/imgs/Bean-dependency.webp)| ![](/docs/contribution-guidelines/split-module-tool/imgs/class-dependency.webp) |
-|-- |---------------------------------------------------------------------------------|
+| ![](/docs/contribution-guidelines/split-module-tool/imgs/bean-dependency.webp) | ![](/docs/contribution-guidelines/split-module-tool/imgs/class-dependency.webp) |
+|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 
 - 优势：借助 IDEA 专业版，分析全面
 - 劣势：需要对每个类文件都做一次分析，Bean 依赖图可读性不强。
