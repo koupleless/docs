@@ -2,7 +2,7 @@
 title: What happens if a module independently introduces part of the SpringBoot framework?
 date: 2024-01-25T10:28:32+08:00
 description: What happens if a module independently introduces part of the SpringBoot framework in Koupleless?
-weight: 100
+weight: 1200
 ---
 
 Since the logic of multi-module runtime is introduced and loaded in the base, such as some Spring Listeners. If the module starts using its own SpringBoot entirely, there may be some class conversion or assignment judgment failures, for example:
