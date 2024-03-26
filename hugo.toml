@@ -67,14 +67,14 @@ description = "Koupleless 官网"
 time_format_default = "2006.02.01"
 time_format_blog = "2006.02.01"
 
-[languages.en]
-languageName ="English"
-contentDir = "content/en"
-# Weight used for sorting.
-#weight = 1
-[languages.en.params]
-title = "Koupleless"
-description = "Koupleless Site"
+#[languages.en]
+#languageName ="English"
+#contentDir = "content/en"
+## Weight used for sorting.
+##weight = 1
+#[languages.en.params]
+#title = "Koupleless"
+#description = "Koupleless Site"
 
 [markup]
   [markup.goldmark]
