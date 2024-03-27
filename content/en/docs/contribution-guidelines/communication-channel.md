@@ -27,7 +27,7 @@ DingTalk Meeting ID: 90957500367<br />Dial-in Numbers: 057128095818 (Mainland Ch
 
 <br/>
 
-The community PMC component members' iteration planning meeting will be held on the last Monday of each month, discussing and finalizing the requirements planning for the next month. The next PMC members' monthly meeting will be on November 27, 2023, from 19:30 to 20:30. Joining details are the same as above.
+The community PMC component members' iteration planning meeting will be held on the last Monday of each month, discussing and finalizing the requirements planning for the next month.
 
 <br/>
 <br/>
