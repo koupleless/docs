@@ -17,19 +17,26 @@ weight: 200
 
 ## ModuleDeployment CRD 模型
 
-![image](https://github.com/sofastack/sofa-serverless/assets/13743483/863d8ede-4904-423e-9473-77466af33c46)
+<div style="text-align: center;">
+    <img align="center" width="600" src="https://github.com/sofastack/sofa-serverless/assets/13743483/863d8ede-4904-423e-9473-77466af33c46">
+</div>
 
 ## Module CRD 模型
 
-![image](https://github.com/sofastack/sofa-serverless/assets/13743483/f4e109eb-4b10-4835-a502-7d723b1ca73c)
+<div style="text-align: center;">
+    <img align="center" width="600" src="https://github.com/sofastack/sofa-serverless/assets/13743483/f4e109eb-4b10-4835-a502-7d723b1ca73c">
+</div>
 
 ## ModuleTemplate CRD 模型
 
-![image](https://github.com/sofastack/sofa-serverless/assets/13743483/db4fd36b-d698-4946-8d62-6e6651d3f18a)
+<div style="text-align: center;">
+    <img align="center" width="400" src="https://github.com/sofastack/sofa-serverless/assets/13743483/db4fd36b-d698-4946-8d62-6e6651d3f18a">
+</div>
 
 ## ModuleReplicaSet CRD 模型
 
-![image](https://github.com/sofastack/sofa-serverless/assets/13743483/13fbf29e-3977-4138-b3dd-849ce871fb3b)
-
+<div style="text-align: center;">
+    <img align="center" width="600" src="https://github.com/sofastack/sofa-serverless/assets/13743483/13fbf29e-3977-4138-b3dd-849ce871fb3b">
+</div>
 
 <br/>
