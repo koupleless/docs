@@ -77,7 +77,9 @@ spring.application.name = ${替换为实际基座应用名}
 
 ##### 修改基座启动类
 
-在基座 Springboot 启动类的注解 `@SpringBootApplication` 中，排除 HealthAutoConfiguration 类，如下：
+在 koupleless 版本 1.0.2 及以上，无需改动。
+
+在 koupleless 版本 1.0.2 以下，在基座 Springboot 启动类的注解 `@SpringBootApplication` 中，排除 HealthAutoConfiguration 类，如下：
 
 ```java
 import com.alipay.sofa.koupleless.arklet.springboot.starter.health.HealthAutoConfiguration;
