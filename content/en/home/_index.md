@@ -48,7 +48,7 @@ url: "/home/"
 <a href="/docs/video-training/" style="display: inline-block; width: 176px; margin-right: 12px;">
   <img style="margin: 0;" src="/img/video-training-btn.png" width="176px" />
 </a>
-<a href="/docs/introduction/intro-and-scenario" style="display: inline-block; width: 176px;">
+<a href="https://github.com/koupleless/koupleless" style="display: inline-block; width: 176px;">
   <img style="margin: 0;" src="/img/more-details-btn.png" width="176px" />
 </a>
 
@@ -471,7 +471,7 @@ Welcome to the <a href="https://github.com/koupleless/koupleless" style="color: 
     </div>
     <div style="display: inline-block; width: 420px; vertical-align: top;" >
         <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 20px; color: #FFFFFF; letter-spacing: 0;
-            line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community WeChat group for communication and exchange.</p>
+            line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community WeChat for communication and exchange.</p>
         <div style="background: url('/img/qcode-background.png') center no-repeat; background-size: 204px; margin: 0 auto;">
             <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless 交流微信群二维码" src="/img/wechat-qcode.png" />
         </div>

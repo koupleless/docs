@@ -58,24 +58,23 @@ anchor = "smart"
 # Language configuration
 
 [languages]
-#当前没有国际用户，暂时不提供英文版文档。
-[languages.en]
-languageName ="English"
-contentDir = "content/en"
-# Weight used for sorting.
-weight = 0
-[languages.en.params]
-title = "Koupleless"
-description = "Koupleless Site"
-
 [languages.zh-cn]
 languageName ="中文"
 [languages.no.params]
-weight = 1
+weight = 2
 title = "Koupleless"
 description = "Koupleless 官网"
 time_format_default = "2006.02.01"
 time_format_blog = "2006.02.01"
+
+#[languages.en]
+#languageName ="English"
+#contentDir = "content/en"
+## Weight used for sorting.
+##weight = 1
+#[languages.en.params]
+#title = "Koupleless"
+#description = "Koupleless Site"
 
 [markup]
   [markup.goldmark]
@@ -128,7 +127,7 @@ github_repo = "https://github.com/koupleless/docs"
 #github_project_repo = "https://github.com/koupleless/docs"
 
 # Specify a value here if your content directory is not in your repo's root directory
-github_subdir = "docs"
+github_subdir = ""
 
 # Uncomment this if your GitHub repo does not have "main" as the default branch,
 # or specify a new value if you want to reference another branch in your GitHub links
