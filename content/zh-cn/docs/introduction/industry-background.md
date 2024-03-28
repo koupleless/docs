@@ -14,8 +14,6 @@ weight: 200
 
 当前业务要完成一个需求，背后实际上有非常多的依赖、组件和平台在提供各种各样的能力，只要这些业务以下的某一个组件出现异常被业务感知到，都会对业务研发人员带来较大认知负担和对应恢复的时间成本。
 <br />
-<div style="text-align: center;">
-</div>
 
 <div style="text-align: center;">
     <img width="600px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695086284703-13a90661-9735-4daa-a7ec-dfc3a28ca2bd.png#clientId=ue95e757a-3cd6-4&from=paste&height=260&id=ubf4cf860&originHeight=942&originWidth=1738&originalType=binary&ratio=2&rotation=0&showTitle=false&size=404365&status=done&style=none&taskId=udcdc41a4-9949-4f53-98ca-e722e63bfc8&title=&width=479" />

@@ -49,7 +49,12 @@ public class MybatisConfig {
 ```
 
 ## SOFABoot 解法
-如果 SOFABoot 基座没有开启多 bundle（Package 里没有 MANIFEST.MF 文件），则解法和上文 SpringBoot 完全一致。<br />如果有 MANIFEST.MF 文件，需要调用`BaseAppUtils.getBeanOfBundle`获取基座的 Bean，其中**BASE_DAL_BUNDLE_NAME** 为 MANIFEST.MF 里面的`Module-Name`：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/38696/1661758587977-7a499d0d-d5ca-4a68-9925-fa7258679d9b.png#clientId=ue6b6f4dc-5527-4&errorMessage=unknown%20error&from=paste&height=458&id=u531b3c3e&originHeight=916&originWidth=2042&originalType=binary&ratio=1&rotation=0&showTitle=false&size=383535&status=error&style=none&taskId=ua403e261-49af-4d10-99e6-12edf669677&title=&width=1021)
+如果 SOFABoot 基座没有开启多 bundle（Package 里没有 MANIFEST.MF 文件），则解法和上文 SpringBoot 完全一致。<br />如果有 MANIFEST.MF 文件，需要调用`BaseAppUtils.getBeanOfBundle`获取基座的 Bean，其中**BASE_DAL_BUNDLE_NAME** 为 MANIFEST.MF 里面的`Module-Name`：<br />
+
+<div style="text-align: center;">
+    <img align="center" width="900" src="https://intranetproxy.alipay.com/skylark/lark/0/2022/png/38696/1661758587977-7a499d0d-d5ca-4a68-9925-fa7258679d9b.png#clientId=ue6b6f4dc-5527-4&errorMessage=unknown%20error&from=paste&height=458&id=u531b3c3e&originHeight=916&originWidth=2042&originalType=binary&ratio=1&rotation=0&showTitle=false&size=383535&status=error&style=none&taskId=ua403e261-49af-4d10-99e6-12edf669677&title=&width=1021">
+</div>
+
 ```java
 
 @Configuration

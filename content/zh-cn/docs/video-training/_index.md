@@ -26,6 +26,8 @@ Your browser does not support the video tag.
 
 步骤 2：完成注册后，不变更页面的话会直接跳转到【SofaServerless交互式实验室】首页，然后选择如下课程
 
-<img width="567" alt="Koupleless (SOFAServerless) 平台和研发框架完整视频教程" src="/img/oscollege_intro.png"/>
+<div style="text-align: center;">
+    <img width="567" alt="Koupleless (SOFAServerless) 平台和研发框架完整视频教程" src="/img/oscollege_intro.png"/>
+</div>
 
 点击进入 **“SOFAServerless 研发框架与产品介绍”**，点击 **“开始学习”**。
