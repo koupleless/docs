@@ -1,5 +1,5 @@
 ---
-title: FAQ List
+title: FAQ List (please search your problem in this page)
 date: 2024-01-25T10:28:32+08:00
 weight: 10
 ---
