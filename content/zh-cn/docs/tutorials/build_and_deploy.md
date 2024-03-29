@@ -60,7 +60,7 @@ Windows 下
 7. 找到对应的目录，将 arkctl.exe 放到该目录下。
 
 注意，在 Windows 环境下，如果开启 Windows Defender，浏览器下载二进制时可能会误报，提示如下：
-![error-hint.png](./imgs/error-hint.png) <br/>
+![error-hint.png](/docs/tutorials/imgs/error-hint.png) <br/>
 报错原因可参考[go 官方文档](https://go.dev/doc/faq#virus)。此报错可以忽略，放心下载。
 
 #### 使用
