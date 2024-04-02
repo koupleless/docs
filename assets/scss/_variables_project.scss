@@ -1063,3 +1063,25 @@ aside.td-sidebar-toc {
     border-radius: 36px;
   }
 }
+
+//.td-sidebar-nav__section-title.td-sidebar-nav__section.with-child {
+//
+//  > a > span:after {
+//    content: '▶';
+//  }
+//
+//  > .ul-2 {
+//    display: none;
+//  }
+//
+//  &.active-path {
+//
+//    > a > span:after {
+//      content: '▼';
+//    }
+//
+//    > .ul-2 {
+//      display: block;
+//    }
+//  }
+//}
