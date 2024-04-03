@@ -41,13 +41,12 @@ weight: 1000
 所以，框架需要能够拦截掉对应的加载行为，直接从 maven 依赖中加载模块，模拟多模块部署的行为。</br>
 完成相关工作的代码有：
 
-1. SOFAArkTestBizClassLoader: 完成模拟 biz 模块的加载工作，是原来 BizClassLoader 的派生类。
-2. SOFAArkTestBiz: 完成模拟 biz 模块的启动工作，是原来 Biz 的派生类。
-3. SOFAArkTestBootstrap: 完成 ArkContainer 的初始化，并完成 ark-plugin 的加载。
-4. SOFAArkTestClassLoaderHook: 通过 Hook 机制控制 resource 的加载顺序，例如 biz jar 包中的
-   application.properties 会被优先加载。
+1. TestBizClassLoader: 完成模拟 biz 模块的加载工作，是原来 BizClassLoader 的派生类, 解决了在同一个 jar 包下按需加载类到不同的 ClassLoader 的问题。
+2. TestBiz: 完成模拟 biz 模块的启动工作，是原来 Biz 的派生类，封装了初始化 TestBizClassLoader 的逻辑。
+3. TestBootstrap: 完成 ArkContainer 的初始化，并完成 ark-plugin 的加载等。
+4. TestClassLoaderHook: 通过 Hook 机制控制 resource 的加载顺序，例如 biz jar 包中的 application.properties 会被优先加载。
 5. BaseClassLoader: 模拟正常的基座 ClassLoader 行为，会和 surefire 等测试框架进行适配。
-6. KouplelessTestMultiSpringApplication: 模拟多模块的 springboot 启动行为。
+6. TestMultiSpringApplication: 模拟多模块的 springboot 启动行为。
 
 ## 如何使用集成测试框架？
 
@@ -57,28 +56,22 @@ weight: 1000
 
 ```java
 public void demo() {
-    new KouplelessTestMultiSpringApplication(KouplelessMultiSpringTestConfig
+    new TestMultiSpringApplication(MultiSpringTestConfig
             .builder()
-            .baseConfig(KouplelessBaseSpringTestConfig
+            .baseConfig(BaseSpringTestConfig
                     .builder()
-                    .packageName("com.alipay.sofa.web.base") // 基座的包名
-                    .mainClass("com.alipay.sofa.web.base.BaseApplication") // 基座的启动类
-                    .artifactId("base-web-single-host") // 基座的 artifactId
+                    .mainClass(BaseApplication.class) // 基座的启动类
                     .build())
             .bizConfigs(Lists.newArrayList(
-                    KouplelessBizSpringTestConfig
+                    BizSpringTestConfig
                             .builder()
-                            .packageName("com.alipay.sofa.web.biz1") // 模块1的包名
                             .bizName("biz1") // 模块1的名称
-                            .mainClass("com.alipay.sofa.web.biz1.Biz1Application") // 模块1的启动类
-                            .artifactId("biz1-web-single-host") // 模块1的 artifactId
+                            .mainClass(Biz1Application.class) // 模块1的启动类
                             .build(),
-                    KouplelessBizSpringTestConfig
+                    BizSpringTestConfig
                             .builder()
-                            .packageName("com.alipay.sofa.web.biz2") // 模块2的包名
                             .bizName("biz2") // 模块2的名称
-                            .mainClass("com.alipay.sofa.web.biz2.Biz2Application") // 模块2的启动类
-                            .artifactId("biz2-web-single-host") // 模块2的 artifactId
+                            .mainClass(Biz2Application.class) // 模块2的启动类
                             .build()
             ))
             .build()
