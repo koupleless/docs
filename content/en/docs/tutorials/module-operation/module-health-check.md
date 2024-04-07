@@ -10,121 +10,30 @@ Users need to be aware of the health status of the base and modules in order to 
 ## Usage
 
 ### Requirements
-koupleless version >= 1.0.2
+koupleless version >= 1.1.0
 sofa-ark version >= 2.2.9
 
 ### Obtain the overall health status of the application
 There are 3 types of health status for the base:
+
 | **Status** | **Meaning** |
 | --- | --- |
 | UP | Healthy, indicating readiness |
 | UNKNOWN | Currently starting up |
 | DOWN | Unhealthy (may be due to startup failure or unhealthy running state) |
+
 Because Koupleless supports hot-swappable modules, users may want to ignore module startup status or not when obtaining the overall health status of the application.
 
-#### Do not ignore module startup status (default)
-- Features: For a healthy base, if a module installation fails, the overall application health status will also fail.
-- Usage: Same as the health check configuration for regular springboot, configure in the base's application.properties:
-```properties
-# Alternatively, do not configure management.endpoints.web.exposure.include
-management.endpoints.web.exposure.include=health
-# If you need to display all information, configure the following content
-management.endpoint.health.show-components=always
-management.endpoint.health.show-details=always
-```
-- Access: {baseIp:port}/actuator/health
-- Result:
-``` json
-{
-    // Overall health status of the application
-    "status": "UP",
-    "components": {
-        // Aggregated health status of the modules
-        "arkBizAggregate": {
-            "status": "UP",
-            "details": {
-                "biz1:0.0.1-SNAPSHOT": {
-                    "status": "UP",
-                    // Can see the health status of all active HealthIndicators in the modules
-                    "details": {
-                        "diskSpace": {
-                          "status": "UP",
-                          "details": {
-                            "total": 494384795648,
-                            "free": 272435396608,
-                            "threshold": 10485760,
-                            "exists": true
-                            }
-                        },
-                        "pingHe": {
-                          "status": "UP",
-                          "details": {}
-                        }
-                    }
-                }
-            }
-        },
-        // Startup health status of base and modules
-        "masterBizStartUp": {
-            "status": "UP",
-            // Including the startup status of each module.
-            "details": {
-                "base:1.0.0": {
-                    "status": "UP"
-                },
-                "biz1:0.0.1-SNAPSHOT": {
-                    "status": "UP"
-                }
-            }
-        }
-    }
-}
-```
 
-#### Overall Health Status in Different Scenarios
-Scenario 1: Start without module base
-| **Status** | **Meaning** |
-| --- | --- |
-| UP | Base is healthy |
-| UNKOWN | Base is starting up |
-| DOWN | Base is unhealthy |
-Scenario 2: Start with base, static merged deployment
-| Status | Meaning |
-| --- | --- |
-| UP | Base and module are healthy |
-| UNKOWN | Base or module is starting up |
-| DOWN | Base is unhealthy or module startup failed or module is unhealthy |
-Scenario 3: Start with base, hot deployment
-Note: In the hot deployment scenario, whether the module is installed successfully does not affect the overall health status of the application
-| Status | Meaning |
-| --- | --- |
-| UP | Base and module are healthy |
-| UNKOWN | Base or module is starting up |
-| DOWN | Base is unhealthy or module is unhealthy |
-Scenario 4: Base running
-| Status | Meaning |
-| --- | --- |
-| UP | Base and module are healthy |
-| UNKOWN | Module is starting up |
-| DOWN | Base is unhealthy or module is unhealthy |
-Scenario 5: Base start, module playback
-Module playback is not supported at the moment
-| Status | Meaning |
-| --- | --- |
-| UP | Base and module are healthy |
-| UNKOWN | Base or module is starting up |
-| DOWN | Base is unhealthy or module startup failed or module is unhealthy |
-#### Ignore module startup status
+#### Ignore module startup status (default)
 - Features: For a healthy base, if the module installation fails, it will not affect the overall application health status.
-- Usage: In addition to the above configuration, you need to configure koupleless.arklet.health.associateWithArkBizStartUpStatus=false, that is, configure in the base's application.properties:
+- Usage: Same as the health check configuration for regular springboot, configure in the base's application.properties:
 ``` properties
 # or do not configure management.endpoints.web.exposure.include
 management.endpoints.web.exposure.include=health
 # If you need to display all information, configure the following content
 management.endpoint.health.show-components=always
 management.endpoint.health.show-details=always
-# Ignore module startup status
-koupleless.arklet.health.associateWithArkBizStartUpStatus=false
 ```
 - Access: {baseIp:port}/actuator/health
 - Result:
@@ -179,12 +88,149 @@ koupleless.arklet.health.associateWithArkBizStartUpStatus=false
 ```
 
 #### Overall Health Status in Different Scenarios
-The overall health status in all scenarios only represents the health status of the base and modules, and is not related to the module startup status.
-| Status | Meaning          |
-| --- |-------------|
-| UP | Both the base and modules are healthy    |
-| UNKNOWN | The base is in the process of starting     |
-| DOWN | The base or module is not healthy |
+Scenario 1: Start base 
+
+| **Status** | **Meaning** |
+| --- | --- |
+| UP | Base is healthy |
+| UNKOWN | Base is starting up |
+| DOWN | Base is unhealthy |
+
+Scenario 2: Start base and install modules with static merge deployment
+
+| Status | Meaning                                                                               |
+| --- |---------------------------------------------------------------------------------------|
+| UP | Base and module are healthy                                                           |
+| UNKOWN | Base or module is starting up                                                         |
+| DOWN | Base startup failed / base is unhealthy / module startup failed / module is unhealthy |
+
+Scenario 3: After base starts, install modules with hot deployment
+
+Note: In the hot deployment scenario, whether the module is installed successfully does not affect the overall health status of the application
+
+| Status | Meaning                                                       |
+| --- |---------------------------------------------------------------|
+| UP | Base and module are healthy                                   |
+| UNKOWN | Base or module is starting up                                 |
+| DOWN | Base startup failed / base is unhealthy / module is unhealthy |
+
+Scenario 4: Base running
+
+| Status | Meaning                                  |
+| --- |------------------------------------------|
+| UP | Base and module are healthy              |
+| UNKOWN | -                                        |
+| DOWN | Base is unhealthy or module is unhealthy |
+
+Scenario 5: After base started, reinstall module
+
+Reinstall module refers to automatically pulling the module baseline and installing the module after the base is started.
+
+Reinstall module is not supported at the moment
+
+| Status | Meaning |
+| --- | --- |
+| UP | Base and module are healthy |
+| UNKOWN | Base or module is starting up |
+| DOWN | Base is unhealthy or module startup failed or module is unhealthy |
+
+
+#### Do not ignore module startup status (default)
+- Features: For a healthy base, if a module installation fails, the overall application health status will also fail.
+- Usage: In addition to the above configuration, you need to configure koupleless.healthcheck.base.readiness.withAllBizReadiness=true, that is, configure in the base's application.properties:
+```properties
+# Alternatively, do not configure management.endpoints.web.exposure.include
+management.endpoints.web.exposure.include=health
+# If you need to display all information, configure the following content
+management.endpoint.health.show-components=always
+management.endpoint.health.show-details=always
+# Do not ignore module startup status
+koupleless.healthcheck.base.readiness.withAllBizReadiness=true
+```
+- Access: {baseIp:port}/actuator/health
+- Result:
+``` json
+{
+    // Overall health status of the application
+    "status": "UP",
+    "components": {
+        // Aggregated health status of the modules
+        "arkBizAggregate": {
+            "status": "UP",
+            "details": {
+                "biz1:0.0.1-SNAPSHOT": {
+                    "status": "UP",
+                    // Can see the health status of all active HealthIndicators in the modules
+                    "details": {
+                        "diskSpace": {
+                          "status": "UP",
+                          "details": {
+                            "total": 494384795648,
+                            "free": 272435396608,
+                            "threshold": 10485760,
+                            "exists": true
+                            }
+                        },
+                        "pingHe": {
+                          "status": "UP",
+                          "details": {}
+                        }
+                    }
+                }
+            }
+        },
+        // Startup health status of base and modules
+        "masterBizStartUp": {
+            "status": "UP",
+            // Including the startup status of each module.
+            "details": {
+                "base:1.0.0": {
+                    "status": "UP"
+                },
+                "biz1:0.0.1-SNAPSHOT": {
+                    "status": "UP"
+                }
+            }
+        }
+    }
+}
+```
+
+#### Overall Health Status in Different Scenarios
+Scenario 1: Start base
+
+| **Status** | **Meaning** |
+| --- | --- |
+| UP | Base is healthy |
+| UNKOWN | Base is starting up |
+| DOWN | Base is unhealthy |
+
+Scenario 2: Start base and install modules with static merge deployment
+
+| Status | Meaning |
+| --- | --- |
+| UP | Base and module are healthy |
+| UNKOWN | Base or module is starting up |
+| DOWN | Base startup failed / base is unhealthy / module startup failed / module is unhealthy |
+
+Scenario 3: After base starts, install modules with hot deployment
+
+Note: In the hot deployment scenario, whether the module is installed successfully should not affect the overall health status of the application. Therefore, it is not recommended to set koupleless.healthcheck.base.readiness.withAllBizReadiness=true.
+
+Scenario 4: Base running
+
+| Status | Meaning                                  |
+| --- |------------------------------------------|
+| UP | Base and module are healthy              |
+| UNKOWN | -                                        |
+| DOWN | Base is unhealthy or module is unhealthy |
+
+Scenario 5: After base started, reinstall module
+
+Reinstall module refers to automatically pulling the module baseline and installing the module after the base is started.
+
+Reinstall module is not supported at the moment.
+
 ### Obtaining the Health Status of a Single Module
 - Usage: Consistent with the normal springboot health check configuration, enable the health node, i.e. configure in the module's application.properties:
 ``` properties
