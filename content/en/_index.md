@@ -7,6 +7,6 @@ tags: ["Modular", "Monolith", "Serverless", "Green Computing", "Modular Monolith
 ---
 
 <script>
-    if (window.location.pathname == "/")
-        window.location="/home/";
+    if (location.pathname == "/" || location.pathname == "/en" || location.pathname == "/en/")
+        location="/en/home/";
 </script>

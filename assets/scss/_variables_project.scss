@@ -383,14 +383,14 @@ header > nav.td-navbar {
 
   div.d-none.d-lg-block {
 
-    &:before {
-
-      content: url(/img/before-search.svg);
-      position: absolute;
-      top: 16px;
-      right: 309px;
-      height: 32px;
-    }
+    //&:before {
+    //
+    //  content: url(/img/before-search.svg);
+    //  position: absolute;
+    //  top: 16px;
+    //  right: 309px;
+    //  height: 32px;
+    //}
 
     .td-search__icon {
 
@@ -1085,3 +1085,7 @@ aside.td-sidebar-toc {
 //    }
 //  }
 //}
+
+#m-endocs, #m-enblog, #m-enuser-cases, .navbar-brand__name {
+  display: none !important;
+}
