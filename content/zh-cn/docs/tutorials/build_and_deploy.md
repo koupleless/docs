@@ -64,7 +64,7 @@ Windows 下
 注意，在 Windows 环境下，如果开启 Windows Defender，浏览器下载二进制时可能会误报，提示如下：
 
 <div style="text-align: center;">
-    <img align="center" width="600px" src="./img/error-hint.png" />
+    <img align="center" width="600px" src="/docs/tutorials/imgs/error-hint.png" />
 </div>
  
 <br/>
@@ -90,7 +90,7 @@ arkctl deploy
 arkctl status
 ```
 
-有命令行交互的卸载模块
+有命令行交互地卸载模块
 
 ```shell
 # 调用此命令后，会列出当前部署的模块，用户可以通过上下键选择要卸载的模块。
