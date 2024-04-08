@@ -54,7 +54,7 @@ weight: 900
 
 #### 模块启动是否成功不影响整体应用健康状态（默认）
 - 特点：对于健康的基座，如果模块安装失败，不会影响整体应用健康状态。
-- 使用：和普通 springboot 应用的配置一致，在基座的 application.properties 中配置：
+- 使用：和普通 Spring Boot 应用的配置一致，在基座的 application.properties 中配置：
 ``` properties
 # 或者不配置 management.endpoints.web.exposure.include
 management.endpoints.web.exposure.include=health
