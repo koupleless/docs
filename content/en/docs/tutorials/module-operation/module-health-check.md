@@ -161,7 +161,7 @@ Reinstall module is not supported at the moment
 | DOWN | Base is unhealthy or module startup failed or module is unhealthy |
 
 
-#### Module launch result affect the overall application health status
+#### Module launch result affects the overall application health status
 - Features: For a healthy base, if a module installation fails, the overall application health status will also fail.
 - Usage: In addition to the above configuration, you need to configure koupleless.healthcheck.base.readiness.withAllBizReadiness=true, that is, configure in the base's application.properties:
 ```properties
