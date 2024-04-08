@@ -53,7 +53,7 @@ Since Koupleless supports hot deployment of modules, while obtaining the overall
 
 #### Module launch result does not affect the overall application health status (default)
 - Features: For a healthy base, if the module installation fails, it will not affect the overall application health status.
-- Usage: Same as the health check configuration for regular springboot, configure in the base's application.properties:
+- Usage: Same as the health check configuration for regular Spring Boot, configure in the base's application.properties:
 ``` properties
 # or do not configure management.endpoints.web.exposure.include
 management.endpoints.web.exposure.include=health
