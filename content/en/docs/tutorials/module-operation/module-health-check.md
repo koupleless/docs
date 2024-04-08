@@ -93,7 +93,7 @@ Scenario 1: Start base
 | **Status** | **Meaning** |
 | --- | --- |
 | UP | Base is healthy |
-| UNKOWN | Base is starting up |
+| UNKNOWN | Base is starting up |
 | DOWN | Base is unhealthy |
 
 Scenario 2: Start base and install modules with static merge deployment
@@ -101,7 +101,7 @@ Scenario 2: Start base and install modules with static merge deployment
 | Status | Meaning                                                                               |
 | --- |---------------------------------------------------------------------------------------|
 | UP | Base and module are healthy                                                           |
-| UNKOWN | Base or module is starting up                                                         |
+| UNKNOWN | Base or module is starting up                                                         |
 | DOWN | Base startup failed / base is unhealthy / module startup failed / module is unhealthy |
 
 Scenario 3: After base starts, install modules with hot deployment
@@ -111,7 +111,7 @@ Note: In the hot deployment scenario, whether the module is installed successful
 | Status | Meaning                                                       |
 | --- |---------------------------------------------------------------|
 | UP | Base and module are healthy                                   |
-| UNKOWN | Base or module is starting up                                 |
+| UNKNOWN | Base or module is starting up                                 |
 | DOWN | Base startup failed / base is unhealthy / module is unhealthy |
 
 Scenario 4: Base running
@@ -119,7 +119,7 @@ Scenario 4: Base running
 | Status | Meaning                                  |
 | --- |------------------------------------------|
 | UP | Base and module are healthy              |
-| UNKOWN | -                                        |
+| UNKNOWN | -                                        |
 | DOWN | Base is unhealthy or module is unhealthy |
 
 Scenario 5: After base started, reinstall module
@@ -131,7 +131,7 @@ Reinstall module is not supported at the moment
 | Status | Meaning |
 | --- | --- |
 | UP | Base and module are healthy |
-| UNKOWN | Base or module is starting up |
+| UNKNOWN | Base or module is starting up |
 | DOWN | Base is unhealthy or module startup failed or module is unhealthy |
 
 
@@ -202,7 +202,7 @@ Scenario 1: Start base
 | **Status** | **Meaning** |
 | --- | --- |
 | UP | Base is healthy |
-| UNKOWN | Base is starting up |
+| UNKNOWN | Base is starting up |
 | DOWN | Base is unhealthy |
 
 Scenario 2: Start base and install modules with static merge deployment
@@ -210,7 +210,7 @@ Scenario 2: Start base and install modules with static merge deployment
 | Status | Meaning |
 | --- | --- |
 | UP | Base and module are healthy |
-| UNKOWN | Base or module is starting up |
+| UNKNOWN | Base or module is starting up |
 | DOWN | Base startup failed / base is unhealthy / module startup failed / module is unhealthy |
 
 Scenario 3: After base starts, install modules with hot deployment
@@ -222,7 +222,7 @@ Scenario 4: Base running
 | Status | Meaning                                  |
 | --- |------------------------------------------|
 | UP | Base and module are healthy              |
-| UNKOWN | -                                        |
+| UNKNOWN | -                                        |
 | DOWN | Base is unhealthy or module is unhealthy |
 
 Scenario 5: After base started, reinstall module
