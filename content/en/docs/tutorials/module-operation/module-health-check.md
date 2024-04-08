@@ -5,13 +5,40 @@ weight: 900
 ---
 
 ## Background
-Users need to be aware of the health status of the base and modules in order to quickly locate issues when a module fails. At the same time, users need to obtain information about all modules and plugins in the base.
+The purpose of health checks is to obtain the status of an application throughout its lifecycle, including operational and runtime status, so that users can make decisions based on that status. For example, if an application is found to be DOWN, it indicates a failure, and the user may restart or replace the machine.
+
+In the case of a single application, health checks are relatively simple:
+- Operational status:
+    - If starting up, then UNKNOWN;
+    - If start-up fails, then DOWN;
+    - If start-up succeeds, then UP.
+- Runtime status:
+    - If all health check points of the application are healthy, then UP;
+    - If any health check points of the application are not healthy, then DOWN.
+
+In a multi-application scenario, the situation is much more complicated. We need to consider the impact of multiple applications' operational and runtime status on the overall health status of applications. When designing health checks, we need to consider the following two questions:
+
+- Should module operational status affect the overall application health status?
+
+  In different scenarios, users have different expectations. In koupleless, there are three scenarios for module operations:
+
+  | Scenario       | Impact of the module on the overall application health status                                                                                                                                                                                        |
+  |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Hot Deployment  | Provide configuration to let users decide if the results of module hot deployment should affect the overall health status of the application (default configuration: **does not affect** with the original health status of the overall application) |
+  | Static Merge Deployment | Module deployment occurs at base startup, and the module operational status **should directly affect** the overall health status of the application                                                                                                  |
+  | Module Replay   | Module replay happens at base startup, and the module operational status **should directly affect** the overall health status of the application                                                                                                     |
+
+- Should module runtime status affect the overall application health status?
+
+  The runtime status of a module should **directly affect** the overall health status of the application.
+  
+Under this context, we have designed a health check approach for multi-application scenarios.
 
 ## Usage
 
 ### Requirements
-koupleless version >= 1.1.0
-sofa-ark version >= 2.2.9
+- Koupleless version >= 1.1.0
+- sofa-ark version >= 2.2.9
 
 ### Obtain the overall health status of the application
 There are 3 types of health status for the base:
@@ -22,10 +49,9 @@ There are 3 types of health status for the base:
 | UNKNOWN | Currently starting up |
 | DOWN | Unhealthy (may be due to startup failure or unhealthy running state) |
 
-Because Koupleless supports hot-swappable modules, users may want to ignore module startup status or not when obtaining the overall health status of the application.
+Since Koupleless supports hot deployment of modules, while obtaining the overall health status of the application, users may wish for the module deployment result to impact the overall application health status or not.
 
-
-#### Ignore module startup status (default)
+#### Module launch result does not affect the overall application health status (default)
 - Features: For a healthy base, if the module installation fails, it will not affect the overall application health status.
 - Usage: Same as the health check configuration for regular springboot, configure in the base's application.properties:
 ``` properties
@@ -135,7 +161,7 @@ Reinstall module is not supported at the moment
 | DOWN | Base is unhealthy or module startup failed or module is unhealthy |
 
 
-#### Do not ignore module startup status (default)
+#### Module launch result affect the overall application health status
 - Features: For a healthy base, if a module installation fails, the overall application health status will also fail.
 - Usage: In addition to the above configuration, you need to configure koupleless.healthcheck.base.readiness.withAllBizReadiness=true, that is, configure in the base's application.properties:
 ```properties
