@@ -8,7 +8,8 @@ weight: 100
 ## Basic Specifications
 1. The list of middleware clients officially verified and compatible in Koupleless modules can be found [here](/docs/tutorials/module-development/runtime-compatibility-list). Any middleware client can be used in the base.
    <br/><br/>
-2. If the module hot unload capability is used, you can use the following API to decorate ExecutorService (typical for various thread pools), Timer, and Thread objects declared in the module code. When the module is unloaded, 
+2. If you need to use `System.setProperties()` and `System.getProperties()` in module without sharing with the base, please add `MultiBizProperties.initSystem()` in the main method of the base platform. For details, refer to [samples](https://github.com/koupleless/samples/blob/main/springboot-samples/config/apollo/base/src/main/java/com/alipay/sofa/config/apollo/ApolloApplication.java).
+3. If the module hot unload capability is used, you can use the following API to decorate ExecutorService (typical for various thread pools), Timer, and Thread objects declared in the module code. When the module is unloaded, 
    the Koupleless Arklet client will attempt to automatically clean up the decorated ExecutorService, Timer, and Thread:
    <br/>
     - In the module code, decorate the ExecutorService that needs to be automatically cleaned up. The underlying code will call the shutdownNow and awaitTermination interfaces of the ExecutorService object, attempting to gracefully release threads (not guaranteed to release 100%, such as when threads are waiting). The specific usage is:
@@ -29,10 +30,10 @@ weight: 100
       ```
       Note: JDK does not recommend forcibly stopping threads, as it may cause unexpected problems such as forcibly releasing locks on threads. Unless you are sure that forcibly closing threads will not cause any related issues, use it with caution.
       <br/><br/>
-3. If the module hot unload capability is used and there are other resources or objects that need to be cleaned up, you can listen for the Spring **ContextClosedEvent** event and clean up the necessary resources and objects in the event handler function.
+4. If the module hot unload capability is used and there are other resources or objects that need to be cleaned up, you can listen for the Spring **ContextClosedEvent** event and clean up the necessary resources and objects in the event handler function.
    You can also specify their **destroy-method** at the place where Beans are defined in Spring XML. When the module is unloaded, Spring will automatically execute the **destroy-method**.
    <br/><br/>
-4. When the base is started, all modules will be deployed. Therefore, when coding the base, make sure to be compatible with all modules, otherwise the base deployment will fail. If there are incompatible changes that cannot be bypassed (usually there will be many incompatible changes between the base and modules during the module splitting process), 
+5. When the base is started, all modules will be deployed. Therefore, when coding the base, make sure to be compatible with all modules, otherwise the base deployment will fail. If there are incompatible changes that cannot be bypassed (usually there will be many incompatible changes between the base and modules during the module splitting process), 
    please refer to [Incompatible Base and Module Upgrade](/docs/tutorials/module-operation/incompatible-base-and-module-upgrade)。
    <br/>
 

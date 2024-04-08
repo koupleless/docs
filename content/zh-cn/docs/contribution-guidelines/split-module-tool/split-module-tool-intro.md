@@ -14,7 +14,10 @@ weight: 1
 当项目代码逐渐膨胀，业务逐渐发展，代码耦合、发布耦合以及资源耦合的问题日益加重，**开发效率一降再降**。
 
 如何解决？**来试试把单个 Springboot 应用拆分为多个 Springboot 应用吧！**拆出后，多个 Springboot 应用并行开发，互不干扰。在 Koupleless 模式下，业务可以将 Springboot 应用**拆分**成一个基座和多个 Koupleless 模块（Koupleless 模块也是 Springboot 应用）。
-![split-example.jpg](/docs/contribution-guidelines/split-module-tool/imgs/split-example.jpg)
+
+<div style="text-align: center;">
+    <img align="center" width="500" src="/docs/contribution-guidelines/split-module-tool/imgs/split-example.jpg">
+</div>
 
 **🙌拉到「Koupleless 拆分插件解决方案」部分，可直接查看单体应用拆分的插件演示视频！**
 
@@ -29,7 +32,10 @@ weight: 1
 
 # **Koupleless 拆分插件**解决方案
 针对以上三大关键挑战，**Koupleless IntelliJ IDEA 插件**将解决方案分为 3 个部分：分析、交互和自动化拆出，**提供依赖分析、友好交互和自动化拆出能力**，如下图：
-![split-solution.jpg](/docs/contribution-guidelines/split-module-tool/imgs/split-solution.jpg)
+
+<div style="text-align: center;">
+    <img align="center" width="500" src="/docs/contribution-guidelines/split-module-tool/imgs/split-solution.jpg">
+</div>
 
 - 在分析中，分析项目中的依赖关系，包括类依赖和Bean依赖分析，解决拆分前复杂单体应用中的文件依赖分析问题；
 - 在交互中，可视化类文件之间的依赖关系，帮助用户梳理关系。同时，可视化模块目录结构，让用户以拖拽的方式决定要拆分的模块文件，降低拆分时的用户交互成本；
@@ -38,8 +44,10 @@ weight: 1
 **🙌 此处有 Koupleless 半自动拆分演示视频，带你更直观了解插件如何在分析、交互、自动化拆出中提供帮助。**
 
 
+<div style="text-align: center;">
 <video src="https://koupleless.oss-cn-shanghai.aliyuncs.com/outer-materials/Koupleless-%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8%E6%8B%86%E5%88%86%E6%BC%94%E7%A4%BA.mov" controls="controls" style="max-width: 730px;">
 </video>
+</div>
 
 # 一个示例 秒懂 Koupleless 解决方案优势
 
@@ -71,7 +79,10 @@ weight: 1
 
 选择你想要分析的任意类文件，点击“分析依赖”，插件帮你分析～ 不仅帮你分析类文件依赖的类和 Bean，还提示你哪些类可以拆出，哪些类不能拆出。
 以 QuartzJobController 为例，当选定的模块中有 QuartzJobController, QuartzJobService 和 QuartzJobServiceImpl 时，QuartzJobController 依赖的类和Bean关系如下图所示：
-![](/docs/contribution-guidelines/split-module-tool/imgs/dependency-analysis.jpg)
+
+<div style="text-align: center;">
+    <img align="center" width="700" src="/docs/contribution-guidelines/split-module-tool/imgs/dependency-analysis.jpg">
+</div>
 
 QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模块、建议分析被依赖关系和不建议移入模块：
 
@@ -101,14 +112,20 @@ QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模
 **方式二：使用 Koupleless 辅助工具，轻松拆出！**
 
 根据你想要的模块目录结构，拖拽需要拆出的文件至面板。点击“拆出”，插件帮你分析，帮你根据 Koupleless 多应用编码模式修改～
-![image.png](/docs/contribution-guidelines/split-module-tool/imgs/split-tool-ui.webp)
+
+<div style="text-align: center;">
+    <img align="center" width="600" src="/docs/contribution-guidelines/split-module-tool/imgs/split-tool-ui.webp">
+</div>
 
 - 优势：直观、交互方便、插件自动修改跨应用 Bean 调用方式和部分特殊的多应用编码模式
 - 劣势：插件只能根据部分多应用编码模式修改代码，因此用户需要了解插件能力的范围
 
 # 技术方案
 插件将整体流程分为 3 个阶段：**分析阶段**、**交互阶段**和**自动化拆出阶段**，整体流程如下图所示：
-![](/docs/contribution-guidelines/split-module-tool/imgs/split-pipeline.jpg)
+
+<div style="text-align: center;">
+    <img align="center" width="500" src="/docs/contribution-guidelines/split-module-tool/imgs/split-pipeline.jpg">
+</div>
 
 - 在分析阶段中，分析项目中的依赖关系，包括类依赖、Bean 依赖和特殊的多应用编码分析，如：MyBatis 配置依赖；
 
@@ -126,7 +143,9 @@ QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模
 
 插件首先扫描所有类信息，然后用 JavaParser 扫描每一个类的代码代码，分析它依赖的项目类文件所有涉及类型的语句，并解析涉及到的类型，最后记录其关联关系。涉及类型的语句如下：
 
-![](/docs/contribution-guidelines/split-module-tool/imgs/class-dependency-solution.jpg)
+<div style="text-align: center;">
+    <img align="center" width="450" src="/docs/contribution-guidelines/split-module-tool/imgs/class-dependency-solution.jpg">
+</div>
 
 1. 类定义分析: 解析父类类型和实现接口类型，作为引用的类型；
 2. 注解分析：解析注解类型，作为引用的类型；
@@ -145,7 +164,9 @@ QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模
 
 Bean 定义主要有三种方式：类名注解、方法名注解和 xml。不同方式的 Bean 定义对应着不同的 Bean 依赖注入分析方式，最终依赖的 Bean 又由依赖注入类型决定，整体流程如下：
 
-![](/docs/contribution-guidelines/split-module-tool/imgs/bean-dependency-solution.jpg)
+<div style="text-align: center;">
+    <img align="center" width="600" src="/docs/contribution-guidelines/split-module-tool/imgs/bean-dependency-solution.jpg">
+</div>
 
 在扫描 Bean 时，解析并记录 bean 信息、依赖注入类型和依赖的Bean信息。
 
@@ -163,7 +184,9 @@ Bean 定义主要有三种方式：类名注解、方法名注解和 xml。不�
 
 在拆出 Mapper 至模块时，模块需要复用基座数据源，因此插件需要分析 Mapper 关联的所有 MyBatis 配置类。MyBatis 的各项配置类和 Mapper 文件之间通过 MapperScanner 配置连接，整体关系如下图：
 
-![](/docs/contribution-guidelines/split-module-tool/imgs/MyBatis-analysis-solution.jpg)
+<div style="text-align: center;">
+    <img align="center" width="600" src="/docs/contribution-guidelines/split-module-tool/imgs/MyBatis-analysis-solution.jpg">
+</div>
 
 因此，插件记录所有的 Mapper 类文件和 XML 文件，解析与之关联的 MapperScanner，并解析与 MapperScanner 配置关联的所有 Mybatis 配置 Bean 信息。
 ## 交互阶段

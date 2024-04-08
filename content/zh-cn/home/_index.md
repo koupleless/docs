@@ -50,7 +50,7 @@ url: "/home/"
 <a href="/docs/video-training/" style="display: inline-block; width: 176px; margin-right: 12px;">
   <img style="margin: 0;" src="/img/video-training-btn.png" width="176px" />
 </a>
-<a href="/docs/introduction/intro-and-scenario" style="display: inline-block; width: 176px;">
+<a href="https://github.com/koupleless/koupleless" style="display: inline-block; width: 176px;">
   <img style="margin: 0;" src="/img/more-details-btn.png" width="176px" />
 </a>
 
@@ -115,9 +115,9 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(90.000000, 0.000000)">
-                        <a xlink:href="/user-cases/all-users/" target="_blank">
-                        <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30" y="21">企业案例合集</tspan>
+                        <a xlink:href="https://github.com/koupleless/koupleless/issues/138" target="_blank">
+                        <text id="2024 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
+                            <tspan x="30" y="21">2024 年规划</tspan>
                         </text>
                         </a>
                         <g id="编组-105" transform="translate(0.000000, 2.000000)">
@@ -128,17 +128,17 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/user-cases/alibaba-aidc/" target="_blank">
-                    <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="0" y="52">最新案例：阿里国际数字商业集团研发运维三倍提效！</tspan>
+                    <a xlink:href="2024 年规划" target="_blank">
+                    <text id="" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
+                        <tspan x="0" y="52">欢迎一起探讨 2024 及更长远规划</tspan>
                     </text>
                     </a>
                 </g>
                 <g id="编组-59" transform="translate(457.000000, 29.000000)">
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
-                        <a xlink:href="/docs/video-training/" target="_blank">
-                        <text id="2-分钟上手视频" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30.67" y="21">2 分钟上手视频</tspan>
+                        <a xlink:href="/user-cases/all-users/" target="_blank">
+                        <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
+                            <tspan x="30.67" y="21">企业案例合集</tspan>
                         </text>
                         </a>
                         <g id="编组-18" transform="translate(0.000000, 2.000000)">
@@ -149,9 +149,9 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/docs/video-training/" target="_blank">
-                    <text id="2-分钟完成基座和模块一键接入，并发布上" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="10" y="52">2 分钟完成基座和模块一键接入并发布上线！</tspan>
+                    <a xlink:href="/user-cases/aifulu-car/" target="_blank">
+                    <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
+                        <tspan x="5" y="52">最新案例：Koupleless 助力南京爱福路汽车实现降本增效！</tspan>
                     </text>
                     </a>
                 </g>
@@ -475,7 +475,7 @@ url: "/home/"
         <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 20px; color: #FFFFFF; letter-spacing: 0;
             line-height: 26px; margin: 0px; margin-bottom: 16px;">欢迎加入社区交流微信群</p>
         <div style="background: url('/img/qcode-background.png') center no-repeat; background-size: 204px; margin: 0 auto;">
-            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless 交流微信群二维码" src="/img/wechat-qcode.png" />
+            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless 交流微信二维码群" src="/img/wechat-qcode.png" />
         </div>
     </div>
 </div>
