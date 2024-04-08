@@ -7,7 +7,9 @@ weight: 500
 
 本文主要介绍动态合并部署模式，用于省资源与提高研发效率。如果你只是想节省资源，可以使用[静态合并部署](/docs/tutorials/module-development/static-merge-deployment/)。
 
-![img.png](/img/build_and_deploy.png)
+<div style="text-align: center;">
+    <img align="center" width="600px" src="/img/build_and_deploy.png" />
+</div>
 
 这里也提供了视频教程，[可点击此处查看](/docs/video-training/)。
 
@@ -60,7 +62,12 @@ Windows 下
 7. 找到对应的目录，将 arkctl.exe 放到该目录下。
 
 注意，在 Windows 环境下，如果开启 Windows Defender，浏览器下载二进制时可能会误报，提示如下：
-![error-hint.png](./imgs/error-hint.png) <br/>
+
+<div style="text-align: center;">
+    <img align="center" width="600px" src="/docs/tutorials/imgs/error-hint.png" />
+</div>
+ 
+<br/>
 报错原因可参考[go 官方文档](https://go.dev/doc/faq#virus)。此报错可以忽略，放心下载。
 
 #### 使用
@@ -83,7 +90,7 @@ arkctl deploy
 arkctl status
 ```
 
-有命令行交互的卸载模块
+有命令行交互地卸载模块
 
 ```shell
 # 调用此命令后，会列出当前部署的模块，用户可以通过上下键选择要卸载的模块。

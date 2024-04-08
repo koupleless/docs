@@ -21,13 +21,13 @@ If you are interested in Koupleless, have preliminary intentions to use Kouplele
 
 #### Community Bi-weekly Meeting
 **Community Meeting Every Two Weeks on Tuesday Evening from 19:30 to 20:30**, The next community bi-weekly meeting will be held on November 28, 2023, from 19:30 to 20:30. Everyone is welcome to actively participate, either by listening or joining the discussion. The meeting will be conducted via DingTalk.Please find the joining details for the DingTalk meeting below:<br />
-Meeting Link: [https://meeting.dingtalk.com/j/blp36k9mTbc](https://meeting.dingtalk.com/j/blp36k9mTbc)<br />
-DingTalk Meeting ID: 90957500367<br />Dial-in Numbers:+867936169179 (Mainland China)、+867388953916 (Mainland China)<br />
+Meeting Link: [https://meeting.dingtalk.com/dialin/?corpId=dingd8e1123006514592](https://meeting.dingtalk.com/dialin/?corpId=dingd8e1123006514592)<br />
+DingTalk Meeting ID: 90957500367<br />Dial-in Numbers: 057128095818 (Mainland China)、02162681677 (Mainland China)<br />
 **You can also follow the community DingTalk collaboration group (Group ID: 24970018417) for specific meeting updates.**。
 
 <br/>
 
-The community PMC component members' iteration planning meeting will be held on the last Monday of each month, discussing and finalizing the requirements planning for the next month. The next PMC members' monthly meeting will be on November 27, 2023, from 19:30 to 20:30. Joining details are the same as above.
+The community PMC component members' iteration planning meeting will be held on the last Monday of each month, discussing and finalizing the requirements planning for the next month.
 
 <br/>
 <br/>

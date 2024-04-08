@@ -12,7 +12,9 @@ weight: 1
 在 Spring 启动前，log4j2 会使用默认值初始化一次各种 logContext 和 Configuration，然后在 Spring 启动过程中，监听 Spring 事件进行初始化
 `org.springframework.boot.context.logging.LoggingApplicationListener`，这里会调用到 Log4j2LoggingSystem.initialize 方法
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696930949183-9519451c-be76-4d9b-bb6b-28a1b21e7fa7.png)
+<div style="text-align: center;">
+    <img align="center" width="800" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696930949183-9519451c-be76-4d9b-bb6b-28a1b21e7fa7.png">
+</div>
 
 该方法会根据 loggerContext 来判断是否已经初始化过了
 
@@ -27,17 +29,23 @@ weight: 1
    这两部分在多模块里都可能存在问题，先看下普通应用过程是如何完成这两步的
 
 ### 获取日志配置文件
-![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696931678652-81a19dc2-f618-48b0-add3-d098d3781966.png?x-oss-process=image%2Fresize%2Cw_1500%2Climit_0)
+<div style="text-align: center;">
+    <img align="center" width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696931678652-81a19dc2-f618-48b0-add3-d098d3781966.png?x-oss-process=image%2Fresize%2Cw_1500%2Climit_0">
+</div>
 
 可以看到是通过 ResourceUtils.getURL 获取的 location 对应日志配置文件的 url，这里通过获取到当前线程上下文 ClassLoader 来获取 URL，这在多模块下没有问题（因为每个模块启动时线程上下文已经是 模块自身的 ClassLoader ）。
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696931908899-f1fac1bb-f365-49f9-81a2-3e2d924c2b7d.png?x-oss-process=image%2Fresize%2Cw_1500%2Climit_0)
+<div style="text-align: center;">
+    <img align="center" width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696931908899-f1fac1bb-f365-49f9-81a2-3e2d924c2b7d.png?x-oss-process=image%2Fresize%2Cw_1500%2Climit_0">
+</div>
 
 ### 解析日志配置值
 
 配置文件里有一些变量，例如这些变量
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696932148670-d04bde21-e46b-476c-9cf5-53e43cc4dbe2.png)
+<div style="text-align: center;">
+    <img align="center" width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696932148670-d04bde21-e46b-476c-9cf5-53e43cc4dbe2.png">
+</div>
 
 这些变量的解析逻辑在 `org.apache.logging.log4j.core.lookup.AbstractLookup` 的具体实现里，包括
 
@@ -100,7 +108,11 @@ protected LoggerContext getContext(final Class<?> callerClass) {
 static修饰的log在三方组件下沉基座后也会导致相关日志不能正常隔离打印，所以这里也需要做 log4j2 进行适配。
 ### 多模块适配点
 1. getLoggerContext() 能拿到模块自身的 LoggerContext
-![](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696938182575-51ce1066-21f0-47bb-8bdb-c3c7d0814ca3.png)
+
+<div style="text-align: center;">
+    <img align="center" width="600" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1696938182575-51ce1066-21f0-47bb-8bdb-c3c7d0814ca3.png">
+</div>
+
 2. 需要调整成使用 ContextMapLookup，从而模块日志能获取到模块应用名，日志能打印到模块目录里
 
    a. 模块启动时将 application.properties 的值设置到 ThreadContext 中
