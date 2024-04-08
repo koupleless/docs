@@ -5,33 +5,33 @@ weight: 900
 ---
 
 ## Background
-The purpose of health checks is to obtain the status of an application throughout its lifecycle, including operational and runtime status, so that users can make decisions based on that status. For example, if an application is found to be DOWN, it indicates a failure, and the user may restart or replace the machine.
+The purpose of health checks is to obtain the status of an application throughout its lifecycle, including the operational and runtime phases, so that users can make decisions based on this status. For instance, if the application status is DOWN, it indicates a malfunction in the application, and the user may choose to restart or replace the machine.
 
 In the case of a single application, health checks are relatively simple:
-- Operational status:
-    - If starting up, then UNKNOWN;
-    - If start-up fails, then DOWN;
-    - If start-up succeeds, then UP.
-- Runtime status:
-    - If all health check points of the application are healthy, then UP;
-    - If any health check points of the application are not healthy, then DOWN.
+- Operational phase status:
+  - If it's starting up, the status is UNKNOWN;
+  - If startup fails, the status is DOWN;
+  - If startup is successful, the status is UP.
+- Runtime phase status:
+  - If all health checkpoints of the application are healthy, the status is UP;
+  - If any health checkpoint of the application is not healthy, the status is DOWN.
 
-In a multi-application scenario, the situation is much more complicated. We need to consider the impact of multiple applications' operational and runtime status on the overall health status of applications. When designing health checks, we need to consider the following two questions:
+In multi-application scenarios, the situation can be much more complex. We need to consider the impact of the multi-application's status during both the **operational phase** and the **runtime phase** on the overall application health. When designing health checks, we need to consider the following two issues:
 
-- Should module operational status affect the overall application health status?
+- During the **module operational phase**, should the module start-up status affect the overall application health status?
 
-  In different scenarios, users have different expectations. In koupleless, there are three scenarios for module operations:
-
-  | Scenario       | Impact of the module on the overall application health status                                                                                                                                                                                        |
-  |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | Hot Deployment  | Provide configuration to let users decide if the results of module hot deployment should affect the overall health status of the application (default configuration: **does not affect** with the original health status of the overall application) |
-  | Static Merge Deployment | Module deployment occurs at base startup, and the module operational status **should directly affect** the overall health status of the application                                                                                                  |
-  | Module Replay   | Module replay happens at base startup, and the module operational status **should directly affect** the overall health status of the application                                                                                                     |
-
-- Should module runtime status affect the overall application health status?
-
-  The runtime status of a module should **directly affect** the overall health status of the application.
+  In different operational scenarios, users have different expectations. koupleless module operations have three scenarios:
   
+  | Scenario          | Impact of the Module on the Overall Application Health Status                                                 |
+  |-------------------|---------------------------------------------------------------------------------------------------------------|
+  | Module Hot-Deployment | Provide configuration to let users decide whether the hot-deployment result should affect the overall application health status (default configuration is: **does not affect** the original health status of the application) |
+  | Static Merge Deployment | Module deployment occurs during the base startup, so the module startup status **should directly affect** the overall health status of the application |
+  | Module Replay         | Module replay occurs during the base startup, thus the module startup status **should directly affect** the overall health status of the application |
+
+- During the **module runtime phase**, should the module running status affect the overall application health status?
+  
+  The module runtime phase status should have a **direct impact** on the overall application health status.
+
 Under this context, we have designed a health check approach for multi-application scenarios.
 
 ## Usage
