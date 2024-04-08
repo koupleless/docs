@@ -70,9 +70,9 @@ After modifying the above configurations, additional modifications are required:
 </dependency>
 ```
 ##### Modify base startup class
-If version of koupleless is equals 1.0.2 or higher than 1.0.2, no need to change。
+If version of koupleless is equals 1.1.0 or higher than 1.1.0, no need to change。
 
-If version of koupleless is lower than 1.0.2, exclude the HealthAutoConfiguration class in the @SpringBootApplication annotation of the base Springboot startup class, as shown below:
+If version of koupleless is lower than 1.1.0, exclude the HealthAutoConfiguration class in the @SpringBootApplication annotation of the base Springboot startup class, as shown below:
 ```java
 import com.alipay.sofa.koupleless.arklet.springboot.starter.health.HealthAutoConfiguration;
 @SpringBootApplication(exclude = { HealthAutoConfiguration.class })

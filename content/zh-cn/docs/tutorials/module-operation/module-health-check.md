@@ -20,7 +20,7 @@ sofa-ark 版本 >= 2.2.9
 | **状态** | **含义** |
 | --- | --- |
 | UP | 健康，表示已就绪（readiness） |
-| UNKOWN | 正在启动中 |
+| UNKNOWN | 正在启动中 |
 | DOWN | 不健康（可能是启动失败，也可能是运行状态不健康） |
 
 由于 Koupleless 支持热部署模块，因此用户在获取应用整体健康状态时，可能希望忽略模块启动状态或者不忽略。
@@ -95,7 +95,7 @@ management.endpoint.health.show-details=always
 | **状态** | **含义** |
 | --- | --- |
 | UP | 基座健康 |
-| UNKOWN | 基座正在启动中 |
+| UNKNOWN | 基座正在启动中 |
 | DOWN | 基座不健康 |
 
 场景2：基座启动时，静态合并部署
@@ -103,7 +103,7 @@ management.endpoint.health.show-details=always
 | 状态 | 含义                        |
 | --- |---------------------------|
 | UP | 基座和模块都健康                  |
-| UNKOWN | 基座正在启动中/模块正在启动中           |
+| UNKNOWN | 基座正在启动中/模块正在启动中           |
 | DOWN | 基座启动失败/基座不健康/模块启动失败/模块不健康 |
 
 场景3：基座启动后，热部署
@@ -113,7 +113,7 @@ management.endpoint.health.show-details=always
 | 状态 | 含义                        |
 | --- |---------------------------|
 | UP | 基座和模块都健康                  |
-| UNKOWN | 基座正在启动中           |
+| UNKNOWN | 基座正在启动中           |
 | DOWN | 基座启动失败/基座不健康/模块不健康 |
 
 场景4：基座运行中
@@ -121,7 +121,7 @@ management.endpoint.health.show-details=always
 | 状态 | 含义          |
 | --- |-------------|
 | UP | 基座和模块都健康    |
-| UNKOWN | -           |
+| UNKNOWN | -           |
 | DOWN | 基座不健康或模块不健康 |
 
 场景5：基座启动后，模块回放
@@ -199,7 +199,7 @@ koupleless.healthcheck.base.readiness.withAllBizReadiness=true
 | **状态** | **含义** |
 | --- | --- |
 | UP | 基座健康 |
-| UNKOWN | 基座正在启动中 |
+| UNKNOWN | 基座正在启动中 |
 | DOWN | 基座不健康 |
 
 场景2：基座启动时，静态合并部署
@@ -207,7 +207,7 @@ koupleless.healthcheck.base.readiness.withAllBizReadiness=true
 | 状态 | 含义                        |
 | --- |---------------------------|
 | UP | 基座和模块都健康                  |
-| UNKOWN | 基座正在启动中/模块正在启动中           |
+| UNKNOWN | 基座正在启动中/模块正在启动中           |
 | DOWN | 基座启动失败/基座不健康/模块启动失败/模块不健康 |
 
 场景3：基座启动后，热部署
@@ -219,7 +219,7 @@ koupleless.healthcheck.base.readiness.withAllBizReadiness=true
 | 状态 | 含义          |
 | --- |-------------|
 | UP | 基座和模块都健康    |
-| UNKOWN | -           |
+| UNKNOWN | -           |
 | DOWN | 基座不健康或模块不健康 |
 
 场景5：基座启动后，模块回放
