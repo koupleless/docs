@@ -8,14 +8,24 @@
 {{ end }}
 
 <script>
-    var webSiteLanguage = localStorage.getItem("koupleless-web-ste-language") || navigator.language || 'zh-cn';
-
-    if (location.pathname && !location.pathname.startsWith('/en/') &&  // 1. Current page is not in English version
-        (webSiteLanguage == 'en' || webSiteLanguage.startsWith('en-')) // 2. But user set to 'en'
-        ) { // 3. So we redirect to English version
-
-        var newPath = '/en' + location.pathname;
-        location.pathname = newPath;
+    var webSiteLanguage = localStorage.getItem("koupleless-web-site-language") || navigator.language || 'zh-cn';
+    if (location.pathname) {
+        if (webSiteLanguage == 'en' || webSiteLanguage.startsWith('en-')) {
+            if (!location.pathname.startsWith('/en/')) {
+                // Language was set to en, but current page was not English version, so we redirect to English version.
+                location.pathname = '/en' + location.pathname;
+            }
+        } else {
+            var slashIndex = location.pathname.indexOf('/', 1);
+            if (slashIndex > 0) {
+                var pathPrefix = location.pathname.substring(0, slashIndex + 1);
+                if (pathPrefix == '/en/'      /*  || pathPrefix == '/fr/' || ...  */ ) {
+                    // Language was set to default (zh-cn), but current page was English version, so we redirect to zh-cn version.
+                    // Note: if we support other languages future, we need to add pathPrefix conditions for other languages one by one.
+                    location.pathname = location.pathname.substring(slashIndex);
+                }
+            }
+        }
     }
 </script>
 
@@ -28,23 +38,31 @@
         new PagefindUI({ element: ".td-search" });
 
         var menuItem = document.querySelector(".active.td-sidebar-link.td-sidebar-link__page");
-        menuItem.scrollIntoView({
-            behavior: "instant", block: "center", inline: "nearest" });
+        menuItem && menuItem.scrollIntoView({
+            behavior: "instant", block: "center", inline: "nearest"
         });
 
-        // var languageSwitchBtn = document.querySelector(".td-navbar div.d-none.d-lg-block:before");
-        // languageSwitchBtn.addEventListener('onClick', function() {
-        //
-        //     var webSiteLanguage = localStorage.getItem("koupleless-web-ste-language") || navigator.language || 'zh-cn';
-        //     if (webSiteLanguage == 'en' || webSiteLanguage.startsWith('en-')) {
-        //         webSiteLanguage = 'zh-cn';  // 点了一下按钮，切换到 zh-cn
-        //     } else {
-        //         webSiteLanguage = 'en';
-        //     }
-        //
-        //     localStorage.setItem("koupleless-web-ste-language", webSiteLanguage);
-        //     location.reload();
-        // });
+        var languageSwitchBtn = document.createElement("span");
+        languageSwitchBtn.id = "languageSwitchBtn";
+
+        console.log(localStorage.getItem("koupleless-web-site-language"));
+
+        languageSwitchBtn.onclick = function() {
+
+            var webSiteLanguage = localStorage.getItem("koupleless-web-site-language") || navigator.language || 'zh-cn';
+            if (webSiteLanguage == 'en' || webSiteLanguage.startsWith('en-')) {
+                webSiteLanguage = 'zh-cn';  // 点了一下按钮，切换到 zh-cn
+            } else {
+                webSiteLanguage = 'en';
+            }
+
+            localStorage.setItem("koupleless-web-site-language", webSiteLanguage);
+            location.reload();
+        };
+
+        var mainNavBar = document.querySelector("#main_navbar");
+        mainNavBar.parentNode.appendChild(languageSwitchBtn);
+    });
 </script>
 
 <script src="https://o.alicdn.com/mecloud/shell/dialog.js"></script>

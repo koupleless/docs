@@ -17,7 +17,7 @@ url: "/en/home/"
 
 <div id="home-page">
 <div style="padding-bottom: 2px; ">
-<svg width="1042px" height="85px" viewBox="0 0 1042 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1042px" height="72px" viewBox="0 15 1042 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <linearGradient x1="3.22605934%" y1="-3.08780779e-13%" x2="3.22605934%" y2="118.13151%" id="linearGradient-nntxa7fkqu-1">
             <stop stop-color="#3FEFFF" offset="0%"></stop>
