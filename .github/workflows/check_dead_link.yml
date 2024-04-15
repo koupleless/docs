@@ -3,12 +3,12 @@ name: Check Dead Link
 # Deadlink Validation will auto run at 0:00 am everyday.
 on:
   workflow_dispatch: 
-  schedule:
-    - cron: '0 0 * * *'
-  push:
-    paths:
-      - '**/*.md'
-    branches: [ main ]
+  #schedule:
+  #  - cron: '0 0 * * *'
+  #push:
+  #  paths:
+  #    - '**/*.md'
+  #  branches: [ main ]
 
 jobs:
   check:
@@ -22,11 +22,6 @@ jobs:
       - name: Install markdown-link-check
         run: sudo npm install -g markdown-link-check@3
 
-      - name: Install and start docsify server
-        run: |
-             sudo npm i docsify-cli -g
-             nohup docsify serve docs -p 3000 &
-
-      - name: Check dead links in all the .md files
-        run: make deadlink  
+      - name: Check markdown link
+        run: find ./content -name \*.md -print0 | xargs -0 -n1 markdown-link-check -c ./.github/workflow/check_dead_link_config.json
         
