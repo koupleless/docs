@@ -1,4 +1,4 @@
-name: doc-dead-link-checker
+name: Dead Link Checker
 
 # Deadlink Validation will auto run at 0:00 am everyday.
 on:
