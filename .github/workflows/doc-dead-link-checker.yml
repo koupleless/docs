@@ -4,11 +4,10 @@ name: doc-dead-link-checker
 on:
   schedule:
     - cron: '0 0 * * *'
-  pull_request:
+  push:
     paths:
       - '**/*.md'
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   check:
