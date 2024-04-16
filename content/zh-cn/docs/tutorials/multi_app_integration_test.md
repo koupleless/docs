@@ -99,4 +99,4 @@ public void getService() {
 
 ### 用例参考
 
-更完整的用例可以参考 [tomcat 多模块集成测试用例](todo)
+更完整的用例可以参考 [tomcat 多模块集成测试用例](https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/tomcat-web-integration-test/README-zh_CN.md)
