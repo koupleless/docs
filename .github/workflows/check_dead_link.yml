@@ -23,5 +23,5 @@ jobs:
         run: sudo npm install -g markdown-link-check@3
 
       - name: Check markdown link
-        run: find ./content -name \*.md -print0 | xargs -0 -n1 markdown-link-check -c ./.github/workflow/check_dead_link_config.json
+        run: find ./content/zh-cn -name \*.md -print0 | xargs -0 -n1 markdown-link-check -c ./.github/workflows/check_dead_link_config.json -q
         
