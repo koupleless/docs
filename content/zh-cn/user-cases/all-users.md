@@ -41,6 +41,56 @@ https://www.alihealth.cn/
 <br/>
 <br/>
 
+### 北京快手科技有限公司
+<img src="/img/all-users/kuaishou.png" width="250px" class="all-user-cases-logo">
+
+https://www.kuaishou.com
+
+**使用场景**：合并部署、热部署
+
+<br/>
+<br/>
+
+### 杭州涂鸦科技有限公司
+<img src="/img/all-users/tuya.png" width="250px" class="all-user-cases-logo">
+
+https://tuya.com/
+
+**使用场景**：合并部署、热部署
+
+<br/>
+<br/>
+
+### 浙江政采云 - 中国招标与采购网
+<img src="/img/all-users/zhejiang-zhengcaiyun.png" width="250px" class="all-user-cases-logo">
+
+https://www.zbytb.com/
+
+**使用场景**：合并部署、热部署
+
+<br/>
+<br/>
+
+### 郑州易盛信息科技有限公司
+<img src="/img/all-users/zhenzhou-yisheng.png" width="250px" class="all-user-cases-logo">
+
+https://www.esunny.com.cn/
+
+**使用场景**：合并部署、热部署
+
+<br/>
+<br/>
+
+### 广东正元信息技术有限公司
+<img src="/img/all-users/guangdong-zhengyuan.png" width="250px" class="all-user-cases-logo">
+
+https://www.fizzgate.com/
+
+**使用场景**：热部署
+
+<br/>
+<br/>
+
 ### 斑马信息科技有限公司
 
 <img alt="斑马信息科技有限公司" src="/img/user-logos/banmazhixing.png" width="250px" class="all-user-cases-logo" />
@@ -59,17 +109,6 @@ https://www.ebanma.com/
 https://www.yunzhitx.com/
 
 **使用场景**：模块动态部署、卸载
-
-<br/>
-<br/>
-
-### 华信永道（北京）科技股份有限公司
-
-**使用场景**：多应用合并部署降本增效
-
-<img alt="华信永道（北京）科技股份有限公司" src="/img/user-logos/huaxinyongdao.png" width="250px" class="all-user-cases-logo" />
-
-https://www.yondervision.com.cn/
 
 <br/>
 <br/>
@@ -103,17 +142,6 @@ https://www.f6car.cn/
 https://company.rfidworld.com.cn/Intro-137503.aspx
 
 **使用场景**：动态热部署、热卸载、模块隔离
-
-<br/>
-<br/>
-
-### 上海一嗨信息技术服务有限公司
-
-<img alt="上海一嗨信息技术服务有限公司" src="/img/user-logos/yihai.png" width="250px" class="all-user-cases-logo" />
-
-https://www.1hai.cn/
-
-**使用场景**：多应用合并部署降本增效、模块热部署实现秒级构建发布
 
 <br/>
 <br/>
@@ -170,4 +198,26 @@ https://www.zmops.com/
 
 **使用场景**：多应用合并部署降本增效
 
+<br/>
+
+### 上海一嗨信息技术服务有限公司
+
+<img alt="上海一嗨信息技术服务有限公司" src="/img/user-logos/yihai.png" width="250px" class="all-user-cases-logo" />
+
+https://www.1hai.cn/
+
+**使用场景**：多应用合并部署降本增效、模块热部署实现秒级构建发布
+
+<br/>
+<br/>
+
+### 华信永道（北京）科技股份有限公司
+
+**使用场景**：多应用合并部署降本增效
+
+<img alt="华信永道（北京）科技股份有限公司" src="/img/user-logos/huaxinyongdao.png" width="250px" class="all-user-cases-logo" />
+
+https://www.yondervision.com.cn/
+
+<br/>
 <br/>
