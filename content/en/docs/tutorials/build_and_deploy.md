@@ -61,7 +61,7 @@ arkctl deploy
 ### K8S Cluster Environment Development Verification, using minikube cluster as an example
 #### Base Deployment
 1. Build the base into an image and push it to the image center.
-2. Deploy the base to the k8s cluster, create a service for the base, expose the port, can [refer here](https://github.com/koupleless/koupleless/blob/master/module-controller/config/samples/dynamic-stock-service.yaml)
+2. Deploy the base to the k8s cluster, create a service for the base, expose the port, can [refer here](https://github.com/koupleless/module-controller/blob/main/config/samples/dynamic-stock-service.yaml)
 3. Execute minikube service base-web-single-host-service to access the base service.
 
 #### Module Deployment
@@ -77,4 +77,4 @@ arkctl deploy ${path to the module jar package} --pod ${namespace}/${podname}
 
 ## For more experiments, please refer to the samples directory
 
-[Refer here for reference](https://github.com/koupleless/koupleless/tree/master/samples)
+[Refer here for reference](https://github.com/koupleless/samples/tree/main)

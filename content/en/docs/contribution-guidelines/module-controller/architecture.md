@@ -10,7 +10,7 @@ ModuleController is a K8S controller that follows the K8S architecture. It defin
 
 ## Basic Architecture
 ModuleController currently consists of three components: ModuleDeployment Operator, ModuleReplicaSet Operator, and Module Operator. Similar to the native Deployment in K8S, **creating a ModuleDeployment will reconcile a ModuleReplicaSet, which in turn reconciles a Module. Finally, the Module Operator will invoke the Arklet SDK inside the Pod to install or uninstall the module**. Additionally, ModuleController will automatically generate a K8S Service for ModuleDeployment. Enterprises can listen for changes in the IP of this Service to integrate with their own traffic control system, enabling granular traffic cutting and hanging for modules.<br />
-[![](./architecture.png#from=url&height=536&id=ZnBYG&originHeight=502&originWidth=645&originalType=binary&ratio=2&rotation=0&showTitle=false&status=done&style=none&title=&width=689)](architecture.png)
+[![](/img/module-controller-architecture.png#from=url&height=536&id=ZnBYG&originHeight=502&originWidth=645&originalType=binary&ratio=2&rotation=0&showTitle=false&status=done&style=none&title=&width=689)](architecture.png)
 
 ## Feature List and RoadMap
 

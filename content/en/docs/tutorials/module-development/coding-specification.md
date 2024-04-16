@@ -40,11 +40,11 @@ weight: 100
 ## Knowledge Points
 [Module Slimming](../module-slimming) (Important)<br />
 [Module-to-Module and Module-to-Base Communication](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jvm/)  (Important)<br />
-[Module Testing](../module-debug)  (Important)<br />
-[Reuse Base Interceptors in Modules](../reuse-base-interceptor)<br />
-[Reuse Base Data Sources in Modules](../reuse-base-datasource)<br />
+[Module Testing](/docs/tutorials/module-development/module-debug)  (Important)<br />
+[Reuse Base Interceptors in Modules](/docs/tutorials/module-development/reuse-base-interceptor)<br />
+[Reuse Base Data Sources in Modules](/docs/tutorials/module-development/reuse-base-datasource)<br />
 [Introduction to the Principle of Class Delegation Between Base and Modules](/docs/introduction/architecture/class-delegation-principle)
-[Multiple Configurations for Modules](../module-multi-application-properties)
+[Multiple Configurations for Modules](/docs/tutorials/module-development/module-multi-application-properties)
 
 <br/>
 <br/>

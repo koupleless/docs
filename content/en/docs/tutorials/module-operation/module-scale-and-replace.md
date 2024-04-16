@@ -41,7 +41,7 @@ spec:
     schedulingPolicy: Scatter  
 ```
 
-If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](../operation-and-scheduling-strategy).<br />The example demonstrates using kubectl, but modifying the ModuleDeployment CR directly via the K8S API server achieves the same result.
+If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](/docs/tutorials/module-operation/operation-and-scheduling-strategy/).<br />The example demonstrates using kubectl, but modifying the ModuleDeployment CR directly via the K8S API server achieves the same result.
 
 
 Module Replacement

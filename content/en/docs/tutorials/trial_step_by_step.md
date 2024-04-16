@@ -74,7 +74,7 @@ Theoretically, adding this dependency should be enough. However, because this de
             <bizName>${Replace with module name}</bizName>
             <webContextPath>${Module's custom web context path, needs to be different from other modules}</webContextPath>
             <declaredMode>true</declaredMode>
-            <!-- Configure the module's automatic package exclusion list, download rules.txt from github and place it in the conf/ark/ directory of the module's root directory, download link: https://github.com/koupleless/koupleless/blob/master/samples/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt -->
+            <!-- Configure the module's automatic package exclusion list, download rules.txt from github and place it in the conf/ark/ directory of the module's root directory, download link: https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt -->
             <packExcludesConfig>rules.txt</packExcludesConfig>
         </configuration>
     </plugin>
@@ -231,8 +231,8 @@ With these steps completed, you can proceed with the Module [**Development and V
 
 ## Links in the Document
 
-1. Sample project address: [https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat](https://github.com/koupleless/samples/blob/master/springboot-samples/web/tomcat/)
+1. Sample project address: [https://github.com/koupleless/samples/tree/main/springboot-samples/web/tomcat](https://github.com/koupleless/samples/blob/master/springboot-samples/web/tomcat/)
 2. `web-ark-plugin` principles: [https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/)
-3. Principles and configuration file download for automatic slimming: [https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)
+3. Principles and configuration file download for automatic slimming: [https://koupleless.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)
 4. Arkctl download address: [https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.0](https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.0)
-5. Document address: [https://koupleless.gitee.io/docs/tutorials/trial_step_by_step/](https://koupleless.gitee.io/docs/tutorials/trial_step_by_step/)
+5. Document address: [https://koupleless.io/docs/tutorials/trial_step_by_step/](https://koupleless.gitee.io/docs/tutorials/trial_step_by_step/)

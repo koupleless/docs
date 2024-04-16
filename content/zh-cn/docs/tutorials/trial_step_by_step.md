@@ -77,7 +77,7 @@ draft: true
             <bizName>${替换为模块名}</bizName>
             <webContextPath>${模块自定义的 web context path，需要与其他模块不同}</webContextPath>
             <declaredMode>true</declaredMode>
-            <!--  配置模块自动排包列表，从 github 下载 rules.txt，并放在模块根目录的 conf/ark/ 目录下，下载地址：https://github.com/koupleless/samples/blob/master/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt  -->
+            <!--  配置模块自动排包列表，从 github 下载 rules.txt，并放在模块根目录的 conf/ark/ 目录下，下载地址：https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt  -->
             <packExcludesConfig>rules.txt</packExcludesConfig>
         </configuration>
     </plugin>
@@ -238,7 +238,7 @@ public class StrategyServiceImpl implements StrategyService {
 
 ## 文档中的链接地址
 
-1. 本实验工程样例地址：[https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat](https://github.com/koupleless/samples/tree/master/springboot-samples/web/tomcat)
+1. 本实验工程样例地址：[https://github.com/koupleless/samples/tree/main/springboot-samples/web/tomcat](https://github.com/koupleless/samples/tree/master/springboot-samples/web/tomcat)
 2. `web-ark-plugin` 原理： [https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/)
 3. 自动排包原理与配置文件下载：[/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)
 4. Arkctl 下载地址：[https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.2.0](https://github.com/koupleless/arkctl/releases/tag/arkctl-release-0.2.0)

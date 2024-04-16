@@ -41,7 +41,7 @@ spec:
     schedulingPolicy: Scatter
 ```
 
-You can refer to the [ModuleDeployment CRD fields explanation ](/docs/contribution-guidelines/module-controller/crd-definition)for all the fields of ModuleDeployment. <br />If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](../operation-and-scheduling-strategy).<br />The example demonstrates using kubectl, but creating a ModuleDeployment CR directly via the K8S API server achieves the same result.
+You can refer to the [ModuleDeployment CRD fields explanation ](/docs/contribution-guidelines/module-controller/crd-definition)for all the fields of ModuleDeployment. <br />If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](/docs/tutorials/module-operation/operation-and-scheduling-strategy/).<br />The example demonstrates using kubectl, but creating a ModuleDeployment CR directly via the K8S API server achieves the same result.
 
 
 Module Offline
@@ -49,7 +49,7 @@ To take a module offline in the Kubernetes cluster, delete the ModuleDeployment 
 ```bash
 kubectl delete yourmoduledeployment --namespace yournamespace
 ```
-Replace yourmoduledeployment with the name of your ModuleDeployment (metadata name of ModuleDeployment), and yournamespace with your namespace. If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](../operation-and-scheduling-strategy).<br />The example demonstrates using kubectl, but deleting a ModuleDeployment CR directly via the K8S API server achieves the same result.
+Replace yourmoduledeployment with the name of your ModuleDeployment (metadata name of ModuleDeployment), and yournamespace with your namespace. If you want to customize the module deployment operation strategy (such as grouping, beta, pause, etc.), you can configure the operationStrategy and schedulingStrategy. For more details, refer to [Module Deployment Operation Strategy](/docs/tutorials/module-operation/operation-and-scheduling-strategy/).<br />The example demonstrates using kubectl, but deleting a ModuleDeployment CR directly via the K8S API server achieves the same result.
 
 <br/>
 <br/>

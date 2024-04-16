@@ -7,14 +7,14 @@ weight: 900
 
 ### Resource File Locations
 
-1. [ModuleDeployment CRD Definition](https://github.com/koupleless/koupleless/blob/main/module-controller/config/crd/bases/koupleless.io_moduledeployments.yaml)
-2. [ModuleReplicaset CRD Definition](https://github.com/koupleless/koupleless/blob/main/module-controller/config/crd/bases/koupleless.io_modulereplicasets.yaml)
-3. [ModuleTemplate CRD Definition](https://github.com/koupleless/koupleless/blob/main/module-controller/config/crd/bases/koupleless.io_moduletemplates.yaml)
-4. [Module CRD Definition](https://github.com/koupleless/koupleless/blob/main/module-controller/config/crd/bases/koupleless.io_modules.yaml)
-5. [Role Definition](https://github.com/koupleless/koupleless/blob/master/module-controller/config/rbac/role.yaml)
-6. [RBAC Definition](https://github.com/koupleless/koupleless/blob/master/module-controller/config/rbac/role_binding.yaml)
-7. [ServiceAccount Definition](https://github.com/koupleless/koupleless/blob/master/module-controller/config/rbac/service_account.yaml)
-8. [ModuleController Deployment Definition](https://github.com/koupleless/koupleless/blob/master/module-controller/config/samples/module-deployment-controller.yaml)
+1. [ModuleDeployment CRD Definition](https://github.com/koupleless/module-controller/blob/main/config/crd/bases/koupleless.io_moduledeployments.yaml)
+2. [ModuleReplicaset CRD Definition](https://github.com/koupleless/module-controller/blob/main/config/crd/bases/koupleless.io_modulereplicasets.yaml)
+3. [ModuleTemplate CRD Definition](https://github.com/koupleless/module-controller/blob/main/config/crd/bases/koupleless.io_moduletemplates.yaml)
+4. [Module CRD Definition](https://github.com/koupleless/module-controller/blob/main/config/crd/bases/koupleless.io_modules.yaml)
+5. [Role Definition](https://github.com/koupleless/module-controller/blob/main/config/rbac/role.yaml)
+6. [RBAC Definition](https://github.com/koupleless/module-controller/blob/main/config/rbac/role_binding.yaml)
+7. [ServiceAccount Definition](https://github.com/koupleless/module-controller/blob/main/config/rbac/service_account.yaml)
+8. [ModuleController Deployment Definition](https://github.com/koupleless/module-controller/blob/main/config/samples/module-deployment-controller.yaml)
 
 ### Deployment Method
 

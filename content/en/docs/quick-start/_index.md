@@ -12,7 +12,7 @@ Consolidated deployment refers to selecting one application as the base and then
 1. Select an application as the base (referred to as **foundation** in Koupleless terminology) and [upgrade a regular application to the foundation](/docs/tutorials/base-create/springboot-and-sofaboot/).
 2. Select an application as the upper-layer application (referred to as **module** in Koupleless terminology) and [convert it to a module application and complete the consolidated deployment](/docs/tutorials/module-create/springboot-and-sofaboot/).
 <br/>
-You can also directly use the [official demo and documentation](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/service) 在本地完成实验。 
+You can also directly use the [official demo and documentation](https://github.com/koupleless/samples/tree/main/springboot-samples/service) 在本地完成实验。 
 
 Tip: Whether it is the **base** or the **module**, after integrating Koupleless, the same code branch can both start independently as before and achieve consolidated deployment.
 

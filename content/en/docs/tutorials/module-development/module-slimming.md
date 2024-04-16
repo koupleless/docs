@@ -16,7 +16,7 @@ The principle of building an ark-biz jar package is to place as many common pack
 
 ### Step 1
 
-In the "module project root directory/conf/ark/file name.txt" (for example: my-module/conf/ark/rules.txt), configure the common packages of frameworks and middleware that need to be sunk to the base in the following format. You can also directly copy the [content of the default rules.txt file](https://github.com/koupleless/koupleless/blob/main/samples/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt)to your project.
+In the "module project root directory/conf/ark/file name.txt" (for example: my-module/conf/ark/rules.txt), configure the common packages of frameworks and middleware that need to be sunk to the base in the following format. You can also directly copy the [content of the default rules.txt file](https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt)to your project.
 
 ```xml
 excludeGroupIds=org.apache*
@@ -61,7 +61,7 @@ In the module packaging plugin, introduce the above configuration file:
 
 Build and package the module ark-biz jar package, and you can clearly see the difference in size after slimming.
 
-You can [click here](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/slimming)to view the complete example project of module slimming. You can also continue reading to understand the slimming principle of the module.
+You can [click here](https://github.com/koupleless/samples/tree/main/springboot-samples/slimming)to view the complete example project of module slimming. You can also continue reading to understand the slimming principle of the module.
 
 
 ## Basic Principles

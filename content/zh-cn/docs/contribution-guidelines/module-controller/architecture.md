@@ -10,7 +10,7 @@ ModuleController 是一个 K8S 控制器，该控制器参考 K8S 架构，定�
 
 ## 基本架构
 ModuleController 目前包含 ModuleDeployment Opertor、ModuleReplicaSet Operator、Module Operator 三个组件。和 K8S 原生 Deployment 类似，**用户创建 ModuleDeployment 会调和出 ModuleReplicaSet，ModuleReplicaSet 会进一步调和出 Module，最终 Module Operator 会调用 Pod 里的 Arklet SDK 去安装或卸载模块**。此外 ModuleController 还会为 ModuleDeployment 自动生成 K8S Service，企业可以监听该 Service 的 IP 变化实现与自身流量控制系统的集成，从而实现模块粒度的切流和挂流。<br />
-[![](/module-controller-architecture.png#from=url&height=536&id=ZnBYG&originHeight=502&originWidth=645&originalType=binary&ratio=2&rotation=0&showTitle=false&status=done&style=none&title=&width=689)](architecture.png)
+[![](/img/module-controller-architecture.png#from=url&height=536&id=ZnBYG&originHeight=502&originWidth=645&originalType=binary&ratio=2&rotation=0&showTitle=false&status=done&style=none&title=&width=689)](architecture.png)
 
 ## 功能清单和 RoadMap
 

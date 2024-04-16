@@ -177,7 +177,7 @@ public class SampleController {
 }
 ```
 
-[Complete Example](https://github.com/koupleless/koupleless/tree/master/samples)
+[Complete Example](https://github.com/koupleless/samples/tree/main/)
 
 # SOFABoot Environment
 

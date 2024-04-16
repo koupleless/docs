@@ -9,7 +9,12 @@
   "ignorePatterns": [
     {
       "pattern": "^#"
+    },
+    {
+      "pattern": "^https://www.sofastack.tech/projects/sofa-boot/"
     }
   ],
+  "retryOn429": true,
+  "timeout": "20s",
   "aliveStatusCodes": [200, 202]
 }
