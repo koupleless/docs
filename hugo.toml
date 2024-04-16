@@ -1,7 +1,7 @@
 baseURL = ""
+title = "Koupleless"
 
 # Language settings
-contentDir = "content/zh-cn"
 defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
 # Useful when translating.
@@ -59,10 +59,19 @@ anchor = "smart"
 [languages]
 [languages.zh-cn]
 languageName ="中文"
-[languages.no.params]
 weight = 2
-title = "Koupleless"
+contentDir = "content/zh-cn"
+[languages.zh-cn.params]
 description = "Koupleless 官网"
+time_format_default = "2006.02.01"
+time_format_blog = "2006.02.01"
+
+[languages.en]
+languageName ="English"
+weight = 3
+contentDir = "content/en"
+[languages.en.params]
+description = "Koupleless Web Site"
 time_format_default = "2006.02.01"
 time_format_blog = "2006.02.01"
 
@@ -94,7 +103,7 @@ time_format_blog = "2006.02.01"
 section = ["HTML", "print"]
 
 [params]
-copyright = "Koupleless 开源社区"
+copyright = "Koupleless Community"
 customcss = ["/search/pagefind-ui.css"]
 customjs = ["/search/pagefind-ui.js", "/js/init.js"]
 disableGtagForUniversalAnalytics = true
@@ -114,7 +123,7 @@ archived_version = false
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the
 # current doc set.
-version = "0.6.0"
+version = "1.1.1"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
@@ -166,8 +175,8 @@ sidebar_search_disable = false
 [params.ui.feedback]
 enable = true
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
-yes = '很高兴文档对您有帮助! 欢迎<a href="https://github.com/koupleless/koupleless/issues/new?assignees=&labels=&projects=&template=feature_request.md">为社区提建议</a>。'
-no = '很抱歉文档对您没帮助。邀请您<a href="https://github.com/koupleless/koupleless/issues/new?assignees=&labels=&projects=&template=feature_request.md">为文档提建议</a>或者<a href="https://github.com/koupleless/docs/tree/main/user-docs/content/zh-cn">直接完善该文档</a>。'
+yes = '<a href="https://github.com/koupleless/koupleless/issues/new?assignees=&labels=&projects=&template=feature_request.md">Welcome propose feedback to community!</a>'
+no = '<a href="https://github.com/koupleless/koupleless/issues/new?assignees=&labels=&projects=&template=feature_request.md">Welcome propose feedback to community, </a>or <a href="https://github.com/koupleless/docs/tree/main/user-docs/content/zh-cn">improve this document directly.</a>。'
 max_value = 1
 
 # Adds a reading time to the top of each doc.
@@ -185,22 +194,22 @@ max_value = 1
 #  url = "https://example.org/mail"
 #  icon = "fa fa-envelope"
 #  desc = "Discussion and help from your fellow users"
-[[params.links.user]]
-  name ="通过社区交流群"
-  url = "/docs/contribution-guidelines/communication-channel/"
-  icon = "fab fa-twitter"
-  desc = "和我们一起讨论 Serverless！"
+#[[params.links.user]]
+#  name ="Let's discuss with "
+#  url = "/docs/contribution-guidelines/communication-channel/"
+#  icon = "fab fa-twitter"
+#  desc = "DingDing or WeChat."
 #[[params.links.user]]
 #  name = "Stack Overflow"
 #  url = "https://example.org/stack"
 #  icon = "fab fa-stack-overflow"
 #  desc = "Practical questions and curated answers"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
-[[params.links.developer]]
-  name = "看这里"
-  url = "/docs/contribution-guidelines/contribution/first-pr/"
-  icon = "fab fa-github"
-  desc = "完成您的第一次提交！"
+#[[params.links.developer]]
+#  name = "看这里"
+#  url = "/docs/contribution-guidelines/contribution/first-pr/"
+#  icon = "fab fa-github"
+#  desc = "完成您的第一次提交！"
 #[[params.links.developer]]
 #  name = "Slack"
 #  url = "https://example.org/slack"

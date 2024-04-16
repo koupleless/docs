@@ -1,0 +1,9 @@
+{
+  "projectBaseUrl":"https://koupleless.io",
+  "replacementPatterns": [
+    {
+      "pattern": "^/",
+      "replacement": "{{BASEURL}}/"
+    }
+  ]
+}

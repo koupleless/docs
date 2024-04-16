@@ -149,9 +149,9 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/user-cases/alibaba-aidc/" target="_blank">
+                    <a xlink:href="/user-cases/aifulu-car/" target="_blank">
                     <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="10" y="52">最新案例：阿里国际数字商业集团研发运维三倍提效！</tspan>
+                        <tspan x="5" y="52">最新案例：Koupleless 助力南京爱福路汽车实现降本增效！</tspan>
                     </text>
                     </a>
                 </g>
