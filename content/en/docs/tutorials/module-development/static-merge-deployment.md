@@ -64,7 +64,7 @@ biz -a
 ```
 
 At this point, you should be able to see the Master Biz (base) and all statically merged deployed Ark Biz (modules).<br/>
-The above operations can be experienced through the [SOFAArk Static Merge Deployment Sample](https://github.com/koupleless/koupleless/blob/master/samples/springboot-samples/web/tomcat/README.md#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9(%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E9%83%A8%E7%BD%B2))
+The above operations can be experienced through the [SOFAArk Static Merge Deployment Sample](https://github.com/koupleless/samples/blob/master/springboot-samples/web/tomcat/README.md#%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9(%E9%9D%99%E6%80%81%E5%90%88%E5%B9%B6%E9%83%A8%E7%BD%B2))
 
 <br/>
 <br/>

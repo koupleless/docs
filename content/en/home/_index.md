@@ -128,7 +128,7 @@ url: "/en/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="2024 年规划" target="_blank">
+                    <a xlink:href="https://github.com/koupleless/koupleless/issues/138" target="_blank">
                     <text id="" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
                         <tspan x="80" y="52">Let's discuss year 2024 plan!</tspan>
                     </text>

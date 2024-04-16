@@ -12,7 +12,7 @@ Firstly, Koupleless is utilized to achieve combined deployment and dynamic modul
 1. **Combined Deployment**
 2. **Middleware Applications** _ (This scenario requires completing combined deployment first, followed by demonstrating middleware application demos)_
 
-> The experimental project code in this document is available at: [samples directory in the open-source repository](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat)
+> The experimental project code in this document is available at: [samples directory in the open-source repository](https://github.com/koupleless/samples/blob/master/springboot-samples/web/tomcat/)
 
 ## Scenario One: Combined Deployment
 Let's start with the first scenario: **Combined Deployment of Multiple Applications**. The overall process is as follows:
@@ -231,7 +231,7 @@ With these steps completed, you can proceed with the Module [**Development and V
 
 ## Links in the Document
 
-1. Sample project address: [https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat)
+1. Sample project address: [https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/web/tomcat](https://github.com/koupleless/samples/blob/master/springboot-samples/web/tomcat/)
 2. `web-ark-plugin` principles: [https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/)
 3. Principles and configuration file download for automatic slimming: [https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)
 4. Arkctl download address: [https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.0](https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.0)

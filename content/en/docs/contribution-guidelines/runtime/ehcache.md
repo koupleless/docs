@@ -87,4 +87,4 @@ Otherwise, it will enter this logic, initializing the static variable instance o
 
 
 ## Example of Best Practices
-For an example project, please[refer to here](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/cache/ehcache)
+For an example project, please[refer to here](https://github.com/koupleless/samples/tree/main/springboot-samples/cache/ehcache)

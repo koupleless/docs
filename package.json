@@ -37,6 +37,7 @@
     "postcss-cli": "10.1.0"
   },
   "dependencies": {
+    "markdown-link-check": "^3.12.1",
     "pagefind": "1.0.4"
   }
 }

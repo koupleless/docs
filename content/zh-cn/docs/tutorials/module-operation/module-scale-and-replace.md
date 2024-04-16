@@ -41,7 +41,7 @@ spec:
     schedulingPolicy: Scatter  
 ```
 
-如果要自定义模块发布运维策略可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](../operation-and-scheduling-strategy)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 修改 ModuleDeployment CR 一样能实现扩缩容。
+如果要自定义模块发布运维策略可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](/docs/tutorials/module-operation/operation-and-scheduling-strategy/)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 修改 ModuleDeployment CR 一样能实现扩缩容。
 
 
 ## 模块替换

@@ -85,7 +85,7 @@ If you used fork earlier, then here "origin" pushes to your code repository, not
 
 
 ## Requesting to Merge Code into Main Branch
-After submitting the code to GitHub, you can request to merge your well-improved code into Koupleless's or SOFAArk's mainline code. At this point, you need to go to your GitHub repository and click the `pull request` button in the upper right corner. Select the target branch, usually `master`, and the [Maintainer](../../role-and-promotion#member-list) or [PMC](../../role-and-promotion#member-list) of the corresponding component as the Code Reviewer. If the PR pipeline check and Code Review are both successful, your code will be merged into the mainline and become a part of Koupleless.
+After submitting the code to GitHub, you can request to merge your well-improved code into Koupleless's or SOFAArk's mainline code. At this point, you need to go to your GitHub repository and click the `pull request` button in the upper right corner. Select the target branch, usually `master`, and the [Maintainer](/docs/contribution-guidelines/role-and-promotion#member-list) or [PMC](/docs/contribution-guidelines/role-and-promotion#member-list) of the corresponding component as the Code Reviewer. If the PR pipeline check and Code Review are both successful, your code will be merged into the mainline and become a part of Koupleless.
 
 ### PR Pipeline Check
 The PR pipeline check includes:
@@ -100,7 +100,7 @@ The PR pipeline check includes:
 All the above checks must pass for the PR pipeline to pass and enter the Code Review stage.
 
 ### Code Review
-If you choose the [Maintainer](../../role-and-promotion#member-list) or [PMC](../../role-and-promotion#member-list) of the corresponding component as the Code Reviewer, and after several days, there is still no response to your submission, you can leave a message below the PR and mention the relevant people, or directly mention them in the community DingTalk collaboration group (DingTalk group ID: 24970018417) to review the code. The comments on the Code Review will be directly noted in the corresponding PR or Issue. If you find the suggestions reasonable, please update your code accordingly and resubmit the PR.
+If you choose the [Maintainer](/docs/contribution-guidelines/role-and-promotion#member-list) or [PMC](/docs/contribution-guidelines/role-and-promotion#member-list) of the corresponding component as the Code Reviewer, and after several days, there is still no response to your submission, you can leave a message below the PR and mention the relevant people, or directly mention them in the community DingTalk collaboration group (DingTalk group ID: 24970018417) to review the code. The comments on the Code Review will be directly noted in the corresponding PR or Issue. If you find the suggestions reasonable, please update your code accordingly and resubmit the PR.
 
 ### Merging Code into Main Branch
 After the PR pipeline check and Code Review are both successful, Koupleless maintainers will merge the code into the mainline. After the code is merged, you will receive a notification of successful merging.

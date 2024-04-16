@@ -3,7 +3,13 @@
   "replacementPatterns": [
     {
       "pattern": "^/",
-      "replacement": "{{BASEURL}}/"
+      "replacement": "https://koupleless.io/"
     }
-  ]
+  ],
+  "ignorePatterns": [
+    {
+      "pattern": "^#"
+    }
+  ],
+  "aliveStatusCodes": [200, 202]
 }

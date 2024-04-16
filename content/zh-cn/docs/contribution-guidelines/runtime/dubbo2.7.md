@@ -190,5 +190,5 @@ if (in instanceof ClassLoaderJavaObjectInput) {
 
 [多模块 dubbo2.7 使用样例](https://github.com/koupleless/samples/tree/main/dubbo-samples/rpc/dubbo27/README.md)
 
-[dubbo2.7多模块适配sdk源码](https://github.com/koupleless/runtime/tree/main/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
+[dubbo2.7多模块适配sdk源码](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
 

@@ -188,7 +188,7 @@ if (in instanceof ClassLoaderJavaObjectInput) {
 
 ## Example of Using Dubbo 2.7 in a Multi-Module Environment
 
-[Example of Using Dubbo 2.7 in a Multi-Module Environment](https://github.com/koupleless/koupleless/tree/main/samples/dubbo-samples/rpc/dubbo27/README.md)
+[Example of Using Dubbo 2.7 in a Multi-Module Environment](https://github.com/koupleless/samples/tree/main/dubbo-samples/rpc/dubbo27/README.md)
 
-[dubbo2.7 Multi-Module Adaptation SDK Source Code](https://github.com/koupleless/koupleless/tree/main/koupleless-runtime/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
+[dubbo2.7 Multi-Module Adaptation SDK Source Code](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
 

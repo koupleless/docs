@@ -41,7 +41,7 @@ spec:
     schedulingPolicy: Scatter
 ```
 
-ModuleDeployment 所有字段可参考 [ModuleDeployment CRD 字段解释](/docs/contribution-guidelines/module-controller/crd-definition)。<br />如果要自定义模块发布运维策略（比如分组、Beta、暂停等）可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](../operation-and-scheduling-strategy)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 创建 ModuleDeployment CR 一样能实现模块分组上线。
+ModuleDeployment 所有字段可参考 [ModuleDeployment CRD 字段解释](/docs/contribution-guidelines/module-controller/crd-definition)。<br />如果要自定义模块发布运维策略（比如分组、Beta、暂停等）可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](/docs/tutorials/module-operation/operation-and-scheduling-strategy/)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 创建 ModuleDeployment CR 一样能实现模块分组上线。
 
 
 ## 模块下线
@@ -49,7 +49,7 @@ ModuleDeployment 所有字段可参考 [ModuleDeployment CRD 字段解释](/docs
 ```bash
 kubectl delete yourmoduledeployment --namespace yournamespace
 ```
-其中 _yourmoduledeployment_ 替换成您的 ModuleDeployment 名字（ModuleDeployment 的 metadata name），_yournamespace_ 替换成您的 namespace。<br />如果要自定义模块发布运维策略（比如分组、Beta、暂停等）可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](../operation-and-scheduling-strategy)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 删除 ModuleDeployment CR 一样能实现模块分组下线。
+其中 _yourmoduledeployment_ 替换成您的 ModuleDeployment 名字（ModuleDeployment 的 metadata name），_yournamespace_ 替换成您的 namespace。<br />如果要自定义模块发布运维策略（比如分组、Beta、暂停等）可配置 operationStrategy 和 schedulingStrategy，具体可参考[模块发布运维策略](/docs/tutorials/module-operation/operation-and-scheduling-strategy/)。<br />样例演示的是使用 kubectl 方式，直接调用 K8S APIServer 删除 ModuleDeployment CR 一样能实现模块分组下线。
 
 <br/>
 <br/>

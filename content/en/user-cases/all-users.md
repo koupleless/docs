@@ -80,7 +80,7 @@ https://www.yondervision.com.cn/
 
 https://www.antgroup.com/
 
-**Usage Scenario**: Second-level application build and deployment, elastic scaling, parallel iteration, combined deployment, achieving resource cost reduction and development efficiency improvement. [Detailed Case](/docs/user-cases/ant-group/)
+**Usage Scenario**: Second-level application build and deployment, elastic scaling, parallel iteration, combined deployment, achieving resource cost reduction and development efficiency improvement. [Detailed Case](/user-cases/ant-group/)
 
 <br/>
 <br/>

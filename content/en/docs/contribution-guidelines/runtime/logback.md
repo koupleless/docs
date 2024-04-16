@@ -108,7 +108,7 @@ private LoggerContext getContext(ClassLoader cls) {
 ```
 
 ## Sample Usage of Multi-Module Logback
-[Sample Usage of Multi-Module Logback](https://github.com/koupleless/koupleless/tree/master/samples/springboot-samples/logging/logback/README.md)
+[Sample Usage of Multi-Module Logback](https://github.com/koupleless/samples/blob/main/springboot-samples/logging/logback/README.md)
 
 [View Source Code of ArkLogbackContextSelector](https://github.com/sofastack/sofa-ark/blob/master/sofa-ark-parent/core/common/src/main/java/com/alipay/sofa/ark/common/adapter/ArkLogbackContextSelector.java)
 

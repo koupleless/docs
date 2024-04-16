@@ -80,7 +80,7 @@ https://www.yondervision.com.cn/
 
 https://www.antgroup.com/
 
-**使用场景**：应用秒级构建发布、秒级弹性、并行迭代、合并部署，实现资源降本和研发提效。[详细案例](/docs/user-cases/ant-group/)
+**使用场景**：应用秒级构建发布、秒级弹性、并行迭代、合并部署，实现资源降本和研发提效。[详细案例](/user-cases/ant-group/)
 
 <br/>
 <br/>

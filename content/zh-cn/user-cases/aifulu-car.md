@@ -57,7 +57,7 @@ Koupleless（原 SOFAServerless）自 2023 年开源以来已经落地了若干�
 
 通过上述的推导，爱福路判断也许「模块化+Serverless」将是一种解法。
 
-因此一款来自蚂蚁的开源框架成为他们重点的关注，那就是 Koupleless。（阅读原文可跳转官网地址：https://koupleless.io/user-cases/ant-group/）
+因此一款来自蚂蚁的开源框架成为他们重点的关注，那就是 Koupleless。（ 阅读原文可跳转官网地址：https://koupleless.io/user-cases/ant-group/ ）
 
 当然一个重要原因是蚂蚁开源一直做得不错，社区也比较活跃。除了社区群和 GitHub 之外，PMC 有济也积极地建立了独享的 VIP 群进行专门对接。
 
@@ -79,7 +79,7 @@ Koupleless 技术体系是在业务发展、研发运维的复杂性和成本不
 
 此外，采用这种模式，小应用可以不走应用申请上线流程，也不需要申请机器，可以直接部署到业务通用基座之上，从而帮助小流量业务实现了快速创新。
 
-2023 年底 SOFAServerless 品牌全新升级为 Koupleless（GitHub页面：https://github.com/koupleless/koupleless）。
+2023 年底 SOFAServerless 品牌全新升级为 Koupleless（ GitHub页面：https://github.com/koupleless/koupleless ）。
 
 企业里不同业务有不同的发展阶段，因此应用也拥有自己的生命周期。
 
