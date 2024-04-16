@@ -367,3 +367,7 @@ public Object getProxy(@Nullable ClassLoader classLoader) {
 
 #### 解决方式
 使用 spring-core 更新版本，例如 6.0.11
+
+### Hessian 序列化反序列化不支持多应用（classLoader）
+#### 解决方式
+参考 https://github.com/koupleless/koupleless/issues/196， 可以升级 hessian 版本到 4.x 以上，或者自定义多 ClassLoader 的 SerializerFactory
