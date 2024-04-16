@@ -1,0 +1,27 @@
+name: Check Dead Link
+
+# Deadlink Validation will auto run at 0:00 am everyday.
+on:
+  workflow_dispatch: 
+  #schedule:
+  #  - cron: '0 0 * * *'
+  #push:
+  #  paths:
+  #    - '**/*.md'
+  #  branches: [ main ]
+
+jobs:
+  check:
+    name: "DeadLink Validation"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install markdown-link-check
+        run: sudo npm install -g markdown-link-check@3
+
+      - name: Check markdown link
+        run: find ./content -name \*.md -print0 | xargs -0 -n1 markdown-link-check -c ./.github/workflow/check_dead_link_config.json
+        

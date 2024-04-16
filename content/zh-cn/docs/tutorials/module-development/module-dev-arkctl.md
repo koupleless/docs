@@ -94,14 +94,19 @@ arkctl deploy --pod {namespace}/{podName}
 #### 场景 6： 如何更快的使用该命令
 可以在 IDEA 里新建一个 Shell Script，配置好运行的目录，然后输入 arkctl 相应的命令，如下图即可。
 
-<img src="/img/arkctl-shell-starter.png">
+<div style="text-align: center;">
+    <img align="center" width="800" src="/img/arkctl-shell-starter.png">
+</div>
+
 
 ### 模块本地调试
 
 #### 模块与基座出于同一个 IDEA 工程中
 因为 IDEA 工程里能看到模块代码，模块调试与普通调试没有区别。直接在模块代码里打断点，基座通过 debug 方式启动即可。
 
-![img.png](/img/local_debug_base_and_biz_in_same_idea.png)
+<div style="text-align: center;">
+    <img align="center" width="900" src="/img/local_debug_base_and_biz_in_same_idea.png">
+</div>
 
 #### 模块与基座在不同 IDEA 工程中
 1. 基座启动参数里增加 debug 配置 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000`，然后启动基座

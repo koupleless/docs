@@ -1,8 +1,9 @@
 ---
-title: 基座与模块并行开发验证
+title: 研发流程与上手实验
 weight: 501
-description: Koupleless 基座与模块并行开发验证
+description: 研发流程与上手实验
 date: 2024-01-25T10:28:32+08:00
+draft: true
 ---
 
 欢迎使用 **Koupleless 完成多 SpringBoot 应用合并部署与动态更新模块**！本文将详细介绍操作流程与方法，希望能够帮助大家节省资源、提高研发效率。
@@ -15,7 +16,10 @@ date: 2024-01-25T10:28:32+08:00
 
 ## 场景一：合并部署
 先介绍第一个场景**多应用合并部署**，整体流程如下:
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/96256555/1700728867593-5f85b5a6-254c-44f9-9866-03f75cd1a30e.png#clientId=u236ce451-8502-4&from=paste&height=596&id=ud7c32f07&originHeight=1192&originWidth=2386&originalType=binary&ratio=2&rotation=0&showTitle=false&size=2443895&status=done&style=none&taskId=uf8f160d5-4794-4459-aa18-118e3895bff&title=&width=1193)
+
+<div style="text-align: center;">
+    <img align="center" width="600px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/96256555/1700728867593-5f85b5a6-254c-44f9-9866-03f75cd1a30e.png#clientId=u236ce451-8502-4&from=paste&height=596&id=ud7c32f07&originHeight=1192&originWidth=2386&originalType=binary&ratio=2&rotation=0&showTitle=false&size=2443895&status=done&style=none&taskId=uf8f160d5-4794-4459-aa18-118e3895bff&title=&width=1193" />
+</div>
 
 可以看到，整体上需要完成的动作是**基座/模块接入改造后进行开发与验证**，而基座与模块的合并部署动作都是可以并行的。接下来我们将逐步介绍操作细节。
 
@@ -144,7 +148,10 @@ hello to ${模块1名} deploy v2
 
 ## 场景二：中台应用
 中台应用的特点是**基座有复杂的编排逻辑**去定义**对外暴露服务和业务所需的 SPI**。模块应用来实现这些 SPI 接口，往往会对一个接口在多个模块里定义多个不同的实现。整体流程如下：
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/96256555/1700706388244-f46fbd3d-262d-4a9d-894a-243782860cce.png#clientId=ue666f90d-083a-4&from=paste&height=310&id=u76e59b07&originHeight=620&originWidth=1762&originalType=binary&ratio=2&rotation=0&showTitle=false&size=345022&status=done&style=none&taskId=ue115f7a7-de5a-4c01-91d4-0965c2422dc&title=&width=881)
+
+<div style="text-align: center;">
+    <img align="center" width="600px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/96256555/1700706388244-f46fbd3d-262d-4a9d-894a-243782860cce.png#clientId=ue666f90d-083a-4&from=paste&height=310&id=u76e59b07&originHeight=620&originWidth=1762&originalType=binary&ratio=2&rotation=0&showTitle=false&size=345022&status=done&style=none&taskId=ue115f7a7-de5a-4c01-91d4-0965c2422dc&title=&width=881" />
+</div>
 
 可以看到，与场景一合并部署操作不同的是，需要在**基座**接入改造与开发验证中间新增一步**通信类和 SPI 的定义**；**模块**接入改造与开发验证中间新增一步**引入通信类基座并实现基座 SPI**。
 **接下来我们将介绍与合并部署不同的**_**（即新增的）**_**操作细节。**

@@ -6,32 +6,34 @@ description: "Koupleless: Enabling regular applications to enjoy low-cost Server
 keywords: ["Modular, Monolith, Serverless, Green Computing, Modular Monolith, Service Weaver"]
 tags: ["Modular", "Monolith", "Serverless", "Green Computing", "Modular Monolith", "Service Weaver"]
 menu: {main: {weight: 10}}
-url: "/home/"
+url: "/en/home/"
 ---
 
 <meta name="keywords" content="Modular, Monolith, Serverless, Green Computing, Modular Monolith, Service Weaver" />
 
 {{< blocks/cover image_anchor="top" height="min" >}}
 
+<!-- 0223 Updated -->
+
 <div id="home-page">
 <div style="padding-bottom: 2px; ">
-<svg width="844px" height="72px" viewBox="0 0 844 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1042px" height="72px" viewBox="0 15 1042 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="6.16297582e-31%" id="linearGradient-lq3e3ccur_-1">
-            <stop stop-color="#0077FF" offset="0%"></stop>
-            <stop stop-color="#439BFF" offset="100%"></stop>
+        <linearGradient x1="3.22605934%" y1="-3.08780779e-13%" x2="3.22605934%" y2="118.13151%" id="linearGradient-nntxa7fkqu-1">
+            <stop stop-color="#3FEFFF" offset="0%"></stop>
+            <stop stop-color="#1664FF" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="首页" transform="translate(-298.000000, -134.000000)">
-            <g id="编组-20" transform="translate(298.000000, 134.000000)">
-                <rect id="矩形" x="0" y="0" width="844" height="72"></rect>
-                <g id="Koupleless·研发框架与平台" transform="translate(20.776000, 4.392000)" fill-rule="nonzero">
-                    <g id="Koupleless·研发框架与平台">
-                        <path d="M24.128,34.176 L34.624,18.048 L20.928,18.048 L14.208,29.696 L12.16,29.696 L12.16,3.968 L0,3.968 L0,52.608 L12.16,52.608 L12.16,38.976 L13.568,38.976 L20.48,52.608 L35.008,52.608 L24.128,34.176 Z M54.976,53.248 C65.984,53.248 72.64,49.536 72.64,35.328 C72.64,21.12 65.984,17.408 54.976,17.408 C43.968,17.408 37.312,21.12 37.312,35.328 C37.312,49.536 43.968,53.248 54.976,53.248 Z M54.976,44.416 C50.88,44.416 49.6,42.368 49.6,35.328 C49.6,28.288 50.88,26.112 54.976,26.112 C59.072,26.112 60.352,28.288 60.352,35.328 C60.352,42.368 59.072,44.416 54.976,44.416 Z M100.16,18.048 L100.16,40.832 C99.584,42.56 98.176,43.648 95.424,43.648 C91.584,43.648 90.56,42.688 90.56,38.656 L90.56,18.048 L78.4,18.048 L78.4,41.536 C78.4,49.728 81.728,53.248 89.92,53.248 C95.744,53.248 98.56,51.52 100.288,49.152 L101.056,52.608 L112.256,52.608 L112.256,18.048 L100.16,18.048 Z M141.888,17.408 C136.256,17.408 133.44,19.2 132.096,20.928 L132.096,18.048 L119.936,18.048 L119.936,65.408 L132.096,65.408 L132.096,49.344 C133.44,51.712 136,53.248 141.888,53.248 C152.768,53.248 155.264,45.504 155.264,35.328 C155.264,24.064 152.768,17.408 141.888,17.408 Z M137.28,44.416 C132.416,44.416 131.392,41.024 131.392,35.328 C131.392,29.248 132.416,26.112 137.28,26.112 C142.208,26.112 142.976,29.696 142.976,35.328 C142.976,40.64 142.336,44.416 137.28,44.416 Z M172.928,52.992 C174.4,52.992 175.808,52.864 177.216,52.608 L177.216,43.456 C176.512,43.648 176.32,43.584 175.872,43.584 C173.888,43.584 173.248,42.752 173.248,39.872 L173.248,3.968 L161.088,3.968 L161.088,42.752 C161.088,49.728 163.392,52.992 172.928,52.992 Z M213.632,33.088 C213.632,22.528 210.304,17.408 198.016,17.408 C186.56,17.408 179.904,21.12 179.904,35.328 C179.904,49.536 186.56,53.248 197.44,53.248 C204.288,53.248 209.792,51.968 211.904,50.496 L211.904,41.536 C209.856,42.752 204.544,44.032 199.872,44.032 C195.456,44.032 192.704,42.816 192,39.808 L213.248,38.528 C213.44,38.016 213.632,35.904 213.632,33.088 Z M191.936,31.552 C192.192,27.264 193.984,26.304 198.08,26.304 C201.92,26.304 202.88,28.096 202.88,30.72 L191.936,31.552 Z M231.104,52.992 C232.576,52.992 233.984,52.864 235.392,52.608 L235.392,43.456 C234.688,43.648 234.496,43.584 234.048,43.584 C232.064,43.584 231.424,42.752 231.424,39.872 L231.424,3.968 L219.264,3.968 L219.264,42.752 C219.264,49.728 221.568,52.992 231.104,52.992 Z M271.808,33.088 C271.808,22.528 268.48,17.408 256.192,17.408 C244.736,17.408 238.08,21.12 238.08,35.328 C238.08,49.536 244.736,53.248 255.616,53.248 C262.464,53.248 267.968,51.968 270.08,50.496 L270.08,41.536 C268.032,42.752 262.72,44.032 258.048,44.032 C253.632,44.032 250.88,42.816 250.176,39.808 L271.424,38.528 C271.616,38.016 271.808,35.904 271.808,33.088 Z M250.112,31.552 C250.368,27.264 252.16,26.304 256.256,26.304 C260.096,26.304 261.056,28.096 261.056,30.72 L250.112,31.552 Z M288.192,52.992 C297.472,52.992 302.976,50.368 302.976,41.344 C302.976,35.136 301.632,32.896 294.464,30.848 C289.024,29.312 288.128,29.376 288.128,28.096 C288.128,26.816 288.576,26.304 292.16,26.304 C295.296,26.304 299.52,27.072 301.376,27.584 L301.76,18.56 C299.712,17.856 295.808,17.408 291.648,17.408 C280.128,17.408 276.736,21.184 276.736,28.416 C276.736,34.304 278.4,36.288 285.568,38.144 C290.368,39.36 291.328,39.808 291.328,41.6 C291.328,43.456 290.368,43.712 287.36,43.712 C284.224,43.712 280.576,43.136 276.48,41.92 L276.48,51.904 C280.512,52.736 283.776,52.992 288.192,52.992 Z M320.064,52.992 C329.344,52.992 334.848,50.368 334.848,41.344 C334.848,35.136 333.504,32.896 326.336,30.848 C320.896,29.312 320,29.376 320,28.096 C320,26.816 320.448,26.304 324.032,26.304 C327.168,26.304 331.392,27.072 333.248,27.584 L333.632,18.56 C331.584,17.856 327.68,17.408 323.52,17.408 C312,17.408 308.608,21.184 308.608,28.416 C308.608,34.304 310.272,36.288 317.44,38.144 C322.24,39.36 323.2,39.808 323.2,41.6 C323.2,43.456 322.24,43.712 319.232,43.712 C316.096,43.712 312.448,43.136 308.352,41.92 L308.352,51.904 C312.384,52.736 315.648,52.992 320.064,52.992 Z" id="形状结合" fill="url(#linearGradient-lq3e3ccur_-1)"></path>
-                        <path d="M348.736,38.016 C355.008,38.016 355.584,36.992 355.584,31.104 C355.584,25.152 355.008,24.128 348.736,24.128 C342.336,24.128 341.952,25.152 341.952,31.104 C341.952,36.992 342.336,38.016 348.736,38.016 Z M422.656,26.432 L418.176,26.432 L418.176,13.12 L421.312,13.12 L421.312,3.008 L391.232,3.008 L391.232,13.12 L394.24,13.12 L394.24,26.432 L390.016,26.432 L390.016,36.544 L394.048,36.544 C393.728,44.992 392.32,48.704 388.224,54.656 L388.224,20.736 L379.52,20.736 C380.608,18.24 381.504,15.552 382.208,12.8 L388.928,12.8 L388.928,2.432 L366.336,2.432 L366.336,12.8 L371.584,12.8 C370.368,17.728 367.104,23.296 363.712,27.968 L364.864,41.728 L368.576,37.696 L368.576,56.832 L388.224,56.832 L388.224,56.128 L396.736,60.608 C401.856,52.8 403.328,48.384 403.648,36.544 L408.64,36.544 L408.64,59.712 L418.176,59.712 L418.176,36.544 L422.656,36.544 L422.656,26.432 Z M403.776,26.432 L403.776,13.12 L408.64,13.12 L408.64,26.432 L403.776,26.432 Z M380.352,46.656 L377.024,46.656 L377.024,30.976 L380.352,30.976 L380.352,46.656 Z M486.08,48.768 C480.512,47.808 475.584,46.592 471.296,45.056 C474.816,42.048 477.696,38.72 480.704,34.624 L480.704,24.832 L453.184,24.832 C453.76,23.296 454.336,21.696 454.848,20.096 L485.184,20.096 L485.184,10.304 L477.056,10.304 L479.872,7.744 C478.016,6.08 474.24,2.432 472,0.512 L465.6,6.208 C466.816,7.424 468.288,8.832 469.632,10.304 L457.536,10.304 C458.24,7.296 458.752,4.224 459.2,0.96 L448.96,0.256 C448.448,3.84 447.808,7.168 446.976,10.304 L440.448,10.304 C441.152,8.064 442.112,3.584 442.432,2.112 L432.768,1.408 C432.256,3.968 431.232,8.256 430.208,11.52 L430.272,20.096 L443.904,20.096 C440.064,29.824 434.624,37.696 426.944,45.696 L429.376,58.88 C431.744,56.64 434.048,54.464 436.16,52.096 L441.344,60.224 C449.6,57.472 456,54.848 461.568,51.776 C466.944,54.784 473.024,57.28 480.384,59.776 L486.08,48.768 Z M461.184,40.128 C458.368,38.272 455.744,36.096 453.376,33.536 L468.928,33.536 C466.56,36.096 464,38.272 461.184,40.128 Z M438.848,49.088 C441.408,46.016 443.648,42.816 445.888,39.424 C447.744,41.472 449.728,43.328 451.776,45.056 C447.936,46.592 443.712,47.872 438.848,49.088 Z M521.216,48.192 L521.216,12.096 L548.224,12.096 L548.224,1.984 L511.488,1.984 L511.488,27.456 C510.272,26.112 509.248,24.896 508.416,23.936 L506.496,25.664 L506.496,19.648 L510.08,19.648 L510.08,9.92 L506.496,9.92 L506.496,0.704 L497.024,0.448 L497.024,9.92 L492.352,9.92 L492.352,19.648 L496.896,19.648 C496.064,23.232 492.8,28.544 490.176,33.216 L491.712,47.424 C492.672,45.952 494.976,41.792 497.024,37.696 L497.024,59.776 L506.496,59.776 L506.496,34.816 L509.12,39.296 L511.488,36.608 L511.488,58.432 L549.888,58.432 L549.888,48.192 L521.216,48.192 Z M523.328,36.8 L523.328,45.632 L547.264,45.632 L547.264,36.8 L539.904,36.8 L539.904,33.536 L546.24,33.536 L546.24,26.048 L539.904,26.048 L539.904,22.784 L546.88,22.784 L546.88,14.592 L523.712,14.592 L523.712,22.784 L530.56,22.784 L530.56,26.048 L524.096,26.048 L524.096,33.536 L530.56,33.536 L530.56,36.8 L523.328,36.8 Z M561.216,29.76 C564.224,26.752 566.4,23.616 568.128,19.968 L570.432,28.608 L575.552,27.968 C581.248,27.264 583.168,26.368 583.488,19.456 L584,4.16 L570.88,4.16 C570.944,2.304 570.944,1.408 570.944,0.64 L561.92,0.384 L561.856,4.16 L556.032,4.16 L556.032,13.312 L561.152,13.312 C560.128,17.472 557.824,19.776 553.536,23.68 L561.216,29.76 Z M610.496,2.688 L586.88,2.688 L586.88,27.584 L610.496,27.584 L610.496,2.688 Z M601.92,18.176 L595.584,18.176 L595.584,12.224 L601.92,12.224 L601.92,18.176 Z M575.424,13.312 L575.168,15.424 C574.976,18.24 574.08,18.752 571.52,19.008 L568.384,19.264 C569.088,17.536 569.728,15.552 570.176,13.312 L575.424,13.312 Z M613.696,48.32 C605.504,46.72 597.184,44.288 591.232,41.28 L611.136,41.28 L611.136,32 L588.736,32 L588.736,28.8 L578.816,28.544 L578.816,32 L556.416,32 L556.416,41.28 L575.744,41.28 C570.432,44.288 563.392,46.464 553.728,48.448 L558.656,59.136 C565.76,56.576 572.928,53.312 578.816,49.408 L578.816,60.032 L588.736,60.032 L588.736,49.472 C594.88,53.568 602.112,56.64 609.024,59.136 L613.696,48.32 Z M673.92,16.192 L673.92,6.4 L636.8,6.4 L637.376,0.896 L626.688,0.576 L623.744,31.872 L660.672,31.872 L660.352,44.416 C660.16,48.576 659.264,49.216 656.128,49.408 L650.24,49.856 L653.376,60.416 L660.032,59.904 C668.544,59.2 670.784,57.472 671.104,48.192 L672,21.824 L635.264,21.824 L635.84,16.192 L673.92,16.192 Z M657.6,36.672 L618.816,36.672 L618.816,46.976 L657.6,46.976 L657.6,36.672 Z M739.136,31.488 L715.84,31.488 L715.84,12.352 L736.832,12.352 L736.832,2.176 L684.16,2.176 L684.16,12.352 L705.152,12.352 L705.152,31.488 L681.856,31.488 L681.856,41.728 L705.152,41.728 L705.152,59.776 L715.84,59.776 L715.84,41.728 L739.136,41.728 L739.136,31.488 Z M725.888,31.104 C728.512,27.968 733.952,20.736 735.488,18.368 L727.36,12.8 C725.696,15.488 720.512,22.592 718.08,25.536 L725.888,31.104 Z M685.248,18.304 C686.976,20.416 692.352,27.52 694.72,31.232 L702.72,25.024 C700.288,21.568 695.104,15.04 693.12,12.864 L685.248,18.304 Z M791.296,24.896 C793.024,26.752 794.496,28.48 795.776,30.016 L803.52,22.272 C796.992,15.936 788.416,7.68 784.128,4.096 L777.344,10.048 C778.624,11.328 780.416,13.12 782.4,15.232 L764.864,16 C769.152,11.904 774.72,5.504 777.792,1.6 L765.056,0 C761.472,5.568 756.864,10.048 753.472,12.864 C750.592,15.232 748.544,16 744.32,17.024 L747.072,27.328 C750.08,26.816 754.88,26.432 758.848,26.24 C764.352,25.984 782.272,25.152 791.296,24.896 Z M750.464,58.944 L797.056,58.944 L797.056,30.4 L750.464,30.4 L750.464,58.944 Z M760.832,40.064 L786.432,40.064 L786.432,49.152 L760.832,49.152 L760.832,40.064 Z" id="形状结合" fill="#FFFFFF" opacity="0.95"></path>
-                    </g>
-                </g>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="AlibabaPuHuiTiH, Alibaba PuHuiTi" font-weight="normal" line-spacing="72">
+        <g id="首页备份-40" transform="translate(-211.000000, -142.000000)">
+            <g id="编组-61" transform="translate(211.000000, 142.000000)">
+                <text id="·-Framework-&amp;-Servin" font-size="60" fill="#FFFFFF">
+                    <tspan x="406" y="67">· </tspan>
+                    <tspan x="446.388" y="71.68" font-size="56">Framework &amp; Serving</tspan>
+                </text>
+                <text id="Koupleless" fill="url(#linearGradient-nntxa7fkqu-1)" fill-rule="nonzero" font-size="72">
+                    <tspan x="0" y="76">Koupleless</tspan>
+                </text>
             </g>
         </g>
     </g>
@@ -41,15 +43,15 @@ url: "/home/"
 <p style="opacity: 0.5; font-family: PingFangSC-Regular, 'Microsoft Yahei'; font-size: 18px; color: #FFFFFF; 
     letter-spacing: 0; line-height: 26px; margin-top: 16px !important; margin-bottom: 64px !important; 
     font-weight: normal; "
-    >让普通应用低成本享受 Serverless 体验，帮助企业降本增效！</p>
+    >Enable normal applications to enjoy Serverless experience at very low cost, helping companies reduce expenses and increase efficiency!</p>
 <a href="/docs/quick-start/" style="display: inline-block; width: 176px; margin-right: 12px;">
-  <img style="margin: 0;" src="/img/local-quick-start-btn.png" width="176px" />
+  <img style="margin: 0;" src="/img/local-quick-start-btn-en.png" width="176px" />
 </a>
 <a href="/docs/video-training/" style="display: inline-block; width: 176px; margin-right: 12px;">
-  <img style="margin: 0;" src="/img/video-training-btn.png" width="176px" />
+  <img style="margin: 0;" src="/img/video-training-btn-en.png" width="176px" />
 </a>
 <a href="https://github.com/koupleless/koupleless" style="display: inline-block; width: 176px;">
-  <img style="margin: 0;" src="/img/more-details-btn.png" width="176px" />
+  <img style="margin: 0;" src="/img/more-details-btn-en.png" width="176px" />
 </a>
 
 
@@ -99,23 +101,23 @@ url: "/home/"
                             <g id="编组-70">
                                 <a xlink:href="/docs/video-training/#koupleless-sofaserverless-%E5%B9%B3%E5%8F%B0%E5%92%8C%E7%A0%94%E5%8F%91%E6%A1%86%E6%9E%B6%E5%AE%8C%E6%95%B4%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B" target="_blank">
                                 <text id="沉浸式体验课程" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                                    <tspan x="0" y="21">沉浸式体验课程</tspan>
+                                    <tspan x="0" y="21">Online Courses</tspan>
                                 </text>
                                 </a>
                             </g>
                         </g>
                         <a xlink:href="/docs/video-training/#koupleless-sofaserverless-%E5%B9%B3%E5%8F%B0%E5%92%8C%E7%A0%94%E5%8F%91%E6%A1%86%E6%9E%B6%E5%AE%8C%E6%95%B4%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B" target="_blank">
                         <text id="交互式课程，独立沙箱，可以边学边操作，欢" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                            <tspan x="27" y="81">交互式课程，独立沙箱，可以边学边操作，欢迎体验！</tspan>
+                            <tspan x="10" y="81">Enjoy interactive courses with standalone sandbox now!</tspan>
                         </text>
                         </a>
                     </g>
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(90.000000, 0.000000)">
-                        <a xlink:href="/user-cases/all-users/" target="_blank">
-                        <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30" y="21">企业案例合集</tspan>
+                        <a xlink:href="https://github.com/koupleless/koupleless/issues/138" target="_blank">
+                        <text id="2024 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
+                            <tspan x="30" y="21">Year 2024 Plan</tspan>
                         </text>
                         </a>
                         <g id="编组-105" transform="translate(0.000000, 2.000000)">
@@ -126,17 +128,17 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/user-cases/alibaba-aidc/" target="_blank">
-                    <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="0" y="52">最新案例：阿里国际数字商业集团研发运维三倍提效！</tspan>
+                    <a xlink:href="2024 年规划" target="_blank">
+                    <text id="" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
+                        <tspan x="80" y="52">Let's discuss year 2024 plan!</tspan>
                     </text>
                     </a>
                 </g>
                 <g id="编组-59" transform="translate(457.000000, 29.000000)">
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
-                        <a xlink:href="/docs/video-training/" target="_blank">
-                        <text id="2-分钟上手视频" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30.67" y="21">2 分钟上手视频</tspan>
+                        <a xlink:href="/user-cases/all-users/" target="_blank">
+                        <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
+                            <tspan x="30.67" y="21">User Cases</tspan>
                         </text>
                         </a>
                         <g id="编组-18" transform="translate(0.000000, 2.000000)">
@@ -147,9 +149,9 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/docs/video-training/" target="_blank">
-                    <text id="2-分钟完成基座和模块一键接入，并发布上" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="10" y="52">2 分钟完成基座和模块一键接入并发布上线！</tspan>
+                    <a xlink:href="/user-cases/alibaba-aidc/" target="_blank">
+                    <text id="Latest User Case：F6 Car Service Company" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
+                        <tspan x="-35" y="52">F6 car service company accomplished expenses saving!</tspan>
                     </text>
                     </a>
                 </g>
@@ -165,19 +167,22 @@ url: "/home/"
 
 
 <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 40px; color: #FFFFFF; letter-spacing: 0; 
-    text-align: center; line-height: 48px; margin-top: 120px; margin-bottom: 24px; ">产品介绍</p>
+    text-align: center; line-height: 48px; margin-top: 120px; margin-bottom: 24px; ">Introduction</p>
 <p style="opacity: 0.5; font-family: PingFangSC-Regular, 'Microsoft Yahei'; font-size: 16px; color: #FFFFFF; letter-spacing: 0;
     text-align: center; line-height: 28px; max-width: 1056px; "
-    >Koupleless 是一种模块化 Serverless 技术解决方案，它能让普通应用低成本演进为 Serverless 研发模式，让代码与资源解耦，轻松独立维护，
-与此同时支持秒级构建部署、合并部署、动态伸缩等能力为用户提供极致的研发运维体验，最终帮助企业实现降本增效。</p>
+    >Koupleless is a modular application serverless technology that enables normal applications to evolve into 
+a serverless development model at a very low cost. It allows for decoupling of code and resources, facilitating easy independent maintenance. 
+At the same time, it supports capabilities like rapid build and deployment within seconds, combined deployment, 
+and dynamic scaling to provide users with an ultimate development and operational experience. 
+Ultimately, this helps companies achieve cost reduction and efficiency improvement.</p>
 
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">十亿级可统计的企业线上每分钟流量。50%企业需求交付效率提升。80%长尾应用机器数量减少。</p>
 
 <div style="margin-left: -25px; margin-top: -44px;">
-    <img style="margin: 0; border: none;" alt="Benefits of Koupleless. Size of Koupleless community." src="/img/statistic-digest.png" width="1003px" />
+    <img style="margin: 0; border: none;" alt="Benefits of Koupleless. Size of Koupleless" src="/img/statistic-digest-en.png" width="1003px" />
 </div>
 <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 40px; color: #FFFFFF; letter-spacing: 0;
-    text-align: center; line-height: 48px; margin-top: 125px; margin-bottom: 48px;">适用场景</p>
+    text-align: center; line-height: 48px; margin-top: 125px; margin-bottom: 48px;">User Scenarios</p>
 
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">大幅加速应用构建和发布：传统应用镜像化构建+发布速度很慢，通过模块化方式，应用单次构建+发布耗时可从 5 分钟级减少到 1 分钟。</p>
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">实现 SDK 无感升级：借助 Koupleless 将应用依赖尽可能下沉到基座 (类似业务 Sidecar)，可以实现 SDK 的无打扰升级。</p>
@@ -294,13 +299,14 @@ url: "/home/"
                             </g>
                         </g>
                         <g id="编组-19" transform="translate(28.000000, 120.000000)" fill="#FFFFFF">
-                            <text id="大幅加速应用构建与发布" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                                <tspan x="54.76" y="21">大幅加速应用构建与发布</tspan>
+                            <text id="大幅加速应用构建与发布" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                                <tspan x="6" y="21">Accelerate App Build & Deployment</tspan>
                             </text>
                             <text id="传统应用镜像化构建-+-发布速度很慢，通" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                                <tspan x="6.603" y="55">传统应用镜像化构建 + 发布速度很慢，通过模块化</tspan>
-                                <tspan x="4.741" y="79">方式，应用单次构建 + 发布耗时可从 5 分钟级减少</tspan>
-                                <tspan x="134.031" y="103">到 1 分钟</tspan>
+                                <tspan x="-21" y="55">Traditional app builds and deployments using image and</tspan>
+                                <tspan x="-21" y="79">container is very slow. By utilizing a modular approach,</tspan>
+                                <tspan x="-21" y="103">it takes for a single build and deployment of an app can</tspan>
+                                <tspan x="-21" y="127">be reduced from the 5-minute range down to 1 minute.</tspan>
                             </text>
                         </g>
                     </g>
@@ -319,13 +325,13 @@ url: "/home/"
                         </g>
                     </g>
                     <g id="编组-19备份" transform="translate(464.000000, 120.000000)" fill="#FFFFFF">
-                        <text id="SDK-无感升级" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                            <tspan x="75.82" y="21">SDK 无感升级</tspan>
+                        <text id="SDK-无感升级" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                            <tspan x="15" y="21">Transparent SDK Upgrades</tspan>
                         </text>
                         <text id="借助-Koupleless-将应用依赖尽" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                            <tspan x="5.754" y="55">借助 Koupleless 将应用依赖尽可能下沉到</tspan>
-                            <tspan x="9.149" y="79">基座 (类似业务 Sidecar)，可以实现 SDK </tspan>
-                            <tspan x="94.5" y="103">的无打扰升级</tspan>
+                            <tspan x="-51" y="55">By utilizing Koupleless to sink app dependencies as much</tspan>
+                            <tspan x="-40" y="79">as possible into a base app (like a business sidecar),</tspan>
+                            <tspan x="-40" y="103">SDK upgrades can be achieved without disruption.</tspan>
                         </text>
                     </g>
                     <path d="M831,0 L1188,0 C1194.62742,-1.21743675e-15 1200,5.372583 1200,12 L1200,256 C1200,262.627417 1194.62742,268 1188,268 L831,268 C824.372583,268 819,262.627417 819,256 L819,12 C819,5.372583 824.372583,1.21743675e-15 831,0 Z" id="矩形备份-13" fill="url(#linearGradient-dang0lxlx1-1)"></path>
@@ -344,12 +350,13 @@ url: "/home/"
                         </g>
                     </g>
                     <g id="编组-19备份-2" transform="translate(852.000000, 120.000000)" fill="#FFFFFF">
-                        <text id="极致裁剪低流量应用机器成本" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                            <tspan x="30.08" y="21">极致裁剪低流量应用机器成本</tspan>
+                        <text id="极致裁剪低流量应用机器成本" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                            <tspan x="-5" y="21">Reduce Resources for Low-Traffic App</tspan>
                         </text>
                         <text id="通过-Koupleless-将多个应用合" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                            <tspan x="5.754" y="55">通过 Koupleless 将多个应用合并部署在一起，可</tspan>
-                            <tspan x="45.5" y="79">以实现大量的低流量应用服务器裁撤</tspan>
+                            <tspan x="-8" y="55">By deploying multiple applications together through</tspan>
+                            <tspan x="-8" y="79">Koupleless, a significant reduction of servers for</tspan>
+                            <tspan x="-8" y="103">low-traffic applications can be achieved.</tspan>
                         </text>
                     </g>
                 </g>
@@ -371,13 +378,14 @@ url: "/home/"
                     </g>
                 </g>
                 <g id="编组-19备份-5" transform="translate(23.000000, 412.000000)" fill="#FFFFFF">
-                    <text id="大幅提升应用研发协作效率" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                        <tspan x="49.92" y="21">大幅提升应用研发协作效率</tspan>
+                    <text id="大幅提升应用研发协作效率" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                        <tspan x="0" y="21">Enhance Dev & Collaboration Efficiency</tspan>
                     </text>
                     <text id="通过-Koupleless-将应用快速划" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                        <tspan x="12.092" y="55">通过 Koupleless 将应用快速划分成多个模块 (代码</tspan>
-                        <tspan x="5.169" y="79">包)，且多个模块间可以同时迭代互不影响，进而大幅</tspan>
-                        <tspan x="126.5" y="103">提升研发效率</tspan>
+                        <tspan x="-15" y="55">By quickly dividing app into multiple modules (code pa-</tspan>
+                        <tspan x="-15" y="79">ckages) through Koupleless, and allowing these modules</tspan>
+                        <tspan x="-15" y="103">to iterate simultaneously without affecting each other,</tspan>
+                        <tspan x="-15" y="127">development efficiency can be significantly enhanced.</tspan>
                     </text>
                 </g>
                 <path d="M422,296 L779,296 C785.627417,296 791,301.372583 791,308 L791,552 C791,558.627417 785.627417,564 779,564 L422,564 C415.372583,564 410,558.627417 410,552 L410,308 C410,301.372583 415.372583,296 422,296 Z" id="矩形备份-15" fill="url(#linearGradient-dang0lxlx1-1)"></path>
@@ -395,13 +403,14 @@ url: "/home/"
                     </g>
                 </g>
                 <g id="编组-19备份-4" transform="translate(435.000000, 412.000000)" fill="#FFFFFF">
-                    <text id="简化平台与中台搭建和业务资产沉淀" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                        <tspan x="8.56" y="21">简化平台与中台搭建和业务资产沉淀</tspan>
+                    <text id="简化平台与中台搭建和业务资产沉淀" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                        <tspan x="-1" y="21">Accumulation of Business Code Assets</tspan>
                     </text>
                     <text id="支持低成本将业务公共代码下沉到基座并在基" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                        <tspan x="4.5" y="55">支持低成本将业务公共代码下沉到基座并在基座上长</tspan>
-                        <tspan x="4.5" y="79">出各种轻薄的功能模块，从而让组织分工更加合理、</tspan>
-                        <tspan x="109.5" y="103">需求交付更加高效</tspan>
+                        <tspan x="-22" y="55">Supports low-cost sinking of common code into the base</tspan>
+                        <tspan x="-22" y="79">app and sprouting various lightweight functional modules</tspan>
+                        <tspan x="-22" y="103">on top of it, thereby enabling rational organizational div-</tspan>
+                        <tspan x="-22" y="127">ision of labor and more efficient delivery of requirements.</tspan>
                     </text>
                 </g>
                 <path d="M831,296 L1188,296 C1194.62742,296 1200,301.372583 1200,308 L1200,552 C1200,558.627417 1194.62742,564 1188,564 L831,564 C824.372583,564 819,558.627417 819,552 L819,308 C819,301.372583 824.372583,296 831,296 Z" id="矩形备份-14" fill="url(#linearGradient-dang0lxlx1-1)"></path>
@@ -419,13 +428,14 @@ url: "/home/"
                     </g>
                 </g>
                 <g id="编组-19备份-3" transform="translate(848.000000, 412.000000)" fill="#FFFFFF">
-                    <text id="降低微服务演进成本" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="20" font-weight="400" line-spacing="32">
-                        <tspan x="73.44" y="21">降低微服务演进成本</tspan>
+                    <text id="降低微服务演进成本" opacity="0.95" font-family="AlibabaPuHuiTiM, Alibaba PuHuiTi" font-size="18" font-weight="400" line-spacing="32">
+                        <tspan x="-22" y="21">Reduce the Cost of Microservices Evolution</tspan>
                     </text>
                     <text id="支持业务架构低成本地在单体应用、多模块、" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="24">
-                        <tspan x="0.5" y="55">支持业务架构低成本地在单体应用、多模块、独立微</tspan>
-                        <tspan x="0.5" y="79">服务应用之间来回切换，从而轻松让应用架构与业务</tspan>
-                        <tspan x="105.5" y="103">发展保持及时同步</tspan>
+                        <tspan x="-17" y="55">Supports low-cost switching between monolithic apps,</tspan>
+                        <tspan x="-17" y="79">multi-modules, and independent microservices apps,</tspan>
+                        <tspan x="-17" y="103">thereby easily keeping app architecture in sync with</tspan>
+                        <tspan x="-17" y="127">business development in a timely manner.</tspan>
                     </text>
                 </g>
             </g>
@@ -436,7 +446,7 @@ url: "/home/"
 
 
 <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 40px; color: #FFFFFF; letter-spacing: 0;
-    text-align: center; line-height: 48px; margin-top: 125px; margin-bottom: 48px;">Koupleless 优势</p>
+    text-align: center; line-height: 48px; margin-top: 125px; margin-bottom: 48px;">Koupleless Benefits</p>
 
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">Speed as you need: 十秒级构建与启动，应用多个功能之间独立并行迭代无阻塞。</p>
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">Pay as you need: 模块粒度小，占用资源少，调度密度与资源复用率高。模块和基座支持自动弹性伸缩，按需部署。</p>
@@ -444,7 +454,7 @@ url: "/home/"
 <!-- For 搜索引擎检索，修改无用 --><p style="visibility: hidden; margin: 0; height: 0px;">Evolution as you need: 提供配套工具，传统应用能一键改造成模块，大应用能低成本拆分成模块，模块能轻松演进成微服务或者回到单体应用。</p>
 
 <div id="benefits">
-    <img width="1200" alt="Advantages of Koupleless" src="/img/benefits.png" />
+    <img width="1200" alt="Advantages of Koupleless" src="/img/benefits-en.png" />
 </div>
 
 <div style="background: url('https://koupleless.oss-cn-shanghai.aliyuncs.com/outer-materials/docs/img/communication-channel-background.png') round;
@@ -462,18 +472,18 @@ Welcome to the <a href="https://github.com/koupleless/koupleless" style="color: 
     </div>
     <div style="display: inline-block; width: 420px; vertical-align: top;" >
         <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-weight: 600; font-size: 20px; color: #FFFFFF; 
-            letter-spacing: 0; line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community communication DingTalk group.</p>
+            letter-spacing: 0; line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community DingTalk</p>
         <div style="background: url('/img/qcode-background.png') center no-repeat; background-size: 204px; margin: 0 auto;">
-            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless 交流钉钉群二维码" src="/img/dingtalk-qcode.png" />
+            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless community DingTalk group" src="/img/dingtalk-qcode.png" />
         </div>
         <p style="opacity: 1; font-family: PingFangSC-Regular, 'Microsoft Yahei'; font-size: 16px; color: rgba(255,255,255,0.65); letter-spacing: 0;
-            line-height: 24px; margin: 0px; margin-top: 14px; ">The DingTalk group number for community communication: 24970018417</p>
+            line-height: 24px; margin: 0px; margin-top: 14px; ">The DingTalk group number: 24970018417</p>
     </div>
     <div style="display: inline-block; width: 420px; vertical-align: top;" >
         <p style="opacity: 0.95; font-family: AlibabaPuHuiTiB; font-size: 20px; color: #FFFFFF; letter-spacing: 0;
-            line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community WeChat for communication and exchange.</p>
+            line-height: 26px; margin: 0px; margin-bottom: 16px;">Welcome to join the community WeChat</p>
         <div style="background: url('/img/qcode-background.png') center no-repeat; background-size: 204px; margin: 0 auto;">
-            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless 交流微信群二维码" src="/img/wechat-qcode.png" />
+            <img style="border: solid; border-radius: 6px; margin-top: 12px; width: 178px;" alt="Koupleless community WeChat group" src="/img/wechat-qcode.png" />
         </div>
     </div>
 </div>

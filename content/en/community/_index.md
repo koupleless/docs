@@ -104,16 +104,12 @@ menu: {main: {weight: 40}}
                     </text>
                     <g id="编组-7" transform="translate(52.000000, 183.000000)">
                         <text id="社区交流群，和我们一起讨论-Server" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="16" font-weight="normal" line-spacing="24">
-                            <a xlink:href="/docs/contribution-guidelines/communication-channel/" target="_blank"><tspan x="60" y="17" fill="#0077FF">community chat group</tspan></a>
-                            <tspan x="140" y="17" fill="#FFFFFF" fill-opacity="0.65">，and discuss Serverless with us!</tspan>
+                            <a xlink:href="/docs/contribution-guidelines/communication-channel/" target="_blank"><tspan x="65" y="17" fill="#0077FF">community chat group</tspan></a>
+                            <tspan x="237" y="17" fill="#FFFFFF" fill-opacity="0.65">and discuss Serverless with us!</tspan>
                         </text>
                         <text id="加入" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="16" font-weight="normal" line-spacing="24" fill="#FFFFFF" fill-opacity="0.65">
                             <tspan x="0" y="17">Join the</tspan>
                         </text>
-                        <g id="twitter" transform="translate(34.000000, 0.000000)" fill="#0070EF" fill-rule="nonzero">
-                            <rect id="矩形" opacity="0" x="0" y="0" width="24" height="24"></rect>
-                            <path d="M21.75,5.96015625 C21.0328125,6.26953125 20.2523438,6.4921875 19.4484375,6.57890625 C20.278125,6.084375 20.9085938,5.30390625 21.20625,4.37578125 C20.4398438,4.8328125 19.5726563,5.16796875 18.6703125,5.34140625 C17.9390625,4.5609375 16.9007813,4.078125 15.75,4.078125 C13.5351562,4.078125 11.7539062,5.8734375 11.7539062,8.0765625 C11.7539062,8.3859375 11.7914062,8.6953125 11.8523437,8.99296875 C8.5359375,8.81953125 5.578125,7.23515625 3.61171875,4.809375 C3.26484375,5.4046875 3.06796875,6.084375 3.06796875,6.82734375 C3.06796875,8.21484375 3.7734375,9.43828125 4.84921875,10.1578125 C4.19296875,10.1320313 3.57421875,9.946875 3.0421875,9.64921875 L3.0421875,9.6984375 C3.0421875,11.6414063 4.415625,13.2515625 6.24609375,13.621875 C5.9109375,13.7085938 5.55234375,13.7578125 5.19375,13.7578125 C4.93359375,13.7578125 4.6875,13.7320313 4.4390625,13.696875 C4.9453125,15.28125 6.41953125,16.4320313 8.175,16.4695313 C6.8015625,17.5453125 5.08125,18.178125 3.21328125,18.178125 C2.878125,18.178125 2.56875,18.1664063 2.24765625,18.1289062 C4.01953125,19.265625 6.121875,19.921875 8.3859375,19.921875 C15.7359375,19.921875 19.7578125,13.8328125 19.7578125,8.54765625 C19.7578125,8.37421875 19.7578125,8.20078125 19.7460938,8.02734375 C20.5242188,7.4578125 21.20625,6.75234375 21.75,5.96015625 Z" id="路径"></path>
-                        </g>
                     </g>
                     <g id="编组-4" transform="translate(28.000000, 28.000000)">
                         <g id="编组-35">
@@ -135,7 +131,7 @@ menu: {main: {weight: 40}}
                         </g>
                         <g id="编组-3" transform="translate(88.000000, 5.000000)" fill="#FFFFFF">
                             <text id="学习和沟通" opacity="0.95" font-family="PingFangSC-Semibold, PingFang SC, Microsoft Yahei" font-size="24" font-weight="500" line-spacing="32">
-                                <tspan x="0" y="25">Learning and communication</tspan>
+                                <tspan x="0" y="25">Learning and Discussion</tspan>
                             </text>
                             <text id="正在或打算使用-SOFAServerle" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="14" font-weight="normal" line-spacing="22">
                                 <tspan x="0" y="55">Are you currently using or planning to use Koupleless?</tspan>
@@ -151,23 +147,18 @@ menu: {main: {weight: 40}}
                         <use fill="black" fill-opacity="1" filter="url(#filter-0brcq1m7k2-15)" xlink:href="#path-0brcq1m7k2-13"></use>
                     </g>
                     <text id="加入我们" opacity="0.95" font-family="PingFangSC-Semibold, PingFang SC, Microsoft Yahei" font-size="16" font-weight="500" line-spacing="24" fill="#FFFFFF">
-                        <tspan x="52" y="165">Join us</tspan>
+                        <tspan x="52" y="165">Join the Community</tspan>
                     </text>
                     <g id="编组-6" transform="translate(52.000000, 183.000000)">
                         <text id="完成您的第一次提交，想了解如何为SOFA" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="16" font-weight="normal" line-spacing="24">
-                            <tspan x="99" y="17" fill="#FFFFFF" fill-opacity="0.65">Congratulations on your first submission, If you're interested in contributing to Koupleless, </tspan>
-                            <tspan x="0" y="41" fill="#FFFFFF" fill-opacity="0.65">please take a look at</tspan>
-                            <a xlink:href="/docs/contribution-guidelines/contribution/first-pr/" target="_blank"><tspan x="161" y="41" fill="#0077FF">contribution guidelines</tspan></a>
-                            <tspan x="224" y="41" fill="#FFFFFF" fill-opacity="0.65">。</tspan>
+                            <tspan x="170" y="17" fill="#FFFFFF" fill-opacity="0.65">is welcome! If you're interested in contri- </tspan>
+                            <tspan x="0" y="41" fill="#FFFFFF" fill-opacity="0.65">buting to Koupleless, please take a look at</tspan>
+                            <a xlink:href="/docs/contribution-guidelines/contribution/first-pr/" target="_blank"><tspan x="323" y="41" fill="#0077FF">contribution guidelines</tspan></a>
                         </text>
                         <a xlink:href="https://github.com/koupleless/koupleless/pulls" target="_blank">
                         <text id="点击此处" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="16" font-weight="normal" line-spacing="24" fill="#0077FF">
-                            <tspan x="0" y="17">Click here</tspan>
+                            <tspan x="0" y="17">Everything you submit</tspan>
                         </text>
-                        <g id="github-fill" transform="translate(68.000000, 0.000000)" fill="#0070EF" fill-rule="nonzero">
-                            <rect id="矩形" opacity="0" x="0" y="0" width="24" height="24"></rect>
-                            <path d="M11.990625,1.78828037 C6.19453125,1.7859375 1.5,6.478125 1.5,12.2695313 C1.5,16.8492188 4.43671875,20.7421875 8.5265625,22.171875 C9.07734375,22.3101562 8.99296875,21.91875 8.99296875,21.6515625 L8.99296875,19.8351563 C5.8125,20.2078125 5.68359375,18.103125 5.4703125,17.7515625 C5.0390625,17.015625 4.01953125,16.828125 4.32421875,16.4765625 C5.0484375,16.1039063 5.78671875,16.5703125 6.6421875,17.8335937 C7.2609375,18.75 8.46796875,18.5953125 9.0796875,18.4429688 C9.21328125,17.8921875 9.49921875,17.4 9.89296875,17.0179688 C6.59765625,16.4273438 5.22421875,14.4164063 5.22421875,12.0257813 C5.22421875,10.865625 5.60625,9.79921875 6.35625,8.9390625 C5.878125,7.52109375 6.40078125,6.30703125 6.47109375,6.1265625 C7.8328125,6.0046875 9.2484375,7.1015625 9.35859375,7.18828125 C10.1320313,6.9796875 11.015625,6.86953125 12.0046875,6.86953125 C12.9984375,6.86953125 13.884375,6.984375 14.6648438,7.1953125 C14.9296875,6.99375 16.2421875,6.0515625 17.5078125,6.16640625 C17.5757812,6.346875 18.0867187,7.5328125 17.6367188,8.93203125 C18.3960937,9.79453125 18.7828125,10.8703125 18.7828125,12.0328125 C18.7828125,14.428125 17.4,16.4414063 14.0953125,17.0226563 C14.6460937,17.5664063 14.9882812,18.3210938 14.9882812,19.1554688 L14.9882812,21.7921875 C15.0070312,22.003125 14.9882812,22.2117188 15.3398438,22.2117188 C19.490625,20.8125 22.4789063,16.8914063 22.4789063,12.271875 C22.4789063,6.478125 17.7820313,1.78828037 11.990625,1.78828037 Z" id="路径"></path>
-                        </g>
                         </a>
                     </g>
                     <g id="编组-4" transform="translate(28.000000, 28.000000)">
@@ -187,10 +178,10 @@ menu: {main: {weight: 40}}
                         </g>
                         <g id="编组-3" transform="translate(88.000000, 5.000000)" fill="#FFFFFF">
                             <text id="开发和贡献" opacity="0.95" font-family="PingFangSC-Semibold, PingFang SC, Microsoft Yahei" font-size="24" font-weight="500" line-spacing="32">
-                                <tspan x="0" y="25">Development and contribution</tspan>
+                                <tspan x="0" y="25">Development and Contribution</tspan>
                             </text>
                             <text id="如果你想通过为-SOFAServerle" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC, Microsoft Yahei" font-size="14" font-weight="normal" line-spacing="22">
-                                <tspan x="0" y="55">If you want to contribute more to Koupleless.</tspan>
+                                <tspan x="0" y="55">If you want to contribute to Koupleless.</tspan>
                             </text>
                         </g>
                     </g>
