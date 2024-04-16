@@ -349,3 +349,7 @@ public Object getProxy(@Nullable ClassLoader classLoader) {
 
 #### Solution
 Update to a newer version of spring-core, such as 6.0.11.
+
+### Hessian Serialization/Deserialization Does Not Support Multi-Application (classLoader)
+#### Solution
+Refer to [Issue #196](https://github.com/koupleless/koupleless/issues/196), you can upgrade the Hessian version to 4.x or above, or customize a SerializerFactory that supports multiple ClassLoaders.
