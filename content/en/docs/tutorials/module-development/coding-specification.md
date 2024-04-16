@@ -38,7 +38,7 @@ weight: 100
    <br/>
 
 ## Knowledge Points
-[Module Slimming](../module-slimming) (Important)<br />
+[Module Slimming](/docs/tutorials/module-development/module-slimming) (Important)<br />
 [Module-to-Module and Module-to-Base Communication](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jvm/)  (Important)<br />
 [Module Testing](/docs/tutorials/module-development/module-debug)  (Important)<br />
 [Reuse Base Interceptors in Modules](/docs/tutorials/module-development/reuse-base-interceptor)<br />

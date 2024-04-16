@@ -12,6 +12,12 @@
     },
     {
       "pattern": "^https://www.sofastack.tech/projects/sofa-boot/"
+    },
+    {
+      "pattern": "^https://www.esunny.com.cn/"
+    },
+    {
+      "pattern": "^https://www.esunny.com.cn/"
     }
   ],
   "retryOn429": true,
