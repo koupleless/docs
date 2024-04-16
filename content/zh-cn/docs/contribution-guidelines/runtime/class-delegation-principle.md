@@ -6,7 +6,10 @@ weight: 200
 ---
 
 ## 多模块间类委托加载
-SOFAArk 框架是基于多 ClassLoader 的通用类隔离方案，提供类隔离和应用的合并部署能力。本文档并不打算介绍 SOFAArk 类隔离的[原理与机制](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-classloader/)，这里主要介绍多 ClassLoader 当前的最佳实践。<br />当前基座与模块部署在 JVM 上的 ClassLoader 模型如图：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/149473/1653304883689-ec30b72b-1620-4a2a-8611-d6c24107afd2.png#clientId=u8aaeb3a3-ec6f-4&from=paste&height=225&id=u1df6aa1c&originHeight=450&originWidth=388&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39808&status=done&style=none&taskId=uf6233ec3-9494-4b6a-b1b6-43546035a43&title=&width=194)
+SOFAArk 框架是基于多 ClassLoader 的通用类隔离方案，提供类隔离和应用的合并部署能力。本文档并不打算介绍 SOFAArk 类隔离的[原理与机制](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-classloader/)，这里主要介绍多 ClassLoader 当前的最佳实践。<br />当前基座与模块部署在 JVM 上的 ClassLoader 模型如图：<br />
+<div style="text-align: center;">
+    <img align="center" width="200px" src="https://intranetproxy.alipay.com/skylark/lark/0/2022/png/149473/1653304883689-ec30b72b-1620-4a2a-8611-d6c24107afd2.png#clientId=u8aaeb3a3-ec6f-4&from=paste&height=225&id=u1df6aa1c&originHeight=450&originWidth=388&originalType=binary&ratio=1&rotation=0&showTitle=false&size=39808&status=done&style=none&taskId=uf6233ec3-9494-4b6a-b1b6-43546035a43&title=&width=194" />
+</div>
 
 ## 当前类委托加载机制
 当前一个模块在启动与运行时查找的类，有两个来源：当前模块本身，基座。这两个来源的理想优先级顺序是，优先从模块中查找，如果模块找不到再从基座中查找，但当前存在一些特例：
@@ -99,7 +102,10 @@ com.alipay.sofa.ignore.unresolvable.placeholders=true
 ```
 
 ### 开启方式
-模块打包插件里增加如下配置：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/149473/1668428226653-d1ad571e-a580-42fa-9ca0-ff63c199dfb1.png#clientId=u664f9b10-526b-4&from=paste&height=399&id=uf9e74e96&originHeight=798&originWidth=975&originalType=binary&ratio=1&rotation=0&showTitle=false&size=116831&status=done&style=none&taskId=u2287fc36-ca94-4018-94f5-5a33dcb87b2&title=&width=487.5)
+模块打包插件里增加如下配置：<br />
+<div style="text-align: center;">
+    <img align="center" width="700px" src="https://intranetproxy.alipay.com/skylark/lark/0/2022/png/149473/1668428226653-d1ad571e-a580-42fa-9ca0-ff63c199dfb1.png#clientId=u664f9b10-526b-4&from=paste&height=399&id=uf9e74e96&originHeight=798&originWidth=975&originalType=binary&ratio=1&rotation=0&showTitle=false&size=116831&status=done&style=none&taskId=u2287fc36-ca94-4018-94f5-5a33dcb87b2&title=&width=487.5" />
+</div>
 
 ### 开启后的副作用
 如果模块委托给基座的依赖里有发布服务，那么基座和模块会同时发布两份。
