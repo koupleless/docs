@@ -5,10 +5,10 @@ on:
   workflow_dispatch: 
   #schedule:
   #  - cron: '0 0 * * *'
-  #push:
-  #  paths:
-  #    - '**/*.md'
-  #  branches: [ main ]
+  push:
+   paths:
+     - '**/*.md'
+   branches: [ main ]
 
 jobs:
   check:
