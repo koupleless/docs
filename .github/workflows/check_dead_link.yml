@@ -3,8 +3,8 @@ name: Check Dead Link
 # Deadlink Validation will auto run at 0:00 am everyday.
 on:
   workflow_dispatch: 
-  #schedule:
-  #  - cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
   #push:
   #  paths:
   #    - './content/zh-cn/**/*.md'
