@@ -11,6 +11,9 @@
       "pattern": "^#"
     },
     {
+      "pattern": "^https://www.sofastack.tech/projects/sofa-boot/"
+    },
+    {
       "pattern": "^http://central.maven.org/maven2/com/alipay/sofa/"
     },
     {
