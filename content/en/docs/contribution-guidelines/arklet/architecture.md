@@ -1,45 +1,48 @@
 ---
-title: Arklet 架构设计与接口设计
+title: Arklet Architecture and Api Design
 date: 2023-09-21T10:28:35+08:00
 weight: 100
 ---
 
-[//]: # (翻译成中文)
+<div align="center">
+
+English | [简体中文](./README-zh_CN.md)
+</div>
+
 # Overview
-# 概述
 
-Arklet 提供了 SOFAArk 基座和模块的运维接口，通过 Arklet 可以轻松灵活的进行 Ark Biz 的发布和运维。
+Arklet provides an operational interface for delivery of SofaArk bases and modules. With Arklet, the release and operation of Ark Biz can be easily and flexibly operated.
 
-Arklet 内部由 **ArkletComponent** 构成
+Arklet is internally constructed by **ArkletComponent**
 
 ![image](https://github.com/sofastack/sofa-serverless/assets/11410549/a2740422-569e-4dd3-9c9a-1503996bd2f1)
 - ApiClient: The core components responsible for interacting with the outside world
-- ApiClient: 负责与外界交互的核心组件
-- CommandService: Arklet 暴露能力指令定义和扩展
-- OperationService: Ark Biz 与 SOFAArk 交互，增删改查，封装基础能力
-- HealthService: 基于基座、模块系统等指标统计健康和稳定性
+- CommandService: Arklet exposes capability instruction definition and extension
+- OperationService: Ark Biz interacts with SofaArk to add, delete, modify, and encapsulate basic capabilities
+- HealthService: Based on health and stability, base, Biz, system and other indicators are calculated
 
-这些组件之间的关联关系如下图
+The collaboration between them is shown in the figure
 ![overview](https://user-images.githubusercontent.com/11410549/266193839-7865e417-6909-4e89-bd48-c926162eaf83.jpg)
 
 
-当然，您也可以通过实现 **ArkletComponent** 接口来扩展 Arklet 的组件功能。
+Of course, you can also extend Arklet's component capabilities by implementing the **ArkletComponent** interface
 
 # Command Extension
-# 指令扩展
-Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 内部处理指令。
-> CommandHandler 相关扩展属于 CommandService 组件统一管理
+The Arklet exposes the instruction API externally and handles the instruction internally through a CommandHandler mapped from each API.
+> CommandHandler related extensions belong to the unified management of the CommandService component
 
-你可以通过继承 **AbstractCommandHandler** 来自定义扩展指令
+You can customize extension commands by inheriting **AbstractCommandHandler**
 
-## 内置指令 API
+## Build-in Command API
 
-下面所有的指令 API 都是通过 POST(application/json) 请求格式访问 arklet
+All of the following instruction apis access the arklet using the POST(application/json) request format
 
-使用的是 http 协议，1238 端口
-> 你可以通过设置 `koupleless.arklet.http.port` JVM 启动参数覆盖默认端口
+The http protocol is enabled and the default port is 1238
+> You can set `koupleless.arklet.http.port` JVM startup parameters override the default port
 
-## 查询支持的指令
+
+## Query the supported commands
+
 - URL: 127.0.0.1:1238/help
 - input sample:
 ```json
@@ -74,9 +77,9 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-## 安装一个模块
+## Install a biz
 - URL: 127.0.0.1:1238/installBiz
-- 输入例子:
+- input sample:
 ```json
 {
     "bizName": "test",
@@ -86,7 +89,7 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-- 输出例子(success):
+- output sample(success):
 ```json
 {
   "code":"SUCCESS",
@@ -109,7 +112,7 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-- 输出例子(failed):
+- output sample(failed):
 ```json
 {
   "code":"FAILED",
@@ -120,23 +123,24 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-## 卸载一个模块
+
+## Uninstall a biz
 - URL: 127.0.0.1:1238/uninstallBiz
-- 输入例子:
+- input sample:
 ```json
 {
     "bizName":"dynamic-provider",
     "bizVersion":"1.0.0"
 }
 ```
-- 输出例子(success):
+- output sample(success):
 ```json
 {
   "code":"SUCCESS"
 }
 ```
 
-- 输出例子(failed):
+- output sample(failed):
 ```json
 {
   "code":"FAILED",
@@ -147,29 +151,29 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-## 切换一个模块
+## Switch a biz
 - URL: 127.0.0.1:1238/switchBiz
-- 输入例子:
+- input sample:
 ```json
 {
     "bizName":"dynamic-provider",
     "bizVersion":"1.0.0"
 }
 ```
-- 输出例子:
+- output sample:
 ```json
 {
   "code":"SUCCESS"
 }
 ```
 
-## 查询所有模块
+## Query all Biz
 - URL: 127.0.0.1:1238/queryAllBiz
-- 输入例子:
+- input sample:
 ```json
 {}
 ```
-- 输出例子:
+- output sample:
 ```json
 {
   "code":"SUCCESS",
@@ -192,16 +196,15 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-## 查询健康与状态信息
+## Query Health
 - URL: 127.0.0.1:1238/health
 
-### 查询所有健康与状态信息
-
-- 输入信息:
+### Query All Health Info
+- input sample:
 ```json
 {}
 ```
-- 输出信息:
+- output sample:
 ```json
 {
   "code": "SUCCESS",
@@ -274,8 +277,8 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-### 查询系统健康与状态信息
-- 输入例子:
+### Query System Health Info
+- input sample:
 
 ```json
 {
@@ -284,7 +287,7 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
   "metrics": ["cpu", "jvm"]
 }
 ```
-- 输出例子:
+- output sample:
 ```json
 {
   "code": "SUCCESS",
@@ -298,8 +301,8 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-### 查询模块健康与状态信息
-- 输入例子:
+### Query Biz Health Info
+- input sample:
 
 ```json
 {
@@ -310,7 +313,7 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
   "moduleVersion": "1.0.0"
 }
 ```
-- 输出例子:
+- output sample:
 ```json
 {
   "code": "SUCCESS",
@@ -335,8 +338,8 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-### 查询插件健康与状态信息
-- 输入例子:
+### Query Plugin Health Info
+- input sample:
 
 ```json
 {
@@ -345,7 +348,7 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
   "moduleName": "web-ark-plugin"
 }
 ```
-- 输出例子:
+- output sample:
 ```json
 {
   "code": "SUCCESS",
@@ -366,24 +369,25 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
 }
 ```
 
-### 使用 Endpoint 来查询健康信息
+### Query Health Using Endpoint
 
-使用 endpoint 来查询 k8s 模块的健康信息
+use endpoint for k8s module to get helath info
 
-** 默认配置 **
-* endpoints path: `/`
-* endpoints 服务端口: `8080`
+**default config**
+* endpoints exposure include: `*`
+* endpoints base path: `/`
+* endpoints sever port: `8080`
 
-** http 结果码 **
-* `HEALTHY(200)`: 所有健康指标都健康
-* `UNHEALTHY(400)`: 至少有一个健康指标已经不健康
-* `ENDPOINT_NOT_FOUND(404)`: 路径或参数不存在
-* `ENDPOINT_PROCESS_INTERNAL_ERROR(500)`: 遇到异常
+**http code result**
+* `HEALTHY(200)`: get health if all health indicator is healthy
+* `UNHEALTHY(400)`: get health once a health indicator is unhealthy
+* `ENDPOINT_NOT_FOUND(404)`: endpoint path or params not found
+* `ENDPOINT_PROCESS_INTERNAL_ERROR(500)`:  get health process throw an error
 
-### 查询所有健康信息
+### query all health info
 - url: 127.0.0.1:8080/arkletHealth
 - method: GET
-- 输出例子
+- output sample
 
 ```json  
 {   
@@ -400,10 +404,10 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
     }
 }  
 ```    
-### 查询所有模块的健康信息
+### query all biz/plugin health info
 - url: 127.0.0.1:8080/arkletHealth/{moduleType} (moduleType must in ['biz', 'plugin'])
 - method: GET
-- 输出例子
+- output sample
  ```json  
 {   
     "healthy": true,
@@ -415,10 +419,10 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
     }
 }  
 ```      
-### 查询单个模块的健康信息
+### query single biz/plugin health info
 - url: 127.0.0.1:8080/arkletHealth/{moduleType}/moduleName/moduleVersion (moduleType must in ['biz', 'plugin'])
 - method: GET
-- 输出例子
+- output sample
 
  ```json  
 {   
@@ -431,5 +435,4 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
     }
 }  
 ```  
-
 
