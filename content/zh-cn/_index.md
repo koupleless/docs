@@ -10,3 +10,4 @@ tags: ["模块化", "Monolith", "Serverless", "绿色计算", "Green Computing",
     if (location.pathname == "/")
         location="/home/";
 </script>
+ 
