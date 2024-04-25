@@ -24,8 +24,8 @@ spring.application.name = ${Replace with actual base app name}
 #### Modify the main pom.xml
 ```xml
 <properties>
-    <sofa.ark.verion>2.2.7</sofa.ark.verion>
-    <koupleless.runtime.version>1.0.0</koupleless.runtime.version>
+    <sofa.ark.verion>2.2.9</sofa.ark.verion>
+    <koupleless.runtime.version>1.1.0</koupleless.runtime.version>
 </properties>
 ```
 
