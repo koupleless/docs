@@ -40,7 +40,7 @@ weight: 100
 ## 知识点
 [模块瘦身](/docs/tutorials/module-development/module-slimming)  (重要)<br />
 [模块与模块、模块与基座通信](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jvm/)  (重要)<br />
-[模块测试](/docs/tutorials/module-development/module-debug)  (重要)<br />
+[模块测试](/docs/tutorials/module-development/module-testing)  (重要)<br />
 [模块复用基座拦截器](/docs/tutorials/module-development/reuse-base-interceptor)<br />
 [模块复用基座数据源](/docs/tutorials/module-development/reuse-base-datasource)<br />
 [基座与模块间类委托加载原理介绍](/docs/introduction/architecture/class-delegation-principle)
