@@ -141,3 +141,24 @@ arkctl status
 ```shell
 arkctl status --pod {namespace}/{name}
 ```
+
+### 通过 arthas 查看运行时模块状态与信息
+#### 获取所有 Biz 信息
+```shell
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100
+```
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961335431-516ae20b-16c8-48f3-8241-43e414a9f988.png#clientId=ue9573504-0f91-4&from=paste&height=165&id=uf5756bf0&originHeight=330&originWidth=1792&originalType=binary&ratio=2&rotation=0&showTitle=false&size=75826&status=done&style=none&taskId=ue37b95ce-9ff0-4e2b-8c76-c4ac6d3c852&title=&width=896)
+<a name="EXU39"></a>
+#### 获取特定 Biz 信息
+```shell
+# 请替换 ${bizName}
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100 | grep ${bizName}  -A 4
+```
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961580662-719aa62b-735d-4443-8208-11f16dc74613.png#clientId=ue9573504-0f91-4&from=paste&height=87&id=u99973d00&originHeight=174&originWidth=1970&originalType=binary&ratio=2&rotation=0&showTitle=false&size=46592&status=done&style=none&taskId=ud87e82e9-b349-4c47-b6c2-a441f096de0&title=&width=985)
+<a name="aQc2j"></a>
+#### 获取特定 BizClassLoader 对应的 Biz 信息
+```shell
+# 请替换 ${BizClassLoaderHashCode}
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100 | grep ${BizClassLoaderHashCode}  -B 1 -A 3
+```
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961557440-865e8681-e5be-4e09-81da-ba1e93d6650f.png#clientId=ue9573504-0f91-4&from=paste&height=92&id=ue02744a4&originHeight=184&originWidth=2086&originalType=binary&ratio=2&rotation=0&showTitle=false&size=51618&status=done&style=none&taskId=u9423d30f-c7f2-45ca-baaa-70f1a358b7d&title=&width=1043)
