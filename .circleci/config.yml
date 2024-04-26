@@ -1,14 +1,5 @@
 version: 2
 jobs:
-  #lint-site:
-  #  docker:
-  #  - image: jimmysong/website-builder:2019-07-18
-  #  working_directory: ~/site
-  #  steps:
-  #  - checkout
-  #  - run:
-  #      name: Linting the site
-  #      command: scripts/lint-site.sh
   markdown-spell-check:
     docker:
       - image: jimmysong/website-builder:2019-07-18
@@ -17,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Running markdown spell check
-          command: scripts/mdspell-check.sh
+          command: chmod +x scripts/mdspell-check.sh && scripts/mdspell-check.sh
   markdown-style-check:
     docker:
       - image: jimmysong/website-builder:2019-07-18
@@ -26,11 +17,10 @@ jobs:
       - checkout
       - run:
           name: Running markdown style check
-          command: scripts/mdl-check.sh
+          command: chmod +x scripts/mdl-check.sh && scripts/mdl-check.sh
 workflows:
   version: 2
   workflow:
     jobs:
-      #- lint-site
       - markdown-spell-check
       - markdown-style-check

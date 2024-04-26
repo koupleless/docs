@@ -6,7 +6,8 @@ weight: 400
 ---
 
 ## Arkctl 工具安装
-Arkctl 模块安装主要提供自动打包和部署能力，自动打包调用 mvn 命令构建模块 jar包，自动部署调用 [arklet](/docs/tutorials/module-development/module-debug) 提供的 api 接口进行部署。如果不想使用命令行工具，也可以直接使用 arklet 提供的 api 接口发起部署操作。
+
+Arkctl 模块安装主要提供自动打包和部署能力，自动打包调用 mvn 命令构建模块 jar包，自动部署调用 [arklet](/docs/contribution-guidelines/arklet/architecture) 提供的 api 接口进行部署。如果不想使用命令行工具，也可以直接使用 arklet 提供的 api 接口发起部署操作。
 安装方式可以参照文档：[arkctl 安装](../build_and_deploy.md) 的*本地环境开发验证*小节。
 
 ### 本地快速部署
@@ -51,11 +52,13 @@ arkctl deploy /path/to/your/pre/built/bundle-biz.jar
 1. 在本地启动一个基座
 
 执行命令：
+
 ```shell
 arkctl deploy ./path/to/your/biz/
 ```
 
 注意该命令适用于模块可以独立构建的（可以在biz目录里成功执行 mvn package 等命令），则该命令会自动构建该模块，并部署到基座中。
+
 #### 场景 4: 在多模块的 Maven 项目中，在 Root 构建并部署子模块的 jar 包。
 
 准备：
@@ -92,16 +95,17 @@ arkctl deploy --pod {namespace}/{podName}
 命令执行完成后即部署成功，用户可以进行相关的模块功能调试验证。
 
 #### 场景 6： 如何更快的使用该命令
+
 可以在 IDEA 里新建一个 Shell Script，配置好运行的目录，然后输入 arkctl 相应的命令，如下图即可。
 
 <div style="text-align: center;">
     <img align="center" width="800" src="/img/arkctl-shell-starter.png">
 </div>
 
-
 ### 模块本地调试
 
 #### 模块与基座出于同一个 IDEA 工程中
+
 因为 IDEA 工程里能看到模块代码，模块调试与普通调试没有区别。直接在模块代码里打断点，基座通过 debug 方式启动即可。
 
 <div style="text-align: center;">
@@ -109,6 +113,7 @@ arkctl deploy --pod {namespace}/{podName}
 </div>
 
 #### 模块与基座在不同 IDEA 工程中
+
 1. 基座启动参数里增加 debug 配置 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000`，然后启动基座
 2. 模块添加 remote jvm  debug, 设置 host 为 localhost 
 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000`
@@ -141,3 +146,33 @@ arkctl status
 ```shell
 arkctl status --pod {namespace}/{name}
 ```
+
+### 通过 arthas 查看运行时模块状态与信息
+
+#### 获取所有 Biz 信息
+
+```shell
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100
+```
+
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961335431-516ae20b-16c8-48f3-8241-43e414a9f988.png#clientId=ue9573504-0f91-4&from=paste&height=165&id=uf5756bf0&originHeight=330&originWidth=1792&originalType=binary&ratio=2&rotation=0&showTitle=false&size=75826&status=done&style=none&taskId=ue37b95ce-9ff0-4e2b-8c76-c4ac6d3c852&title=&width=896)
+<a name="EXU39"></a>
+
+#### 获取特定 Biz 信息
+
+```shell
+# 请替换 ${bizName}
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100 | grep ${bizName}  -A 4
+```
+
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961580662-719aa62b-735d-4443-8208-11f16dc74613.png#clientId=ue9573504-0f91-4&from=paste&height=87&id=u99973d00&originHeight=174&originWidth=1970&originalType=binary&ratio=2&rotation=0&showTitle=false&size=46592&status=done&style=none&taskId=ud87e82e9-b349-4c47-b6c2-a441f096de0&title=&width=985)
+<a name="aQc2j"></a>
+
+#### 获取特定 BizClassLoader 对应的 Biz 信息
+
+```shell
+# 请替换 ${BizClassLoaderHashCode}
+vmtool -x 1 --action getInstances --className com.alipay.sofa.ark.container.model.BizModel --limit 100 | grep ${BizClassLoaderHashCode}  -B 1 -A 3
+```
+
+如：<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2024/png/67256811/1711961557440-865e8681-e5be-4e09-81da-ba1e93d6650f.png#clientId=ue9573504-0f91-4&from=paste&height=92&id=ue02744a4&originHeight=184&originWidth=2086&originalType=binary&ratio=2&rotation=0&showTitle=false&size=51618&status=done&style=none&taskId=u9423d30f-c7f2-45ca-baaa-70f1a358b7d&title=&width=1043)
