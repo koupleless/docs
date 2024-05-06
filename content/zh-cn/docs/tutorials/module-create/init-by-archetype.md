@@ -15,5 +15,13 @@ weight: 300
     <img align="center" width="300px" src="/docs/tutorials/imgs/created-by-archetype.png" />
 </div>
 
+```xml
+<dependency>
+    <groupId>com.alipay.sofa.koupleless</groupId>
+    <artifactId>koupleless-common-module-archetype</artifactId>
+    <version>{koupleless.runtime.version}</version>
+</dependency>
+```
+
 该脚手架创建出来的模块，已经集成模块打包插件和自动瘦身配置，可以直接打包成模块安装在基座上，或者本地直接独立启动。
 

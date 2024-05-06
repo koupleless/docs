@@ -16,4 +16,12 @@ It's easy to creating a module from maven archetype, all you need to do is input
     <img align="center" width="300px" src="/docs/tutorials/imgs/created-by-archetype.png" />
 </div>
 
+```xml
+<dependency>
+    <groupId>com.alipay.sofa.koupleless</groupId>
+    <artifactId>koupleless-common-module-archetype</artifactId>
+    <version>{koupleless.runtime.version}</version>
+</dependency>
+```
+
 The module created from this archetype has already integrated the module packaging plugin and automatic slimming configuration. It can be directly packaged as a module and installed on the base, or started independently locally.
