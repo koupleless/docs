@@ -1,14 +1,20 @@
 ---
-title: SpringBoot 或 SOFABoot 一键升级为模块
+title: 存量 SpringBoot 或 SOFABoot 升级为模块
 date: 2024-01-25T10:28:32+08:00
-description: SpringBoot 或 SOFABoot 一键升级为 Koupleless 模块
-weight: 100
+description: 存量 SpringBoot 或 SOFABoot 升级为 Koupleless 模块
+weight: 200
 ---
 
-本文讲解了 SpringBoot 或 SOFABoot 一键升级为模块的操作和验证步骤，仅需加一个 ark 打包插件即可实现普通应用一键升级为模块应用，并且能做到同一套代码分支，既能像原来 SpringBoot 一样独立启动，也能作为模块与其它应用合并部署在一起启动。
+模块的创建有三种方式，本文介绍第二种方式：
+1. [大应用拆出多个模块](/docs/contribution-guidelines/split-module-tool/split-module-tool-intro/)
+2. **[存量应用改造成一个模块](/docs/tutorials/module-create/springboot-and-sofaboot/)**
+3. [直接脚手架创建模块](/docs/tutorials/module-create/init-by-archetype/)
+
+本文介绍存量 SpringBoot 或 SOFABoot 如何低成本升级为模块的操作和验证步骤，仅需加一个 ark 打包插件 + 配置模块瘦身 即可实现普通应用一键升级为模块应用，并且能做到同一套代码分支，既能像原来 SpringBoot 一样独立启动，也能作为模块与其它应用合并部署在一起启动。
 
 ## 前提条件
-1. SpringBoot 版本 >= 2.3.0（针对 SpringBoot 用户）
+
+1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
 
 ## 接入步骤
@@ -23,6 +29,7 @@ spring.application.name = ${替换为实际模块应用名}
 ### 步骤 2：添加模块需要的依赖和打包插件
 
 **特别注意**： sofa ark 插件定义顺序必须在 springboot 打包插件前;
+
 ```xml
 <!-- 模块需要引入的依赖，主要用户跨模块间通信 --> 
 <dependencies>
@@ -75,7 +82,6 @@ _扩展阅读_：如果模块不做依赖瘦身[独立引入 SpringBoot 框架�
 
 **小贴士**：[模块中支持的完整中间件清单](/docs/tutorials/module-development/runtime-compatibility-list/)。
 
-
 ## 实验：验证模块既能独立启动，也能被合并部署
 
 增加模块打包插件（sofa-ark-maven-plugin）进行打包后，只会新增 ark-biz.jar 构建产物，与原生 spring-boot-maven-plugin 打包的可执行Jar 互相不冲突、不影响。
@@ -85,6 +91,7 @@ _扩展阅读_：如果模块不做依赖瘦身[独立引入 SpringBoot 框架�
 
 1. 启动上一步（验证能独立启动步骤）的基座
 2. 发起模块部署
+
 ```shell
 curl --location --request POST 'localhost:1238/installBiz' \
 --header 'Content-Type: application/json' \
@@ -94,6 +101,7 @@ curl --location --request POST 'localhost:1238/installBiz' \
     "bizUrl": "file:///path/to/ark/biz/jar/target/xx-xxxx-ark-biz.jar"
 }'
 ```
+
 返回如下信息表示模块安装成功<br />
 
 <div style="text-align: center;">
@@ -107,6 +115,7 @@ curl --location --request POST 'localhost:1238/installBiz' \
 </div>
 
 4. 卸载模块
+
 ```json
 curl --location --request POST 'localhost:1238/uninstallBiz' \
 --header 'Content-Type: application/json' \
@@ -115,7 +124,9 @@ curl --location --request POST 'localhost:1238/uninstallBiz' \
     "bizVersion": "0.0.1-SNAPSHOT"
 }'
 ```
+
 返回如下，表示卸载成功
+
 ```json
 {
     "code": "SUCCESS",
@@ -125,6 +136,7 @@ curl --location --request POST 'localhost:1238/uninstallBiz' \
     }
 }
 ```
+
 ### 验证能独立启动
 
 普通应用改造成模块之后，还是可以独立启动，可以验证一些基本的启动逻辑，只需要在启动配置里勾选自动添加 `provided`scope 到 classPath 即可，后启动方式与普通应用方式一致。通过自动瘦身改造的模块，也可以在 `target/boot` 目录下直接通过 springboot jar 包启动，[点击此处](https://github.com/koupleless/samples/tree/main/springboot-samples/slimming)查看详情。<br />
