@@ -22,7 +22,7 @@ Your browser does not support the video tag.
 
 本套学习课程为交互式课程，配置了完备的沙箱环境，可以边看边学，欢迎体验！
 
-步骤 1：[点击此处](https://sofaserverless.beta.oscollege.net/os/?invite=true&key=1662838629963194399&sign=UtWAPq5uAiBuf6uqe7LWXOTdh0a8cyvo58Ft6z9TP4O4vqyRDnfgTSjPz3cpz2JM7yC1qdgQ%2BltrZP1pNtqqB4c%2FOrSkP6GD6o0qHbI4GzErPZGTHNES2VlbiGOPzF2NRzkKE1BxLmFwfQWSF844Qb7JoNlA24t24cm6ic%2Fuv1gq4L2XYq3hxVJ7xXL1QZcG7yfJTDBGsiNdrmqBNEMpyTwNcIdPko8RoB%2B1uQbEDYUDt5xOmQnUAOuJTNxSVU3sSVTukSpLNENM7deKUaTtoLJJ%2BH4bbgrkgsufGiD1KJ7c6LSSlnkH9Vd630O6TG8s13Z%2FwFp%2FuWnxUlA2YArgjA%3D%3D)，直接通过手机号验证码的模式进行登录（新用户通过登录会直接完成注册操作），也可以通过其他快捷方式进行登录。
+步骤 1：[点击此处](https://t.oscollege.net/sofaserverless/4L8kbE)，直接通过手机号验证码的模式进行登录（新用户通过登录会直接完成注册操作），也可以通过其他快捷方式进行登录。
 ![image](https://github.com/koupleless/docs/assets/64894080/81d7d500-2b9c-48d5-a441-20893bf3b6c7)
 
 
