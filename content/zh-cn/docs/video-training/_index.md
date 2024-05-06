@@ -22,12 +22,13 @@ Your browser does not support the video tag.
 
 本套学习课程为交互式课程，配置了完备的沙箱环境，可以边看边学，欢迎体验！
 
-步骤 1：[点击此处](https://sofaserverless.beta.oscollege.net/os/?invite=true&key=1662838629963194399&sign=UtWAPq5uAiBuf6uqe7LWXOTdh0a8cyvo58Ft6z9TP4O4vqyRDnfgTSjPz3cpz2JM7yC1qdgQ%2BltrZP1pNtqqB4c%2FOrSkP6GD6o0qHbI4GzErPZGTHNES2VlbiGOPzF2NRzkKE1BxLmFwfQWSF844Qb7JoNlA24t24cm6ic%2Fuv1gq4L2XYq3hxVJ7xXL1QZcG7yfJTDBGsiNdrmqBNEMpyTwNcIdPko8RoB%2B1uQbEDYUDt5xOmQnUAOuJTNxSVU3sSVTukSpLNENM7deKUaTtoLJJ%2BH4bbgrkgsufGiD1KJ7c6LSSlnkH9Vd630O6TG8s13Z%2FwFp%2FuWnxUlA2YArgjA%3D%3D)注册开源学堂账号。
+步骤 1：[点击此处](https://sofaserverless.beta.oscollege.net/os/?invite=true&key=1662838629963194399&sign=UtWAPq5uAiBuf6uqe7LWXOTdh0a8cyvo58Ft6z9TP4O4vqyRDnfgTSjPz3cpz2JM7yC1qdgQ%2BltrZP1pNtqqB4c%2FOrSkP6GD6o0qHbI4GzErPZGTHNES2VlbiGOPzF2NRzkKE1BxLmFwfQWSF844Qb7JoNlA24t24cm6ic%2Fuv1gq4L2XYq3hxVJ7xXL1QZcG7yfJTDBGsiNdrmqBNEMpyTwNcIdPko8RoB%2B1uQbEDYUDt5xOmQnUAOuJTNxSVU3sSVTukSpLNENM7deKUaTtoLJJ%2BH4bbgrkgsufGiD1KJ7c6LSSlnkH9Vd630O6TG8s13Z%2FwFp%2FuWnxUlA2YArgjA%3D%3D)，直接通过手机号验证码的模式进行登录（新用户通过登录会直接完成注册操作），也可以通过其他快捷方式进行登录。
+![image](https://github.com/koupleless/docs/assets/64894080/81d7d500-2b9c-48d5-a441-20893bf3b6c7)
 
-步骤 2：完成注册后，不变更页面的话会直接跳转到【SofaServerless交互式实验室】首页，然后选择如下课程
 
-<div style="text-align: center;">
-    <img width="567" alt="Koupleless (SOFAServerless) 平台和研发框架完整视频教程" src="/img/oscollege_intro.png"/>
-</div>
+步骤 2：完成登录后，不变更页面的话会直接跳转到【SofaServerless交互式实验室】首页，然后选择如下课程
 
-点击进入 **“SOFAServerless 研发框架与产品介绍”**，点击 **“开始学习”**。
+![image](https://github.com/koupleless/docs/assets/64894080/89e24bfa-37d4-4c0a-b808-5c81f336d950)
+
+
+可按需进行交互式体验学习。
