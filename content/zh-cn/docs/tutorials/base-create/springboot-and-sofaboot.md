@@ -6,7 +6,8 @@ weight: 100
 ---
 
 ## 前提条件
-1. SpringBoot 版本 >= 2.3.0（针对 SpringBoot 用户）
+
+1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot 版本 >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
 
 注意：SpringBoot 版本 == 2.1.9.RELEASE，见 [SpringBoot 2.1.9 升级为基座](#springboot-219-升级为基座)
@@ -16,12 +17,14 @@ weight: 100
 ### 代码与配置修改
 
 #### 修改 application.properties
+
 ```properties
 # 需要定义应用名
 spring.application.name = ${替换为实际基座应用名}
 ```
 
 #### 修改主 pom.xml
+
 ```xml
 <properties>
     <sofa.ark.verion>2.2.9</sofa.ark.verion>
@@ -52,7 +55,8 @@ spring.application.name = ${替换为实际基座应用名}
 
 在修改以上配置后，还需额外修改以下配置：
 
-##### 修改主 pom.xml
+##### 主 pom 引入 sdk
+
 ```xml
 <!-- 注意放在构建 pom 的第一个依赖位置 -->
 <dependency>
@@ -92,6 +96,7 @@ public class BaseApplication {
 ```
 
 ### 启动验证
+
 基座应用能正常启动即表示验证成功！
 
 <br/>

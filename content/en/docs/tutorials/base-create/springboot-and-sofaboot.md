@@ -6,7 +6,8 @@ weight: 100
 ---
 
 ## Prerequisites
-1. SpringBoot version >= 2.3.0 (for SpringBoot users)
+
+1. SpringBoot version >= 2.1.9.RELEASE (for SpringBoot users)
 2. SOFABoot version >= 3.9.0 or SOFABoot >= 4.0.0 (for SOFABoot users)
 
 Note: SpringBoot version == 2.1.9.RELEASE, see [Upgrade SpringBoot 2.1.9 to Pedestal](#upgrade-springboot-219-to-base)
@@ -16,12 +17,14 @@ Note: SpringBoot version == 2.1.9.RELEASE, see [Upgrade SpringBoot 2.1.9 to Pede
 ### Code and Configuration Modifications
 
 #### Modify application.properties
+
 ```properties
 # Need to define the application name
 spring.application.name = ${Replace with actual base app name}
 ```
 
 #### Modify the main pom.xml
+
 ```xml
 <properties>
     <sofa.ark.verion>2.2.9</sofa.ark.verion>
@@ -46,9 +49,13 @@ spring.application.name = ${Replace with actual base app name}
 ```
 
 ### Integration for Other Versions
+
 #### Upgrade SpringBoot 2.1.9 to Base
+
 After modifying the above configurations, additional modifications are required:
+
 ##### Modify main pom.xml
+
 ```xml
 <!-- Place this as the first dependency in your pom -->
 <dependency>
@@ -69,10 +76,13 @@ After modifying the above configurations, additional modifications are required:
     <version>${koupleless.runtime.version}</version>
 </dependency>
 ```
+
 ##### Modify base startup class
+
 If version of koupleless is equals 1.1.0 or higher than 1.1.0, no need to change。
 
 If version of koupleless is lower than 1.1.0, exclude the HealthAutoConfiguration class in the @SpringBootApplication annotation of the base Springboot startup class, as shown below:
+
 ```java
 import com.alipay.sofa.koupleless.arklet.springboot.starter.health.HealthAutoConfiguration;
 @SpringBootApplication(exclude = { HealthAutoConfiguration.class })
@@ -84,6 +94,7 @@ public class BaseApplication {
 ```
 
 ### Startup Verification
+
 If the foundation application can start normally, the validation is successful!
 
 <br/>
