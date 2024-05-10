@@ -5,6 +5,17 @@ description: Koupleless Module Officially Supported Middleware Clients
 weight: 800
 ---
 
+### Compatibility Relationships Across Different Versions of the Framework
+Users can choose to import the Koupleless version as needed, based on actual JDK and SpringBoot versions.
+
+| JDK | SpringBoot      | Koupleless       |
+|-----|-----------------|------------------|
+| 1.8 | 2.x             | 1.x.x            |
+| 17  | 3.0.x, 3.1.x    | 2.0.x            |
+| 17  | 3.2.x and above | 2.1.x            |
+
+For Koupleless SDK latest versions, please refer to https://github.com/koupleless/runtime/releases
+
 In Koupleless modules, the official support currently includes and is compatible with common middleware clients.<br />
 **Note:** Here, "**already supported**" needs to be included in the base POM by importing the relevant client dependencies (**strongly recommended to use the SpringBoot Starter method to import the dependencies**), and also in the module POM by importing the relevant dependencies and setting `<scope>provided</scope>` to delegate the dependencies to the base for loading.
 
