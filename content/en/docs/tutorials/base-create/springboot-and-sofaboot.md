@@ -27,8 +27,8 @@ spring.application.name = ${Replace with actual base app name}
 
 ```xml
 <properties>
-    <sofa.ark.verion>2.2.9</sofa.ark.verion>
-    <koupleless.runtime.version>1.1.0</koupleless.runtime.version>
+    <sofa.ark.version>2.2.10</sofa.ark.version>
+    <koupleless.runtime.version>1.2.0</koupleless.runtime.version>
 </properties>
 ```
 
