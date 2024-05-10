@@ -15,6 +15,7 @@ draft: true
 > 本文实验工程代码在：[开源仓库 samples 目录库里](https://github.com/koupleless/samples/tree/master/springboot-samples/web/tomcat)
 
 ## 场景一：合并部署
+
 先介绍第一个场景**多应用合并部署**，整体流程如下:
 
 <div style="text-align: center;">
@@ -30,9 +31,10 @@ draft: true
 `spring.application.name=${基座应用名}`
 
 2. 在 **pom.xml **里增加必要的依赖
+
 ```xml
 <properties>
-    <koupleless.runtime.version>0.5.6</koupleless.runtime.version>
+    <koupleless.runtime.version>1.2.0</koupleless.runtime.version>
 </properties>
 <dependencies>
     <dependency>
@@ -46,6 +48,7 @@ draft: true
 ---
 
 理论上增加这个依赖就可以了，但由于本 demo 需要演示多个 web 模块应用使用一个端口合并部署，需要再引入 `web-ark-plugin` 依赖，[详细原理查看这里](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/)。
+
 ```xml
     <dependency>
         <groupId>com.alipay.sofa</groupId>
@@ -54,10 +57,12 @@ draft: true
 ```
 
 3. 点击编译器启动基座。
+
 ### 2. 模块 1 接入改造
 
 1. 添加模块需要的依赖和打包插件
-```json
+
+```xml
 <plugins>
     <!--这里添加ark 打包插件-->
     <plugin>
@@ -93,7 +98,8 @@ draft: true
 2. 参考官网模块瘦身里[自动排包部分](/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)，下载排包配置文件 **rules.txt**，放在在 **conf/ark/** 目录下
 
 3. 开发模块，例如增加 Rest Controller，提供 Rest 接口
-```json
+
+```java
 @RestController
 public class SampleController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SampleController.class);
@@ -113,15 +119,18 @@ public class SampleController {
 4. [点击这里下载 Arkctl](https://github.com/koupleless/arkctl/releases/tag/arkctl-release-0.2.0)，mac/linux 电脑放入 `**/usr/local/bin**` 目录中，windows 可以考虑直接放在项目根目录下
 
 5. 执行 `arkctl deploy` 构建部署，成功后 `curl localhost:8080/${模块1 web context path}/` 验证服务返回。显示正常，进入下一步。
-```
+
+```text
 hello to ${模块1名} deploy
 ```
 
 ### 3. 模块 1 开发与验证
+
 开发与验证需要完成**修改代码并发布 V2 版本**。具体操作如下：
 
 1. 修改 Rest 代码
-```json
+
+```java
 @RestController
 public class SampleController {
     private static final Logger LOGGER = LoggerFactory.getLogger(SampleController.class);
@@ -139,14 +148,17 @@ public class SampleController {
 ```
 
 2. 执行 `arkctl deploy` 构建部署，成功后 `curl localhost:8080/${模块1 web context path}/` 验证服务返回
-```
+
+```text
 hello to ${模块1名} deploy v2
 ```
 
 ### 4. 模块 2 接入改造、开发与验证
+
 模块 2 同样采用上述步骤2⃣️3⃣️，即模块 1 接入改造与验证的操作流程。
 
 ## 场景二：中台应用
+
 中台应用的特点是**基座有复杂的编排逻辑**去定义**对外暴露服务和业务所需的 SPI**。模块应用来实现这些 SPI 接口，往往会对一个接口在多个模块里定义多个不同的实现。整体流程如下：
 
 <div style="text-align: center;">
@@ -155,11 +167,14 @@ hello to ${模块1名} deploy v2
 
 可以看到，与场景一合并部署操作不同的是，需要在**基座**接入改造与开发验证中间新增一步**通信类和 SPI 的定义**；**模块**接入改造与开发验证中间新增一步**引入通信类基座并实现基座 SPI**。
 **接下来我们将介绍与合并部署不同的**_**（即新增的）**_**操作细节。**
+
 ### 1. 基座完成通信类和 SPI 的定义
+
 在合并部署接入改造的基础上，需要完成通信类和 SPI 的定义。
 通信类需要以 **独立 bundle **的方式存在，才能被模块引入。可参考以下方式：
 
 1. 新建 bundle，定义接口类
+
 ```xml
 public class ProductInfo {
     private String  name;
@@ -170,6 +185,7 @@ public class ProductInfo {
 ```
 
 2. 定义 SPI
+
 ```java
 public interface StrategyService {
     List<ProductInfo> strategy(List<ProductInfo> products);
@@ -178,10 +194,12 @@ public interface StrategyService {
 ```
 
 ### 2. 模块 1 **引入通信类基座并实现基座 SPI**
+
 在上文合并部署模块 1 接入改造 demo 的基础上，引入通信类，然后定义 SPI 实现。
 
 1. 引入通信类和对应 SPI 定义，只需要**在 pom 里引入基座定义的通信 bundle**
 2. 定义 SPI 实现
+
 ```java
 @Service
 public class StrategyServiceImpl implements StrategyService {
@@ -204,12 +222,15 @@ public class StrategyServiceImpl implements StrategyService {
 3. 执行 `arkctl deploy` 构建部署，成功后用 `curl localhost:8080/${基座服务入口}/biz1/` 验证服务返回
 
 **biz1** 传入是为了使基座根据不同的参数找到不同的 SPI 实现，执行不同的逻辑。传入的方式可以有很多种，这里用最简单方式——从 **path **里传入。
-```
+
+```text
 默认的 products 列表
 ```
 
 ### 3. 模块 2 **引入通信类基座并实现基座 SPI**
+
 与模块 1 操作相同，需要注意执行 `arkctl deploy` 构建部署时，成功后 `curl localhost:8080/${基座服务入口}/biz2/` 验证服务返回。同理，**biz2 **传入是为了基座根据不同的参数，找到不同的 SPI 实现，执行不同逻辑。
+
 ```java
 @Service
 public class StrategyServiceImpl implements StrategyService {
@@ -230,7 +251,7 @@ public class StrategyServiceImpl implements StrategyService {
 }
 ```
 
-```
+```text
 更改排序后的 products 列表
 ```
 
