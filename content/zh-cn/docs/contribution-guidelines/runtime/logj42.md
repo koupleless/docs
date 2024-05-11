@@ -147,5 +147,5 @@ public class Log4JLogger implements LocationAwareLogger, Serializable {
    } 
 ```
 ## 模块改造方式
-[详细查看源码](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-log4j2/src/main/java/org/springframework/boot/logging/log4j2)
+[详细查看源码](https://github.com/koupleless/adapter/tree/main/koupleless-adapter-log4j2-spring-starter-2.7/src/main/java/org/springframework/boot/logging/log4j2/)
 

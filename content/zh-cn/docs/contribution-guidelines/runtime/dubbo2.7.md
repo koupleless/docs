@@ -9,16 +9,7 @@ weight: 1
 
 ## 多模块适配方案
 
-dubbo2.7多模块适配SDK
-```xml
-<dependency>
-   <groupId>com.alipay.sofa.koupleless</groupId>
-   <artifactId>koupleless-adapter-dubbo2.7</artifactId>
-   <version>${koupleless.runtime.version}</version>
-</dependency>
-```
-
-主要从类加载、服务发布、服务卸载、服务隔离、模块维度服务管理、配置管理、序列化等方面进行适配。
+dubbo2.7多模块适配SDK 在基座构建时 koupleless-base-build-plugin 会自动将 patch 代码打包到基座代码里，该适配逻辑主要从类加载、服务发布、服务卸载、服务隔离、模块维度服务管理、配置管理、序列化等方面进行适配。
 
 ### 1. AnnotatedBeanDefinitionRegistryUtils使用基座classloader无法加载模块类
 com.alibaba.spring.util.AnnotatedBeanDefinitionRegistryUtils#isPresentBean
@@ -190,5 +181,5 @@ if (in instanceof ClassLoaderJavaObjectInput) {
 
 [多模块 dubbo2.7 使用样例](https://github.com/koupleless/samples/tree/main/dubbo-samples/rpc/dubbo27/README.md)
 
-[dubbo2.7多模块适配sdk源码](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
+[dubbo2.7多模块适配sdk源码](https://github.com/koupleless/adapter/tree/main/koupleless-adapter-dubbo-2.7)
 

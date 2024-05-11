@@ -38,7 +38,6 @@ spring.application.name = ${Replace with actual base app name}
     <groupId>com.alipay.koupleless</groupId>
     <artifactId>koupleless-base-starter</artifactId>
     <version>${koupleless.runtime.version}</version>
-    <type>pom</type>
 </dependency>
 
 <!-- If using Spring Boot web, add this dependency. For more details, see https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/ -->
@@ -46,6 +45,24 @@ spring.application.name = ${Replace with actual base app name}
     <groupId>com.alipay.sofa</groupId>
     <artifactId>web-ark-plugin</artifactId>
 </dependency>
+
+<!-- 为了让三方依赖和 koupleless 模式适配，需要引入以下构建插件 -->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.alipay.sofa.koupleless</groupId>
+            <artifactId>koupleless-base-build-plugin</artifactId>
+            <version>${koupleless.runtime.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>add-patch</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 ### Integration for Other Versions
@@ -62,19 +79,31 @@ After modifying the above configurations, additional modifications are required:
     <groupId>com.alipay.sofa.koupleless</groupId>
     <artifactId>koupleless-base-starter</artifactId>
     <version>${koupleless.runtime.version}</version>
-    <type>pom</type>
-    <exclusions>
-        <exclusion>
-            <groupId>com.alipay.sofa.koupleless</groupId>
-            <artifactId>koupleless-adapter-log4j2</artifactId>
-        </exclusion>
-    </exclusions>
 </dependency>
+
+<!-- If using Spring Boot web, add this dependency. For more details, see https://www.sofastack.tech/projects/sofa-boot/sofa-ark-multi-web-component-deploy/ -->
 <dependency>
-    <groupId>com.alipay.sofa.koupleless</groupId>
-    <artifactId>koupleless-adapter-log4j2-springboot2.1.9</artifactId>
-    <version>${koupleless.runtime.version}</version>
+    <groupId>com.alipay.sofa</groupId>
+    <artifactId>web-ark-plugin</artifactId>
 </dependency>
+        
+<!-- 为了让三方依赖和 koupleless 模式适配，需要引入以下构建插件 -->
+<build>
+    <plugins>
+        <plugin>
+            <groupId>com.alipay.sofa.koupleless</groupId>
+            <artifactId>koupleless-base-build-plugin</artifactId>
+            <version>${koupleless.runtime.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>add-patch</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 ##### Modify base startup class
