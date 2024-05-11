@@ -60,5 +60,5 @@ Both the base module and individual modules should be able to use independent lo
    b. During logging configuration, only use the ctx:xxx:xxx configuration format.
 
 ## Module Refactoring Approach
-[Check the source code for detailed information](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-log4j2/src/main/java/org/springframework/boot/logging/log4j2)
+[Check the source code for detailed information](https://github.com/koupleless/adapter/tree/main/koupleless-adapter-log4j2-spring-starter-2.7/src/main/java/org/springframework/boot/logging/log4j2)
 

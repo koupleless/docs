@@ -9,14 +9,7 @@ The native Dubbo 2.7 cannot support module publishing its own Dubbo services in 
 
 ## Multi-Module Adaptation Solutions
 
-Dubbo 2.7 Multi-Module Adaptation SDK
-```xml
-<dependency>
-   <groupId>com.alipay.sofa.koupleless</groupId>
-   <artifactId>koupleless-adapter-dubbo2.7</artifactId>
-   <version>${koupleless.runtime.version}</version>
-</dependency>
-```
+Dubbo 2.7 Multi-Module Adaptation SDK will be included when building by koupleless-base-build-plugin
 
 Mainly from aspects such as class loading, service publishing, service unloading, service isolation, module-level service management, configuration management, serialization, etc.
 
@@ -190,5 +183,5 @@ if (in instanceof ClassLoaderJavaObjectInput) {
 
 [Example of Using Dubbo 2.7 in a Multi-Module Environment](https://github.com/koupleless/samples/tree/main/dubbo-samples/rpc/dubbo27/README.md)
 
-[dubbo2.7 Multi-Module Adaptation SDK Source Code](https://github.com/koupleless/runtime/tree/main/koupleless-ext/koupleless-adapter-ext/koupleless-adapter-dubbo2.7)
+[dubbo2.7 Multi-Module Adaptation SDK Source Code](https://github.com/koupleless/adapter/tree/main/koupleless-adapter-dubbo-2.7)
 
