@@ -9,9 +9,7 @@ The native Dubbo 2.7 cannot support module publishing its own Dubbo services in 
 
 ## Multi-Module Adaptation Solutions
 
-Dubbo 2.7 Multi-Module Adaptation SDK will be included when building by koupleless-base-build-plugin
-
-Mainly from aspects such as class loading, service publishing, service unloading, service isolation, module-level service management, configuration management, serialization, etc.
+Dubbo 2.7 Multi-Module Adaptation SDK will be included when building by koupleless-base-build-plugin, the adapter mainly from aspects such as class loading, service publishing, service unloading, service isolation, module-level service management, configuration management, serialization, etc.
 
 ### 1. AnnotatedBeanDefinitionRegistryUtils Unable to Load Module Classes Using the Base Classloader
 com.alibaba.spring.util.AnnotatedBeanDefinitionRegistryUtils#isPresentBean
