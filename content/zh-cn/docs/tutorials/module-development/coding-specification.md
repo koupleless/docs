@@ -22,13 +22,12 @@ weight: 100
     - 在模块代码中，装饰需要自动清理的 Timer，底层会调用 Timer 对象的 cancel，具体用法：
       ```
       CancelTimersOnUninstallEventHandler.manageTimer(myTimer);
-      ```[module-slimming.md](module-slimming.md)
-      <br/><br/>
+      ```
     - 在模块代码中，装饰需要自动清理的 Thread，底层会强行调用 Thread 对象的 stop，具体用法：
       ```
       ForceStopThreadsOnUninstallEventHandler.manageThread(myThread);
       ```
-      注意：JD[module-slimming.md](module-slimming.md)K 并不推荐强行 stop 线程，会导致线程非预期的强行释放锁，可能引发非预期问题。除非您确定线程被暴力关闭不会引发相关问题，否则慎用。
+      注意：JDK 并不推荐强行 stop 线程，会导致线程非预期的强行释放锁，可能引发非预期问题。除非您确定线程被暴力关闭不会引发相关问题，否则慎用。
       <br/><br/>
 4. 如果使用了模块热卸载能力，并且还有其他资源、对象需要清理，您可以监听 Spring 的 **ContextClosedEvent** 事件，在事件处理函数中清理必要的资源和对象，
    也可以在 Spring XML 定义 Bean 的地方指定它们的 **destroy-method，**在模块卸载时，Spring 会自动执行** destroy-method**。
