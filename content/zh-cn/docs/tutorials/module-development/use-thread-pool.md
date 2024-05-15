@@ -98,7 +98,7 @@ public String call() {
 
 如果要保持 Runnable 和 Callable 不变，则有两种改造方式：
 1. 将 threadPool 修改为 KouplelessThreadPoolExecutor
-2. 或者使用 threadPoolAdapter 包装 threadPool。
+2. 或者使用 kouplelessExecutorService。
 
 首先，举例第一种改造方式：将 threadPool 修改为 KouplelessThreadPoolExecutor。如下：
 ```java
@@ -120,12 +120,10 @@ public String call() {
 });
 ```
 
-然后，举例第二种改造方式：使用 threadPoolAdapter。如下：
+然后，举例第二种改造方式：使用 kouplelessExecutorService。如下：
 ```java
-ThreadPoolExecutor threadPool = new KouplelessThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-
-// 将 threadPool 包装为 KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(threadPool);
+// 使用 KouplelessExecutorService
+ExecutorService executor        = new KouplelessExecutorService(new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()));
 
 // 用 executor 执行任务
 executor.execute(new Runnable(){
@@ -177,13 +175,11 @@ scheduledExecutorService.execute(new Callable<String>(){
 });
 ```
 
-如果要保持 Runnable 和 Callable 不变，则需要使用 adapter 包装 executorService 和 scheduledExecutorService。如下：
+如果要保持 Runnable 和 Callable 不变，则需要使用 kouplelessExecutorService, kouplelessScheduledExecutorService，如下：
 
 ```java
-ThreadPoolExecutorA executorService = new ThreadPoolExecutorA();
-
-// 将 executorService 包装为 KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(executorService);
+// 使用 KouplelessExecutorService
+ExecutorService executor        = new KouplelessExecutorService(new ThreadPoolExecutorA());
 
 // 用 executor 执行任务
 executor.execute(new Runnable(){
@@ -198,10 +194,9 @@ executor.execute(new Callable<String>(){
     }
 });
 
-ScheduledThreadPoolExecutorA scheduledExecutorService = new ScheduledThreadPoolExecutorA();
 
-// 将 scheduledExecutorService 包装为 KouplelessScheduledExecutorServiceAdaptor
-ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorServiceAdaptor(scheduledExecutorService);
+// 使用 KouplelessScheduledExecutorService
+ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorService(new ScheduledThreadPoolExecutorA());
 
 // 用 scheduledExecutor 执行任务
 scheduledExecutor.execute(new Runnable(){
@@ -240,7 +235,7 @@ public String call() {
  }
 });
 
-ScheduledExecutorService scheduledExecutorService = new SingleThreadScheduledExecutor();
+ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
 scheduledExecutorService.execute(new Runnable(){
     public void run() {
@@ -256,13 +251,11 @@ scheduledExecutorService.execute(new Callable<String>(){
 });
 ```
 
-如果要保持 Runnable 和 Callable 不变，则需要使用 adapter 包装 executorService 和 scheduledExecutorService。如下：
+如果要保持 Runnable 和 Callable 不变，则需要使用 kouplelessExecutorService, kouplelessScheduledExecutorService，如下：
 
 ```java
-ExecutorService executorService = Executors.newFixedThreadPool(6);
-
-// 将 executorService 包装为 KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(executorService);
+// 使用 KouplelessExecutorService
+ExecutorService executor        = new KouplelessExecutorService(Executors.newFixedThreadPool(6));
 
 // 用 executor 执行任务
 executor.execute(new Runnable(){
@@ -277,10 +270,8 @@ executor.execute(new Callable<String>(){
     }
 });
 
-ScheduledExecutorService scheduledExecutorService = new SingleThreadScheduledExecutor();
-
-// 将 scheduledExecutorService 包装为 KouplelessScheduledExecutorServiceAdaptor
-ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorServiceAdaptor(scheduledExecutorService);
+// 使用 KouplelessScheduledExecutorService
+ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorService(Executors.newSingleThreadScheduledExecutor());
 
 // 用 scheduledExecutor 执行任务
 scheduledExecutor.execute(new Runnable(){

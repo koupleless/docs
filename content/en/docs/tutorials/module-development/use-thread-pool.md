@@ -98,7 +98,7 @@ public String call() {
 
 To keep Runnable and Callable unchanged, there are two ways to modify:
 1. Change threadPool to KouplelessThreadPoolExecutor
-2. Or use threadPoolAdapter to wrap threadPool.
+2. Or use kouplelessExecutorService.
 
 First, let's take an example of the first modification method: change threadPool to KouplelessThreadPoolExecutor. As follows:
 
@@ -121,12 +121,10 @@ public String call() {
 });
 ```
 
-Then, illustrate the second method of modification: using threadPoolAdapter. As follows:
+Then, illustrate the second method of modification: using kouplelessExecutorService. As follows:
 ```java
-ThreadPoolExecutor threadPool = new KouplelessThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-
-// adapter threadPool as KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(threadPool);
+// use kouplelessExecutorService
+ExecutorService executor        = new KouplelessExecutorService(new ThreadPoolExecutor(5, 5, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()));
 
 // use executor to execute task
 executor.execute(new Runnable(){
@@ -178,13 +176,11 @@ scheduledExecutorService.execute(new Callable<String>(){
 });
 ```
 
-To keep Runnable and Callable unchanged, it is necessary to use an adapter to wrap ExecutorService and ScheduledExecutorService, as follows:
+To keep Runnable and Callable unchanged, it is necessary to use kouplelessExecutorService and kouplelessScheduledExecutorService, as follows:
 
 ```java
-ThreadPoolExecutorA executorService = new ThreadPoolExecutorA();
-
-// wrap executorService as KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(executorService);
+// use KouplelessExecutorService
+        ExecutorService executor        = new KouplelessExecutorService(new ThreadPoolExecutorA());
 
 // use executor to execute tasks
 executor.execute(new Runnable(){
@@ -199,10 +195,8 @@ executor.execute(new Callable<String>(){
     }
 });
 
-ScheduledThreadPoolExecutorA scheduledExecutorService = new ScheduledThreadPoolExecutorA();
-
-// wrap scheduledExecutorService as KouplelessScheduledExecutorServiceAdaptor
-ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorServiceAdaptor(scheduledExecutorService);
+// use scheduledExecutorService 
+ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorService(new ScheduledThreadPoolExecutorA());
 
 // use scheduledExecutor to execute tasks
 scheduledExecutor.execute(new Runnable(){
@@ -241,7 +235,7 @@ public String call() {
  }
 });
 
-ScheduledExecutorService scheduledExecutorService = new SingleThreadScheduledExecutor();
+ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
 scheduledExecutorService.execute(new Runnable(){
     public void run() {
@@ -257,13 +251,11 @@ scheduledExecutorService.execute(new Callable<String>(){
 });
 ```
 
-To keep Runnable and Callable unchanged, it is necessary to use an adapter to wrap ExecutorService and ScheduledExecutorService, as follows:
+To keep Runnable and Callable unchanged, it is necessary to use kouplelessExecutorService and kouplelessScheduledExecutorService, as follows:
 
 ```java
-ExecutorService executorService = Executors.newFixedThreadPool(6);
-
-// wrap executorService as KouplelessExecutorServiceAdaptor
-ExecutorService executor        = new KouplelessExecutorServiceAdaptor(executorService);
+// use KouplelessExecutorService
+ExecutorService executor        = new KouplelessExecutorService(Executors.newFixedThreadPool(6));
 
 // use executor to execute tasks
 executor.execute(new Runnable(){
@@ -278,10 +270,8 @@ executor.execute(new Callable<String>(){
     }
 });
 
-ScheduledExecutorService scheduledExecutorService = new SingleThreadScheduledExecutor();
-
-// wrap scheduledExecutorService as KouplelessScheduledExecutorServiceAdaptor
-ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorServiceAdaptor(scheduledExecutorService);
+// use KouplelessScheduledExecutorService
+ScheduledExecutorService scheduledExecutor = new KouplelessScheduledExecutorService(Executors.newSingleThreadScheduledExecutor());
 
 // use scheduledExecutor to execute tasks
 scheduledExecutor.execute(new Runnable(){
