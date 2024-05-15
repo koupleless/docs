@@ -5,9 +5,12 @@ description: Koupleless Thread Pool Usage
 weight: 110
 ---
 # Background
-Due to the execution thread's Classloader in a thread pool being different from the Classloader used when creating the task, it's easy to encounter a ClassNotFoundException when the thread pool executes the task.
 
-To maintain consistency between the Classloader used during the task execution in the thread pool and the Classloader used at the creation of the task, we need to make some modifications to the thread pool.
+When **multiple modules** or a **module and a base** share the same thread pool, the Classloader used by the thread executing a task in the thread pool may differ from the Classloader that was used when the task was created. This can lead to a ClassNotFoundException when the thread pool executes the task.
+
+As a result, when multiple modules or a module and a base share the same thread pool, in order to ensure consistency between the Classloader used during task execution and the Classloader used at the creation of the task, we need to make some modifications to the thread pool.
+
+⚠️Note: There will be no such issue if each module uses its own thread pool.
 
 There are 4 common ways to use thread pools in Java:
 1. Directly create thread tasks and submit them to the thread pool, such as: Runnable, Callable, ForkJoinTask
@@ -15,6 +18,7 @@ There are 4 common ways to use thread pools in Java:
 3. Use ThreadPoolExecutor or ScheduledThreadPoolExecutor from the third-party libraries. 
 4. Create thread pools through Executors and submit tasks to ExecutorService, ScheduledExecutorService, ForkJoinPool 
 5. For SpringBoot users, submit tasks to ThreadPoolTaskExecutor, SchedulerThreadPoolTaskExecutor
+
 This article will introduce how each method is used on Koupleless.
 
 # How to Use

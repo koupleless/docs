@@ -6,9 +6,11 @@ weight: 110
 ---
 
 # 背景
-由于线程池执行任务使用的线程 Classloader 和创建该任务时使用的 Classloader 不一致，容易导致线程池执行任务时出现 ClassNotFound 异常。
+当**多个模块**或**模块和基座**共用一个线程池时，由于线程池执行任务使用的线程 Classloader 可能和创建该任务时使用的 Classloader 不一致，从而导致线程池执行任务时出现 ClassNotFound 异常。
 
-为了保持线程池执行任务时使用的 Classloader 和创建该任务时使用的 Classloader 一致，我们需要对线程池做一些修改。
+因此，当多个模块或模块和基座共用一个线程池时，为了保持线程池执行任务时使用的 Classloader 和创建该任务时使用的 Classloader 一致，我们需要对线程池做一些修改。
+
+⚠️注意：各模块使用各自的线程池，不会有此问题。
 
 java常用的线程池使用方式有4种：
 1. 直接创建线程任务，提交到线程池中，如：Runnable, Callable, ForkJoinTask
