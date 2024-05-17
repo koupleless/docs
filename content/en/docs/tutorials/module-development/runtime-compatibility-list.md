@@ -67,6 +67,6 @@ Note: Users can choose Koupleless versions according to their actual JDK and Spr
 
 | JDK | SpringBoot   | SOFAARK | Koupleless |
 |-----|--------------|---------|------------|
-| 1.8 | 2.x          | 2.2.9   | 1.x.x      |
+| 1.8 | 2.x          | 2.2.10  | 1.x.x      |
 | 17  | 3.0.x, 3.1.x | 3.0.x   | 2.0.x      |
 | 17  | 3.2.x and above | 3.1.x   | 2.1.x     |
