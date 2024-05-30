@@ -353,3 +353,28 @@ Update to a newer version of spring-core, such as 6.0.11.
 ### Hessian Serialization/Deserialization Does Not Support Multi-Application (classLoader)
 #### Solution
 Refer to [Issue #196](https://github.com/koupleless/koupleless/issues/196), you can upgrade the Hessian version to 4.x or above, or customize a SerializerFactory that supports multiple ClassLoaders.
+
+### Error when start base: `IllegalArgumentException: File must exist`
+#### Cause
+New versions of Spring Boot have updated the file path format, leading to errors in certain file path logics. For details, see https://github.com/koupleless/koupleless/issues/161
+#### Solution
+Add the following configuration `<loaderImplementation>CLASSIC</loaderImplementation>` in the Spring Boot Maven plugin to revert to the original path format:
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <goals>
+            <goal>repackage</goal>
+          </goals>
+          <configuration>
+            <loaderImplementation>CLASSIC</loaderImplementation>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
