@@ -7,8 +7,11 @@ weight: 400
 
 ## Arkctl 工具安装
 
-Arkctl 模块安装主要提供自动打包和部署能力，自动打包调用 mvn 命令构建模块 jar包，自动部署调用 [arklet](/docs/contribution-guidelines/arklet/architecture) 提供的 api 接口进行部署。如果不想使用命令行工具，也可以直接使用 arklet 提供的 api 接口发起部署操作。
-安装方式可以参照文档：[arkctl 安装](../build_and_deploy.md) 的*本地环境开发验证*小节。
+Arkctl 模块安装主要提供自动打包和部署能力，包括调用 mvn 命令自动构建模块为 jar 包，调用 arklet 提供的 api 接口进行完成部署。ArkCtl 安装方式可以参照文档：[arkctl 安装](../build_and_deploy.md) 的*本地环境开发验证*小节。
+
+由于 Arkctl 部署其实是调用 API 的方式来完成的，如果不想使用命令行工具，也可以直接使用这些 [API 接口]([arklet](/docs/contribution-guidelines/arklet/architecture)) 完成部署操作。当然我们也提供了 telnet 的方式来部署模块，[详细可查看这里](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-telnet/)
+
+
 
 ### 本地快速部署
 
