@@ -371,3 +371,29 @@ public Object getProxy(@Nullable ClassLoader classLoader) {
 ### Hessian 序列化反序列化不支持多应用（classLoader）
 #### 解决方式
 参考 https://github.com/koupleless/koupleless/issues/196， 可以升级 hessian 版本到 4.x 以上，或者自定义多 ClassLoader 的 SerializerFactory
+
+### 基座启动时报错 `IllegalArgumentException: File must exist`
+#### 原因
+springboot 新版本更新了文件路径格式，导致部分对文件路径的逻辑发生错误，详见 https://github.com/koupleless/koupleless/issues/161
+#### 解决方式
+springboot 打包插件里增加配置 `<loaderImplementation>CLASSIC</loaderImplementation>`，回退会原有路径格式
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <goals>
+            <goal>repackage</goal>
+          </goals>
+          <configuration>
+            <loaderImplementation>CLASSIC</loaderImplementation>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
