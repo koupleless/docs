@@ -5,6 +5,7 @@ description: Koupleless 模块上线与下线
 weight: 100
 ---
 
+注意：当前 ModuleController 在 K8S 1.24 版本测试过，没有在其它版本测试，但 ModuleController 没有依赖 K8S 过多特性，理论上可以支持 K8S 其它版本。
 
 ## 模块上线
 在 K8S 集群中创建一个 ModuleDeployment CR 资源即可完成模块上线，例如：
