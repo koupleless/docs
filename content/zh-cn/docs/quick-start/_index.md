@@ -23,7 +23,11 @@ weight: 200
 # 实验 2：一键体验应用秒级热部署
 
 ## 步骤 1：本地软件安装
+
 下载安装 **go**（建议 1.21 或以上）、**docker**、**minikube**、**kubectl**。
+
+注意：当前 Koupleless 在 K8S 1.24 版本测试过，没有在其它版本测试，但 Koupleless 没有依赖 K8S 过多特性，理论上可以支持 K8S 其它版本。
+
 - 注：第2步前，请启动好 docker、minikube
 ```shell
 # mac 可执行如下命令
