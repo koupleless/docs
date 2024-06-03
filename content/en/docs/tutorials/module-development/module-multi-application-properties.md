@@ -1,7 +1,7 @@
 ---
 title: Multiple Configurations for Modules
 date: 2024-03-01T10:28:32+08:00
-weight: 1200
+weight: 620
 ---
 ## Why Use Multiple Configurations
 In different scenarios, a module's code may be deployed to different applications but require different configurations.
