@@ -37,7 +37,7 @@ weight: 900
 ## 使用
 
 ### 前置条件
-- koupleless 版本 >= 1.1.0
+- koupleless 版本 >= 1.2.1
 - sofa-ark 版本 >= 2.2.9
 
 ### 获取应用整体健康状态
@@ -135,7 +135,9 @@ management.endpoint.health.show-details=always
 
 场景3：基座启动后，热部署
 
-注意：热部署场景下，模块是否安装成功不影响应用整体健康状态。
+提供配置，让用户自行决定模块热部署结果是否影响应用整体健康状态（默认配置为：**不影响**整体应用原本的健康状态）
+
+默认配置：热部署场景下，模块是否安装成功不影响应用整体健康状态，如下：
 
 | 状态 | 含义                        |
 | --- |---------------------------|
@@ -239,7 +241,15 @@ koupleless.healthcheck.base.readiness.withAllBizReadiness=true
 
 场景3：基座启动后，热部署
 
-注意：热部署场景下，模块是否安装成功不应该影响应用整体健康状态。因此不建议设置为 koupleless.healthcheck.base.readiness.withAllBizReadiness=true
+提供配置，让用户自行决定模块热部署结果是否影响应用整体健康状态（默认配置为：**不影响**整体应用原本的健康状态）
+
+当设置为 koupleless.healthcheck.base.readiness.withAllBizReadiness=true
+
+| 状态 | 含义                        |
+| --- |---------------------------|
+| UP | 基座和模块都健康                  |
+| UNKNOWN | 基座正在启动中/模块正在启动中           |
+| DOWN | 基座启动失败/模块启动失败/基座不健康/模块不健康 |
 
 场景4：基座运行中
 

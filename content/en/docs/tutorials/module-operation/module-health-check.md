@@ -132,12 +132,14 @@ Scenario 2: Start base and install modules with static merge deployment
 
 Scenario 3: After base starts, install modules with hot deployment
 
-Note: In the hot deployment scenario, whether the module is installed successfully does not affect the overall health status of the application
+Provide configuration to let users decide whether the result of module hot deployment affects the overall health status of the application (The default configuration is: **Does not affect** the original health status of the application)
 
-| Status | Meaning                                                       |
-| --- |---------------------------------------------------------------|
-| UP | Base and module are healthy                                   |
-| UNKNOWN | Base or module is starting up                                 |
+Default Configuration: In the scenario of hot deployment, whether or not a module is successfully installed does not affect the overall health status of the application, as follows:
+
+| Status | Meaning                                                      |
+| --- |--------------------------------------------------------------|
+| UP | Base and module are healthy                                  |
+| UNKNOWN | Base is starting up                                 |
 | DOWN | Base startup failed / base is unhealthy / module is unhealthy |
 
 Scenario 4: Base running
@@ -241,7 +243,15 @@ Scenario 2: Start base and install modules with static merge deployment
 
 Scenario 3: After base starts, install modules with hot deployment
 
-Note: In the hot deployment scenario, whether the module is installed successfully should not affect the overall health status of the application. Therefore, it is not recommended to set koupleless.healthcheck.base.readiness.withAllBizReadiness=true.
+Provide configuration to let users decide whether the result of module hot deployment affects the overall health status of the application (The default configuration is: **Does not affect** the original health status of the application)
+
+When configuring as koupleless.healthcheck.base.readiness.withAllBizReadiness=true:
+
+| Status | Meaning                                                                               |
+| --- |---------------------------------------------------------------------------------------|
+| UP | Base and module are healthy                                                           |
+| UNKNOWN | Base or module is starting up                                                         |
+| DOWN | Base startup failed / Module startup failed / base is unhealthy / module is unhealthy |
 
 Scenario 4: Base running
 
