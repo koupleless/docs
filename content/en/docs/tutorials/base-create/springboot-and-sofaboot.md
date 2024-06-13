@@ -86,6 +86,12 @@ After modifying the above configurations, additional modifications are required:
     <groupId>com.alipay.sofa</groupId>
     <artifactId>web-ark-plugin</artifactId>
 </dependency>
+<dependency>
+    <groupId>com.github.oshi</groupId>
+    <artifactId>oshi-core</artifactId>
+    <version>3.9.1</version>
+</dependency>
+
         
 <!-- 为了让三方依赖和 koupleless 模式适配，需要引入以下构建插件 -->
 <build>
