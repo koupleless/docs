@@ -116,9 +116,9 @@ public class SampleController {
 }
 ```
 
-4. [点击这里下载 Arkctl](https://github.com/koupleless/arkctl/releases/tag/arkctl-release-0.2.0)，mac/linux 电脑放入 `**/usr/local/bin**` 目录中，windows 可以考虑直接放在项目根目录下
-
-5. 执行 `arkctl deploy` 构建部署，成功后 `curl localhost:8080/${模块1 web context path}/` 验证服务返回。显示正常，进入下一步。
+4. 执行 `mvn clean packge -DskipTests` 打包构建出模块jar 包，以 ark-biz.jar 为后缀的。
+5. [点击这里下载 Arkctl](https://github.com/koupleless/arkctl/releases/)，mac/linux 电脑放入 `**/usr/local/bin**` 目录中，windows 可以考虑直接放在项目根目录下。Arkctl 的使用说明请查看[这里](/docs/tutorials/build_and_deploy)
+6. 执行 `arkctl deploy` 构建部署，成功后 `curl localhost:8080/${模块1 web context path}/` 验证服务返回。显示正常，进入下一步。
 
 ```text
 hello to ${模块1名} deploy
