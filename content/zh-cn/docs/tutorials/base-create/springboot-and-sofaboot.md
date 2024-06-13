@@ -9,6 +9,7 @@ weight: 100
 
 1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot 版本 >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
+3. 本地安装 maven，且 maven 版本大于 3.9.0
 
 注意：SpringBoot 版本 == 2.1.9.RELEASE，见 [SpringBoot 2.1.9 升级为基座](#springboot-219-升级为基座)
 
