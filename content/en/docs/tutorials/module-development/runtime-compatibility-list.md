@@ -8,11 +8,11 @@ weight: 800
 ### Compatibility Relationships Across Different Versions of the Framework
 Users can choose to import the Koupleless version as needed, based on actual JDK and SpringBoot versions.
 
-| JDK | SpringBoot      | Koupleless       |
-|-----|-----------------|------------------|
-| 1.8 | 2.x             | 1.x.x            |
-| 17  | 3.0.x, 3.1.x    | 2.0.x            |
-| 17  | 3.2.x and above | 2.1.x            |
+| JDK    | SpringBoot      | Koupleless       |
+|--------|-----------------|------------------|
+| 1.8    | 2.x             | 1.x.x            |
+| 17     | 3.0.x, 3.1.x    | 2.0.x            |
+| 17 & 21 | 3.2.x and above | 2.1.x            |
 
 For Koupleless SDK latest versions, please refer to https://github.com/koupleless/runtime/releases
 

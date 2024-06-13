@@ -9,11 +9,11 @@ weight: 800
 
 用户可根据实际 jdk 和 springboot 版本按需引入 Koupleless 版本
 
-| JDK | SpringBoot | Koupleless   |
-|-----|------------|--------------|
-| 1.8 | 2.x        | 1.x.x        |
-| 17  | 3.0.x, 3.1.x | 2.0.x        |
-| 17 | 3.2.x 以上 | 2.1.x        |
+| JDK     | SpringBoot | Koupleless   |
+|---------|------------|--------------|
+| 1.8     | 2.x        | 1.x.x        |
+| 17      | 3.0.x, 3.1.x | 2.0.x        |
+| 17 & 21 | 3.2.x 以上 | 2.1.x        |
 
 koupleless 的 sdk 最新版本请查看 https://github.com/koupleless/runtime/releases
 
