@@ -31,6 +31,10 @@ detailed in [Ark Biz Introduction](https://www.sofastack.tech/projects/sofa-boot
                 </goals>
             </execution>
         </executions>
+        <configuration>
+            <!--                 default 100, the bigger it is, the later the installation order，koupleless runtime version >= 1.2.2             -->
+            <priority>200</priority>
+        </configuration>
     </plugin>
 </build>
 ```

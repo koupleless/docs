@@ -32,6 +32,10 @@ Maven 插件 sofa-ark-maven-plugin 打包生成。
                 </goals>
             </execution>
         </executions>
+        <configuration>
+            <!--                默认100，数值越大越后面安装，koupleless runtime 版本大于等于 1.2.2             -->
+            <priority>200</priority>
+        </configuration>
     </plugin>
 </build>
 ```
