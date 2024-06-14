@@ -9,6 +9,7 @@ weight: 100
 
 1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot 版本 >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
+3. 本地安装 maven，且 maven 版本大于 3.9.0
 
 注意：SpringBoot 版本 == 2.1.9.RELEASE，见 [SpringBoot 2.1.9 升级为基座](#springboot-219-升级为基座)
 
@@ -27,9 +28,9 @@ spring.application.name = ${替换为实际基座应用名}
 
 ```xml
 <properties>
-    <sofa.ark.verion>2.2.10</sofa.ark.verion>
+    <sofa.ark.verion>2.2.11</sofa.ark.verion>
     <!-- 不同jdk版本，使用不同koupleless版本，参考：https://koupleless.io/docs/tutorials/module-development/runtime-compatibility-list/#%E6%A1%86%E6%9E%B6%E8%87%AA%E8%BA%AB%E5%90%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%85%B3%E7%B3%BB -->
-    <koupleless.runtime.version>1.2.0</koupleless.runtime.version>
+    <koupleless.runtime.version>1.2.2</koupleless.runtime.version>
 </properties>
 ```
 
@@ -86,6 +87,11 @@ spring.application.name = ${替换为实际基座应用名}
     <groupId>com.alipay.sofa</groupId>
     <artifactId>web-ark-plugin</artifactId>
     <version>${sofa.ark.version></version>
+</dependency>
+<dependency>
+    <groupId>com.github.oshi</groupId>
+    <artifactId>oshi-core</artifactId>
+    <version>3.9.1</version>
 </dependency>
 
 <!-- 为了让三方依赖和 koupleless 模式适配，需要引入以下构建插件 -->

@@ -35,7 +35,7 @@ minikube start
 ```
 
 ## Step 2: One-Click Start Koupleless
-Use **git** to clone the Koupleless project from GitHub: [https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless) <br />Execute the **make dev** command under the **module-controller** directory to deploy the environment with one click. The minikube service command will be automatically executed to pop up a webpage. Since you have not yet released the module, the webpage will not display any content.
+Use **git** to clone the Koupleless project from GitHub: [https://github.com/koupleless/module-controller](https://github.com/koupleless/module-controller) <br />Execute the **make dev** command under the **module-controller** directory to deploy the environment with one click. The minikube service command will be automatically executed to pop up a webpage. Since you have not yet released the module, the webpage will not display any content.
 
 ## Step 3: Module Deployment in Seconds
 Execute the following command:

@@ -39,7 +39,7 @@ minikube start
 ```
 
 ## 步骤 2：一键启动 Koupleless
-使用 **git** 拉取 GitHub Koupleless 项目：[https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless) <br />在 **module-controller** 目录下执行 **make dev** 命令一键部署环境，会自动执行 minikube service 命令弹出网页，由于此时您还没有发布模块，所以网页不会有任何内容显示。
+使用 **git** 拉取 GitHub Koupleless 项目：[https://github.com/koupleless/module-controller](https://github.com/koupleless/module-controller) <br />在 **module-controller** 目录下执行 **make dev** 命令一键部署环境，会自动执行 minikube service 命令弹出网页，由于此时您还没有发布模块，所以网页不会有任何内容显示。
 
 ## 步骤 3：秒级发布模块
 执行以下命令：
