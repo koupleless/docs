@@ -6,24 +6,23 @@ weight: 200
 ---
 
 ## Why Slimming?
-In order to make the module installation faster and reduce memory consumption:
 
-- Speed up the module installation, reduce the size of the module package, reduce startup dependencies, and control the module installation time to less than 30 seconds, or even less than 5 seconds.
-- After the module is started, many objects will be created in the Spring context. If module hot unloading is enabled, it may not be completely recycled. Too many installations will result in large overhead in the Old area and Metaspace area, triggering frequent FullGC. Therefore, the package size of a single module should be controlled to be less than 5MB. **This way, you can hot deploy and unload the module hundreds of times without replacing or restarting the pedestal.**
 
-## Basic Principles of Slimming
-Koupleless relies on the underlying SOFAArk framework to achieve mutual isolation between modules, between modules and the pedestal, and the following two core logics are very important for coding and need to be deeply understood:
+Using the underlying SOFAArk framework, Koupleless achieves class isolation between modules and between modules and the base. When the module starts, it initializes various objects and **prioritizes using the module's class loader** to load classes, resources, and JAR files from the FatJar build artifact. **Classes that cannot be found will be delegated to the base's class loader** for retrieval.
 
-1. The pedestal has an independent class loader and Spring context, and the module also has **independent class loader** and **Spring context**, and the Spring contexts are **isolated from each other**.
-2. When a module starts, it will initialize various objects, and will **use the module's class loader first** to load the classes, resources, and JAR files in the built artifact FatJar. If the class is not found, it will delegate to the pedestal's class loader to search.
-
-```html
 <div style="text-align: center;">
     <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/jpeg/8276/1678275655551-75bf283f-3817-447a-84b2-7f6f7f773300.jpeg"/>
 </div>
-```
 
-Based on this delegation-based loading mechanism, the classes, resources, and JAR files shared by the base and module **sink** into the base, which can make the module's built artifact **very small**. More importantly, it can also allow modules to largely reuse the base's existing resources such as classes, beans, services, IO connection pools, and thread pools during runtime, making the module consume very little memory and start up very quickly. <br /> The so-called slimming of the module is to exclude the Jar dependencies already in the base from participating in the module packaging.
+Based on this class delegation loading mechanism, the common classes, resources, and JAR files shared by the base and modules **all sink** into the base, allowing the module build artifact to be **very small**, resulting in **very low** memory consumption for the module and **very fast** startup. 
+
+Furthermore, after the module starts, many objects will be created in the Spring context. If module hot-unloading is enabled, complete recycling may not be possible, and excessive installations can cause high overhead in the Old generation and Metaspace, triggering frequent FullGC. Therefore, it is necessary to control the size of individual module packages to be < 5MB. **In this way, the base can hot deploy and hot unload hundreds of times without replacement or restarting.**
+
+The so-called "module slimming" means that the JAR dependencies already present in the base do not participate in the module packaging and construction, thus achieving the two benefits mentioned above:
+
+- Increase the speed of module installation, reduce module package size, reduce startup dependencies, and control module installation time < 30 seconds, or even < 5 seconds.
+- In the hot deploy and hot unload scenario, the base can hot deploy and hot unload hundreds of times without replacement or restart.
+
 
 ## Slimming Principles
 The principle of building the ark-biz jar package is to place common packages such as frameworks and middleware in the base as much as possible while ensuring the functionality of the module, and reuse the base packages in the module, making the resulting ark-biz jar more lightweight. 
@@ -126,9 +125,11 @@ In addition: For some dependencies, even if the module and pedestal use the same
 </build>
 ```
 
-#### Step 3
+#### Step 3: Configure Module Dependency Whitelist
 
-Simply build the module ark-biz jar package, and you will see a significant difference in the size of the slimmed ark-biz jar package.
+For some dependencies, even if the module and pedestal use the same version of the dependency, the dependency needs to be retained when the module is packaged. This requires configuring a module slimming dependency whitelist. This feature will be launched by the end of July.
+
+#### Step 4: Package Building
 
 ### Scenario 2: The pedestal and the module have loose cooperation, such as resource saving in multi-application merge deployment
 
