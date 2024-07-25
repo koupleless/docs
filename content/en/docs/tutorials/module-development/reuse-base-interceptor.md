@@ -37,13 +37,18 @@ public class FacadeAroundHandler implements AnnotionService {
 ```
 
 ### Step 3:
-In the module, use the @Aspect annotation to implement an Aspect. SOFABoot injects the FacadeAroundHandler on the base via @SofaReference. <br />**Note**: Do not declare this as a bean, do not add @Component or @Service annotation, only @Aspect annotation is needed.
+In the module, use the @Aspect annotation to implement an Aspect. SOFABoot injects the FacadeAroundHandler on the base via @SofaReference. If it is SpringBoot, then use @AutowiredFromBase to inject FacadeAroundHandler on the base.
+<br />
+
+**Note**: Do not declare this as a bean, do not add @Component or @Service annotation, only @Aspect annotation is needed.
 ```java
 // Note: Do not declare this as a bean, do not add @Component or @Service annotation
 @Aspect
 public class FacadeAroundAspect {
 
+    // If it is SOFABoot, use @SofaReference; if it is SpringBoot, use @AutowiredFromBase.
     @SofaReference(uniqueId = "facadeAroundHandler")
+    //@AutowiredFromBase
     private AnnotionService facadeAroundHandler;
 
     @Pointcut("@annotation(com.alipay.linglongmng.presentation.mvc.interceptor.FacadeAround)")
