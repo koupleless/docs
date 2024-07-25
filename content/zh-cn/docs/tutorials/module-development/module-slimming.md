@@ -79,6 +79,8 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 
 构建出来的 pom 在 outputs 目录下，也会自动安装至本地的 maven 仓库。
 
+**注意**，该步骤不会将 “基座依赖-starter” 上传至 maven 仓库。欢迎后续讨论补充 “上传至 maven 仓库/用户指定 oss” 的方案。
+
 #### 步骤二 模块修改打包插件和 parent
 **目标**
 1. 模块开发时，将步骤一中的 “基座-dependencies-starter” 作为模块项目的 parent，统一管理依赖版本；

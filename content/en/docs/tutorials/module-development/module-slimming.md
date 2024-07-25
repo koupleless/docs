@@ -31,20 +31,20 @@ In different scenarios, complex applications can choose different slimming metho
 
 ## Scenarios and Corresponding Slimming Methods
 
-## Scenario 1: The pedestal and the module have close cooperation, such as the middle platform mode/shared library mode
+## Scenario 1: The base and the module have close cooperation, such as the middle platform mode/shared library mode
 
-In the case of close cooperation between the pedestal and modules, the modules should perceive some facade classes of the pedestal and the dependency versions currently used by the pedestal during development, and import the required dependencies as needed. During module packaging, only two types of dependencies should be included: dependencies that the pedestal does not have, and dependencies whose versions are inconsistent with those of the pedestal.
+In the case of close cooperation between the base and modules, the modules should perceive some facade classes of the base and the dependency versions currently used by the base during development, and import the required dependencies as needed. During module packaging, only two types of dependencies should be included: dependencies that the base does not have, and dependencies whose versions are inconsistent with those of the base.
 
-Therefore, the pedestal needs to:
-1. Unified control over module dependency versions to let module developers know which dependencies the pedestal has during development, to mitigate risks, and allow module developers to import part of the dependencies as needed without specifying versions.
+Therefore, the base needs to:
+1. Unified control over module dependency versions to let module developers know which dependencies the base has during development, to mitigate risks, and allow module developers to import part of the dependencies as needed without specifying versions.
 
 The module needs to:
-1. Only include dependencies that are not in the pedestal and dependencies whose versions are inconsistent with those of the pedestal during packaging to reduce the cost of slimming the module
+1. Only include dependencies that are not in the base and dependencies whose versions are inconsistent with those of the base during packaging to reduce the cost of slimming the module
 
-#### Step 1: Packaging "pedestal-dependencies-starter"
+#### Step 1: Packaging "base-dependencies-starter"
 **Objective**
 
-This step will produce "pedestal dependency-starter" for unified control of module dependency versions.
+This step will produce "base-dependencies-starter" for unified control of module dependency versions.
 
 **Pom configuration for base bootstrap:**
 
@@ -58,7 +58,7 @@ Note: The dependencyArtifactId in the following configuration needs to be modifi
         <artifactId>koupleless-base-build-plugin</artifactId>
         <version>1.2.4-SNAPSHOT</version>
         <configuration>
-            <!-- Generate the artifactId of the starter (groupId consistent with the pedestal), which needs to be modified here!! -->
+            <!-- Generate the artifactId of the starter (groupId consistent with the base), which needs to be modified here!! -->
             <dependencyArtifactId>${baseAppName}-dependencies-starter</dependencyArtifactId>
             <!-- Generate the version number of the jar -->
             <dependencyVersion>0.0.1-SNAPSHOT</dependencyVersion>
@@ -72,22 +72,24 @@ Note: The dependencyArtifactId in the following configuration needs to be modifi
 
 **Local test**
 
-1. Pack the pedestal dependency-starter jar: execute the command in the root directory of the pedestal:
+1. Pack the base-dependencies-starter jar: execute the command in the root directory of the base:
 
 ```shell
-mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -f ${Relative path of the pedestal bootstrap pom to the root directory of the pedestal} 
+mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -f ${Relative path of the base bootstrap pom to the root directory of the base} 
 ```
 
 The constructed pom will be in the outputs directory and will be automatically installed in the local Maven repository.
 
-#### Step 2: Module modification packaging plug-in and parent
+**Note**, this step will not upload "base-dependencies-starter" to the maven repository. We welcome further discussion to supplement the solution of "uploading to the maven repository/user-specified oss".
+
+#### Step 2: Module modification packaging plugin and parent
 
 **Objective**
 
-1. When developing the module, use the "pedestal-dependencies-starter" from Step 1 as the parent of the module project for unified management of dependency versions;
-2. Modify the module packaging plug-in to only include "dependencies not in the pedestal" and "dependencies whose versions are inconsistent with those of the pedestal" when packaging the module, eliminating the need to manually configure "provided" and achieving automatic slimming of the module.
+1. When developing the module, use the "base-dependencies-starter" from Step 1 as the parent of the module project for unified management of dependency versions;
+2. Modify the module packaging plug-in to only include "dependencies not in the base" and "dependencies whose versions are inconsistent with those of the base" when packaging the module, eliminating the need to manually configure "provided" and achieving automatic slimming of the module.
 
-In addition: For some dependencies, even if the module and pedestal use the same dependency version, the dependency needs to be retained when the module is packaged, i.e., the module slimming dependency whitelist needs to be configured. This feature will be launched at the end of July.
+In addition: For some dependencies, even if the module and base use the same dependency version, the dependency needs to be retained when the module is packaged, i.e., the module slimming dependency whitelist needs to be configured. This feature will be launched at the end of July.
 
 **Configure the parent in the module's root directory pom:**
 
@@ -99,7 +101,7 @@ In addition: For some dependencies, even if the module and pedestal use the same
 </parent>
 ```
 
-**Configure plug-in in the module's packaging pom:**
+**Configure plugin in the module's packaging pom:**
 
 ```xml
 <build>
@@ -117,7 +119,7 @@ In addition: For some dependencies, even if the module and pedestal use the same
                </execution>
            </executions>
            <configuration>
-               <!-- Configure the identifier of "pedestal-dependencies-starter", standardized as '${groupId}:${artifactId}':'version' -->
+               <!-- Configure the identifier of "base-dependencies-starter", standardized as '${groupId}:${artifactId}':'version' -->
                <baseDependencyParentIdentity>com.alipay:${baseAppName}-dependencies-starter:0.0.1-SNAPSHOT</baseDependencyParentIdentity>
            </configuration>
        </plugin>
@@ -127,13 +129,13 @@ In addition: For some dependencies, even if the module and pedestal use the same
 
 #### Step 3: Configure Module Dependency Whitelist
 
-For some dependencies, even if the module and pedestal use the same version of the dependency, the dependency needs to be retained when the module is packaged. This requires configuring a module slimming dependency whitelist. This feature will be launched by the end of July.
+For some dependencies, even if the module and base use the same version of the dependency, the dependency needs to be retained when the module is packaged. This requires configuring a module slimming dependency whitelist. This feature will be launched by the end of July.
 
 #### Step 4: Package Building
 
-### Scenario 2: The pedestal and the module have loose cooperation, such as resource saving in multi-application merge deployment
+### Scenario 2: The base and the module have loose cooperation, such as resource saving in multi-application merge deployment
 
-In the case of loose cooperation between the pedestal and the module, the module should not perceive the dependency versions currently used by the pedestal during development, so the module needs to focus more on the low-cost access to module slimming. Dependencies that need to be excluded from module packaging can be configured.
+In the case of loose cooperation between the base and the module, the module should not perceive the dependency versions currently used by the base during development, so the module needs to focus more on the low-cost access to module slimming. Dependencies that need to be excluded from module packaging can be configured.
 
 ### Method 1: SOFAArk Configuration File Combining
 #### Step 1
@@ -143,7 +145,7 @@ SOFAArk Module Slimming reads configuration from two places:
 #### Configuration
 ##### bootstrap.properties (recommended)
 
-Configure the common package of frameworks and middleware that need to be sunk to the pedestal in "Module Project Root Directory/conf/ark/bootstrap.properties" in the following format, such as:
+Configure the common package of frameworks and middleware that need to be sunk to the base in "Module Project Root Directory/conf/ark/bootstrap.properties" in the following format, such as:
 
 ```properties
 # excludes config ${groupId}:{artifactId}:{version}, split by ','

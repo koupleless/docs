@@ -11,7 +11,7 @@ weight: 100
 2. SOFABoot version >= 3.9.0 or SOFABoot >= 4.0.0 (for SOFABoot users)
 3. Install maven version >= 3.9.0 locally
 
-Note: SpringBoot version == 2.1.9.RELEASE, see [Upgrade SpringBoot 2.1.9 to Pedestal](#upgrade-springboot-219-to-base)
+Note: SpringBoot version == 2.1.9.RELEASE, see [Upgrade SpringBoot 2.1.9 to base](#upgrade-springboot-219-to-base)
 
 ## Access Steps
 
