@@ -80,7 +80,7 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 
 The constructed pom will be in the outputs directory and will be automatically installed in the local Maven repository.
 
-**Note**, this step will not upload "base-dependencies-starter" to the maven repository. We welcome further discussion to supplement the solution of "uploading to the maven repository/user-specified oss".
+**Note**, this step will not upload "base-dependencies-starter" to the maven repository. We welcome further discussion to supplement the solution of "uploading to the maven repository".
 
 #### Step 2: Module modification packaging plugin and parent
 
