@@ -12,13 +12,37 @@ weight: 200
 - 模块启动后 Spring 上下文中会创建很多对象，如果启用了模块热卸载，可能无法完全回收，安装次数过多会造成 Old 区、Metaspace 区开销大，触发频繁 FullGC，所有要控制单模块包大小 < 5MB。**这样不替换或重启基座也能热部署热卸载数百次。**
 
 
-## 一键自动瘦身（推荐）
+## 瘦身的基本原理
+Koupleless 底层借助 SOFAArk 框架，实现了模块之间、模块和基座之间的相互隔离，以下两个核心逻辑对编码非常重要，需要深刻理解：
 
-### 瘦身原则
+1. 基座有独立的类加载器和 Spring 上下文，模块也有**独立的类加载器**和** Spring 上下文**，相互之间 Spring 上下文都是**隔离的**。
+2. 模块启动时会初始化各种对象，会**优先使用模块的类加载器**去加载构建产物 FatJar 中的 class、resource 和 Jar 包，**找不到的类会委托基座的类加载器**去查找。
 
-构建 ark-biz jar 包的原则是，在保证模块功能的前提下，将框架、中间件等通用的包尽量放置到基座中，模块中复用基座的包，这样打出的 ark-biz jar 会更加轻量。在复杂应用中，为了更好的使用模块自动瘦身功能，需要在模块瘦身配置 (模块根目录/conf/ark/文件名.txt) 中，在样例给出的配置名单的基础上，按照既定格式，排除更多的通用依赖包。
+<div style="text-align: center;">
+    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/jpeg/8276/1678275655551-75bf283f-3817-447a-84b2-7f6f7f773300.jpeg"/>
+</div>
 
-### 步骤一 打包“基座-dependencies-starter”
+基于这套类委托的加载机制，让基座和模块共用的 class、resource 和 Jar 包**通通下沉**到基座中，可以让模块构建产物**非常小**，更重要的是还能让模块在运行中大量复用基座已有的 class、bean、service、IO 连接池、线程池等资源，从而模块消耗的内存**非常少**，启动也能**非常快**。<br />所谓模块瘦身，就是让基座已经有的 Jar 依赖不参与模块打包构建。
+
+## 瘦身原则
+
+构建 ark-biz jar 包的原则是，在保证模块功能的前提下，将框架、中间件等通用的包尽量放置到基座中，模块中复用基座的包，这样打出的 ark-biz jar 会更加轻量。
+
+在不同场景下，复杂应用可以选择不同的方式瘦身。
+
+## 场景及相应的瘦身方式
+
+### 场景一：基座和模块协作紧密，如中台模式 / 共库模式
+
+在基座和模块协作紧密的情况下，模块应该在开发时就感知基座的部分facade类和基座正使用的依赖版本，并按需引入需要的依赖。 模块打包时，仅打包两种依赖：基座没有的依赖，模块和基座版本不一致的依赖。
+
+因此，需要让基座：
+1. 统一管控模块依赖版本，让模块开发时就知道基座有哪些依赖，风险前置，而且模块开发者按需引入部分依赖，无需指定版本。
+
+需要让模块：
+1. 打包时，仅打包基座没有的依赖、和基座版本不一致的依赖，降低模块瘦身成本
+
+#### 步骤一 打包“基座-dependencies-starter”
 
 **目标**
 
@@ -58,7 +82,7 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 
 构建出来的 pom 在 outputs 目录下，也会自动安装至本地的 maven 仓库。
 
-### 步骤二 模块修改打包插件和 parent
+#### 步骤二 模块修改打包插件和 parent
 **目标**
 1. 模块开发时，将步骤一中的 “基座-dependencies-starter” 作为模块项目的 parent，统一管理依赖版本；
 2. 修改模块打包插件，模块打包时只将“基座没有的依赖”、“与基座版本不一致的依赖”打包进模块，而**不用手动配置“provided”，自动实现模块瘦身**。
@@ -100,36 +124,24 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 </build>
 ```
 
-### 步骤三
+#### 步骤三
 
 打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异。
 
-您可[点击此处](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming)查看完整模块瘦身样例工程。您也可以阅读下文继续了解模块的瘦身原理。
 
-## 基本原理
-Koupleless 底层借助 SOFAArk 框架，实现了模块之间、模块和基座之间的相互隔离，以下两个核心逻辑对编码非常重要，需要深刻理解：
 
-1. 基座有独立的类加载器和 Spring 上下文，模块也有**独立的类加载器**和** Spring 上下文**，相互之间 Spring 上下文都是**隔离的**。
-2. 模块启动时会初始化各种对象，会**优先使用模块的类加载器**去加载构建产物 FatJar 中的 class、resource 和 Jar 包，**找不到的类会委托基座的类加载器**去查找。
+### 场景二：基座和模块协作松散，如多应用合并部署节省资源
 
-<div style="text-align: center;">
-    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/jpeg/8276/1678275655551-75bf283f-3817-447a-84b2-7f6f7f773300.jpeg"/>
-</div>
-
-基于这套类委托的加载机制，让基座和模块共用的 class、resource 和 Jar 包**通通下沉**到基座中，可以让模块构建产物**非常小**，更重要的是还能让模块在运行中大量复用基座已有的 class、bean、service、IO 连接池、线程池等资源，从而模块消耗的内存**非常少**，启动也能**非常快**。<br />所谓模块瘦身，就是让基座已经有的 Jar 依赖务必在模块中剔除干净，在主 pom.xml 和 bootstrap/pom.xml 将共用的 Jar 包 **scope 都声明为 provided**，让其不参与打包构建。
-
-## 其他瘦身方式（不推荐）
-
+在基座和模块协作松散的情况下，模块不应该在开发时感知基座正使用的依赖版本，因此模块更需要注重模块瘦身的低成本接入，可以配置模块打包需要排除的依赖。
 
 ### 方式一：SOFAArk 配置文件排包
 
 ### 步骤一
 
-SOFAArk 模块瘦身会读取三处配置文件：
+SOFAArk 模块瘦身会读取两处配置文件：
 
 - "模块项目根目录/conf/ark/bootstrap.properties"，比如：my-module/conf/ark/bootstrap.properties
 - "模块项目根目录/conf/ark/bootstrap.yml"，比如：my-module/conf/ark/bootstrap.yml
-- "模块项目根目录/conf/ark/文件名.txt"，比如：my-module/conf/ark/rules.txt
 
 #### 配置方式
 
@@ -163,18 +175,10 @@ excludeArtifactIds:
   - sofa-ark-spi
 ```
 
-##### rules.txt (不推荐)
-
-在「模块项目根目录/conf/ark/文件名.txt」中按照如下格式配置需要下沉到基座的框架和中间件常用包。您也可以直接复制[默认的 rules.txt 文件内容](https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt)到您的项目中。
-
-```xml
-excludeGroupIds=org.apache*
-excludeArtifactIds=commons-lang
-```
 
 ### 步骤二
 
-在模块打包插件中，引入上述配置文件：
+升级模块打包插件 `sofa-ark-maven-plugin` 版本 >= 2.2.12
 
 ```xml
     <!-- 插件1：打包插件为 sofa-ark biz 打包插件，打包成 ark biz jar -->
@@ -194,14 +198,8 @@ excludeArtifactIds=commons-lang
             <skipArkExecutable>true</skipArkExecutable>
             <outputDirectory>./target</outputDirectory>
             <bizName>biz1</bizName>
-            <!-- packExcludesConfig	模块瘦身配置，文件名自定义，和配置对应即可-->
-            <!--					配置文件位置：biz1/conf/ark/rules.txt-->
-            <packExcludesConfig>rules.txt</packExcludesConfig>
             <webContextPath>biz1</webContextPath>
             <declaredMode>true</declaredMode>
-            <!--					打包、安装和发布 ark biz-->
-            <!--					静态合并部署需要配置-->
-            <!--					<attach>true</attach>-->
         </configuration>
     </plugin>
 ```
@@ -210,83 +208,4 @@ excludeArtifactIds=commons-lang
 
 打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异。
 
-您可[点击此处](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming)查看完整模块瘦身样例工程。您也可以阅读下文继续了解模块的瘦身原理。
-
-
-### 方式二：pom 中排包瘦身
-
-#### 排包技巧一：利用 maven helper 插件
-
-模块运行时装载类时，会优先从自己的依赖里找，找不到的话再委托基座的 ClassLoader 去加载。<br />所以对于基座已经存在的依赖，在模块 pom 里将其 scope 设置成 provided，避免其参与模块打包。<br />
-
-<div style="text-align: center;">
-    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/8276/1678276103445-036d226e-4f88-40bc-937d-90fd4c60b83d.png#clientId=udf1ce5b3-f5a9-4&from=paste&height=521&id=jFiln&originHeight=1042&originWidth=1848&originalType=binary&ratio=2&rotation=0&showTitle=false&size=957278&status=done&style=none&taskId=u254c8709-de81-4175-bcf8-f1c4a26bc49&title=&width=924"/>
-</div>
-
-如果要排除的依赖无法找到，可以利用 **maven helper 插件**找到其直接依赖。举个例子，图示中要排除的依赖为 spring-boot-autoconfigure，右边的直接依赖有 sofa-boot-alipay-runtime，ddcs-alipay-sofa-boot-starter等（只需要看 scope 为 compile 的依赖）：<br />
-
-<div style="text-align: center;">
-    <img width="800" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/191604/1691733668683-34a9d11f-3ca6-4b66-a4e3-22ade9413094.png#clientId=u05d65c58-49f7-4&from=paste&height=869&id=u467da8b5&originHeight=1738&originWidth=2644&originalType=binary&ratio=2&rotation=0&showTitle=false&size=1043897&status=done&style=none&taskId=u70530c01-d7a5-4ca9-875d-3785f59242b&title=&width=1322"/>
-</div>
-
-<br />确定自己代码 pom.xml 中有 ddcs-alipay-sofa-boot-starter，增加 exlcusions 来排除依赖：<br />
-
-<div style="text-align: center;">
-    <img width="600" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/191604/1691735644585-9201c203-b749-46e9-ab96-49ecc8090098.png#clientId=uda997d0f-c9aa-4&from=paste&height=244&id=ub08bbabe&originHeight=488&originWidth=1476&originalType=binary&ratio=2&rotation=0&showTitle=false&size=85290&status=done&style=none&taskId=u7f72a9d1-a1cd-422e-a50a-beafc4a9c4a&title=&width=738"/>
-</div>
-
-
-#### 排包技巧二：在 pom 中统一排包（更彻底）
-
-有些依赖引入了过多的间接依赖，手动排查比较困难，此时可以通过通配符匹配，把那些中间件、基座的依赖全部剔除掉，如 org.apache.commons、org.springframework 等等，这种方式会把间接依赖都排除掉，相比使用 sofa-ark-maven-plugin 排包效率会更高：
-
-```xml
-<dependency>
-    <groupId>com.koupleless.mymodule</groupId>
-    <artifactId>mymodule-core</artifactId>
-    <exclusions>
-          <exclusion>
-              <groupId>org.springframework</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>org.apache.commons</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>......</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-    </exclusions>
-</dependency>
-```
-
-#### 排包技巧三：在 sofa-ark-maven-plugin 中指定排包
-通过使用 **excludeGroupIds、excludeGroupIds **能够排除大量基座上已有的公共依赖：
-
-```xml
- <plugin>
-      <groupId>com.alipay.sofa</groupId>
-      <artifactId>sofa-ark-maven-plugin</artifactId>
-      <executions>
-          <execution>
-              <id>default-cli</id>
-              <goals>
-                  <goal>repackage</goal>
-              </goals>
-          </execution>
-      </executions>
-      <configuration>
-          <excludeGroupIds>io.netty,org.apache.commons,......</excludeGroupIds>
-          <excludeArtifactIds>validation-api,fastjson,hessian,slf4j-api,junit,velocity,......</excludeArtifactIds>
-          <outputDirectory>../../target</outputDirectory>
-          <bizName>mymodule</bizName>
-          <finalName>mymodule-${project.version}-${timestamp}</finalName>
-          <bizVersion>${project.version}-${timestamp}</bizVersion>
-          <webContextPath>/mymodule</webContextPath>
-      </configuration>
-  </plugin>
-```
-
-<br/>
-<br/>
+您可[点击此处](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming)查看完整模块瘦身样例工程。

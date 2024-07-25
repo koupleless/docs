@@ -4,24 +4,52 @@ date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Slimming
 weight: 200
 ---
-## Why Slim Modules
-To make module installation faster and reduce memory usage:
-- Improve the speed of module installation, reduce module package size, and reduce startup dependencies. Control module installation time to be < 30 seconds, or even < 5 seconds.
-- After a module starts, many objects are created in the Spring context. If module hot unloading is enabled, it may be impossible to completely reclaim resources, causing high overhead in the Old and Metaspace areas and frequent FullGC triggers. Therefore, it's necessary to control the size of a single module package to be < 5MB. **This allows hundreds of hot deploys and hot unloads without replacing or restarting the base.**
 
-## One-Click Automatic Slimming (Recommended)
-### Slimming Principles
+## Why Slimming?
+In order to make the module installation faster and reduce memory consumption:
 
-The principle of building an ark-biz jar package is to place common packages like frameworks and middleware into the base as much as possible while ensuring the module's functionality. Reuse the base's packages in the module to make the ark-biz jar lighter. For complex applications, to better use automatic module slimming, configure more common dependencies to exclude in the module slimming configuration (module root directory /conf/ark/filename.txt) based on the sample given.
+- Speed up the module installation, reduce the size of the module package, reduce startup dependencies, and control the module installation time to less than 30 seconds, or even less than 5 seconds.
+- After the module is started, many objects will be created in the Spring context. If module hot unloading is enabled, it may not be completely recycled. Too many installations will result in large overhead in the Old area and Metaspace area, triggering frequent FullGC. Therefore, the package size of a single module should be controlled to be less than 5MB. **This way, you can hot deploy and unload the module hundreds of times without replacing or restarting the pedestal.**
 
-### Step 1: Package "Base-dependencies-starter"
-**Goal**
+## Basic Principles of Slimming
+Koupleless relies on the underlying SOFAArk framework to achieve mutual isolation between modules, between modules and the pedestal, and the following two core logics are very important for coding and need to be deeply understood:
 
-This step will package the "Base dependencies-starter" to uniformly manage module dependency versions.
+1. The pedestal has an independent class loader and Spring context, and the module also has **independent class loader** and **Spring context**, and the Spring contexts are **isolated from each other**.
+2. When a module starts, it will initialize various objects, and will **use the module's class loader first** to load the classes, resources, and JAR files in the built artifact FatJar. If the class is not found, it will delegate to the pedestal's class loader to search.
 
-**Add configuration to base bootstrap pom**
+```html
+<div style="text-align: center;">
+    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/jpeg/8276/1678275655551-75bf283f-3817-447a-84b2-7f6f7f773300.jpeg"/>
+</div>
+```
 
-Note: The dependencyArtifactId in the following configuration needs to be modified, usually to ${baseAppName}-dependencies-starter.
+Based on this delegation-based loading mechanism, the classes, resources, and JAR files shared by the base and module **sink** into the base, which can make the module's built artifact **very small**. More importantly, it can also allow modules to largely reuse the base's existing resources such as classes, beans, services, IO connection pools, and thread pools during runtime, making the module consume very little memory and start up very quickly. <br /> The so-called slimming of the module is to exclude the Jar dependencies already in the base from participating in the module packaging.
+
+## Slimming Principles
+The principle of building the ark-biz jar package is to place common packages such as frameworks and middleware in the base as much as possible while ensuring the functionality of the module, and reuse the base packages in the module, making the resulting ark-biz jar more lightweight. 
+
+In different scenarios, complex applications can choose different slimming methods.
+
+## Scenarios and Corresponding Slimming Methods
+
+## Scenario 1: The pedestal and the module have close cooperation, such as the middle platform mode/shared library mode
+
+In the case of close cooperation between the pedestal and modules, the modules should perceive some facade classes of the pedestal and the dependency versions currently used by the pedestal during development, and import the required dependencies as needed. During module packaging, only two types of dependencies should be included: dependencies that the pedestal does not have, and dependencies whose versions are inconsistent with those of the pedestal.
+
+Therefore, the pedestal needs to:
+1. Unified control over module dependency versions to let module developers know which dependencies the pedestal has during development, to mitigate risks, and allow module developers to import part of the dependencies as needed without specifying versions.
+
+The module needs to:
+1. Only include dependencies that are not in the pedestal and dependencies whose versions are inconsistent with those of the pedestal during packaging to reduce the cost of slimming the module
+
+#### Step 1: Packaging "pedestal-dependencies-starter"
+**Objective**
+
+This step will produce "pedestal dependency-starter" for unified control of module dependency versions.
+
+**Pom configuration for base bootstrap:**
+
+Note: The dependencyArtifactId in the following configuration needs to be modified, generally to ${baseAppName}-dependencies-starter
 
 ```xml
 <build>
@@ -31,37 +59,38 @@ Note: The dependencyArtifactId in the following configuration needs to be modifi
         <artifactId>koupleless-base-build-plugin</artifactId>
         <version>1.2.4-SNAPSHOT</version>
         <configuration>
-            <!-- ArtifactId for generated starter (groupId same as base), needs modification -->
+            <!-- Generate the artifactId of the starter (groupId consistent with the pedestal), which needs to be modified here!! -->
             <dependencyArtifactId>${baseAppName}-dependencies-starter</dependencyArtifactId>
-            <!-- Version number for generated jar -->
+            <!-- Generate the version number of the jar -->
             <dependencyVersion>0.0.1-SNAPSHOT</dependencyVersion>
-            <!-- For debugging, set to true to see intermediate build artifacts -->
+            <!-- For debugging, change to true to see the intermediate products of the packaging -->
             <cleanAfterPackageDependencies>false</cleanAfterPackageDependencies>
         </configuration>
     </plugin>
   </plugins>
 </build>
 ```
-**Local Testing**
 
-1. Package the base dependency-starter jar: Execute the command in the base root directory:
+**Local test**
 
-``` shell
-mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -f ${Relative path to base bootstrap pom from base root directory} 
+1. Pack the pedestal dependency-starter jar: execute the command in the root directory of the pedestal:
+
+```shell
+mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -f ${Relative path of the pedestal bootstrap pom to the root directory of the pedestal} 
 ```
 
-The constructed pom will be in the outputs directory and will be automatically installed into the local maven repository.
+The constructed pom will be in the outputs directory and will be automatically installed in the local Maven repository.
 
-### Step 2: Modify Module Packaging Plugin and Parent
+#### Step 2: Module modification packaging plug-in and parent
 
-**Goal**
+**Objective**
 
-1. When developing modules, use the "Base-dependencies-starter" from Step 1 as the module project's parent to manage dependency versions uniformly.
-2. Modify the module packaging plugin so that only dependencies "absent in the base" or "with different versions from the base" are packaged into the module, achieving seamless module slimming without manually configuring "provided".
+1. When developing the module, use the "pedestal-dependencies-starter" from Step 1 as the parent of the module project for unified management of dependency versions;
+2. Modify the module packaging plug-in to only include "dependencies not in the pedestal" and "dependencies whose versions are inconsistent with those of the pedestal" when packaging the module, eliminating the need to manually configure "provided" and achieving automatic slimming of the module.
 
-Note: Sometimes the dependency still needs to be retained while packaging the module, although the base and module use the same dependency version. This feature will be launched by the end of July.
+In addition: For some dependencies, even if the module and pedestal use the same dependency version, the dependency needs to be retained when the module is packaged, i.e., the module slimming dependency whitelist needs to be configured. This feature will be launched at the end of July.
 
-**Configure parent in module root pom:**
+**Configure the parent in the module's root directory pom:**
 
 ```xml
 <parent>
@@ -71,7 +100,7 @@ Note: Sometimes the dependency still needs to be retained while packaging the mo
 </parent>
 ```
 
-**Configure plugin in module packaging pom:**
+**Configure plug-in in the module's packaging pom:**
 
 ```xml
 <build>
@@ -89,45 +118,31 @@ Note: Sometimes the dependency still needs to be retained while packaging the mo
                </execution>
            </executions>
            <configuration>
-               <!-- Configuration of base-dependencies-starter's identifier, format: '${groupId}:${artifactId}':'version' -->
+               <!-- Configure the identifier of "pedestal-dependencies-starter", standardized as '${groupId}:${artifactId}':'version' -->
                <baseDependencyParentIdentity>com.alipay:${baseAppName}-dependencies-starter:0.0.1-SNAPSHOT</baseDependencyParentIdentity>
            </configuration>
        </plugin>
    </plugins>
 </build>
 ```
-### Step 3
-Package the module to generate the ark-biz jar package. You will notice a significant size difference in the slimmed ark-biz jar package.
 
-You can [click here](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming) to view the complete module slimming sample project. You can also continue reading below to understand the principles behind module slimming.
+#### Step 3
 
-## Basic Principles
-Koupleless leverages the SOFAArk framework to achieve mutual isolation between modules, and between modules and the base. The following core logic is crucial and must be deeply understood:
+Simply build the module ark-biz jar package, and you will see a significant difference in the size of the slimmed ark-biz jar package.
 
-1. The base has its own class loader and Spring context, and each module also has its own **class loader** and **Spring context**. The Spring contexts are **isolated** from each other.
-2. During module startup, various objects are initialized. The module's class loader is **prioritized** to load classes, resources, and jars from the FatJar package. **If the class is not found, it delegates the base class loader** to find it.
+### Scenario 2: The pedestal and the module have loose cooperation, such as resource saving in multi-application merge deployment
 
-<div style="text-align: center;">
-    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/jpeg/8276/1678275655551-75bf283f-3817-447a-84b2-7f6f7f773300.jpeg"/>
-</div>
+In the case of loose cooperation between the pedestal and the module, the module should not perceive the dependency versions currently used by the pedestal during development, so the module needs to focus more on the low-cost access to module slimming. Dependencies that need to be excluded from module packaging can be configured.
 
-This class delegation mechanism allows the base and module to share classes, resources, and jar files, **reducing** the module's size significantly. More importantly, it allows modules to extensively reuse the base's classes, beans, services, IO connection pools, thread pools, and other resources during runtime, leading to **minimal** memory consumption and **fast** startup times for modules.
-
-Module slimming essentially means ensuring that jar dependencies already present in the base are thoroughly excluded from the module. Declare the shared jar dependencies as **provided** in both the main pom.xml and bootstrap/pom.xml, so they don't participate in the build process.
-
-## Other Slimming Methods (Not Recommended)
-### Method 1: SOFAArk Configuration File Exclusion
-### Step 1
-SOFAArk module slimming reads three types of configuration files:
-
-- "Module root directory/conf/ark/bootstrap.properties", e.g., my-module/conf/ark/bootstrap.properties
-- "Module root directory/conf/ark/bootstrap.yml", e.g., my-module/conf/ark/bootstrap.yml
-- "Module root directory/conf/ark/filename.txt", e.g., my-module/conf/ark/rules.txt
-
+### Method 1: SOFAArk Configuration File Combining
+#### Step 1
+SOFAArk Module Slimming reads configuration from two places:
+- "Module Project Root Directory/conf/ark/bootstrap.properties", such as: my-module/conf/ark/bootstrap.properties
+- "Module Project Root Directory/conf/ark/bootstrap.yml", such as: my-module/conf/ark/bootstrap.yml
 #### Configuration
-##### bootstrap.properties (Recommended)
+##### bootstrap.properties (recommended)
 
-In the "Module root directory/conf/ark/bootstrap.properties", configure the common framework and middleware packages to be delegated to the base in the following format:
+Configure the common package of frameworks and middleware that need to be sunk to the pedestal in "Module Project Root Directory/conf/ark/bootstrap.properties" in the following format, such as:
 
 ```properties
 # excludes config ${groupId}:{artifactId}:{version}, split by ','
@@ -138,14 +153,14 @@ excludeGroupIds=org.springframework
 excludeArtifactIds=sofa-ark-spi
 ```
 
-##### bootstrap.yml (Recommended)
+##### bootstrap.yml (recommended)
 
-In the "Module root directory/conf/ark/bootstrap.yml", configure the common framework and middleware packages to be delegated to the base in the following format:
+Configure the common package of frameworks and middleware that need to be sunk to the base in "Module Project Root Directory/conf/ark/bootstrap.yml" in the following format, such as:
 
 ```yaml
-# Configure with excludes ${groupId}:{artifactId}:{version}, separated by -
-# excludeGroupIds with ${groupId}, separated by -
-# excludeArtifactIds with ${artifactId}, separated by -
+# excludes config ${groupId}:{artifactId}:{version}, split by '-'
+# excludeGroupIds config ${groupId}, split by '-'
+# excludeArtifactIds config ${artifactId}, split by '-'
 excludes:
   - org.apache.commons:commons-lang3
   - commons-beanutils:commons-beanutils
@@ -155,21 +170,11 @@ excludeArtifactIds:
   - sofa-ark-spi
 ```
 
-##### rules.txt (Not Recommended)
-
-In the "Module root directory/conf/ark/filename.txt", configure the common framework and middleware packages to be delegated to the base in the following format. You can also directly copy the [default rules.txt](https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt) file content to your project.
-
-```xml
-excludeGroupIds=org.apache*
-excludeArtifactIds=commons-lang
-```
-
-### Step 2
-
-In the module packaging plugin, reference the configuration file:
+#### Step 2
+Upgrade the module packaging plug-in `sofa-ark-maven-plugin` version >= 2.2.12
 
 ```xml
-    <!-- Plugin 1: Packaging plugin for sofa-ark biz, packages into ark biz jar -->
+    <!-- Plugin 1: Packaging plug-in for sofa-ark biz to package as ark biz jar -->
     <plugin>
         <groupId>com.alipay.sofa</groupId>
         <artifactId>sofa-ark-maven-plugin</artifactId>
@@ -186,96 +191,14 @@ In the module packaging plugin, reference the configuration file:
             <skipArkExecutable>true</skipArkExecutable>
             <outputDirectory>./target</outputDirectory>
             <bizName>biz1</bizName>
-            <!-- packExcludesConfig	Module slimming config file -->
-            <!-- Config file location: biz1/conf/ark/rules.txt -->
-            <packExcludesConfig>rules.txt</packExcludesConfig>
             <webContextPath>biz1</webContextPath>
             <declaredMode>true</declaredMode>
-            <!-- Package, install, and publish ark biz -->
-            <!-- Static merge deployment requires configuration -->
-            <!-- <attach>true</attach> -->
         </configuration>
     </plugin>
 ```
-### Step 3
 
-Package the module to generate the ark-biz jar package. You will notice a significant size difference in the slimmed ark-biz jar package.
+#### Step 3
 
-You can [click here](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming) to view the complete module slimming sample project. You can also continue reading below to understand the principles behind module slimming.
+Simply build the module ark-biz jar package, and you will see a significant difference in the size of the slimmed ark-biz jar package.
 
-### Method 2: Exclude Dependencies in pom
-
-#### Exclusion Technique 1: Use Maven Helper Plugin
-
-During module runtime, classes are loaded by checking the module's dependencies first. If not found, the class loader delegates the search to the base's ClassLoader.
-
-Therefore, for dependencies already present in the base, set their scope to provided in the module pom to avoid them participating in the module packaging.
-
-<div style="text-align: center;">
-    <img width="700" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/8276/1678276103445-036d226e-4f88-40bc-937d-90fd4c60b83d.png#clientId=udf1ce5b3-f5a9-4&from=paste&height=521&id=jFiln&originHeight=1042&originWidth=1848&originalType=binary&ratio=2&rotation=0&showTitle=false&size=957278&status=done&style=none&taskId=u254c8709-de81-4175-bcf8-f1c4a26bc49&title=&width=924"/>
-</div>
-If the dependency to exclude isn't found, use the **maven helper plugin** to find its direct dependencies. For example, the dependency to exclude is spring-boot-autoconfigure, and the direct dependencies on the right are sofa-boot-alipay-runtime, ddcs-alipay-sofa-boot-starter, etc. (Consider only dependencies with the scope as compile):
-
-<div style="text-align: center;">
-    <img width="800" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/191604/1691733668683-34a9d11f-3ca6-4b66-a4e3-22ade9413094.png#clientId=u05d65c58-49f7-4&from=paste&height=869&id=u467da8b5&originHeight=1738&originWidth=2644&originalType=binary&ratio=2&rotation=0&showTitle=false&size=1043897&status=done&style=none&taskId=u70530c01-d7a5-4ca9-875d-3785f59242b&title=&width=1322"/>
-</div>
-Confirm the presence of ddcs-alipay-sofa-boot-starter in your code pom.xml and add exclusions to eliminate dependencies:
-
-<div style="text-align: center;">
-    <img width="600" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/191604/1691735644585-9201c203-b749-46e9-ab96-49ecc8090098.png#clientId=uda997d0f-c9aa-4&from=paste&height=244&id=ub08bbabe&originHeight=488&originWidth=1476&originalType=binary&ratio=2&rotation=0&showTitle=false&size=85290&status=done&style=none&taskId=u7f72a9d1-a1cd-422e-a50a-beafc4a9c4a&title=&width=738"/>
-</div>
-
-#### Exclusion Technique 2: Unified Exclusion in pom (More Thorough)
-
-Some dependencies bring in too many indirect dependencies, making manual exclusion difficult. Use wildcard matching to exclude all middleware and base dependencies, e.g., org.apache.commons, org.springframework, etc. This method excludes indirect dependencies as well, making it more efficient compared to using sofa-ark-maven-plugin for exclusions:
-
-```xml
-<dependency>
-    <groupId>com.koupleless.mymodule</groupId>
-    <artifactId>mymodule-core</artifactId>
-    <exclusions>
-          <exclusion>
-              <groupId>org.springframework</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>org.apache.commons</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-          <exclusion>
-              <groupId>......</groupId>
-              <artifactId>*</artifactId>
-          </exclusion>
-    </exclusions>
-</dependency>
-```
-
-#### Exclusion Technique 3: Specify Exclusions in sofa-ark-maven-plugin
-
-Use **excludeGroupIds, excludeArtifactIds** to exclude many common dependencies already present in the base:
-
-```xml
- <plugin>
-      <groupId>com.alipay.sofa</groupId>
-      <artifactId>sofa-ark-maven-plugin</artifactId>
-      <executions>
-          <execution>
-              <id>default-cli</id>
-              <goals>
-                  <goal>repackage</goal>
-              </goals>
-          </execution>
-      </executions>
-      <configuration>
-          <excludeGroupIds>io.netty,org.apache.commons,......</excludeGroupIds>
-          <excludeArtifactIds>validation-api,fastjson,hessian,slf4j-api,junit,velocity,......</excludeArtifactIds>
-          <outputDirectory>../../target</outputDirectory>
-          <bizName>mymodule</bizName>
-          <finalName>mymodule-${project.version}-${timestamp}</finalName>
-          <bizVersion>${project.version}-${timestamp}</bizVersion>
-          <webContextPath>/mymodule</webContextPath>
-      </configuration>
-  </plugin>
-```
-<br/>
-<br/>
+You can [click here](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming) to view the complete example project for module slimming.
