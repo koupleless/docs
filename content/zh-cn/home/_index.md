@@ -114,10 +114,10 @@ url: "/home/"
                     </g>
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
-                    <g id="编组-11" transform="translate(90.000000, 0.000000)">
-                        <a xlink:href="https://github.com/koupleless/koupleless/issues/138" target="_blank">
+                    <g id="编组-11" transform="translate(40.000000, 0.000000)">
+                        <a xlink:href="/blog/2024/01/25/蚂蚁集团中间件和-paas-产品技术火热招聘中/" target="_blank">
                         <text id="2024 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30" y="21">2024 年规划</tspan>
+                            <tspan x="30" y="21">蚂蚁集团基础技术招聘啦！</tspan>
                         </text>
                         </a>
                         <g id="编组-105" transform="translate(0.000000, 2.000000)">
@@ -128,9 +128,9 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="https://github.com/koupleless/koupleless/issues/138" target="_blank">
+                    <a xlink:href="/blog/2024/01/25/蚂蚁集团中间件和-paas-产品技术火热招聘中/" target="_blank">
                     <text id="" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="0" y="52">欢迎一起探讨 2024 及更长远规划</tspan>
+                        <tspan x="20" y="52">蚂蚁集团中间件和 PaaS 产品技术火热招聘啦！</tspan>
                     </text>
                     </a>
                 </g>
@@ -138,7 +138,7 @@ url: "/home/"
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
                         <a xlink:href="/user-cases/all-users/" target="_blank">
                         <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30.67" y="21">企业案例合集</tspan>
+                            <tspan x="30.67" y="21">2024 年规划</tspan>
                         </text>
                         </a>
                         <g id="编组-18" transform="translate(0.000000, 2.000000)">
@@ -151,7 +151,7 @@ url: "/home/"
                     </g>
                     <a xlink:href="/user-cases/aifulu-car/" target="_blank">
                     <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="5" y="52">最新案例：Koupleless 助力南京爱福路汽车实现降本增效！</tspan>
+                        <tspan x="5" y="52">欢迎一起探讨 2024 及更长远规划</tspan>
                     </text>
                     </a>
                 </g>

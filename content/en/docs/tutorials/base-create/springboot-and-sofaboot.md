@@ -9,6 +9,7 @@ weight: 100
 
 1. SpringBoot version >= 2.1.9.RELEASE (for SpringBoot users)
 2. SOFABoot version >= 3.9.0 or SOFABoot >= 4.0.0 (for SOFABoot users)
+3. Install maven version >= 3.9.0 locally
 
 Note: SpringBoot version == 2.1.9.RELEASE, see [Upgrade SpringBoot 2.1.9 to Pedestal](#upgrade-springboot-219-to-base)
 
@@ -27,8 +28,8 @@ spring.application.name = ${Replace with actual base app name}
 
 ```xml
 <properties>
-    <sofa.ark.version>2.2.10</sofa.ark.version>
-    <koupleless.runtime.version>1.2.0</koupleless.runtime.version>
+    <sofa.ark.version>2.2.12</sofa.ark.version>
+    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
 </properties>
 ```
 
@@ -86,6 +87,12 @@ After modifying the above configurations, additional modifications are required:
     <groupId>com.alipay.sofa</groupId>
     <artifactId>web-ark-plugin</artifactId>
 </dependency>
+<dependency>
+    <groupId>com.github.oshi</groupId>
+    <artifactId>oshi-core</artifactId>
+    <version>3.9.1</version>
+</dependency>
+
         
 <!-- 为了让三方依赖和 koupleless 模式适配，需要引入以下构建插件 -->
 <build>

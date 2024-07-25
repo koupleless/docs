@@ -8,7 +8,7 @@ weight: 100
 ## Basic Specifications
 1. The list of middleware clients officially verified and compatible in Koupleless modules can be found [here](/docs/tutorials/module-development/runtime-compatibility-list). Any middleware client can be used in the base.
    <br/><br/>
-2. If you need to use `System.setProperties()` and `System.getProperties()` in module without sharing with the base, please add `MultiBizProperties.initSystem()` in the main method of the base platform. For details, refer to [samples](https://github.com/koupleless/samples/blob/main/springboot-samples/config/apollo/base/src/main/java/com/alipay/sofa/config/apollo/ApolloApplication.java).
+2. If you need to use `System.setProperties()` and `System.getProperties()` in module without sharing with the base, please add `MultiBizProperties.initSystem()` in the main method of the base platform. For details, refer to [samples](https://github.com/koupleless/samples/blob/main/springboot-samples/config/apollo/base-apollo/src/main/java/com/alipay/sofa/config/apollo/BaseApolloApplication.java).
 3. If the module hot unload capability is used, you can use the following API to decorate ExecutorService (typical for various thread pools), Timer, and Thread objects declared in the module code. When the module is unloaded, 
    the Koupleless Arklet client will attempt to automatically clean up the decorated ExecutorService, Timer, and Thread:
    <br/>

@@ -8,7 +8,7 @@ weight: 100
 ## 基础规范
 1. Koupleless 模块中官方验证并兼容的中间件客户端列表[详见此处](/docs/tutorials/module-development/runtime-compatibility-list)。基座中可以使用任意中间件客户端。
    <br/><br/>
-2. 模块里要独立使用 System.setProperties() 与 System.getProperties()，请在基座 main 方法里增加 `MultiBizProperties.initSystem()`，详细可参考 [samples](https://github.com/koupleless/samples/blob/main/springboot-samples/config/apollo/base/src/main/java/com/alipay/sofa/config/apollo/ApolloApplication.java) 
+2. 模块里要独立使用 System.setProperties() 与 System.getProperties()，请在基座 main 方法里增加 `MultiBizProperties.initSystem()`，详细可参考 [samples](https://github.com/koupleless/samples/blob/main/springboot-samples/config/apollo/base-apollo/src/main/java/com/alipay/sofa/config/apollo/BaseApolloApplication.java) 
 3. 如果使用了模块热卸载能力，您可以使用如下 API 装饰模块代码中声明的 ExecutorService（典型如各种线程池）、Timer、Thread 对象，在模块卸载时，
    Koupleless Arklet 客户端会尝试自动清理被装饰器装饰过的 ExecutorService、Timer、Thread：
    <br/>

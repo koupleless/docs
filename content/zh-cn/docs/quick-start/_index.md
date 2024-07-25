@@ -23,7 +23,11 @@ weight: 200
 # 实验 2：一键体验应用秒级热部署
 
 ## 步骤 1：本地软件安装
+
 下载安装 **go**（建议 1.21 或以上）、**docker**、**minikube**、**kubectl**。
+
+注意：当前 Koupleless 在 K8S 1.24 版本测试过，没有在其它版本测试，但 Koupleless 没有依赖 K8S 过多特性，理论上可以支持 K8S 其它版本。
+
 - 注：第2步前，请启动好 docker、minikube
 ```shell
 # mac 可执行如下命令
@@ -35,7 +39,7 @@ minikube start
 ```
 
 ## 步骤 2：一键启动 Koupleless
-使用 **git** 拉取 GitHub Koupleless 项目：[https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless) <br />在 **module-controller** 目录下执行 **make dev** 命令一键部署环境，会自动执行 minikube service 命令弹出网页，由于此时您还没有发布模块，所以网页不会有任何内容显示。
+使用 **git** 拉取 GitHub Koupleless 项目：[https://github.com/koupleless/module-controller](https://github.com/koupleless/module-controller) <br />在 **module-controller** 目录下执行 **make dev** 命令一键部署环境，会自动执行 minikube service 命令弹出网页，由于此时您还没有发布模块，所以网页不会有任何内容显示。
 
 ## 步骤 3：秒级发布模块
 执行以下命令：

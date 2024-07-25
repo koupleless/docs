@@ -29,7 +29,7 @@ It can be observed that the main actions to be completed are **integration and d
 2. Add necessary dependencies to **pom.xml **
 ```xml
 <properties>
-    <koupleless.runtime.version>1.2.0</koupleless.runtime.version>
+    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
 </properties>
 <dependencies>
     <dependency>
@@ -107,9 +107,9 @@ public class SampleController {
 }
 ```
 
-4. [Click here to download Arkctl](https://github.com/koupleless/koupleless/releases/tag/arkctl-release-0.1.0), For Mac/Linux computers, place it in the `/usr/local/bin` directory. For Windows, consider placing it directly in the project root directory.
-
-5. Execute `arkctl deploy` to build and deploy. After successful deployment, verify the service response by `curl localhost:8080/${module1 web context path}/`. If it displays correctly, proceed to the next step.
+4. Execute `mvn clean package -DskipTests` to build the module, please notice tha version of maven >= 3.9.0.
+5. [Click here to download Arkctl](https://github.com/koupleless/koupleless/releases), For Mac/Linux computers, place it in the `/usr/local/bin` directory. For Windows, consider placing it directly in the project root directory. How to use arkctl please refer [here](/docs/tutorials/build_and_deploy)
+6. Execute `arkctl deploy` to build and deploy. After successful deployment, verify the service response by `curl localhost:8080/${module1 web context path}/`. If it displays correctly, proceed to the next step.
 ```
 hello to ${module1 name} deploy
 ```
