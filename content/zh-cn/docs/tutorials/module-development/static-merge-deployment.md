@@ -71,8 +71,9 @@ integrateLocalDirs:
   - /home/${xxx}/sofa-ark/biz2
 ```
 
-### 步骤三：基座配置打包插件目标 integrate-biz
-required: koupleless.runtime.version yun>=
+### 步骤三：基座配置打包插件目标 integrate-biz，并升级 SOFAArk 版本
+要求: 
+- koupleless.runtime.version >= 1.2.3
 
 基座 bootstrap 的 pom 中给 koupleless-base-build-plugin 添加 <goal>integrate-biz</goal>，如下：
 ```xml
@@ -91,6 +92,8 @@ required: koupleless.runtime.version yun>=
     </executions>
 </plugin>
 ```
+
+执行打包后，如果自行解压打包的 jar 文件，可以在 classPath/SOFA-ARK/biz 中看到指定的模块 ark-biz 包。
 
 ### 步骤四：启动基座
 JVM 添加参数，配置： `-Dsofa.ark.embed.static.biz.in.resource.enable=true`
