@@ -29,7 +29,7 @@ It can be observed that the main actions to be completed are **integration and d
 2. Add necessary dependencies to **pom.xml **
 ```xml
 <properties>
-    <koupleless.runtime.version>1.2.2</koupleless.runtime.version>
+    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
 </properties>
 <dependencies>
     <dependency>
