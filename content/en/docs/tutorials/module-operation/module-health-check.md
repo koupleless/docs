@@ -295,8 +295,8 @@ management.endpoints.web.exposure.include=health
 }
 ```
 
-### Get information about pedestal, modules, and plugins
-- Usage: Same as the regular springboot health check configuration, enable the info endpoint, i.e., configure in the pedestal's application.properties:
+### Get information about base, modules, and plugins
+- Usage: Same as the regular springboot health check configuration, enable the info endpoint, i.e., configure in the base's application.properties:
 ``` properties
 # Note: If the user configures management.endpoints.web.exposure.include on their own, they need to include the health endpoint, otherwise the health endpoint cannot be accessed
 management.endpoints.web.exposure.include=health,info
