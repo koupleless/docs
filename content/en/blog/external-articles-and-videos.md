@@ -10,7 +10,7 @@ description: Essential articles and videos for Koupleless
 
 ### 2024 Apache COC
 helo on: 20240726
-Meeting PPT: [点击此处下载](https://serverless-opensource.oss-cn-shanghai.aliyuncs.com/outer-materials/%E3%80%90apache%20coc%202024%E3%80%91%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8B%E4%B8%80%E7%AB%99%EF%BC%8CKoupleless%20%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A0%94%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%8E%E8%BF%90%E7%BB%B4%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F-v2.0.pdf?Expires=1721990001&OSSAccessKeyId=TMP.3KiUjg1m2mc2LyZV76WyqYdJVi3b3jDnpeoFYmBqmNnEPGAeUu73f2JMNdmKKgukAARiNrYyx1ZXwo7dCPBhJNb1pbZvCg&Signature=TVRYYG0TugL97P4yMiaLZvrs%2BH0%3D)
+Meeting PPT: [点击此处下载](https://serverless-opensource.oss-cn-shanghai.aliyuncs.com/outer-materials/%E3%80%90apache%20coc%202024%E3%80%91%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8B%E4%B8%80%E7%AB%99%EF%BC%8CKoupleless%20%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A0%94%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%8E%E8%BF%90%E7%BB%B4%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F-v2.0.pdf)
 
 ### KCD Developer Exchange, Shenzhen Station
 Held on: 20231216 <br/>
