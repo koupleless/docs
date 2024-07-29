@@ -8,6 +8,7 @@ weight: 100
 注意：当前 ModuleController v2 仅在 K8S 1.24 版本测试过，没有在其它版本测试，ModuleController V2依赖了部分K8S特性，K8S的版本不能低于V1.10。
 
 ## 模块上线
+
 ModuleController V2支持以任意Pod的发布方式进行模块发布上线，包含但不仅限于裸pod发布、Deployment、DaemonSet、StatefulSet。下面以Deployment为例演示模块的发布流程，其他方式可以参考Deployment中template的配置：
 
 ```bash
@@ -90,10 +91,13 @@ kubectl get pod -n <namespace> --field-selector spec.nodeName=virtual-node-<base
 ```
 
 ## 模块下线
+
 在 K8S 集群中删除模块的Pod或其他控制资源即可完成模块下线，例如，在Deployment部署的场景下，可以直接删除对应的Deployment实现模块的下线：
+
 ```bash
 kubectl delete yourmoduledeployment --namespace yournamespace
 ```
+
 其中 _yourmoduledeployment_ 替换成您的 ModuleDeployment 名字，_yournamespace_ 替换成您的 namespace。
 
 如果要自定义模块发布运维策略（比如分组、Beta、暂停等），可参考[模块发布运维策略](/docs/tutorials/module-operation-v2/operation-and-scheduling-strategy/)。
@@ -103,9 +107,11 @@ kubectl delete yourmoduledeployment --namespace yournamespace
 ## 模块扩缩容
 
 由于ModuleController V2完全复用了K8S的Pod编排方案，扩缩容只发生在ReplicaSet、Deployment、StatefulSet等部署方式上，扩缩容可以按照各自对应的扩缩容方式实现，下面以Deployment为例：
+
 ```bash
 kubectl scale deployments/yourdeploymentname --namespace=yournamespace --replicas=3
 ```
+
 其中 _yourdeploymentname_ 替换成您的 Deployment name，_yournamespace_ 替换成您的 namespace，replicas参数设置为希望扩/缩容到的数量。
 
 也可以通过API调用实现扩缩容策略。
@@ -121,10 +127,13 @@ kubectl scale deployments/yourdeploymentname --namespace=yournamespace --replica
 由于与原生的Deployment兼容，因此可以采用Deployment的回滚方式实现模块回滚。
 
 查看deployment历史。
+
 ```bash
 kubectl rollout history deployment yourdeploymentname
 ```
+
 回滚到指定版本
+
 ```bash
 kubectl rollout undo deployment yourdeploymentname --to-revision=<TARGET_REVISION>
 ```

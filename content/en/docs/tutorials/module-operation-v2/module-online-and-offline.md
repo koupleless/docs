@@ -4,6 +4,7 @@ date: 2024-07-19T10:28:32+08:00
 description: Koupleless Module Online and Offline Procedures
 weight: 100
 ---
+
 **Note:** The current ModuleController v2 has only been tested on Kubernetes (K8S) version 1.24, with no testing on other versions. ModuleController V2 relies on certain Kubernetes (K8S) features; thus, the K8S version must not be lower than V1.10.
 
 ## Module Release
@@ -156,5 +157,6 @@ A potential solution involves forwarding at the Load Balancer (LB) layer of the 
    This Deployment will create corresponding Pods, but they won't be scheduled until new version bases are created.
 2. Update the base Deployment to release the new version image, triggering the replacement and restart of the base. Upon startup, the base informs the ModuleController V2 controller, creating a corresponding version node.
 3. After the creation of the corresponding version base node, the K8S scheduler automatically triggers scheduling, deploying the Pods created in step 1 onto the base node for installation of the new version module, thus achieving simultaneous release.
-   <br/>
-   <br/>
+   
+<br/>
+<br/>

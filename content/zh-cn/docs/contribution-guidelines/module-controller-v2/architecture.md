@@ -6,6 +6,7 @@ weight: 100
 ---
 
 ## 简要介绍
+
 ModuleControllerV2 是一个 K8S 控制面组件，基于Virtual Kubelet能力，将基座伪装成K8S体系中的node，将模块映射为K8S体系中的Container，从而将模块运维映射成为Pod的运维，基于K8S包含的Pod生命周期管、调取，以及基于Pod的Deployment、DaemonSet、Service等现有控制器，实现了 Serverless 模块的秒级运维调度，以及与基座的联动运维能力。
 
 ## 背景
