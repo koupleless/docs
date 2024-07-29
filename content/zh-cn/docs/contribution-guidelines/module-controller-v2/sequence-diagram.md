@@ -9,10 +9,8 @@ weight: 600
 
 ![image.png](/static/img/module-controller-v2/base_sequence_diagram.png)
 
-
 ## 模块发布运维
 
 ![image.png](/static/img/module-controller-v2/module_pub_update_diagram.png)
-
 
 <br/>

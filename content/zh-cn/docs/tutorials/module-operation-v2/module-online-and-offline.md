@@ -14,7 +14,9 @@ ModuleController V2支持以任意Pod的发布方式进行模块发布上线，�
 ```bash
 kubectl apply -f samples/module-deployment.yaml --namespace yournamespace
 ```
+
 完整内容如下：
+
 ```yaml
 apiVersion: apps/v1  # 指定api版本，此值必须在kubectl api-versions中
 kind: Deployment  # 指定创建资源的角色/类型
@@ -71,7 +73,6 @@ spec: # 资源规范字段
 
 其中所有的配置与普通Deployment一致，除必填项外，可添加其他Deployment的配置实现自定义能力。
 
-
 ## 查看模块状态
 
 这一需求可以通过查看nodeName为基座对应node的Pod来实现。首先需要了解基座服务与node的对应关系。
@@ -85,7 +86,9 @@ spec: # 资源规范字段
 ```bash
 kubectl get pod -n <namespace> --field-selector status.podIP=<baseIP>
 ```
+
 或
+
 ```bash
 kubectl get pod -n <namespace> --field-selector spec.nodeName=virtual-node-<baseUUID>
 ```
