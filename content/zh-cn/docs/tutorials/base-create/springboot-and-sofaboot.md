@@ -28,9 +28,9 @@ spring.application.name = ${替换为实际基座应用名}
 
 ```xml
 <properties>
-    <sofa.ark.version>2.2.11</sofa.ark.version>
+    <sofa.ark.version>2.2.12</sofa.ark.version>
     <!-- 不同jdk版本，使用不同koupleless版本，参考：https://koupleless.io/docs/tutorials/module-development/runtime-compatibility-list/#%E6%A1%86%E6%9E%B6%E8%87%AA%E8%BA%AB%E5%90%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%85%B3%E7%B3%BB -->
-    <koupleless.runtime.version>1.2.2</koupleless.runtime.version>
+    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
 </properties>
 ```
 
