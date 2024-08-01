@@ -2,7 +2,7 @@
 title: Deployment of Module Controller V2
 date: 2024-07-19T09:28:32+08:00
 description: Deployment methodology for Koupleless Module Controller V2
-weight: 700
+weight: 0
 ---
 
 **Note:** Currently, ModuleController v2 has only been tested on K8S version 1.24, with no testing conducted on other versions. ModuleController V2 relies on certain Kubernetes (K8S) features, thus the K8S version must not be lower than V1.10.
