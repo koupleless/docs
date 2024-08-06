@@ -8,6 +8,10 @@ description: Koupleless 干货文章与视频
 
 ## 技术会议
 
+### 2024 Apache COC 大会
+举办时间：20240726
+会议 PPT: [点击此处下载](https://serverless-opensource.oss-cn-shanghai.aliyuncs.com/outer-materials/%E3%80%90apache%20coc%202024%E3%80%91%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8B%E4%B8%80%E7%AB%99%EF%BC%8CKoupleless%20%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A0%94%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%8E%E8%BF%90%E7%BB%B4%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F-v2.0.pdf)
+
 ### KCD 开发者交流会 深圳站
 举办时间：20231216 <br/>
 会议 PPT: [点击此处下载](https://koupleless.oss-cn-shanghai.aliyuncs.com/outer-materials/SOFAServerless%20%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%96%B0%E6%9E%B6%E6%9E%84%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5_20231217_v0.9.1.pdf)
