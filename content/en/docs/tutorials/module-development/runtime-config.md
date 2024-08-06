@@ -41,7 +41,7 @@ The complete `koupleless-base-build-plugin` plugin configuration template is as 
 </plugin>
 ```
 ### Static Integration Deployment Configuration
-Developers need to specify the Ark Biz package that needs to be integrated and deployed in the ark configuration file of the base (`conf/ark/ark.properties` or `conf/ark/ark.yml`), with support for:
+Developers need to specify the Ark Biz package that needs to be integrated and deployed in the ark configuration file of the base (`conf/ark/bootstrap.properties` or `conf/ark/bootstrap.yml`), with support for:
 + Local directory
 + Local file URL (File path for Windows is `file:\\`, and for Linux it is `file://`)
 + Remote URL (supports `http://`,`https://`)
