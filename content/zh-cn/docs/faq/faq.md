@@ -350,7 +350,7 @@ builder.build().run(args);
 
 ### 模块启动在 `JdkDynamicAopProxy.getProxy` 报错 `xxx referenced from a method is not visible from class loader`
 #### 原因
-spring-core 是 6.0.9 的版本，内部逻辑存在bug，这里即使传入 BizClassLoader，也会引入 BizClassLoader 没有 parent 而强制切换 classLoader 成了 基座 ClassLoader
+spring-core 是 6.0.9 的版本，内部逻辑存在bug，这里即使传入 BizClassLoader，也会因为 BizClassLoader 没有 parent 而强制切换 classLoader 成了 基座 ClassLoader
 ```java
 public Object getProxy(@Nullable ClassLoader classLoader) {
     if (logger.isDebugEnabled()) {
