@@ -31,11 +31,17 @@ spring.application.name = ${替换为实际模块应用名}
 **特别注意**： sofa ark 插件定义顺序必须在 springboot 打包插件前;
 
 ```xml
+<properties>
+    <sofa.ark.version>2.2.12</sofa.ark.version>
+    <!-- 不同jdk版本，使用不同koupleless版本，参考：https://koupleless.io/docs/tutorials/module-development/runtime-compatibility-list/#%E6%A1%86%E6%9E%B6%E8%87%AA%E8%BA%AB%E5%90%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%85%B3%E7%B3%BB -->
+    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
+</properties>
 <!-- 模块需要引入的依赖，主要用户跨模块间通信 --> 
 <dependencies>
     <dependency>
         <groupId>com.alipay.sofa.koupleless</groupId>
         <artifactId>koupleless-app-starter</artifactId>
+        <version>${koupleless.runtime.version}</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
