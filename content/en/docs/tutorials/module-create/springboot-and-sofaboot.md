@@ -74,7 +74,7 @@ spring.application.name = ${Replace with actual module app name}
 
 ### Step 3: Automate Module Slimming
 
-You can leverage [the automated slimming capability](/docs/tutorials/module-create/springboot-and-sofaboot.md) provided by the ark packaging plugin to slim down the Maven dependencies in your module application. This step is mandatory; otherwise, the resulting module JAR file will be very large, and startup may fail.
+You can leverage [the automated slimming capability](/docs/tutorials/module-development/module-slimming.md) provided by the ark packaging plugin to slim down the Maven dependencies in your module application. This step is mandatory; otherwise, the resulting module JAR file will be very large, and startup may fail.
 _Extended Reading_: If the module does not optimize its dependencies[What will happen if SpringBoot framework is imported independently?](/docs/faq/import-full-springboot-in-module)
 
 Step 4: Build the Module Jar Package
