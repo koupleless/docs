@@ -34,7 +34,7 @@ draft: true
 
 ```xml
 <properties>
-    <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
+    <koupleless.runtime.version>1.3.0</koupleless.runtime.version>
 </properties>
 <dependencies>
     <dependency>
