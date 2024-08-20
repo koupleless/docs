@@ -1,7 +1,7 @@
 ---
-title: logback 的多模块化适配
+title: 6.5.3.5 logback 的多模块化适配
 date: 2024-1-18T15:32:35+08:00
-weight: 1
+weight: 5
 ---
 
 ## 为什么需要做适配

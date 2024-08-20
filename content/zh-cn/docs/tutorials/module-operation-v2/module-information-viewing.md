@@ -1,8 +1,8 @@
 ---
-title: 模块信息查看
+title: 5.5 模块信息查看
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 模块信息查看
-weight: 800
+weight: 900
 ---
 
 #### 查看某个基座上所有安装的模块名称和状态

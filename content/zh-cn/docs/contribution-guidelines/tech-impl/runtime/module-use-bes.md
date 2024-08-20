@@ -1,8 +1,8 @@
 ---
-title: Module Use Bes
+title: 6.5.3.7 模块使用宝蓝德 web 服务器
 date: 2024-01-25T10:28:32+08:00
-weight: 400
-draft: true
+weight: 7
+draft: false
 ---
 
 # koupleless-adapter-bes

@@ -1,8 +1,8 @@
 ---
-title: ModuleControllerV2 架构设计
+title: 6.6.1 ModuleControllerV2 架构设计
 date: 2024-07-18T11:24:33+08:00
 description: Koupleless ModuleControllerV2 架构设计
-weight: 100
+weight: 910
 ---
 
 ## 简要介绍

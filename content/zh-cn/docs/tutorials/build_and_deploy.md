@@ -1,5 +1,5 @@
 ---
-title: 开发验证与部署上线
+title: 4.3 开发验证与部署上线
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 基座、模块开发验证与部署上线
 weight: 500

@@ -3,6 +3,7 @@ title: 模块上线与下线
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 模块上线与下线
 weight: 100
+draft: true
 ---
 
 注意：当前 ModuleController 在 K8S 1.24 版本测试过，没有在其它版本测试，但 ModuleController 没有依赖 K8S 过多特性，理论上可以支持 K8S 其它版本。
