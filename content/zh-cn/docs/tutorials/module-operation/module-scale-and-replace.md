@@ -3,8 +3,8 @@ title: 模块扩缩容与替换
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 模块扩缩容与替换
 weight: 400
+draft: true
 ---
-
 
 ## 模块扩缩容
 修改 ModuleDeployment CR 的 replicas 字段并重新 apply，即可实现模块扩缩容，例如：

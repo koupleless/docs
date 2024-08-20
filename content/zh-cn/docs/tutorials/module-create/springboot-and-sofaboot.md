@@ -1,5 +1,5 @@
 ---
-title: 存量 SpringBoot 或 SOFABoot 升级为模块
+title: 4.2.1 存量 SpringBoot 或 SOFABoot 升级为模块
 date: 2024-01-25T10:28:32+08:00
 description: 存量 SpringBoot 或 SOFABoot 升级为 Koupleless 模块
 weight: 200

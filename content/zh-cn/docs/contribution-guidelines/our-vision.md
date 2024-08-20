@@ -1,5 +1,5 @@
 ---
-title: 开放包容理念
+title: 6.1 开放包容理念
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 使命愿景
 weight: 100

@@ -1,8 +1,8 @@
 ---
-title: log4j2 的多模块化适配
+title: 6.5.3.6 log4j2 的多模块化适配
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless log4j2 的多模块化适配
-weight: 1
+weight: 6
 ---
 
 ## 为什么需要做适配

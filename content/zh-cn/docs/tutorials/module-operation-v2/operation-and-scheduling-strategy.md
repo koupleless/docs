@@ -1,5 +1,5 @@
 ---
-title: 模块发布运维策略
+title: 5.2 模块发布运维策略
 date: 2024-07-19T10:28:32+08:00
 description: Koupleless 模块发布运维策略
 weight: 600

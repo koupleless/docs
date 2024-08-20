@@ -1,5 +1,5 @@
 ---
-title: 组织会议和运营布道
+title: 6.3.4 组织会议和运营布道
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 组织会议和运营布道
 weight: 600

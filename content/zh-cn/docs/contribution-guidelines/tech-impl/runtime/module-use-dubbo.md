@@ -1,7 +1,7 @@
 ---
-title: 模块使用 Dubbo
+title: 6.5.3.9 模块使用 Dubbo
 date: 2024-05-24T10:28:32+08:00
-weight: 635
+weight: 9
 ---
 
 # 模块拦截器(Filter)

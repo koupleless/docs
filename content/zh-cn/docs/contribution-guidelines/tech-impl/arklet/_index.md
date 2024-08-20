@@ -1,8 +1,9 @@
 ---
-title: Arklet 架构设计与接口设计
+title: 6.5.2 Arklet 技术文档
 date: 2023-09-21T10:28:35+08:00
-weight: 100
+weight: 520
 ---
+
 
 [//]: # (翻译成中文)
 # Overview
@@ -431,5 +432,3 @@ Arklet 通过外部暴露指令 API，通过每个 API 映射的 CommandHandler 
     }
 }  
 ```  
-
-

@@ -1,8 +1,8 @@
 ---
-title: ehcache 的多模块化最佳实践
+title: 6.5.3.4 ehcache 的多模块化最佳实践
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless ehcache 的多模块化最佳实践
-weight: 2
+weight: 4
 ---
 
 ## 为什么需要最佳实践

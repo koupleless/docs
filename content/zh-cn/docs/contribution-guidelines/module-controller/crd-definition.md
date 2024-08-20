@@ -3,6 +3,7 @@ title: CRD 模型设计
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless ModuleController CRD 模型设计
 weight: 200
+draft: true
 ---
 
 ## CRD 模型对比

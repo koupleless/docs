@@ -1,8 +1,8 @@
 ---
-title: Module Controller V2 部署
+title: 5.4 Module Controller 部署
 date: 2024-07-19T09:28:32+08:00
 description: Koupleless Module Controller V2的部署方式
-weight: 0
+weight: 800
 ---
 
 注意：当前 ModuleController v2 仅在 K8S 1.24 版本测试过，没有在其它版本测试，ModuleController V2依赖了部分K8S特性，K8S的版本不能低于V1.10。

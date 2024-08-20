@@ -1,5 +1,5 @@
 ---
-title: 模块发布
+title: 5.1 模块发布
 date: 2024-07-19T10:28:32+08:00
 description: Koupleless 模块上线与下线
 weight: 100

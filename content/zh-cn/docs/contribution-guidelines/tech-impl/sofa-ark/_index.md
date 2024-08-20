@@ -1,8 +1,8 @@
 ---
-title: SOFAArk 技术文档
+title: 6.5.1 SOFAArk 技术文档
 description: Koupleless SOFAArk 技术文档
 date: 2024-01-25T10:28:32+08:00
-weight: 600
+weight: 510
 ---
 
 [SOFAArk 2.0 介绍](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/) <br/>

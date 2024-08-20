@@ -1,11 +1,32 @@
 ---
-title: 模块启动加速
+title: 4.4.3 模块启动
 date: 2024-01-25T10:28:32+08:00
-description: 模块启动加速
-weight: 301
+description: 模块启动
+weight: 300
 ---
 
-## 模块启动加速的设计思路
+## 模块启动参数
+模块有两种部署方式：静态合并部署和热部署。
+
+静态合并部署模块不支持配置启动参数。模块大部分的启动参数可以放在模块配置（application.properties）中，如配置 profile 时：将启动参数中的 --spring.profiles.active=dev，配置为 application.properties 中的 spring.profiles.active=true。
+
+热部署模块支持配置启动参数。如：使用 arklet 通过 web 请求安装模块时，可以配置启动参数和环境变量：
+```shell
+curl --location --request POST 'localhost:1238/installBiz' \
+--header 'Content-Type: application/json' \
+--data '{
+    "bizName": "${Module Name}",
+    "bizVersion": "${Module Version}",
+    "bizUrl": "file:///path/to/ark/biz/jar/target/xx-xxxx-ark-biz.jar",
+    "args": ["--spring.profiles.active=dev"],
+    "env": {
+        "XXX": "YYY"
+    }
+}'
+```
+
+## 模块启动加速
+### 模块启动加速的设计思路
 
 模块启动加速的总体思路是：
 1. 基座提前启动好服务，这个只需要基座提前引入依赖即可
@@ -21,7 +42,7 @@ weight: 301
 2. 模块禁止启动这些服务，这是本文要详细介绍的
 3. 模块复用基座服务
 
-## 模块如何禁止启动部分服务
+### 模块如何禁止启动部分服务
 Koupleless 1.1.0 版本开始，提供了如下的配置能力：
 ```properties
 koupleless.module.autoconfigure.exclude # 模块启动时不需要启动的服务 AutoConfiguration
@@ -29,6 +50,8 @@ koupleless.module.autoconfigure.include # 模块启动时需要启动的服务 A
 ```
 
 该配置可以在基座里配置，也可以在模块里配置。如果在基座里配置，则所有模块都会生效，如果在模块里配置，则只有该模块生效，并且模块里的配置会覆盖基座的配置。
+
+
 
 ## benchmark
 详细 benchmark 还待补充 

@@ -1,8 +1,8 @@
 ---
-title: Module Use Tongweb
+title: 6.5.3.8 模块使用东方通 web 服务器
 date: 2024-01-25T10:28:32+08:00
-weight: 400
-draft: true
+weight: 8
+draft: false
 ---
 
 # koupleless-adapter-tongweb

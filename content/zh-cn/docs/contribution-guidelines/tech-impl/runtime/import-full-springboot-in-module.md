@@ -1,8 +1,8 @@
 ---
-title: 如果模块独立引入 SpringBoot 框架部分会怎样？
+title: 6.3.5.11 如果模块独立引入 SpringBoot 框架部分会怎样？
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 模块独立引入 SpringBoot 框架部分会怎样？
-weight: 1200
+weight: 11
 ---
 
 由于多模块运行时的逻辑在基座引入和加载，例如一些 Spring 的 Listener。如果模块启动使用完全自己的 SpringBoot，则会出现一些类的转换或赋值判断失败，例如：
