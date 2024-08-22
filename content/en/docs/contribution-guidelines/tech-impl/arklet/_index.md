@@ -1,7 +1,7 @@
 ---
-title: Arklet Architecture and Api Design
+title: 6.5.2 Arklet Architecture and Api Design
 date: 2023-09-21T10:28:35+08:00
-weight: 100
+weight: 520
 ---
 
 <div align="center">

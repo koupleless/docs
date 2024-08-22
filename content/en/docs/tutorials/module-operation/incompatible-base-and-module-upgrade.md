@@ -3,6 +3,7 @@ title: Incompatible Deployment of Base and Module
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Incompatible Deployment of Base and Module
 weight: 300
+draft: true
 ---
 
 ## Step 1

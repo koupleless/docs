@@ -1,5 +1,5 @@
 ---
-title: 4.4.6 复用基座数据源
+title: 4.3.6 复用基座数据源
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 模块复用基座数据源
 weight: 500

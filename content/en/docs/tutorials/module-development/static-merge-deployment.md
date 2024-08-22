@@ -1,5 +1,5 @@
 ---
-title: Static Merged Deployment
+title: 4.3.11 Static Merged Deployment
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless module static merged deployment
 weight: 700

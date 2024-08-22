@@ -1,7 +1,7 @@
 ---
-title: Semi-Automated Split Tool User Guide
+title: 6.5.4.1 Semi-Automated Split Tool User Guide
 date: 2024-05-13T10:28:32+08:00
-weight: 1
+weight: 541
 ---
 # Background
 When extracting the Koupleless module from a large monolithic SpringBoot application, users face high learning and trial-and-error costs. Users need to analyze from the service entrance which classes to split into the module, then modify the module according to the Koupleless module coding method. 

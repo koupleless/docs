@@ -1,5 +1,5 @@
 ---
-title: Communication channels
+title: 6.2 Communication channels
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Communication channels
 weight: 200

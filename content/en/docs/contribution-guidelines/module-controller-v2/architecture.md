@@ -1,8 +1,8 @@
 ---
-title: ModuleControllerV2 Architecture
+title: 6.6.1 ModuleControllerV2 Architecture
 date: 2024-07-18T11:24:33+08:00
 description: Koupleless ModuleControllerV2 Architecture
-weight: 100
+weight: 910
 ---
 
 ## Brief Introduction

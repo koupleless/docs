@@ -1,5 +1,5 @@
 ---
-title: Industry Background
+title: 1.2 Industry Background
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Background
 weight: 200

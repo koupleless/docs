@@ -1,8 +1,8 @@
 ---
-title: Module Information Retrieval
+title: 5.5 Module Information Retrieval
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Information Retrieval
-weight: 800
+weight: 900
 ---
 
 #### View the names and statuses of all installed modules on a base instance

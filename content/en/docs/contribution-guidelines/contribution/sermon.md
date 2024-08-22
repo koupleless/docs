@@ -1,5 +1,5 @@
 ---
-title: Organizing Meetings and Promoting Operations
+title: 6.3.4 Organizing Meetings and Promoting Operations
 date: 2024-01-25T10:28:32+08:00
 description: Organizing Meetings and Promoting Operations for Koupleless
 weight: 600

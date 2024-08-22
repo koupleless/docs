@@ -1,8 +1,8 @@
 ---
-title: Introduction to the Principle of Class Delegation Loading between Foundation and Modules
+title: 6.5.3.10 Introduction to the Principle of Class Delegation Loading between Foundation and Modules
 date: 2024-01-25T10:28:32+08:00
 description: Introduction to the principle of class delegation loading between Koupleless foundation and modules
-weight: 200
+weight: 10
 ---
 
 ## Class Delegation Loading between Multiple Modules

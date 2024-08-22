@@ -1,7 +1,7 @@
 ---
-title: Logback's adaptation for multi-module environments
+title: 6.5.3.5 Logback's adaptation for multi-module environments
 date: 2024-1-18T15:32:35+08:00
-weight: 1
+weight: 5
 ---
 
 ## Why Adaptation is Needed

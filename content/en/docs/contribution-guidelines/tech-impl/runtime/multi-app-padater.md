@@ -1,5 +1,5 @@
 ---
-title: Koupleless Multi-Application Governance Patch Management
+title: 6.5.3.1 Koupleless Multi-Application Governance Patch Management
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Multi-Application Governance Patch Management
 weight: 1
