@@ -5,59 +5,79 @@ description: Koupleless 快速开始
 weight: 200
 ---
 
-# 实验 1：一键实现多应用合并部署
+本上手指南主要介绍动态合并部署模式，用于省资源与提高研发效率。如果你只是想节省资源，可以使用[静态合并部署](/docs/tutorials/module-development/static-merge-deployment/)。本上手指南包含：
 
-合并部署是指：选定一个应用作为底座，然后将多个其它应用合并部署到这个底座之上，从而实现长尾应用的极致资源降本。典型业务场景为应用的低成本交付 以及 微服务过度拆分一键重新合并。
+1. 基座接入
+2. 模块接入
+3. 模块开发验证
+4. 模块部署上线（暂不可用，待更新）
 
-1. 选定一个应用作为底座（Koupleless 术语叫**基座**），将普通应用[一键升级为基座](/docs/tutorials/base-create/springboot-and-sofaboot/)。
-2. 选定一个应用作为上层应用（Koupleless 术语叫**模块**），将其[一键转为模块应用并完成合并部署](/docs/tutorials/module-create/springboot-and-sofaboot/)。
-<br/>
-您也可以直接使用 [官方 Demo 和文档](https://github.com/koupleless/samples/tree/master/springboot-samples/service) 在本地完成实验。 
+<div style="text-align: center;">
+    <img align="center" width="600px" src="/img/build_and_deploy.png" />
+</div>
 
-小贴士：无论**基座**还是**模块**，接入 Koupleless 后，同一套代码分支既能像原来一样独立启动，又能做到合并部署。
+这里也提供了视频教程，[可点击此处查看](/docs/video-training/)。
 
-<br/>
-<br/>
+## 预先准备
 
+### 研发工具
 
-# 实验 2：一键体验应用秒级热部署
+- jdk 8, jdk 17, jdk21+
+- maven v3.9.0+
+- [arkctl](https://github.com/koupleless/arkctl/releases) v0.2.1+, 安装方式请查看[这里](/docs/tutorials/module-development/module-dev-arkctl/#arkctl-工具安装)
 
-## 步骤 1：本地软件安装
+### 运维工具 (静态合并部署可不需要)
+- docker
+- kubectl
+- k8s 集群如 [minikube](https://minikube.sigs.k8s.io/docs/start/) v1.10+
 
-下载安装 **go**（建议 1.21 或以上）、**docker**、**minikube**、**kubectl**。
+## 基座接入
 
-注意：当前 Koupleless 在 K8S 1.24 版本测试过，没有在其它版本测试，但 Koupleless 没有依赖 K8S 过多特性，理论上可以支持 K8S 其它版本。
+[可参考此处](/docs/tutorials/base-create/springboot-and-sofaboot)
 
-- 注：第2步前，请启动好 docker、minikube
+## 模块接入
+
+[可参考此处](/docs/tutorials/module-create/springboot-and-sofaboot)
+
+## 本地环境开发验证
+
+[可查看这里](http://localhost:1313/docs/tutorials/module-development/module-dev-arkctl/#本地快速部署)
+
+### 模块部署上线, 以 minikube 集群为例 (暂不可使用，待更新)
+
+#### 第一步：部署运维组件 ModuleController
+
 ```shell
-# mac 可执行如下命令
-# 启动docker
-open --background -a Docker
-
-# 启动minikube
-minikube start
+kubectl apply -f xxx/xxx.yaml
 ```
 
-## 步骤 2：一键启动 Koupleless
-使用 **git** 拉取 GitHub Koupleless 项目：[https://github.com/koupleless/module-controller](https://github.com/koupleless/module-controller) <br />在 **module-controller** 目录下执行 **make dev** 命令一键部署环境，会自动执行 minikube service 命令弹出网页，由于此时您还没有发布模块，所以网页不会有任何内容显示。
-
-## 步骤 3：秒级发布模块
-执行以下命令：
-```bash
-kubectl apply -f config/samples/module-deployment_v1alpha1_moduledeployment_provider.yaml
-```
-即可秒级发布上线模块应用。请等待本地 Module CR 资源 Status 字段值变更为 Available**（约 1 秒，表示模块发布完毕）**，再刷新步骤 2 自动打开的网页，即可看到一个简单的卖书页面，这个卖书逻辑就是在模块里实现的：<br />
+#### 第二步：使用样例基座发布
+1. 基座部署到 k8s 集群中，创建基座的 service，暴露端口,
+   可[参考这里](https://github.com/koupleless/module-controller/blob/master/config/samples/dynamic-stock-service.yaml)
+2. 执行 minikube service base-web-single-host-service, 访问基座的服务
 
 <div style="text-align: center;">
     <img align="center" width="600px" alt="微服务演进成本" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/671/1694161452232-15aec134-3b2a-491f-9295-0c5f8f7341af.png#clientId=ue383ca9b-aa63-4&from=paste&height=443&id=ub3eb7eb8&originHeight=1318&originWidth=1626&originalType=binary&ratio=2&rotation=0&showTitle=false&size=168110&status=done&style=none&taskId=u07f60163-67e4-42fa-bc41-76e43a09c1f&title=&width=546" />
 </div>
 
-## 步骤 4：清理本地环境
-您可以使用 **make undev** 删除所有本地资源，清理本地环境。
+#### 第三步：发布模块
+有两种方式发布模块，
+1. 直接部署本地模块 jar 包到 k8s 集群中
 
-<br/>
-<br/>
+```shell
+arkctl deploy ${模块构建出的 jar 包路径} --pod ${namespace}/${podname}
+```
 
-# 欢迎大家学习 Koupleless 视频教程
+2.  通过 k8s 模块 deployment 部署上线
+    创建模块 deployment，直接使用 kubectl apply 进行发布
 
-[点击此处](/docs/video-training/)查看 Koupleless 平台与研发框架视频培训教程。
+```shell
+kubectl apply -f xxx/xxxxx/xx.yaml
+```
+
+#### 第四步：测试验证
+
+
+## 更多实验请查看 samples 用例
+
+[点击此处](https://github.com/koupleless/samples/tree/master/)
