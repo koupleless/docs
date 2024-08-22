@@ -1,5 +1,5 @@
 ---
-title: Architecture Principles
+title: 1.3.1 Architecture Principles
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Architecture Principles
 weight: 100

@@ -1,5 +1,5 @@
 ---
-title: Module Slimming
+title: 4.3.2 Module Slimming
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Slimming
 weight: 200

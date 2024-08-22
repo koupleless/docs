@@ -1,8 +1,8 @@
 ---
-title: Module Communication Module to Module and Module to Base Communication
+title: 4.3.4 Module Communication Module to Module and Module to Base Communication
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Communication Module to Module and Module to Base Communication
-weight: 300
+weight: 310
 ---
 
 Between the base and modules, and among modules, there is spring context isolation, meaning their beans do not conflict and are not visible to each other. However, in many scenarios such as the middleware mode and independent module mode, there are situations where the base calls the module, the module calls the base, and modules call each other.

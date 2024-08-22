@@ -1,8 +1,8 @@
 ---
-title: log4j2 Multi-Module Adaptation
+title: 6.5.3.6 log4j2 Multi-Module Adaptation
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless log4j2 Multi-Module Adaptation
-weight: 1
+weight: 6
 ---
 
 ## Why Adaptation is Needed

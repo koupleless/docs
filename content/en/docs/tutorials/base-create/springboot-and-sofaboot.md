@@ -1,5 +1,5 @@
 ---
-title: SpringBoot or SOFABoot Upgrade to Base
+title: 4.1.1 SpringBoot or SOFABoot Upgrade to Base
 date: 2024-01-25T10:28:32+08:00
 description: Upgrade SpringBoot or SOFABoot to Koupleless Base
 weight: 100

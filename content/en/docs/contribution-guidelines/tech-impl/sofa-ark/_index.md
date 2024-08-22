@@ -1,8 +1,8 @@
 ---
-title: SOFAArk Technical Documentation
+title: 6.5.1 SOFAArk Technical Documentation
 description: Koupleless SOFAArk Technical Documentation
 date: 2024-01-25T10:28:32+08:00
-weight: 600
+weight: 510
 ---
 
 [SOFAArk 2.0 Introduction](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/) <br/>

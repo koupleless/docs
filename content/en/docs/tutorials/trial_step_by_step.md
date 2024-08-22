@@ -3,6 +3,7 @@ title: Parallel Development Verification of Base and Modules
 weight: 501
 description: Koupleless Base and Module Parallel Development Verification
 date: 2024-01-25T10:28:32+08:00
+draft: true
 ---
 
 Welcome to **Koupleless for Combined Deployment and Dynamic Module Updates with multiple SpringBoot applications**! This document will provide a detailed guide on the operation process and methods, aiming to help save resources and improve development efficiency.

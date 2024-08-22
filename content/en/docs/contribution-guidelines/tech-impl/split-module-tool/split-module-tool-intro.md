@@ -1,7 +1,7 @@
 ---
-title: Is it too difficult to collaborate on developing a monolithic application? Koupleless brings Split Plugin to help you streamline and improve the efficiency of collaborative development!
+title: 6.5.4.2 Is it too difficult to collaborate on developing a monolithic application? Koupleless brings Split Plugin to help you streamline and improve the efficiency of collaborative development!
 date: 2024-01-25T10:28:32+08:00
-weight: 1
+weight: 542
 ---
 
 # Background

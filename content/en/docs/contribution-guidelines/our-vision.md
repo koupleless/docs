@@ -1,5 +1,5 @@
 ---
-title: The philosophy of openness and inclusivity
+title: 6.1 The philosophy of openness and inclusivity
 date: 2024-01-25T10:28:32+08:00
 description: The mission and vision of Koupleless
 weight: 100

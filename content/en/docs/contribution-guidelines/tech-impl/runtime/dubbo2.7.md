@@ -1,7 +1,7 @@
 ---
-title: Adapting to Multi-Module with Dubbo 2.7
+title: 6.5.3.3 Adapting to Multi-Module with Dubbo 2.7
 date: 2024-1-19T19:55:35+08:00
-weight: 1
+weight: 3
 ---
 
 ## Why Adaptation is Needed

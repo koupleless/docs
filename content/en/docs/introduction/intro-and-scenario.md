@@ -1,5 +1,5 @@
 ---
-title: Introduction and Use Cases
+title: 1.1 Introduction and Use Cases
 date: 2024-01-25T10:28:32+08:00
 description: Introduction to Koupleless and its Use Cases
 weight: 100

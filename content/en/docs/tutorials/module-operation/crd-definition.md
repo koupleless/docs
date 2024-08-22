@@ -3,6 +3,7 @@ title: All K8S Resource Definitions and Deployment Methods
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless All K8S Resource Definitions and Deployment Methods
 weight: 900
+draft: true
 ---
 
 ### Resource File Locations

@@ -1,8 +1,8 @@
 ---
-title: Reusing Base Data Source
+title: 4.3.6 Reusing Base Data Source
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Reusing Base Data Source
-weight: 600
+weight: 500
 ---
 
 ## Recommendation

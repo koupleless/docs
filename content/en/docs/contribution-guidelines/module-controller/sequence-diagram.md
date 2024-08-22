@@ -3,6 +3,7 @@ title: Core Process Sequence Diagram
 date: 2024-01-25T10:28:32+08:00
 description: Sequence diagram of Koupleless ModuleController core processes
 weight: 600
+draft: true
 ---
 
 ## Module Initial Deployment

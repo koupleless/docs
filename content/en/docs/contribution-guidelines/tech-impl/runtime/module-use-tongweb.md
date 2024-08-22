@@ -1,10 +1,9 @@
-```
-title: Module Use Tongweb
+---
+title: 6.5.3.8 Module Use Tongweb
 date: 2024-01-25T10:28:32+08:00
 weight: 400
-draft: false
-```
-
+draft: 8
+---
 # koupleless-adapter-tongweb
 koupleless-adapter-tongweb is used to adapt the Eastern Pass (TongWEB) container, the warehouse address is: [koupleless-adapter-tongweb](https://github.com/chenjian6824/koupleless-adapter-tongweb) (thanks to community student Chen Jian for the contribution).
 

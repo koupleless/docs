@@ -1,8 +1,8 @@
 ---
-title: Best Practices for Multi-Module with ehcache
+title: 6.5.3.4 Best Practices for Multi-Module with ehcache
 date: 2024-01-25T10:28:32+08:00
 description: Best practices for implementing multi-module architecture with ehcache in Koupleless.
-weight: 2
+weight: 4
 ---
 
 ## Why Best Practices are Needed

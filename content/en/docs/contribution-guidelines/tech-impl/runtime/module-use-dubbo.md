@@ -1,7 +1,7 @@
 ---
-title: Module Using Dubbo
+title: 6.5.3.8 Module Using Dubbo
 date: 2024-05-24T10:28:32+08:00
-weight: 635
+weight: 9
 ---
 # Module Interceptor (Filter)
 A module can use interceptors defined within itself or those defined on the base. 

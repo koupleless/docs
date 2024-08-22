@@ -1,5 +1,5 @@
 ---
-title: Module Release
+title: 5.1 Module Release
 date: 2024-07-19T10:28:32+08:00
 description: Koupleless Module Online and Offline Procedures
 weight: 100

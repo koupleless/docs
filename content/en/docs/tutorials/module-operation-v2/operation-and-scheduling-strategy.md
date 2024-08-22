@@ -1,5 +1,5 @@
 ---
-title: Module Release Operations Strategy
+title: 5.2 Module Release Operations Strategy
 date: 2024-07-19T10:28:32+08:00
 description: Koupleless Module Release Operations Strategy
 weight: 600

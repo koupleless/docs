@@ -3,6 +3,7 @@ title: CRD Model Design
 date: 2024-01-25T10:28:32+08:00
 description: CRD Model Design for Koupleless ModuleController
 weight: 200
+draft: true
 ---
 
 ## Comparison of CRD Models

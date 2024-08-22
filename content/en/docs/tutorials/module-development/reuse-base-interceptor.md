@@ -1,8 +1,8 @@
 ---
-title: Reusing Base Interceptors
+title: 4.3.7 Reusing Base Interceptors
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless Module Reusing Base Interceptors
-weight: 500
+weight: 600
 ---
 
 # Objective

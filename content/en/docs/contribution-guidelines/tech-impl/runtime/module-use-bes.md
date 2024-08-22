@@ -1,7 +1,7 @@
 ---
-title: Module Use Bes
+title: 6.5.3.7 Module Use Bes
 date: 2024-01-25T10:28:32+08:00
-weight: 400
+weight: 7
 draft: false
 ---
 
