@@ -7,10 +7,14 @@ weight: 920
 
 ## Base Lifecycle
 
-![image.png](/static/img/module-controller-v2/base_sequence_diagram_en.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/base_sequence_diagram.png" />  
+</div>
 
 ## Module Release and O&M
 
-![image.png](/static/img/module-controller-v2/module_pub_update_diagram_en.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module_pub_update_diagram.png" />  
+</div>  
 
 <br/>
