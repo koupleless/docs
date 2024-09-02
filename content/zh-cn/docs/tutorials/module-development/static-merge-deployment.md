@@ -7,7 +7,9 @@ weight: 700
 
 ## 介绍
 
-SOFAArk 提供了静态合并部署能力，**Base 包（基座应用）** 在启动时，可以启动已经构建完成的 **Biz 包（模块应用)**，支持本地目录、本地文件URL、远程URL 和自定义获取方式。
+SOFAArk 提供了静态合并部署能力，**Base 包（基座应用）** 在启动时，可以启动已经构建完成的 **Biz 包（模块应用)**，默认获取模块的方式为：本地目录、本地文件URL、远程URL。
+
+此外，SOFAArk 还提供了静态合并部署的扩展接口，开发者可以自定义获取 **Biz 包（模块应用)** 的方式。
 
 ## 使用方式
 
@@ -40,7 +42,20 @@ Maven 插件 sofa-ark-maven-plugin 打包生成。
 </build>
 ```
 
-### 步骤二：基座配置需要合并部署的 Ark Biz（本地目录、本地文件URL、远程URL）
+### 步骤二：基座获取需要合并部署的 Ark Biz
+
+要求:
+- jdk8
+    - sofa.ark.version >= 2.2.12
+    - koupleless.runtime.version >= 1.2.3
+- jdk17/jdk21
+    - sofa.ark.version >= 3.1.5
+    - koupleless.runtime.version >= 2.1.4
+
+
+#### 方式一：使用官方默认获取方式，支持本地目录、本地文件URL、远程URL
+
+##### 1. 基座配置本地目录、本地文件URL、远程URL
 
 开发者需要在基座的 ark 配置文件中（`conf/ark/ark.properties` 或 `conf/ark/ark.yml`）指定需要合并部署的 Ark Biz 包，支持：
 
@@ -71,9 +86,7 @@ integrateLocalDirs:
   - /home/${xxx}/sofa-ark/biz2
 ```
 
-### 步骤三：基座配置打包插件目标 integrate-biz，并升级 SOFAArk 版本
-要求: 
-- koupleless.runtime.version >= 1.2.3
+##### 2. 基座配置打包插件目标 integrate-biz
 
 基座 bootstrap 的 pom 中给 koupleless-base-build-plugin 添加 <goal>integrate-biz</goal>，如下：
 ```xml
@@ -95,5 +108,42 @@ integrateLocalDirs:
 
 执行打包后，如果自行解压打包的 jar 文件，可以在 classPath/SOFA-ARK/biz 中看到指定的模块 ark-biz 包。
 
-### 步骤四：启动基座
+#### 方式二：使用自定义获取方式
+
+##### 1. Ark 扩展机制原理
+
+见 [Ark 扩展机制原理介绍](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-extension/)
+
+##### 2. 实现 AddBizToStaticDeployHook 接口
+
+基座/基座二方包中，实现 AddBizToStaticDeployHook 接口，以 AddBizInResourcesHook 为例，如下：
+```java
+@Extension("add-biz-in-resources-to-deploy")
+public class AddBizInResourcesHook implements AddBizToStaticDeployHook {
+    @Override
+    public List<BizArchive> getStaticBizToAdd() throws Exception {
+        List<BizArchive> archives = new ArrayList<>();
+        // ...
+        archives.addAll(getBizArchiveFromResources());
+        return archives;
+    }
+
+    protected List<BizArchive> getBizArchiveFromResources() throws Exception {
+        // ... 读取资源中的Ark Biz包
+        return archives;
+    }
+}
+```
+
+##### 3. 配置 spi 
+
+在 resources 目录下添加 /META-INF/services/sofa-ark/ 目录，再在 /META-INF/services/sofa-ark/ 添加一个 名为 com.alipay.sofa.ark.spi.service.biz.AddBizToStaticDeployHook 的文件，文件里面内容为 hook 类的全限定名：
+```text
+com.alipay.sofa.ark.support.common.AddBizInResourcesHook
+```
+
+重新打包基座。
+
+### 步骤三：启动基座
+
 JVM 添加参数，配置： `-Dsofa.ark.embed.static.biz.enable=true`
