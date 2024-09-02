@@ -44,7 +44,7 @@ url: "/home/"
     letter-spacing: 0; line-height: 26px; margin-top: 16px !important; margin-bottom: 64px !important; 
     font-weight: normal; "
     >让普通应用低成本享受 Serverless 体验，帮助企业降本增效！</p>
-<a href="/docs/quick-start/" style="display: inline-block; width: 176px; margin-right: 12px;">
+<a href="/docs/quick-start/module_dev/" style="display: inline-block; width: 176px; margin-right: 12px;">
   <img style="margin: 0;" src="/img/local-quick-start-btn.png" width="176px" />
 </a>
 <a href="/docs/video-training/" style="display: inline-block; width: 176px; margin-right: 12px;">
