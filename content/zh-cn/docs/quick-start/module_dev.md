@@ -31,27 +31,15 @@ git clone git@github.com:koupleless/samples.git
 
 ## 导入 springboot-samples 工程到编译器
 
-有两种方式导入工程到编译器
-1. 导入 samples 到编译器，然后选择 springboot-samples 子目录的 pom 为 maven 工程
-2. 直接导入 springboot-samples 到编译器，此时自动将 springboot-samples 导入为 maven 工程
+1. 导入 springboot-samples，有两种方式导入工程到编译器
+- 方式一：导入 samples 到编译器，然后选择 springboot-samples 子目录的 pom 为 maven 工程 
+- 方式二：直接导入 springboot-samples 到编译器，此时自动将 springboot-samples 导入为 maven 工程
 
-### 方式一：导入 samples
-1. 编译器 (如 idea) 导入 samples
-2. 添加 springboot-samples 里的 pom 为 maven 工程
-3. 执行如下命令构建 springboot-samples/web/tomcat 基座与两个模块
-
-```shell
-mvn -pl springboot-samples/web/tomcat/biz1-web-single-host,springboot-samples/web/tomcat/biz2-web-single-host -am clean package -DskipTests
-```
-
-### 方式二：直接导入 springboot-samples
-1. 编译器 (如 idea) 导入 springboot-samples
 2. 执行如下命令构建 springboot-samples/web/tomcat 基座与两个模块
 
 ```shell
 mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clean package -DskipTests
 ```
-
 
 构建完之后可以看到模块打出的模块 jar 包
 
