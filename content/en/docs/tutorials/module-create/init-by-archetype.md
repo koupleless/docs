@@ -9,6 +9,7 @@ We can create Biz Module in three ways, and this article introduces the second o
 1. [Splitting a large application into multiple modules](/docs/contribution-guidelines/split-module-tool/split-module-tool-intro/)
 2. [Transforming an existing application into a single module](/docs/tutorials/module-create/springboot-and-sofaboot/)
 3. **[Directly creating a module using a scaffold](/docs/tutorials/module-create/init-by-archetype/)**
+4. [Transform ordinary code fragments into a module](/docs/tutorials/module-create/main-biz/)
 
 It's easy to creating a module from maven archetype, all you need to do is input the Maven groupId and artifactId for the archetype in IDEA.
 
