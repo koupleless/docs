@@ -2,7 +2,7 @@
 title: 4.2.3 Java 代码片段作为模块
 date: 2024-01-25T10:28:32+08:00
 description: Java 代码片段作为模块
-weight: 210
+weight: 310
 ---
 
 模块的创建有四种方式，本文介绍第四种方式：
