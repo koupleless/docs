@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
+    tags: [v*]
 
 jobs:
   build-and-deploy:
@@ -28,5 +29,20 @@ jobs:
       - name: Configure Alibaba Cloud OSSUTIL
         run: ./ossutil64 config -e oss-cn-hongkong.aliyuncs.com -i ${{ secrets.OSS_ACCESSKEYID }} -k ${{ secrets.OSS_ACCESSKEYSECRET }}
 
+      - name: Determine release name
+        id: release_name
+        run: |
+          if [[ "${GITHUB_REF}" == refs/heads/main ]]; then
+            echo "BRANCH_NAME=latest" >> $GITHUB_ENV
+          elif [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG_NAME="${GITHUB_REF#refs/tags/}"
+            echo "BRANCH_NAME=${TAG_NAME//./-}" >> $GITHUB_ENV
+          else
+            echo "Error: Not on main branch or tag." >&2
+            exit 1
+          fi
+
       - name: Upload the web to the chosen oss bucket
-        run: ./ossutil64 cp -rf ./public/ oss://koupleless-dosc/
+        run: |
+          echo "sub dir name: ${BRANCH_NAME}"
+          ./ossutil64 cp -rf ./public/ oss://koupleless-dosc/${BRANCH_NAME}
