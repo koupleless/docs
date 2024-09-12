@@ -36,7 +36,7 @@ jobs:
             echo "BRANCH_NAME=latest" >> $GITHUB_ENV
           elif [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             TAG_NAME="${GITHUB_REF#refs/tags/}"
-            echo "BRANCH_NAME=${TAG_NAME//./-}" >> $GITHUB_ENV
+            echo "BRANCH_NAME=${TAG_NAME}" >> $GITHUB_ENV
           else
             echo "Error: Not on main branch or tag." >&2
             exit 1
