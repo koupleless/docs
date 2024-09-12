@@ -2,7 +2,7 @@
 title: 4.2.3 Java Code Fragment as Module
 date: 2024-01-25T10:28:32+08:00
 description: Java Code Fragment as Module
-weight: 210
+weight: 310
 ```
 
 Module creation has four methods, and this article introduces the fourth method:
