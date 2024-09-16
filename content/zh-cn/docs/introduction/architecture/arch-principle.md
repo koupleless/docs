@@ -12,7 +12,7 @@ weight: 100
     <img align="center" width="800px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695131313965-18385213-eded-4a6b-b554-db5312fa2c9d.png#clientId=ua84a92a5-30aa-4&from=paste&height=431&id=udb6b29d5&originHeight=862&originWidth=3448&originalType=binary&ratio=2&rotation=0&showTitle=false&size=192627&status=done&style=none&taskId=u9a114a24-0887-48d9-87b2-57d3e15eb80&title=&width=1724" />
 </div>
 
-<br />拆分之前，每个开发者可能感知从框架到中间件到业务公共部分到业务自身所有代码和逻辑，拆分后，团队的协作分工发生相应改变，研发人员分工出两种角色，基座和模块开发者，模块开发者不关系资源与容量，享受秒级部署验证能力，聚焦在业务逻辑自身上。<br />
+<br />拆分之前，每个开发者可能感知从框架到中间件到业务公共部分到业务自身所有代码和逻辑，拆分后，团队的协作分工发生相应改变，研发人员分工出两种角色，基座和模块开发者，模块开发者不关心资源与容量，享受秒级部署验证能力，聚焦在业务逻辑自身上。<br />
 
 <div style="text-align: center;">
     <img align="center" width="860px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695131554610-ef5c4a2f-0080-45eb-8fed-55fdf5d827f9.png#clientId=ua84a92a5-30aa-4&from=paste&height=459&id=u7227f759&originHeight=918&originWidth=3714&originalType=binary&ratio=2&rotation=0&showTitle=false&size=309179&status=done&style=none&taskId=u12307968-2a79-4f77-9c78-e976399c60e&title=&width=1857" />
