@@ -56,7 +56,8 @@ Note: The dependencyArtifactId in the following configuration needs to be modifi
     <plugin>
         <groupId>com.alipay.sofa.koupleless</groupId>
         <artifactId>koupleless-base-build-plugin</artifactId>
-        <version>1.2.4-SNAPSHOT</version>
+        <!--        koupleless.runtime.version >= 1.3.0 -->
+        <version>${koupleless.runtime.version}</version>
         <configuration>
             <!-- Generate the artifactId of the starter (groupId consistent with the base), which needs to be modified here!! -->
             <dependencyArtifactId>${baseAppName}-dependencies-starter</dependencyArtifactId>

@@ -55,7 +55,8 @@ Koupleless 底层借助 SOFAArk 框架，实现了模块之间、模块和基座
     <plugin>
         <groupId>com.alipay.sofa.koupleless</groupId>
         <artifactId>koupleless-base-build-plugin</artifactId>
-        <version>1.2.4-SNAPSHOT</version>
+        <!--        koupleless.runtime.version >= 1.3.0 -->
+        <version>${koupleless.runtime.version}</version>
         <configuration>
             <!--生成 starter 的 artifactId（groupId和基座一致），这里需要修改！！-->
             <dependencyArtifactId>${baseAppName}-dependencies-starter</dependencyArtifactId>
