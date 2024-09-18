@@ -75,8 +75,6 @@ Theoretically, adding this dependency should be enough. However, because this de
             <bizName>${Replace with module name}</bizName>
             <webContextPath>${Module's custom web context path, needs to be different from other modules}</webContextPath>
             <declaredMode>true</declaredMode>
-            <!-- Configure the module's automatic package exclusion list, download rules.txt from github and place it in the conf/ark/ directory of the module's root directory, download link: https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt -->
-            <packExcludesConfig>rules.txt</packExcludesConfig>
         </configuration>
     </plugin>
     <!-- Build a regular SpringBoot fatjar, which supports independent deployment. If not needed, it can be deleted -->
@@ -88,7 +86,7 @@ Theoretically, adding this dependency should be enough. However, because this de
 </plugins>
 ```
 
-2. Refer to the official website's module slimming section for the [automatic packaging part](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB), download the packaging configuration file **rules.txt**, and place it in the **conf/ark/** directory.
+2. Refer to the official website's module slimming section for the [automatic packaging part](https://koupleless.gitee.io/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB), download the packaging configuration file **/conf/ark/bootstrap.properties** or **/conf/ark/bootstrap.yml**.
 
 3. Develop the module, for example, add a Rest Controller to provide a REST interface.
 ```java
