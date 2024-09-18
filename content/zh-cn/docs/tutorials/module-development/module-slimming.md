@@ -104,7 +104,8 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
        <plugin>
            <groupId>com.alipay.sofa</groupId>
            <artifactId>sofa-ark-maven-plugin</artifactId>
-           <version>2.2.13-SNAPSHOT</version>
+           <!--           since ${sofa.ark.version} >= 2.2.13    -->
+           <version>${sofa.ark.version}</version>
            <executions>
                <execution>
                    <id>default-cli</id>
