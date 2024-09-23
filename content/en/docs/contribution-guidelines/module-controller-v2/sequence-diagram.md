@@ -1,5 +1,5 @@
 ---
-title: 6.6.2 Core Process Timeline
+title: 6.6.3 Core Process Timeline
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless ModuleController V2 Core Process Timeline
 weight: 920
