@@ -1,7 +1,7 @@
 ---
-title: 6.6.2 ModuleControllerV2 调度原理
+title: 6.6.2 ModuleControllerV2 Scheduling Principles
 date: 2024-07-18T11:24:33+08:00
-description: Koupleless ModuleControllerV2 架构设计
+description: Koupleless ModuleControllerV2 Architecture Design
 weight: 910
 ---
 
