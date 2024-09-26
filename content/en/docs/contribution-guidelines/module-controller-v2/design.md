@@ -20,6 +20,7 @@ Upon base discovery, the configured Metadata and Network information are read. M
 Metadata becomes Label information on the VNode to identify base details. Network information becomes the VNode's network configuration. Future module pods scheduled onto the base will inherit the VNode's IP for configuring Services, etc.
 
 A VNode will also contain the following key information:
+
 ```yaml
 apiVersion: v1
 kind: Node
@@ -53,6 +54,7 @@ status:
 Module Controller V2 defines a module as a Pod in the K8S system, allowing for rich scheduling capabilities through Pod YAML configuration.
 
 A module Pod YAML configuration is as follows:
+
 ```yaml
 apiVersion: v1
 kind: Pod

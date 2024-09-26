@@ -7,7 +7,7 @@ weight: 910
 
 ## 模块运维架构
 
-###  简要介绍
+### 简要介绍
 
 Module Controller V2 基于 Virtual Kubelet 能力，实现将基座映射为 K8S 中的 Node，进而通过将 Module 定义为 Pod 实现对 K8S 调度器以及各类控制器的复用，快速搭建模块运维调度能力。
 
@@ -22,6 +22,7 @@ Module Controller V2 通过 Tunnel 实现基座发现，基座发现后将会通
 Metadata 信息将变成 VNode 上的 Label 信息，用于标识基座信息， Network 信息将成为 VNode 的网络配置，未来调度到基座上的 module pod 将继承 VNode 的 IP， 用于配置 Service 等。
 
 一个 VNode 还将包含以下关键信息：
+
 ```yaml
 apiVersion: v1
 kind: Node
