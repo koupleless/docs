@@ -36,7 +36,7 @@ Module Controller V2 包含一个基于 MQTT 的运维管道，依赖 MQTT 进�
 
 **如果已经有可用的 MQTT 服务，请跳过本节。**
 
-这里推荐直接使用 NanoMQ 的 MQTT 服务镜像进行测试， 使用 [yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/mqtt.yaml) 在 K8S 中部署 MQTT 服务：
+这里推荐直接使用 NanoMQ 的 MQTT 服务镜像进行测试， 使用 [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/mqtt.yaml) 在 K8S 中部署 MQTT 服务：
 
 ```yaml
 apiVersion: v1
@@ -76,7 +76,7 @@ Module Controller V2 有两种部署方式：
 
 接下来，依次 apply 上面的三个 yaml 文件，完成 service account 的权限设置与绑定。
 
-接下来我们需要准备 Module Controller 部署的 [Pod Yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/module-controller.yaml)：
+接下来我们需要准备 Module Controller 部署的 [Pod Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module-controller.yaml)：
 
 ```yaml
 apiVersion: v1
@@ -116,7 +116,7 @@ apply 上述 Module Controller 的 yaml 到 K8S 集群，等待 Module Controlle
 
 ## 测试基座部署
 
-为了方便上手，我们这里也准备好了测试基座的 Docker 镜像，首先下载[基座 Yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/base.yaml)
+为了方便上手，我们这里也准备好了测试基座的 Docker 镜像，首先下载[基座 Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/base.yaml)
 
 ```yaml
 apiVersion: v1
@@ -182,7 +182,7 @@ kubectl port-forward base 8080:8080
 
 此时应当返回错误页，表明模块还未安装。
 
-接下来我们将使用 Deployment 对模块进行发布，将下面的模块 [yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/module.yaml) apply 到 K8S ，即可进行模块发布。这里以单个模块发布为例：
+接下来我们将使用 Deployment 对模块进行发布，将下面的模块 [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) apply 到 K8S ，即可进行模块发布。这里以单个模块发布为例：
 
 ```yaml
 apiVersion: apps/v1

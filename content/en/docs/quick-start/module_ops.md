@@ -36,7 +36,7 @@ Module Controller V2 incorporates an operational pipeline based on MQTT, relying
 
 **Skip this section if you already have an available MQTT service.**
 
-For testing purposes, it's advised to directly utilize the MQTT service image from NanoMQ. Deploy the MQTT service using the [yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/mqtt.yaml) in K8S:
+For testing purposes, it's advised to directly utilize the MQTT service image from NanoMQ. Deploy the MQTT service using the [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/mqtt.yaml) in K8S:
 
 ```yaml
 apiVersion: v1
@@ -76,7 +76,7 @@ First, we need to prepare the necessary RBAC configurations for Module Controlle
 
 Sequentially apply these three YAML files to complete the service account permissions setting and binding.
 
-Next, we need to prepare the [Pod YAML](https://github.com/koupleless/docs/tree/main/static/example/module-controller/module-controller.yaml) for Module Controller deployment:
+Next, we need to prepare the [Pod YAML](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module-controller.yaml) for Module Controller deployment:
 
 ```yaml
 apiVersion: v1
@@ -116,7 +116,7 @@ With that, the module operation capability is established. Next, we'll prepare a
 
 ## Deployment of Test Base
 
-For ease of getting started, we also provide a Docker image for the test base. Download the [Base YAML](https://github.com/koupleless/docs/tree/main/static/example/module-controller/base.yaml)
+For ease of getting started, we also provide a Docker image for the test base. Download the [Base YAML](https://github.com/koupleless/module-controller/tree/main/example/quick-start/base.yaml)
 
 ```yaml
 apiVersion: v1
@@ -180,7 +180,7 @@ To compare, let's first look at the scenario before the module is installed. Vis
 
 An error page should appear, indicating the module is not yet installed.
 
-Next, we'll publish the module using a Deployment. Apply the following module [yaml](https://github.com/koupleless/docs/tree/main/static/example/module-controller/module.yaml) to K8S for module publication, using a single module as an example:
+Next, we'll publish the module using a Deployment. Apply the following module [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) to K8S for module publication, using a single module as an example:
 
 ```yaml
 apiVersion: apps/v1

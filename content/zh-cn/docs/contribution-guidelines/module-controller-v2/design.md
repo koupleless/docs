@@ -1,15 +1,19 @@
 ---
-title: 6.6.2 ModuleControllerV2 调度原理
+title: 6.6.2 ModuleControllerV2 原理
 date: 2024-07-18T11:24:33+08:00
 description: Koupleless ModuleControllerV2 架构设计
 weight: 910
 ---
 
-## 简要介绍
+## 模块运维架构
 
-Module Controller V2 基于多租户 Virtual Kubelet 能力，实现将基座映射为 K8S 中的 Node，进而通过将 Module 定义为 Pod 实现对 K8S 调度器以及各类控制器的复用，快速搭建模块运维调度能力。
+###  简要介绍
 
-## 基座 <-> VNode 映射
+Module Controller V2 基于 Virtual Kubelet 能力，实现将基座映射为 K8S 中的 Node，进而通过将 Module 定义为 Pod 实现对 K8S 调度器以及各类控制器的复用，快速搭建模块运维调度能力。
+
+![struct.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2/module-controller-struct.png)
+
+### 基座 <-> VNode 映射
 
 Module Controller V2 通过 Tunnel 实现基座发现，基座发现后将会通过 Virtual Kubelet 将其伪装成 Node，以下称此类伪装的 Node 为 VNode。
 
@@ -46,11 +50,11 @@ status:
     type: Hostname
 ```
 
-## 模块 <-> Pod 映射
+### 模块 <-> vPod 映射
 
-Module Controller V2 将模块定义为 K8S 体系中的一个 Pod，通过配置 Pod Yaml 实现丰富的调度能力。
+Module Controller V2 将模块定义为 K8S 体系中的一个 Pod（为了区分，后续称为 vPod ），通过配置 Pod Yaml 实现丰富的调度能力。
 
-一个模块 Pod 的 Yaml 配置如下：
+一个模块 vPod 的 Yaml 配置如下：
 
 ```yaml
 apiVersion: v1
@@ -95,5 +99,18 @@ spec:
 ```
 
 上面的样例只展示了最基本的配置，另外还可以添加任意配置以实现丰富的调度能力，例如在 Module Deployment 发布场景中，可另外添加 Pod AntiAffinity 以防止模块的重复安装。
+
+## 运维流程
+
+基于上述结构与映射关系，我们就可以复用 K8S 原生的控制面组件，实现复杂多样的模块运维需求。
+
+下面以模块 Deployment 为例展示整个运维流程：
+
+1. 创建模块 Deployment （原生 K8S Deployment，其中 Template 中的 PodSpec 对模块信息进行了定义）
+2. K8S ControllerManager 中的 Deployment Controller 会根据 Deployment 配置创建模块vPod，此时 vPod 还未调度，状态为 Pending
+3. K8S Scheduler 扫描未调度的 vPod，然后根据 selector、affinity、taint/toleration 配置将其调度到合适的 vNode 上
+4. Module Controller 监听到 vPod 完成调度，获取到 vPod 中定义的模块信息，将模块安装指令发送到基座上
+5. 基座完成模块安装后，将模块安装状态与 Module Controller 进行同步，Module Controller 再将模块状态转换为 Container Status 同步到 K8S
+6. 同时，基座也会持续上报健康状态，Module Controller 会将 Metaspace 容量以及使用量映射为 Node Memory，更新到 K8S
 
 <br/>
