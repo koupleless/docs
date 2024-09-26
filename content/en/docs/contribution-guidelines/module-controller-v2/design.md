@@ -9,6 +9,8 @@ weight: 910
 
 Module Controller V2 leverages the multi-tenant capabilities of Virtual Kubelet to map bases as Nodes in K8S. By defining modules as Pods, it reuses the K8S scheduler and various controllers to quickly build module operation and scheduling capabilities.
 
+![struct.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2/module-controller-struct.png)
+
 ## Base <-> VNode Mapping
 
 Module Controller V2 implements base discovery through Tunnel, mapping it as a Node via Virtual Kubelet. Such Nodes are referred to as VNodes.
@@ -94,5 +96,29 @@ spec:
 ```
 
 The above example shows only the basic configuration. Additional configurations can be added to achieve richer scheduling capabilities, such as adding Pod AntiAffinity in Module Deployment scenarios to prevent duplicate module installations.
+
+**Operations Workflow**
+
+Based on the above structure and mapping relationships, we can leverage Kubernetes (K8S) native control plane components to fulfill diverse and complex module operation requirements.
+
+The following illustrates the entire module operations workflow using the Deployment module as an example, with the base already initialized and mapped:
+
+![module_deployment_stage_1.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_1.png)
+
+1. **Create the Module Deployment** (a native K8S Deployment, where the PodSpec within the Template defines module information). The Deployment Controller in the K8S ControllerManager will create a virtual Pod (vPod) according to the Deployment configuration. At this point, the vPod is未经调度，with a status of Pending.
+
+![module_deployment_stage_2.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_2.png)
+
+2. **K8S Scheduler** scans unscheduled vPods and schedules them onto appropriate virtual Nodes (vNodes) based on selector, affinity, taint/toleration configurations.
+
+![module_deployment_stage_3.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_3.png)
+
+3. Upon detecting the completion of vPod scheduling, the **Module Controller** retrieves the module information defined within the vPod and sends installation commands to the base.
+
+![module_deployment_stage_4.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_4.png)
+
+4. After the base completes the module installation, it synchronizes the module installation status with the Module Controller, which then translates the module status into Container Status and syncs it with Kubernetes.
+
+5. Concurrently, the base continuously reports its health status. The Module Controller maps Metaspace capacity and usage to Node Memory, updating this information in Kubernetes. 
 
 <br/>
