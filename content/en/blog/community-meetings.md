@@ -1,9 +1,12 @@
 ---
 title: Community Meeting Minutes
-date: 2024-01-25T10:28:32+08:00
-weight: 300
+date: 2023-01-25T10:28:32+08:00
+weight: 4
 description: Koupleless Community Meeting Minutes
 ---
+
+### Newest Koupleless (SOFAServerless) Community Meeting
+Minutes available at: [meeting every two weeks](https://github.com/koupleless/koupleless/issues?q=is%3Aissue+is%3Aopen+%E5%8F%8C%E5%91%A8%E4%BC%9A)    <br/>
 
 ### Koupleless (SOFAServerless) Community Meeting on 24.01.23
 Minutes available at: [https://github.com/koupleless/koupleless/issues/12](https://github.com/koupleless/koupleless/issues/12)     <br/>
