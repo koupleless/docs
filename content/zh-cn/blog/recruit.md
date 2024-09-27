@@ -1,7 +1,7 @@
 ---
 title: 蚂蚁集团中间件和 PaaS 产品技术火热招聘中！
 date: 2024-01-25T10:28:32+08:00
-weight: 10
+weight: 1
 description: 蚂蚁集团中间件和 PaaS 产品技术火热招聘中！
 ---
 
