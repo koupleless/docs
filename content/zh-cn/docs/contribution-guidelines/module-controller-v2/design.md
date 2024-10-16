@@ -11,7 +11,7 @@ weight: 910
 
 Module Controller V2 基于 Virtual Kubelet 能力，实现将基座映射为 K8S 中的 Node，进而通过将 Module 定义为 Pod 实现对 K8S 调度器以及各类控制器的复用，快速搭建模块运维调度能力。
 
-![struct.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2/module-controller-struct.png)
+![struct.png](/img/module-controller-v2/module-controller-struct.png)
 
 ### 基座 <-> VNode 映射
 
@@ -107,19 +107,28 @@ spec:
 
 下面以模块 Deployment 为例展示整个模块运维流程，此时基座已完成启动与映射：
 
-![module_deployment_stage_1.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_1.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_1.png"/>
+</div>
+
 
 1. 创建模块 Deployment （原生 K8S Deployment，其中 Template 中的 PodSpec 对模块信息进行了定义），K8S ControllerManager 中的 Deployment Controller 会根据 Deployment 配置创建模块vPod，此时 vPod 还未调度，状态为 Pending
 
-![module_deployment_stage_2.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_2.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_2.png" />  
+</div>
 
 2. K8S Scheduler 扫描未调度的 vPod，然后根据 selector、affinity、taint/toleration 配置将其调度到合适的 vNode 上
 
-![module_deployment_stage_3.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_3.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_3.png" />  
+</div>
 
 3. Module Controller 监听到 vPod 完成调度，获取到 vPod 中定义的模块信息，将模块安装指令发送到基座上
 
-![module_deployment_stage_4.png](https://github.com/koupleless/docs/tree/main/static/img/module-controller-v2//module_deployment_stage_4.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_4.png" />  
+</div>
 
 4. 基座完成模块安装后，将模块安装状态与 Module Controller 进行同步，Module Controller 再将模块状态转换为 Container Status 同步到 K8S
 
