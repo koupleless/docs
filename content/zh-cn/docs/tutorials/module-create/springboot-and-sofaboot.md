@@ -5,10 +5,11 @@ description: 存量 SpringBoot 或 SOFABoot 升级为 Koupleless 模块
 weight: 200
 ---
 
-模块的创建有三种方式，本文介绍第二种方式：
+模块的创建有四种方式，本文介绍第二种方式：
 1. [大应用拆出多个模块](/docs/contribution-guidelines/split-module-tool/split-module-tool-intro/)
 2. **[存量应用改造成一个模块](/docs/tutorials/module-create/springboot-and-sofaboot/)**
 3. [直接脚手架创建模块](/docs/tutorials/module-create/init-by-archetype/)
+4. [普通代码片段改造成一个模块](/docs/tutorials/module-create/main-biz/)
 
 本文介绍存量 SpringBoot 或 SOFABoot 如何低成本升级为模块的操作和验证步骤，仅需加一个 ark 打包插件 + 配置模块瘦身 即可实现普通应用一键升级为模块应用，并且能做到同一套代码分支，既能像原来 SpringBoot 一样独立启动，也能作为模块与其它应用合并部署在一起启动。
 
@@ -32,7 +33,7 @@ spring.application.name = ${替换为实际模块应用名}
 
 ```xml
 <properties>
-    <sofa.ark.version>2.2.13</sofa.ark.version>
+    <sofa.ark.version>2.2.14</sofa.ark.version>
     <!-- 不同jdk版本，使用不同koupleless版本，参考：https://koupleless.io/docs/tutorials/module-development/runtime-compatibility-list/#%E6%A1%86%E6%9E%B6%E8%87%AA%E8%BA%AB%E5%90%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E5%85%B3%E7%B3%BB -->
     <koupleless.runtime.version>1.2.3</koupleless.runtime.version>
 </properties>

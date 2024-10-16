@@ -1,9 +1,12 @@
 ---
 title: 社区会议纪要
-date: 2024-01-25T10:28:32+08:00
-weight: 300
+date: 2023-01-25T10:28:32+08:00
+weight: 4
 description: Koupleless 社区会议纪要
 ---
+
+### 最新 Koupleless (SOFAServerless) 社区会议
+会议纪要详见：[双周会历史记录](https://github.com/koupleless/koupleless/issues?q=is%3Aissue+is%3Aopen+%E5%8F%8C%E5%91%A8%E4%BC%9A)    <br/>
 
 ### Koupleless (SOFAServerless) 24.01.23 社区会议
 会议纪要详见：[https://github.com/koupleless/koupleless/issues/12](https://github.com/koupleless/koupleless/issues/12)     <br/>

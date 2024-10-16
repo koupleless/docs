@@ -268,6 +268,7 @@ Upgrade the Guice version to a newer version, such as:
 ### Need to slim down the module
 #### Symptom
 - Error java.lang.IllegalArgumentException: Cannot instantiate interface org.springframework.context.ApplicationListener: com.alipay.sofa.koupleless.common.spring.KouplelessApplicationListener
+- Error Caused by: java.lang.IllegalArgumentException: class com.alipay.sofa.koupleless.plugin.spring.BizApplicationContextInitializer is not assignable to interface org.springframework.context.ApplicationContextInitializer
 #### Reason
 The module should import the springboot dependency in a provided manner.
 #### Solution

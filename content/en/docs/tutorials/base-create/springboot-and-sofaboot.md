@@ -5,6 +5,15 @@ description: Upgrade SpringBoot or SOFABoot to Koupleless Base
 weight: 100
 ---
 
+We can create Biz Module in three ways, and this article introduces the second one:
+
+1. [Splitting a large application into multiple modules](/docs/contribution-guidelines/split-module-tool/split-module-tool-intro/)
+2. **[Transforming an existing application into a single module](/docs/tutorials/module-create/springboot-and-sofaboot/)**
+3. [Directly creating a module using a scaffold](/docs/tutorials/module-create/init-by-archetype/)
+4. [Transform ordinary code fragments into a module](/docs/tutorials/module-create/main-biz/)
+
+This article introduces the operation and verification steps of how to upgrade existing SpringBoot or SOFABoot to modules at a low cost. It only requires adding an ark packaging plugin and configuring module slimming to achieve the one-click upgrade of a regular application to a module application. With the same set of code branches, the application can be independently started like the original SpringBoot, and can also be merged and deployed together with other applications as a module.
+
 ## Prerequisites
 
 1. SpringBoot version >= 2.1.9.RELEASE (for SpringBoot users)
@@ -28,8 +37,8 @@ spring.application.name = ${Replace with actual base app name}
 
 ```xml
 <properties>
-    <sofa.ark.version>2.2.13</sofa.ark.version>
-    <koupleless.runtime.version>1.3.0</koupleless.runtime.version>
+    <sofa.ark.version>2.2.14</sofa.ark.version>
+    <koupleless.runtime.version>1.3.1</koupleless.runtime.version>
 </properties>
 ```
 
