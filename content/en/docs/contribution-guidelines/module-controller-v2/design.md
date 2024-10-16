@@ -111,7 +111,7 @@ The following illustrates the entire module operations workflow using the Deploy
     <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_1.png" />  
 </div>
 
-1. **Create the Module Deployment** (a native K8S Deployment, where the PodSpec within the Template defines module information). The Deployment Controller in the K8S ControllerManager will create a virtual Pod (vPod) according to the Deployment configuration. At this point, the vPod is未经调度，with a status of Pending.
+1. **Create the Module Deployment** (a native K8S Deployment, where the PodSpec within the Template defines module information). The Deployment Controller in the K8S ControllerManager will create a virtual Pod (vPod) according to the Deployment configuration. At this point, the vPod wasn't scheduled，with a status of Pending.
 
 <div style="text-align: center;">  
     <img align="center" width="800px" src="/img/module-controller-v2/module_deployment_stage_2.png" />  
