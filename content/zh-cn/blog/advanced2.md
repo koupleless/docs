@@ -7,11 +7,13 @@ author: 赵真灵
 
 本篇文章属于 Koupleless 进阶系列文章第二篇，默认读者对 Koupleless 的基础概念、能力都已经了解，如果还未了解过的可以查看[官网](https://koupleless.io/docs/introduction/intro-and-scenario/)。
 
-进阶系列一：[Koupleless 模块化的优势与挑战，我们是如何应对挑战的](https://lark.alipay.com/middleware/sofa-serverless/yabayt72doudtpgo)
+进阶系列一：[Koupleless 模块化的优势与挑战，我们是如何应对挑战的](http://localhost:1313/blog/2024/01/25/koupleless-%E5%86%85%E6%A0%B8%E7%B3%BB%E5%88%97%E6%A8%A1%E5%9D%97%E5%8C%96%E9%9A%94%E7%A6%BB%E4%B8%8E%E5%85%B1%E4%BA%AB%E5%B8%A6%E6%9D%A5%E7%9A%84%E6%94%B6%E7%9B%8A%E4%B8%8E%E6%8C%91%E6%88%98/)
 
-进阶系列二： [https://lark.alipay.com/middleware/sofa-serverless/cc472g1d8wwgkgab](https://lark.alipay.com/middleware/sofa-serverless/cc472g1d8wwgkgab)
+进阶系列二： [Koupleless 内核系列 | 单进程多应用如何解决兼容问题](http://localhost:1313/blog/2024/01/25/koupleless-%E5%86%85%E6%A0%B8%E7%B3%BB%E5%88%97-%E5%8D%95%E8%BF%9B%E7%A8%8B%E5%A4%9A%E5%BA%94%E7%94%A8%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/)
 
+进阶系列三：[Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？](http://localhost:1313/blog/2024/01/25/koupleless-%E5%86%85%E6%A0%B8%E7%B3%BB%E5%88%97-%E4%B8%80%E5%8F%B0%E6%9C%BA%E5%99%A8%E5%86%85-koupleless-%E6%A8%A1%E5%9D%97%E6%95%B0%E9%87%8F%E7%9A%84%E6%9E%81%E9%99%90%E5%9C%A8%E5%93%AA%E9%87%8C/)
 
+进阶系列四：[Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么](http://localhost:1313/blog/2024/01/25/koupleless-%E5%8F%AF%E6%BC%94%E8%BF%9B%E6%9E%B6%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5%E5%BD%93%E6%88%91%E4%BB%AC%E8%B0%88%E9%99%8D%E6%9C%AC%E6%97%B6%E6%88%91%E4%BB%AC%E8%B0%88%E4%BA%9B%E4%BB%80%E4%B9%88/)
 
 # 多应用兼容性 —— Koupleless 极速研发体系下存在的问题
 Koupleless 是模块化研发的体系，应用被抽象成了基座和模块两个部分，模块可以动态地安装到基座上，如下图所示：
