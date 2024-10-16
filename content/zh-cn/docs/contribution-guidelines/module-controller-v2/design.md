@@ -11,7 +11,9 @@ weight: 910
 
 Module Controller V2 基于 Virtual Kubelet 能力，实现将基座映射为 K8S 中的 Node，进而通过将 Module 定义为 Pod 实现对 K8S 调度器以及各类控制器的复用，快速搭建模块运维调度能力。
 
-![struct.png](/img/module-controller-v2/module-controller-struct.png)
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/module-controller-struct.png"/>
+</div>
 
 ### 基座 <-> VNode 映射
 
