@@ -199,16 +199,6 @@ https://www.zmops.com/
 **使用场景**：多应用合并部署降本增效
 
 <br/>
-
-### 上海一嗨信息技术服务有限公司
-
-<img alt="上海一嗨信息技术服务有限公司" src="/img/user-logos/yihai.png" width="250px" class="all-user-cases-logo" />
-
-https://www.1hai.cn/
-
-**使用场景**：多应用合并部署降本增效、模块热部署实现秒级构建发布
-
-<br/>
 <br/>
 
 ### 华信永道（北京）科技股份有限公司
