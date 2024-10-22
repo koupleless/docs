@@ -1,5 +1,5 @@
 baseURL = ""
-title = "Koupleless"
+title = "Koupleless, modular development framework and serving system, enable app evolve from monolithic to microservices and also serverless smoothly."
 
 # Language settings
 defaultContentLanguage = "zh-cn"
@@ -59,10 +59,11 @@ anchor = "smart"
 [languages]
 [languages.zh-cn]
 languageName ="中文"
+title = "Koupleless, 模块化研发框架与运维调度平台，帮助存量应用低成本演进至 Serverless 模式"
 weight = 2
 contentDir = "content/zh-cn"
 [languages.zh-cn.params]
-description = "Koupleless 官网"
+description = "Koupleless, 模块化研发框架与运维调度平台，帮助存量应用低成本演进至 Serverless 模式"
 time_format_default = "2006.02.01"
 time_format_blog = "2006.02.01"
 
@@ -70,8 +71,9 @@ time_format_blog = "2006.02.01"
 languageName ="English"
 weight = 3
 contentDir = "content/en"
+title = "Koupleless, modular development framework and serving system, enable app evolve from monolithic to microservices and also serverless smoothly."
 [languages.en.params]
-description = "Koupleless Web Site"
+description = "Koupleless, modular development framework and serving system, enable app evolve from monolithic to microservices and also serverless smoothly."
 time_format_default = "2006.02.01"
 time_format_blog = "2006.02.01"
 
