@@ -115,9 +115,9 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(40.000000, 0.000000)">
-                        <a xlink:href="/blog/2024/01/25/蚂蚁集团中间件和-paas-产品技术火热招聘中/" target="_blank">
+                        <a xlink:href="/user-cases/" target="_blank">
                         <text id="2024 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30" y="21">蚂蚁集团基础技术招聘啦！</tspan>
+                            <tspan x="30" y="21">企业案例列表</tspan>
                         </text>
                         </a>
                         <g id="编组-105" transform="translate(0.000000, 2.000000)">
@@ -128,9 +128,9 @@ url: "/home/"
                             </g>
                         </g>
                     </g>
-                    <a xlink:href="/blog/2024/01/25/蚂蚁集团中间件和-paas-产品技术火热招聘中/" target="_blank">
+                    <a xlink:href="/user-cases/" target="_blank">
                     <text id="" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="20" y="52">蚂蚁集团中间件和 PaaS 产品技术火热招聘啦！</tspan>
+                        <tspan x="20" y="52">详细企业案例与列表</tspan>
                     </text>
                     </a>
                 </g>

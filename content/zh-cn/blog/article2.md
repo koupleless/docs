@@ -1,6 +1,7 @@
 ---
 title: 成倍降本增效，提升企业竞争力！SOFAServerless 品牌升级为 Koupleless，重磅发布 1.0 版本
 date: 2024-01-25T10:28:32+08:00
+description: 成倍降本增效，提升企业竞争力！SOFAServerless 品牌升级为 Koupleless，重磅发布 1.0 版本
 weight: 201
 author: 赵真灵
 ---

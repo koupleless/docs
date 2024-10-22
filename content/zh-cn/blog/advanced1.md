@@ -1,6 +1,7 @@
 ---
 title: Koupleless 内核系列｜模块化隔离与共享带来的收益与挑战
 date: 2024-01-25T10:28:32+08:00
+description: Koupleless 内核系列｜模块化隔离与共享带来的收益与挑战
 weight: 400
 author: 赵真灵
 ---

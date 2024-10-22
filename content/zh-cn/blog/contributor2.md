@@ -1,6 +1,7 @@
 ---
 title: 恭喜 颜文 成为 Koupleless 社区优秀 Contributor！
 date: 2024-06-25T10:28:32+08:00
+description: 恭喜 颜文 成为 Koupleless 社区优秀 Contributor！
 weight: 501
 author: 赵真灵
 ---

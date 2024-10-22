@@ -1,6 +1,7 @@
 ---
 title: Koupleless 内核系列 | 单进程多应用如何解决兼容问题
 date: 2024-01-25T10:28:32+08:00
+description: Koupleless 内核系列 | 单进程多应用如何解决兼容问题
 weight: 401
 author: 赵真灵
 ---
