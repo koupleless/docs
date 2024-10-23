@@ -6,7 +6,7 @@ draft: false
 ---
 
 # koupleless-adapter-bes
-koupleless-adapter-bes 是为了适配宝蓝德（BES)容器，仓库地址为 [koupleless-adapter-bes](https://github.com/chenjian6824/koupleless-adapter-bes)（感谢社区同学陈坚贡献）。
+koupleless-adapter-bes 是为了适配宝蓝德（BES)容器，仓库地址为 [koupleless-adapter-bes](https://github.com/lvjing2/koupleless-adapter-bes)（感谢社区同学陈坚贡献）。
 
 项目目前仅在BES 9.5.5.004 版本中验证过，其他版本需要自行验证，必要的话需要根据相同的思路进行调整。
 
