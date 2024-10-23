@@ -6,7 +6,7 @@ draft: false
 ---
 
 # koupleless-adapter-tongweb
-koupleless-adapter-tongweb 是为了适配东方通（TongWEB)容器，仓库地址为：[koupleless-adapter-tongweb](https://github.com/chenjian6824/koupleless-adapter-tongweb)（感谢社区同学陈坚贡献）。
+koupleless-adapter-tongweb 是为了适配东方通（TongWEB)容器，仓库地址为：[koupleless-adapter-tongweb](https://github.com/lvjing2/koupleless-adapter-tongweb)（感谢社区同学陈坚贡献）。
 
 项目目前仅在tongweb-embed-7.0.E.6_P7 版本中验证过，其他版本需要自行验证，必要的话需要根据相同的思路进行调整。
 
