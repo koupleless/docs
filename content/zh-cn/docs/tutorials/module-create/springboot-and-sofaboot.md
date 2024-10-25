@@ -18,7 +18,75 @@ weight: 200
 1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
 
-## 接入步骤
+## 自动化改造工具
+
+除了手动步骤，我们还提供了自动化工具 arkctl 来快速将存量应用改造成模块。以下是使用 arkctl 进行自动改造的详细说明。
+
+### 1. 简介
+
+对于存量应用自动改造成模块的实现方法依赖于arkctl create， 其中arkctl create 是 Koupleless 工具集中的一个命令，用于自动将现有的 SpringBoot 或 SOFABoot 应用转换为 Koupleless 模块。这个命令封装了 koupleless-ext-module-auto-convertor JAR 文件的功能，提供了更便捷的命令行界面。
+
+### 2. 功能特点
+
+- 自动修改 POM 文件，添加必要的依赖和插件
+- 自动更新 application.properties 文件
+- 自动创建 bootstrap.properties 文件（如果需要）
+- 自动处理模块瘦身配置
+
+### 3. 使用前提
+
+- 已安装 arkctl 工具
+- Java 8 或更高版本
+- Maven 3.2.5 或更高版本
+- 待改造的应用是基于 SpringBoot 或 SOFABoot 的项目
+
+### 4. 使用步骤
+
+#### 4.1 运行命令
+
+在命令行中执行以下命令：
+
+```
+arkctl create -p <项目路径> -a <应用名称>
+```
+
+参数说明：
+- -p 或 --projectPath: 待改造项目的根目录路径（必填）
+- -a 或 --applicationName: 应用名称（必填）
+
+示例：
+```
+arkctl create -p /path/to/your/project -a myapp
+```
+
+#### 4.2 确认改造结果
+
+命令执行完成后，检查项目中的以下变更：
+
+1. POM 文件：查看是否已添加必要的依赖和插件
+2. application.properties：确认是否已更新应用名称
+3. bootstrap.properties：如果创建了此文件，检查其内容是否正确
+4. 模块瘦身配置：查看是否已添加相关配置
+
+#### 4.3 手动调整（如需）
+
+虽然 arkctl create 命令会自动处理大部分改造工作，但可能仍需要进行一些手动调整。请仔细检查改造后的项目，确保所有配置都符合您的需求。
+
+### 5. 工作原理
+
+[插入工作原理部分的内容]
+
+### 6. 常见问题
+
+[插入常见问题部分的内容]
+
+### 7. 注意事项
+
+[插入注意事项部分的内容]
+
+## 手动接入步骤
+
+如果您选择手动进行改造，或需要对自动改造结果进行微调，请参考以下步骤：
 
 ### 步骤 1：修改 application.properties
 
