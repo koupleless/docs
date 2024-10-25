@@ -52,12 +52,12 @@ mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clea
 2. 安装模块1
 
 ```shell
-arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 2. 安装模块2
 
 ```shell
-arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 3. 测试验证
 
