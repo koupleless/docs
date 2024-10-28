@@ -113,5 +113,4 @@ K8S中原有的运行在Node上的Kubelet就是对VK的一种实现，通过实�
 1. MQTT 运维管道：由于 MQTT 本身就具有广播能力，所有 Module Controller 实例都会接收到 MQTT 上线消息，不需要额外配置
 2. HTTP 运维管道：HTTP 请求的特殊性使得基座在上线的时候只会与某一个 Module Controller 实例进行交互，那么此时初次上线时的负载均衡就需要通过其他能力实现。在实际部署中，多个 Module Controller 需要通过一个代理 （K8S Service/ Nginx等 ）来对外提供服务，因此可以在代理层上配置负载均衡策略，实现初次上线过程中的均衡。
 
-
 <br/>
