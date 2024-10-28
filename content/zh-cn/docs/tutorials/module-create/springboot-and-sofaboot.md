@@ -37,26 +37,30 @@ weight: 200
 
 - 已安装 arkctl 工具
 - Java 8 或更高版本
-- Maven 3.2.5 或更高版本
-- 待改造的应用是基于 SpringBoot 或 SOFABoot 的项目
 
 ### 4. 使用步骤
 
 #### 4.1 运行命令
+首先go build编译项目 
+这一步会生成 `arkctl.exe`（Windows）或 `arkctl`（Linux/Mac）可执行文件。
 
 在命令行中执行以下命令：
 
 ```
-arkctl create -p <项目路径> -a <应用名称>
+./arkctl create -p <项目路径> -a <应用名称>
 ```
 
 参数说明：
 - -p 或 --projectPath: 待改造项目的根目录路径（必填）
 - -a 或 --applicationName: 应用名称（必填）
 
-示例：
+示例（Windows）：
 ```
-arkctl create -p /path/to/your/project -a myapp
+./arkctl create -p "/path/to/your/project" -a "myapp"
+```
+Linux/Mac：
+```
+./arkctl create -p "/path/to/project" -a "myapp"
 ```
 
 #### 4.2 确认改造结果
@@ -74,15 +78,35 @@ arkctl create -p /path/to/your/project -a myapp
 
 ### 5. 工作原理
 
-[插入工作原理部分的内容]
+#### arkctl create 命令的工作流程如下：
 
-### 6. 常见问题
+1. 接收用户输入的项目路径和应用名称
+2. 将嵌入的 JAR 文件解压到临时目录
+3. 使用 Java 执行该 JAR 文件，传入项目路径和应用名称作为参数
+4. 捕获并显示 JAR 文件的输出信息
+5. 完成后清理临时文件
+#### JAR包（koupleless-ext-module-auto-convertor）内部的工作流程：
+1. 接收并验证输入的项目路径和应用名称
+2. 分析项目结构，确定项目类型（SpringBoot 或 SOFABoot）
+3. 修改 POM 文件：
+   - 添加 SOFAArk 相关依赖
+   - 配置 SOFAArk 打包插件
+   - 添加 Koupleless 运行时依赖
+4. 更新 application.properties 文件：
+   - 设置应用名称
+   - 添加必要的 Koupleless 配置项
+5. 创建 bootstrap.properties 文件（如果需要）：
+   - 添加模块瘦身所需的配置
+6. 处理模块瘦身配置：
+   - 分析项目依赖
+   - 在 POM 文件中添加适当的排除配置
 
-[插入常见问题部分的内容]
 
-### 7. 注意事项
+### 6. 注意事项
 
-[插入注意事项部分的内容]
+- 在使用 arkctl create 命令之前，请确保已备份您的项目。
+- 某些特殊项目可能需要额外的手动配置，请根据实际情况进行调整。
+- 如果项目使用了特定的框架或库，可能需要额外的适配工作。
 
 ## 手动接入步骤
 
