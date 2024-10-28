@@ -70,6 +70,9 @@ weight: 800
 - **VNODE_WORKER_NUM**
 - 含义: VNode 并发模块处理线程数，设为 1 表示单线程。
 
+- **CLIENT_ID**
+- 含义: 可选配置，Module Controller 实例ID，需保证同环境中全局唯一，默认情况下会生成随机UUID
+
 ### 文档参考
 
 具体的结构和实现介绍请参考[文档](/docs/contribution-guidelines/module-controller-v2/architecture/)

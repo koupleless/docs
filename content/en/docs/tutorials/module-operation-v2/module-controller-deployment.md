@@ -70,6 +70,9 @@ Below are some configurable environment variables and their explanations:
 - **VNODE_WORKER_NUM**
     - Meaning: Number of concurrent processing threads for VNode Modules. Set to 1 for single-threaded.
 
+- **CLIENT_ID**
+    - Meaning: Optional, Module Controller instance ID. need to be unique in one env, will generate a random UUID in default.
+
 ### Documentation Reference
 
 For detailed structure and implementation, refer to the [documentation](/docs/contribution-guidelines/module-controller-v2/architecture/).  
