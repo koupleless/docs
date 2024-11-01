@@ -29,10 +29,13 @@ git clone git@github.com:koupleless/samples.git
     <img align="center" width="800px" src="/img/quick-start/tomcat-sample-structure.png" />  
 </div>
 
-## 导入工程到编译器
+## 导入 springboot-samples 工程到编译器
 
-1. 编译器 (如 idea) 打开 springboot-samples 子目录
-2. 执行如下命令构建 web/tomcat 基座与两个模块
+1. 导入 springboot-samples，有两种方式导入工程到编译器
+- 方式一：导入 samples 到编译器，然后选择 springboot-samples 子目录的 pom 为 maven 工程 
+- 方式二：直接导入 springboot-samples 到编译器，此时自动将 springboot-samples 导入为 maven 工程
+
+2. 执行如下命令构建 springboot-samples/web/tomcat 基座与两个模块
 
 ```shell
 mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clean package -DskipTests
@@ -49,12 +52,12 @@ mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clea
 2. 安装模块1
 
 ```shell
-arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 2. 安装模块2
 
 ```shell
-arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 3. 测试验证
 

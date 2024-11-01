@@ -34,7 +34,7 @@ draft: true
 
 ```xml
 <properties>
-    <koupleless.runtime.version>1.3.0</koupleless.runtime.version>
+    <koupleless.runtime.version>1.3.1</koupleless.runtime.version>
 </properties>
 <dependencies>
     <dependency>
@@ -82,8 +82,6 @@ draft: true
             <bizName>${替换为模块名}</bizName>
             <webContextPath>${模块自定义的 web context path，需要与其他模块不同}</webContextPath>
             <declaredMode>true</declaredMode>
-            <!--  配置模块自动排包列表，从 github 下载 rules.txt，并放在模块根目录的 conf/ark/ 目录下，下载地址：https://github.com/koupleless/samples/blob/main/springboot-samples/slimming/log4j2/biz1/conf/ark/rules.txt  -->
-            <packExcludesConfig>rules.txt</packExcludesConfig>
         </configuration>
     </plugin>
     <!--  构建出普通 SpringBoot fatjar，支持独立部署时使用，如果不需要可以删除  -->
@@ -95,7 +93,7 @@ draft: true
 </plugins>
 ```
 
-2. 参考官网模块瘦身里[自动排包部分](/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)，下载排包配置文件 **rules.txt**，放在在 **conf/ark/** 目录下
+2. 参考官网模块瘦身里[自动排包部分](/docs/tutorials/module-development/module-slimming/#%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E7%98%A6%E8%BA%AB)，下载排包配置文件 **/conf/ark/bootstrap.properties** 或 **/conf/ark/bootstrap.yml**
 
 3. 开发模块，例如增加 Rest Controller，提供 Rest 接口
 

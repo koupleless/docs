@@ -16,7 +16,7 @@ Your browser does not support the video tag.
 <br/>
 <br/>
 
-该视频的内容请[查看此处实验一](/docs/quick-start)查看。
+该视频的内容请[查看此处实验一](/docs/quick-start/module_dev_and_ops/)查看。
 
 ## Koupleless (SOFAServerless) 平台和研发框架完整视频教程
 

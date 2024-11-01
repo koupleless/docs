@@ -16,7 +16,7 @@ Your browser does not support the video tag.
 <br/>
 <br/>
 
-For detailed written instructions, please [click here experiment one](/docs/quick-start/)
+For detailed written instructions, please [click here experiment one](/docs/quick-start/module_dev/)
 
 ## Koupleless (SOFAServerless) Platform and Development Framework Full Video Tutorial
 

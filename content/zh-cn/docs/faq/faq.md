@@ -295,9 +295,10 @@ Sofaboot工程HealthCheck失败
 ### 需要模块瘦身
 #### 现象
 - 报错 java.lang.IllegalArgumentException: Cannot instantiate interface org.springframework.context.ApplicationListener : com.alipay.sofa.koupleless.common.spring.KouplelessApplicationListener
+- 报错 Caused by: java.lang.IllegalArgumentException: class com.alipay.sofa.koupleless.plugin.spring.BizApplicationContextInitializer is not assignable to interface org.springframework.context.ApplicationContextInitializer
 
 #### 原因
-模块应该以provided方式引入 springboot 依赖
+模块应该以provided方式引入 springboot 依赖，或者通过配置方式模块瘦身
 
 #### 解决方式
 模块做好瘦身，参考这里：[模块瘦身](/docs/tutorials/module-development/module-slimming)
