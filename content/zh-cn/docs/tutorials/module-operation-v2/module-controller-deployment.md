@@ -9,10 +9,10 @@ weight: 800
 
 ### 资源文件位置
 
-1. [Role 定义](https://github.com/koupleless/virtual-kubelet/blob/main/samples/rabc/base_service_account_cluster_role.yaml)
-2. [RBAC 定义](https://github.com/koupleless/virtual-kubelet/blob/main/samples/rabc/base_service_account_cluster_role_binding.yaml)
-3. [ServiceAccount 定义](https://github.com/koupleless/virtual-kubelet/blob/main/samples/rabc/base_service_account.yaml)
-4. [ModuleControllerV2 部署定义](https://github.com/koupleless/virtual-kubelet/blob/main/samples/virtual_kubelet_pod.yaml)
+1. [Role 定义](https://github.com/koupleless/module-controller/blob/main/samples/rabc/base_service_account_cluster_role.yaml)
+2. [RBAC 定义](https://github.com/koupleless/module-controller/blob/main/samples/rabc/base_service_account_cluster_role_binding.yaml)
+3. [ServiceAccount 定义](https://github.com/koupleless/module-controller/blob/main/samples/rabc/base_service_account.yaml)
+4. [ModuleControllerV2 部署定义](https://github.com/koupleless/module-controller/blob/main/samples/module_controller_pod.yaml)
 
 ### 部署方式
 
