@@ -373,6 +373,20 @@ public Object getProxy(@Nullable ClassLoader classLoader) {
 #### 解决方式
 参考 https://github.com/koupleless/koupleless/issues/196， 可以升级 hessian 版本到 4.x 以上，或者自定义多 ClassLoader 的 SerializerFactory
 
+### Hessian 序列化报错
+
+#### 现象
+- java.lang.RuntimeException: can't get field offset on a hidden class: private final XXXXX$$Lambda$XXXX
+
+- java.lang.UnsupportedOperationException: can't get field offset on a hidden class: private final XXXXX$$Lambda$XXXX
+
+#### 原因
+Hessian 序列化时不支持 lambda 的隐藏类
+
+#### 解决方式
+1. 首先，将该序列化的类所在的依赖包放在基座中
+2. 然后，模块中依赖该依赖，但瘦身该依赖包，参考 [模块瘦身](/docs/tutorials/module-development/module-slimming)
+
 ### 基座启动时报错 `IllegalArgumentException: File must exist`
 #### 原因
 springboot 新版本更新了文件路径格式，导致部分对文件路径的逻辑发生错误，详见 https://github.com/koupleless/koupleless/issues/161
