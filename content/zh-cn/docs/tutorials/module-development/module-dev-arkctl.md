@@ -42,7 +42,7 @@ echo %PATH%
 </div>
 
 <br/>
-报错原因可参考[go 官方文档](https://go.dev/doc/faq#virus)。此报错可以忽略，放心下载。
+报错原因可参考 [go 官方文档](https://go.dev/doc/faq#virus) 。此报错可以忽略，放心下载。
 
 > 由于 Arkctl 部署其实是调用 API 的方式来完成的，如果不想使用命令行工具，也可以直接使用 Arklet [API 接口](/docs/contribution-guidelines/arklet/architecture) 完成部署操作。当然我们也提供了 telnet 的方式来部署模块，[详细可查看这里](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-telnet/)
 
