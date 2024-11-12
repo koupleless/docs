@@ -7,57 +7,110 @@ weight: 910
 
 ## Brief Introduction
 
-ModuleControllerV2 is a Kubernetes (K8S) control plane component that leverages the capabilities of Virtual Kubelet to masquerade the **base** as a node within the K8S ecosystem and maps modules to containers in that context. This approach translates module operations into Pod management tasks, thereby enabling serverless module orchestration and scheduling within seconds, along with coordinated base maintenance, by harnessing Kubernetes' inherent Pod lifecycle management, its ability to invoke Pods, and existing controllers such as Deployments, DaemonSets, and Services.
+ModuleControllerV2 is a K8S control plane component based on the capabilities of Virtual Kubelet. It disguises the base as a node in the K8S system and maps the Module as a Container in the K8S system, thereby mapping Module operations to Pod operations. Utilizing K8S's Pod lifecycle management, scheduling, and existing controllers like Deployment, DaemonSet, and Service, it achieves second-level Serverless Module operation scheduling and base interaction capabilities.
 
 ## Background
 
-The original Module Controller (hereafter referred to as MC) was designed based on Kubernetes Operator technology. In this model, the MC logically defined a separate, dedicated control panel for modules, isolating them from the **base**, and treated modules and bases as two distinct categories for individual operations. The **base** maintenance utilized native Kubernetes capabilities, while module management was handled through the operational logic encapsulated by the Operator.
+The original Module Controller (hereafter referred to as MC) was designed based on K8S Operator technology.
 
-While this architecture provided clear logical distinctions and separation of concerns between modules and bases, it also imposed several limitations:
-1. It abstracted modules as a different category of entities compared to the base model, necessitating the MC to not only handle module loading and unloading on the base but also:
-   - Sense all existing bases
-   - Maintain base status (online state, module loading status, module load, etc.)
-   - Maintain module status (online status, etc.)
-   - Implement module scheduling logic based on business requirements
+In this mode, the original MC logically defines a separate Module control panel isolated from the base, handling operations for the base using K8S's native capabilities and Module operations through Operator-encapsulated logic.
 
-   This incurred substantial development and maintenance overhead, especially given the high costs associated with developing Operators for specific scenarios.
-2. It hindered horizontal scalability of module capabilities and roles. Unlike common microservices architectures where services share similar roles, the Operator implementation segregated modules and bases at different abstraction levels, preventing interoperability. For instance, Koupleless's proposition that "modules can attach to bases as modules or operate independently as services" would, under the Operator architecture, require devising a new scheduling logic specifically for the latter scenario, involving custom maintenance of dependencies. Each new capability or role would thus entail extensive custom development, escalating costs.
-3. It introduced modules as a novel concept, increasing the learning curve for users.
+While this method logically distinguishes between Module and base concepts, it also presents certain limitations:
+
+1. Modules are abstracted differently from the base model. Therefore, the original MC not only needs to load/unload Modules on the base but also:
+   1. Be aware of all current bases
+   2. Maintain base status (online status, Module loading, Module load, etc.)
+   3. Maintain Module status (online status, etc.)
+   4. Implement appropriate Module scheduling logic as required
+
+   This results in high development and maintenance costs. (High cost for Operator development per scenario)
+
+2. Horizontal expansion of Module capabilities and roles is difficult. This implementation method is logically incompatible with traditional microservices architectures, where roles among services are similar. However, in the Operator implementation, Module and base abstraction levels differ, hindering interoperability.
+   For example, in Koupleless's proposal: "Modules can either attach to the base or run independently as services." In the Operator architecture, achieving the latter requires custom scheduling logic and specific resource maintenance, leading to high development and maintenance costs for each new capability/role.
+
+3. In this architecture, Module becomes a new concept, increasing learning costs for users from a product perspective.
 
 ## Architecture
 
-ModuleControllerV2 comprises the Virtual Kubelet Manager control plane component and the Virtual Kubelet component itself. The Virtual Kubelet component forms the core of Module Controller V2, responsible for mapping base services to a node and maintaining the status of Pods running on it. The Manager oversees base-related information, listens for base online/offline messages, monitors base health, and maintains the fundamental runtime environment for the Virtual Kubelet component.
+ModuleControllerV2 currently includes the Virtual Kubelet Manager control plane component and the Virtual Kubelet component. The Virtual Kubelet component is the core of Module Controller V2, responsible for mapping base services as nodes and maintaining Pod states on them. The Manager maintains base-related information, monitors base online/offline status, and maintains the basic runtime environment for the Virtual Kubelet component.
 
 ### Virtual Kubelet
 
-Virtual Kubelet (VK) follows the implementation outlined in the [official documentation](https://github.com/virtual-kubelet/virtual-kubelet?tab=readme-ov-file), summarized as a programmable Kubelet. Conceptually, VK acts as an interface defining a set of Kubelet standards. Implementing this interface allows for the creation of a custom Kubelet. Traditional Kubelets running on nodes in Kubernetes are instances of VK implementations, enabling control plane interaction with physical resources.
+Virtual Kubelet is implemented with reference to the [official documentation](https://github.com/virtual-kubelet/virtual-kubelet?tab=readme-ov-file).
 
-VK possesses the ability to impersonate a Node. To distinguish these VK-masqueraded Nodes from conventional ones, we refer to them as VNodes.
+In summary, VK is a programmable Kubelet.
+
+Just like in programming languages, VK is a Kubelet interface that defines a set of Kubelet standards. By implementing this VK interface, we can create our own Kubelet.
+
+The Kubelet originally running on nodes in K8S is an implementation of VK, enabling K8S control plane to utilize and monitor physical resources on nodes by implementing abstract methods in VK.
+
+Therefore, VK has the capability to masquerade as a Node. To distinguish between traditional Nodes and VK-masqueraded Nodes, we call VK-masqueraded Nodes as VNodes.
 
 ### Logical Structure
 
-Within Koupleless's architecture, base services run within Pods managed and scheduled by Kubernetes onto actual nodes. Module scheduling needs align with base scheduling, leading to MC V2’s design where VK disguises base services as traditional K8S Nodes (Base VNodes) and modules as Pods (Module VPods). This introduces a secondary logical layer of Kubernetes managing VNodes and VPods.
+In the Koupleless architecture, base services run in Pods, scheduled and maintained by K8S, and run on actual nodes.
 
-Consequently, the overarching architecture features two logical Kubernetes clusters:
-1. **Base Kubernetes:** Manages real Nodes (VMs/physical machines) and schedules base Pods to these Nodes.
-2. **Module Kubernetes:** Maintains virtual VNodes (base Pods) and orchestrates Module VPods to these VNodes.
+Module scheduling needs align with base scheduling. Thus, in MC V2 design, VK is used to disguise base services as traditional K8S Nodes, becoming base VNodes, while Modules are disguised as Pods, becoming module VPods. This logically abstracts a second layer of K8S to manage VNodes and VPods.
 
-These "logical Kubernetes" clusters do not necessarily require separate physical deployments; with proper isolation, a single Kubernetes cluster can fulfill both roles.
+In summary, the overall architecture includes two logical K8S:
+1. Base K8S: Maintains real Nodes (virtual/physical machines), responsible for scheduling base Pods to real Nodes.
+2. Module K8S: Maintains virtual VNodes (base Pods), responsible for scheduling module VPods to virtual VNodes.
 
-This abstraction enables leveraging Kubernetes' native scheduling and management capabilities without additional framework development, facilitating:
-1. Management of Base VNodes (a non-core function since they are inherently Pods in the underlying Kubernetes, which can maintain their state, but as Nodes, they carry additional metadata).
-2. VPod management (core functionality encompassing module operations, scheduling, and lifecycle state maintenance).
+> These are called logical K8S because they do not necessarily need to be two separate K8S. With good isolation, the same K8S can perform both tasks.
 
-### Multi-Tenant VK Architecture (VK-Manager)
+This abstraction allows utilizing K8S's native scheduling and management capabilities without extra framework development, achieving:
+1. Management of base VNodes (not a core capability since they are already Pods in the underlying K8S but contain more information as Nodes)
+2. Management of VPods (core capability: including Module operations, Module scheduling, Module lifecycle status maintenance, etc.)
 
-Native VKs rely on Kubernetes Informers and ListWatch to monitor pod events on each vnode. However, this implies a separate listening setup per vnode, causing API Server pressure to escalate rapidly with the increase in bases, impeding horizontal scalability.
+### Multi-Tenant VK Architecture
 
-To address this, Module Controller V2, based on Virtual Kubelet, extracts the ListWatch component, monitoring events of a specific Pod type (in practice, Pods with certain labels), and internally forwards these events to the respective logical VNodes for processing. This reuse of Informer resources necessitates only local context maintenance in VNodes without standalone listeners, alleviating API Server strain.
+Native VK uses K8S's Informer mechanism and ListWatch to monitor pod events on the current VNode. This means each VNode requires its own monitoring logic. As the number of bases increases, API Server pressure grows rapidly, hindering horizontal scaling.
 
-Under multi-tenancy, Module Controller V2 includes:
-1. **Base Registry:** Discovers base services via dedicated operational pipelines and manages VK contexts and data exchange.
-2. **VK:** Maintains mappings between specific bases, nodes, and pods, overseeing their states and translating pod operations into corresponding module actions dispatched to the base.
+To solve this, Module Controller V2 extracts the ListWatch part of Virtual Kubelet, monitors events of specific Pods (those with certain labels in implementation), and forwards them to logical VNodes through in-process communication, reusing Informer resources. This way, each VNode only maintains local context without separate monitoring, reducing API Server pressure.
 
-### Sharded Multi-Tenant VK Architecture (Work in Progress)
+In the multi-tenant architecture, Module Controller V2 includes two core Modules:
 
-A single-point Module Controller lacks disaster recovery capabilities and has evident scalability limits. Consequently, Module Controller V2 is being designed to incorporate a more resilient, disaster-tolerant, and horizontally scalable architecture, currently undergoing development and refinement.
+1. Base Registration Center: Discovers base services via a specific operations pipeline and maintains VK context and data transmission.
+2. VK: Maintains mappings between a specific base and node/pod, maintains node/pod states, and translates pod operations into corresponding Module operations for the base.
+
+### Sharded Architecture
+
+A single Module Controller lacks disaster recovery capabilities and has an obvious upper limit. Thus, Module Controller V2 requires a more stable architecture with disaster recovery and horizontal scaling capabilities.
+
+In Module operations, the core concern is the stability of scheduling capabilities. Under the current Module Controller architecture, scheduling stability consists of two parts:
+
+1. Stability of the dependent K8S
+2. Base stability
+
+The first point cannot be guaranteed at the Module Controller layer, so high availability of the Module Controller focuses only on base-level stability.
+
+Additionally, Module Controller's load mainly involves monitoring and processing various Pod events, related to the number of Pods and bases under control. Due to K8S API Server's rate limits on a single client, a single Module Controller instance has an upper limit on simultaneous event processing, necessitating load sharding capabilities at the Module Controller level.
+
+Thus, the sharded architecture of Module Controller addresses two core issues:
+
+1. High availability of the base
+2. Load balancing of Pod events
+
+In the Module Controller scenario, Pod events are strongly bound to the base, making load balancing of Pod events equivalent to balancing the managed base.
+
+To address the above issues, Module Controller builds native sharding capability on multi-tenant Virtual Kubelet. The logic is as follows:
+
+1. Each Module Controller instance listens to the online information of all bases.
+2. Upon detecting a base going online, each Module Controller creates corresponding VNode data and attempts to create a VNode node lease.
+3. Due to naming conflicts of resources in K8S, only one Module Controller instance can successfully create a Lease, making its VNode the primary instance, while others become replicas, monitoring the Lease object and attempting to regain the primary role, **achieving VNode high availability**.
+4. Once VNode successfully starts, it listens to Pods scheduled on it for interaction, while unsuccessful VNodes ignore these events, **achieving load sharding for the Module Controller**.
+
+Thus, the architecture forms: multiple Module Controllers shard VNode loads based on Lease, and multiple Module Controllers achieve VNode high availability through multiple VNode data.
+
+Furthermore, we aim for load balancing among Module Controllers, with approximately balanced numbers of bases for each.
+
+To facilitate open-source users and reduce learning costs, we implemented a self-balancing capability based on K8S without introducing additional components:
+
+1. Each Module Controller instance maintains its current workload, calculated as (number of VNodes currently managed / total number of VNodes). For example, if a Module Controller manages 3 VNodes out of 10, the actual workload is 3/10 = 0.3.
+2. Upon starting, Module Controllers can specify a maximum workload level. The workload is divided into segments based on this parameter. For example, if the maximum workload level is set to 10, each workload level contains 1/10 of the range, i.e., workload 0-0.1 is defined as workload=0, 0.1-0.2 as workload=1, and so on.
+3. In a sharded cluster configuration, before attempting to create a Lease, a Module Controller calculates its current workload level and waits according to the level. In this scenario, low workload Module Controllers attempt creation earlier, increasing success probability, achieving load balancing.
+
+The process relies on K8S event broadcast mechanisms, with additional considerations depending on the operations pipeline selected during initial base onboarding:
+
+1. MQTT Operations Pipeline: Since MQTT inherently supports broadcasting, all Module Controller instances receive MQTT onboarding messages without additional configuration.
+2. HTTP Operations Pipeline: Due to HTTP's nature, a base only interacts with a specific Module Controller instance during onboarding, requiring other capabilities to achieve initial load balancing. In actual deployment, multiple Module Controllers are served through a proxy (K8S Service/Nginx, etc.), allowing load balancing strategies to be configured at the proxy layer for initial onboarding balance. 

@@ -60,7 +60,7 @@ K8S中原有的运行在Node上的Kubelet就是对VK的一种实现，通过实�
 1. 基座VNode的管理（非核心能力，因为其本身就是底层K8S中的一个Pod，可以由底层K8S来维护状态，但作为Node也将包含更多的信息）
 2. VPod的管理（核心能力：包含模块运维，模块调度、模块生命周期状态维护等）
 
-### 多租户VK架构（VK-Manager）
+### 多租户VK架构
 
 原生的VK基于K8S的Informer机制和ListWatch实现当前vode上pod事件的监听。但是这样也就意味着每一个vnode都需要启动一套监听逻辑，这样，随着基座数量的增加，APIServer的压力会增长的非常快，不利于规模的横向扩展。
 
@@ -71,10 +71,46 @@ K8S中原有的运行在Node上的Kubelet就是对VK的一种实现，通过实�
 1. 基座注册中心：这一模块通过特定的运维管道进行基座服务的发现，以及VK的上下文维护与数据传递。
 2. VK：VK保存着某个具体基座和node，pod之间的映射，实现对node和pod状态的维护以及将pod操作翻译成为对应的模块操作下发至基座。
 
-### 分片多租户VK架构（WIP）
+### 分片架构
 
 单点的Module Controller很显然缺乏容灾能力，并且单点的上限也很明显，因此Module Controller V2需要一套更加稳定，具备容灾和水平扩展能力的架构。
 
-这一架构正在设计与完善过程中。
+在模块运维中我们核心关注的问题是调度能力的稳定性，而在 Module Controller 当前架构下，调度的稳定性包含两个部分：
+
+1. 所依赖 K8S 的稳定性
+2. 基座稳定性
+
+其中第一条无法在 Module Controller 这一层进行保证，因此 Module Controller 的高可用只关注基座层级的稳定性。
+
+除此之外，Module Controller 的负载主要体现在对各类 Pod 事件的监听和处理，与 Pod 数量和所接管的基座数量相关，由于 K8S API Server 对单客户端的访问速率限制，导致单个 Module Controller 实例能够同时处理的事件有上限，因此同时还需要在 Module Controller 层级建设负载分片能力。
+
+因此 Module Controller 的分片架构核心关注两个问题：
+
+1. 基座的高可用
+2. Pod 事件的负载均衡
+
+而在 Module Controller 的场景下，Pod 事件与基座是强绑定的，因此实际上对 Pod 事件的负载均衡等同于所接管基座的均衡。
+
+为了解决上述问题，Module Controller 在多租户 Virtual Kubelet 上建设了原生的分片能力，具体逻辑如下：
+
+1. 每一个 Module Controller 实例都会监听所有基座的上线信息
+2. 监听到基座的上线之后，每一个 Module Controller 都会创建对应的 VNode 数据，并尝试创建 VNode 的 node lease
+3. 由于 K8S 中同名资源的冲突性，在这一过程中只会有一个 Module Controller 实例成功创建了 Lease，此时这一 Module Controller 所持有的 VNode 就会变成主实例，而其他创建失败的 Module Controller 所持有的同一个 VNode 就会变成副本，持续对 Lease 对象进行监听，尝试重新抢主，从而**实现了 VNode 的高可用**
+4. VNode 成功启动之后会监听调度到其上的 Pod，进行交互，而未成功启动的 VNode 会忽略掉这些事件，从而**实现了 Module Controller 的负载分片**
+
+因此最终形成架构：多 Module Controller 之间基于 Lease 对 VNode 负载进行分片，多 Module Controller 通过多 VNode 数据实现 VNode 的高可用。
+
+除此之外，我们还期望多个 Module Controller 之间能够尽可能负载均衡，即每一个 Module Controller 所持有的基座数量大致均衡。
+
+为了方便开源用户使用，降低学习成本，我们尽量在不引入额外组件的情况下基于 K8S 实现了一套自均衡能力：
+
+1. 首先每一个 Module Controller 实例都会维护自身当前工作负载，计算规则为 （当前接管的VNode数量 / 所有VNode数量），例如，当前 Module Controller 接管 3 个 VNode，集群中共有 10 个 VNode 的情况，实际工作负载即为 3/ 10 = 0.3
+2. 在 Module Controller 启动的时候可以指定最大工作负载等级，Module Controller 会根据这一参数将工作负载分为对应片数，例如最大工作负载等级若指定为 10，那么每个工作负载等级将会包含 1/10 的区间，即 工作负载 0-0.1 将定义为 工作负载=0，0.1-0.2 定义为 工作负载=1，以此类推
+3. 在配置为分片集群的情况下，Module Controller 在尝试创建 Lease 之前会首先计算当前自身的工作负载等级，根据工作负载等级进行不同程度的等待，之后再进行创建。在这种情况下，低工作负载的 Module Controller 会更早的尝试创建，创建成功的概率提高，从而实现负载均衡
+
+以上的过程实际上基于 K8S 事件的广播机制设计，而在基座首次上线时，根据所选择运维管道的不同，还需要进行另外的考虑：
+
+1. MQTT 运维管道：由于 MQTT 本身就具有广播能力，所有 Module Controller 实例都会接收到 MQTT 上线消息，不需要额外配置
+2. HTTP 运维管道：HTTP 请求的特殊性使得基座在上线的时候只会与某一个 Module Controller 实例进行交互，那么此时初次上线时的负载均衡就需要通过其他能力实现。在实际部署中，多个 Module Controller 需要通过一个代理 （K8S Service/ Nginx等 ）来对外提供服务，因此可以在代理层上配置负载均衡策略，实现初次上线过程中的均衡。
 
 <br/>
