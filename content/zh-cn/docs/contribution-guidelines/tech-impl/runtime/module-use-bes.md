@@ -111,7 +111,7 @@ mvn install:install-file -Dfile=D:/software/xc/BES-EMBED/bes-websocket-9.5.5.004
 ### 4. 基座中增加宝蓝德特殊配置
 为什么需要这个配置， 是因为 koupleless其中 SOFAArk组件对于依赖包的识别机制与BES的包结构冲突，[参考这里](https://github.com/sofastack/sofa-ark/pull/997)
 
-需要在基座根目录 ark 配置文件中（`conf/ark/bootstrap.properties` 或 `conf/ark/bootstrap.yml`）增加白名单
+需要在模块根目录 ark 配置文件中（`conf/ark/bootstrap.properties` 或 `conf/ark/bootstrap.yml`）增加白名单
 
 ```properties
 declared.libraries.whitelist=com.bes.besstarter:bes-sofa-ark-springboot-starter

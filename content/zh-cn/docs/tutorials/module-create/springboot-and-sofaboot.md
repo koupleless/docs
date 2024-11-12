@@ -69,7 +69,7 @@ spring.application.name = ${替换为实际模块应用名}
             <declaredMode>true</declaredMode>
         </configuration>
     </plugin>
-    <!--  构建出普通 SpringBoot fatjar，支持独立部署时使用，如果不需要可以删除  -->
+    <!--  构建出普通 SpringBoot fatjar，支持独立部署时使用，如果不需要可以删除;注意需要放在 sofa-ark-maven-plugin 的后面  -->
     <plugin>
         <!--原来 spring-boot 打包插件 -->
         <groupId>org.springframework.boot</groupId>
