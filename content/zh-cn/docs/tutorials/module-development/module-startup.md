@@ -47,6 +47,7 @@ Koupleless 1.1.0 版本开始，提供了如下的配置能力：
 ```properties
 koupleless.module.autoconfigure.exclude # 模块启动时不需要启动的服务 AutoConfiguration
 koupleless.module.autoconfigure.include # 模块启动时需要启动的服务 AutoConfiguration，如果某个服务同时配置了 include 和 exclude，则会启动该服务
+koupleless.module.initializer.skip # 模块启动是需要跳过的 initializer
 ```
 
 该配置可以在基座里配置，也可以在模块里配置。如果在基座里配置，则所有模块都会生效，如果在模块里配置，则只有该模块生效，并且模块里的配置会覆盖基座的配置。
