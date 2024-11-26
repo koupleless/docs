@@ -57,7 +57,7 @@ Maven 插件 sofa-ark-maven-plugin 打包生成。
 
 ##### 1. 基座配置本地目录、本地文件URL、远程URL
 
-开发者需要在基座的 ark 配置文件中（`conf/ark/ark.properties` 或 `conf/ark/ark.yml`）指定需要合并部署的 Ark Biz 包，支持：
+开发者需要在基座的 ark 配置文件中（`conf/ark/bootstrap.properties` 或 `conf/ark/bootstrap.yml`）指定需要合并部署的 Ark Biz 包，支持：
 
 - 本地目录
 - 本地文件URL(windows 系统为 `file:\\`, linux 系统为 `file://`)
