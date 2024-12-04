@@ -3,7 +3,6 @@ title: 蚂蚁中间件团队火热招聘中！
 date: 2024-12-03T10:28:32+08:00
 description: 蚂蚁中间件团队火热招聘中！
 weight: 1501
-author: ly
 ---
 
 
