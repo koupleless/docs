@@ -127,9 +127,9 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 
 对于部分依赖，即使模块和基座使用的依赖版本一致，但模块打包时也需要保留该依赖，即需要配置模块瘦身依赖白名单。这部分功能我们将在 7 月底推出。
 
-#### 步骤四 打包构建
+#### 步骤四 打包构建，并检查瘦身是否成功
 
-打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异。
+执行 `mvn clean package` 打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异，也可以查看 ark-biz jar 包中 lib 文件夹中是否已经没有要排除的依赖了。
 
 
 
@@ -209,6 +209,6 @@ excludeArtifactIds:
 
 ### 步骤三
 
-打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异。
+执行 `mvn clean package` 打包构建出模块 ark-biz jar 包即可，您可以明显看出瘦身后的 ark-biz jar 包大小差异，也可以查看 ark-biz jar 包中 lib 文件夹中是否已经没有要排除的依赖了。
 
 您可[点击此处](https://github.com/koupleless/samples/tree/master/springboot-samples/slimming)查看完整模块瘦身样例工程。

@@ -67,10 +67,6 @@ spec: # 资源规范字段
                 requiredDuringSchedulingIgnoredDuringExecution:
                   nodeSelectorTerms: # 基座node选择
                       - matchExpressions:
-                        - key: base.koupleless.io/stack
-                          operator: In
-                          values:
-                              - java
                         - key: base.koupleless.io/version
                           operator: In
                           values:

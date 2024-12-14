@@ -65,9 +65,6 @@ spec:
                     requiredDuringSchedulingIgnoredDuringExecution:
                         nodeSelectorTerms:
                         - matchExpressions:
-                          - key: base.koupleless.io/stack
-                            operator: In
-                            values: ["java"]
                           - key: base.koupleless.io/version
                             operator: In
                             values: ["1.0.0"] # If modules can only be scheduled to specific node versions, this field is mandatory.
