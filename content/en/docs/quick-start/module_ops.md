@@ -164,15 +164,11 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/stack
-                    operator: In
-                    values:
-                      - java
-                  - key: vnode.koupleless.io/version
+                  - key: base.koupleless.io/version
                     operator: In
                     values:
                       - 1.0.0
-                  - key: vnode.koupleless.io/name
+                  - key: base.koupleless.io/name
                     operator: In
                     values:
                       - koupleless-sample

@@ -52,10 +52,6 @@ spec:  # Specification field of the resource
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/stack
-                    operator: In
-                    values:
-                      - java # Mandatory in a multi-language environment, specifies the tech stack
                   - key: base.koupleless.io/version
                     operator: In
                     values:
