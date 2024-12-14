@@ -59,7 +59,7 @@ spec:
   serviceAccountName: virtual-kubelet # Service Account configured in the previous step
   containers:
     - name: module-controller
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module_controller:2.1.0 # Pre-packaged image
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.2
       imagePullPolicy: Always
       resources:
         limits:
