@@ -3,7 +3,7 @@ title: Koupleless 内核系列 | 单进程多应用如何解决兼容问题
 date: 2024-01-25T10:28:32+08:00
 description: Koupleless 内核系列 | 单进程多应用如何解决兼容问题
 weight: 401
-author: 赵真灵
+author: 苟振东
 ---
 
 本篇文章属于 Koupleless 进阶系列文章第二篇，默认读者对 Koupleless 的基础概念、能力都已经了解，如果还未了解过的可以查看[官网](https://koupleless.io/docs/introduction/intro-and-scenario/)。
