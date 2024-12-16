@@ -160,6 +160,7 @@ excludeArtifactIds=sofa-ark-spi
 ```
 **bootstrap.yml**
 In the `module project root directory/conf/ark/bootstrap.yml`, configure the commonly used packages of the framework and middleware that need to be down to the base as follows:
+
 ```yaml
 # excludes 中配置 ${groupId}:{artifactId}:{version}, 不同依赖以 - 隔开
 # excludeGroupIds 中配置 ${groupId}, 不同依赖以 - 隔开
@@ -172,6 +173,37 @@ excludeGroupIds:
 excludeArtifactIds:
   - sofa-ark-spi
 ```
+
+For partial dependencies, even if the dependency versions used by the module and the base are consistent, the dependency must still be retained when the module is packaged. This means you need to configure a whitelist for module dependency trimming.
+
+Configuration method: Add the dependencies that need to be retained in the `module project root directory/conf/ark/bootstrap.properties` or `module project root directory/conf/ark/bootstrap.yml`. If these files do not exist, you can create the directories and files yourself.
+
+**bootstrap.properties**
+
+```properties
+# includes config ${groupId}:${artifactId}, split by ','
+includes=org.apache.commons:commons-lang3,commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}, split by ','
+includeGroupIds=org.springframework
+# includeArtifactIds config ${artifactId}, split by ','
+includeArtifactIds=sofa-ark-spi
+```
+
+**bootstrap.yml**
+
+```yaml
+# includes config ${groupId}:${artifactId}
+includes:
+  - org.apache.commons:commons-lang3
+  - commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}
+includeGroupIds:
+  - org.springframework
+# includeArtifactIds config ${artifactId}
+includeArtifactIds:
+  - sofa-ark-spi
+```
+
 # Development Phase
 ## Arklet Configuration
 ### Port Configuration

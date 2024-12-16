@@ -131,7 +131,7 @@ In addition: For some dependencies, even if the module and base use the same dep
 
 For some dependencies, even if the module and base use the same version of the dependency, the dependency needs to be retained when the module is packaged. This requires configuring a module slimming dependency whitelist.
 
-Configuration way: Add the dependencies that need to be retained in the module project root directory/conf/ark/bootstrap.properties or module project root directory/conf/ark/bootstrap.yaml. If these files do not exist, you can create the directories and files yourself. The following provides three different levels of configuration, which can be added according to the actual situation.
+Configuration Procedure: Add the dependencies that need to be retained in the module project root directory/conf/ark/bootstrap.properties or module project root directory/conf/ark/bootstrap.yml. If these files do not exist, you can create the directories and files yourself. The following provides three different levels of configuration, which can be added according to the actual situation.
 
 ```properties
 # includes config ${groupId}:${artifactId}, split by ','
