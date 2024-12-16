@@ -245,6 +245,28 @@ includeArtifactIds:
   - sofa-ark-spi
 ```
 
+### declaredMode 白名单配置
+
+在 declaredMode 下，限制只有模块里声明过的依赖才可以委托给基座加载。 但在一些特殊场景下，即使模块没有声明过某个依赖，但仍需要查找到基座中该依赖中的资源/类。此时，可以在模块的 ark 配置文件中（`conf/ark/bootstrap.properties` 或 `conf/ark/bootstrap.yml`） 配置 declaredMode 白名单。
+
+**bootstrap.properties**
+
+```properties
+# declared libraries whitelist config {groupId:artifactId}, split by ','
+declared.libraries.whitelist=com.ark:ark-common,com.biz:biz-common
+```
+
+**bootstrap.yml**
+
+```yaml
+# declared libraries whitelist config {groupId:artifactId}
+
+declared:
+  libraries:
+    whitelist:
+      - com.ark.yml:ark-common-yml
+```
+
 # 开发阶段
 ## Arklet 配置
 ### 端口配置
@@ -255,7 +277,7 @@ includeArtifactIds:
 ```
 
 ## 模块运行时配置
-### 健康检查的配置
+### 健康检查配置
 基座的 application.properties 配置：
 
 ```properties
@@ -328,3 +350,7 @@ koupleless.web.gateway.forwards[2].paths[1].from=/t1
 koupleless.web.gateway.forwards[2].paths[1].to=/timestamp
 
 ```
+
+此外，当 koupleless 满足以下版本，模块可以在自己的 application.properties 或 application.yaml 中配置转发规则：
+- jdk8: koupleless.runtime.version >= 1.3.3
+- jdk17: koupleless.runtime.version >= 2.1.8

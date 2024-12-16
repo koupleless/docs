@@ -204,6 +204,28 @@ includeArtifactIds:
   - sofa-ark-spi
 ```
 
+### declaredMode Whitelist Configuration
+
+Under the declaredMode setting, only dependencies declared in the module can be delegated to the base when loading classes or resources. However, in some special scenarios, even if a dependency is not declared in the module, it may still be necessary to access resources/classes from that dependency in the base. In such cases, you can configure a declaredMode whitelist in the module's ark configuration file (`conf/ark/bootstrap.properties` or `conf/ark/bootstrap.yml`).
+
+**bootstrap.properties**
+
+```properties
+# declared libraries whitelist config {groupId:artifactId}, split by ','
+declared.libraries.whitelist=com.ark:ark-common,com.biz:biz-common
+```
+
+**bootstrap.yml**
+
+```yaml
+# declared libraries whitelist config {groupId:artifactId}
+
+declared:
+  libraries:
+    whitelist:
+      - com.ark.yml:ark-common-yml
+```
+
 # Development Phase
 ## Arklet Configuration
 ### Port Configuration
@@ -276,3 +298,7 @@ koupleless.web.gateway.forwards[2].paths[0].to=/
 koupleless.web.gateway.forwards[2].paths[1].from=/t1
 koupleless.web.gateway.forwards[2].paths[1].to=/timestamp
 ```
+
+In addition, when Koupleless meets the following versions, the module can configure forwarding rules in its own `application.properties` or `application.yaml`:
+- JDK 8: `koupleless.runtime.version` >= 1.3.3
+- JDK 17: `koupleless.runtime.version` >= 2.1.8
