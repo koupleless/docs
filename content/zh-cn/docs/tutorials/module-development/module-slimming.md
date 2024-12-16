@@ -123,7 +123,31 @@ mvn com.alipay.sofa.koupleless:koupleless-base-build-plugin::packageDependency -
 
 #### 步骤三 配置模块依赖白名单
 
-对于部分依赖，即使模块和基座使用的依赖版本一致，但模块打包时也需要保留该依赖，即需要配置模块瘦身依赖白名单。这部分功能我们将在 7 月底推出。
+对于部分依赖，即使模块和基座使用的依赖版本一致，但模块打包时也需要保留该依赖，即需要配置模块瘦身依赖白名单。
+
+配置方式：在「模块项目根目录/conf/ark/bootstrap.properties」 或 「模块项目根目录/conf/ark/bootstrap.yaml」中增加需要保留的依赖，如果该文件不存在，可自行新增目录和文件。以下提供了3个不同级别的配置，可根据实际情况进行添加。
+
+```properties
+# includes config ${groupId}:${artifactId}, split by ','
+includes=org.apache.commons:commons-lang3,commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}, split by ','
+includeGroupIds=org.springframework
+# includeArtifactIds config ${artifactId}, split by ','
+includeArtifactIds=sofa-ark-spi
+```
+
+```yaml
+# includes config ${groupId}:${artifactId}
+includes:
+  - org.apache.commons:commons-lang3
+  - commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}
+includeGroupIds:
+  - org.springframework
+# includeArtifactIds config ${artifactId}
+includeArtifactIds:
+  - sofa-ark-spi
+```
 
 #### 步骤四 打包构建
 
