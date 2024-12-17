@@ -16,7 +16,7 @@ Therefore, when using Koupleless middleware, we need to apply patches to some po
 
 Currently, the principle of Koupleless third-party package patches taking effect is:
 
-![Patch Effectiveness Principle](./patch-pipeline.jpg)
+![Patch Effectiveness Principle](/docs/contribution-guidelines/tech-impl/runtime/imgs/patch-pipeline.jpg)
 
 1. After the base compilation and before packaging, the koupleless-base-build-plugin plugin will obtain the adapter configuration file, which describes the `middleware dependencies within the version range` that use the patch packages, for example:
 
@@ -38,7 +38,7 @@ The meaning of this configuration file is: When the base depends on org.springfr
 3. Pull the patch packages and copy the files from the patch packages to the target/classes directory after the base compilation.
 
 There are two types of adapter configuration files:
-- Configuration files managed by Koupleless: During packaging, the koupleless-base-build-plugin plugin will attempt to pull the latest version of the adapter configuration file; if the pull fails, it will use the default configuration file provided by the plugin. Currently, the open-source third-party package patches managed by Koupleless are in the [koupleless-adapter](https://github.com/koupleless/adapter) repository, with over 20 patch packages available.
+- Configuration files managed by Koupleless: During packaging, the koupleless-base-build-plugin plugin will attempt to pull the latest version of the adapter configuration file; if the pull fails, it will throw error and terminate. Currently, the open-source third-party package patches managed by Koupleless are in the [koupleless-adapter](https://github.com/koupleless/adapter) repository, with over 20 patch packages available.
 - User-defined configuration files: Users can add their own adapter configuration files to the base, and these configuration files will take effect alongside the general configuration files managed by Koupleless.
 
 # How to Develop Open-source Third-party Package Patches
@@ -53,6 +53,17 @@ For example, the code for the `koupleless-adapter-spring-boot-logback-2.7.14` pa
 
 # How to Develop Internal Second-party Package Patches
 1. Develop patch code files: Copy the files that need to be patched, modify the code to make it suitable for a multi-application scenario.
-2. Confirm the version range of the dependency package where the patch takes effect (i.e., within this version range, the code files of the open-source package are completely identical), for example, for org.springframework.boot:spring-boot versions within the range [2.5.1, 2.7.14], the `org.springframework.boot.logging.logback.LogbackLoggingSystem` file is the same.
-3. Develop a patch package module, such as `koupleless-adapter-xxx-2.1.0`, and overwrite the files that need to be patched in this module, for example, `com.xxx.YYY`, and package and release it as a jar file.
-4. Add the dependency configuration for the patch package in the base's `conf/ark/adapter-mapping.yaml`.
+2. Confirm the version range of the dependency package where the patch takes effect (i.e., within this version range, the code files of the second-party package are completely identical), for example, for yyy:xxx versions within the range [2.5.1, 2.7.14], the `yyy.xxx.CustomSystem` file is the same.
+3. Develop a patch package, such as `koupleless-adapter-xxx-2.1.0`, and overwrite the files that need to be patched in this package, for example, `com.xxx.YYY`, and package and release it as a jar file.
+4. Add the dependency configuration for the patch package in the **base's** `conf/ark/adapter-mapping.yaml`. For example:
+```yaml
+adapterMappings:
+- matcher:
+      groupId: yyy
+      artifactId: xxx
+      versionRange: "[2.5.1,2.7.14]"
+  adapter:
+      artifactId: koupleless-adapter-xxx-2.1.0
+      groupId: yyy
+      version: 1.0.0
+```

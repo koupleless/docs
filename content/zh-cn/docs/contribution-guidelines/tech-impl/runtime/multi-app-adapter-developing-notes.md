@@ -16,7 +16,7 @@ Koupleless 是一种多应用的架构，而传统的中间件可能只考虑了
 
 目前，koupleless 的三方包补丁生效原理为：
 
-![补丁生效原理](./patch-pipeline.jpg)
+![补丁生效原理](/docs/contribution-guidelines/tech-impl/runtime/imgs/patch-pipeline.jpg)
 
 1. 在基座编译后、打包前， koupleless-base-build-plugin 插件会获取 adapter 配置文件，该文件中描述了 `符合版本范围的中间件依赖` 使用的补丁包，如：
 
@@ -37,7 +37,7 @@ adapterMappings:
 3. 拉取补丁包，将补丁包中的文件拷贝到基座编译后的 target/classes 目录下。
 
 其中，adapter 配置文件分两种：
-- koupleless 管理的配置文件：在打包时，koupleless-base-build-plugin 插件会尝试拉取最新版本的 adapter 配置文件；如果拉取失败，则使用插件默认的配置文件。目前，由 koupleless 管理的开源三方包补丁在 [koupleless-adapter](https://github.com/koupleless/adapter) 仓库中，目前已有 20+ 个补丁包。
+- koupleless 管理的配置文件：在打包时，koupleless-base-build-plugin 插件会尝试拉取最新版本的 adapter 配置文件；如果拉取失败，则报错。目前，由 koupleless 管理的开源三方包补丁在 [koupleless-adapter](https://github.com/koupleless/adapter) 仓库中，目前已有 20+ 个补丁包。
 - 用户自定义的配置文件：用户可以自行在基座中添加 adapter 配置文件，该配置文件会和 koupleless 管理的通用配置文件同时生效。
 
 # 怎么开发开源三方包的补丁包
@@ -52,6 +52,17 @@ adapterMappings:
 
 # 怎么开发内部二方包的补丁包
 1. 开发补丁代码文件：复制需要补丁的文件，修改其中的代码，使其符合多应用的场景
-2. 确认该补丁生效的依赖包版本范围（即：在该版本范围内，开源包的该代码文件完全相同），如，对于版本范围在：[2.5.1, 2.7.14] 的 org.springframework.boot:spring-boot 的 `org.springframework.boot.logging.logback.LogbackLoggingSystem` 文件都相同。
-3. 开发补丁包模块，如：`koupleless-adapter-xxx-2.1.0`，在该模块中覆盖写需要补丁的文件，如：`com.xxx.YYY`，并打包发布为 jar 包。
-4. 在基座的 `conf/ark/adapter-mapping.yaml` 中，添加该补丁包的依赖配置。
+2. 确认该补丁生效的依赖包版本范围（即：在该版本范围内，二方包的该代码文件完全相同），如，对于版本范围在：[2.5.1, 2.7.14] 的 yyy:xxx 的 `yyy.xxx.CustomSystem` 文件都相同。
+3. 开发补丁包，如：`koupleless-adapter-xxx-2.1.0`，在该包中覆盖写需要补丁的文件，如：`com.xxx.YYY`，并打包发布为 jar 包。
+4. 在**基座**的 `conf/ark/adapter-mapping.yaml` 中，添加该补丁包的依赖配置，如：
+```yaml
+adapterMappings:
+- matcher:
+      groupId: yyy
+      artifactId: xxx
+      versionRange: "[2.5.1,2.7.14]"
+  adapter:
+      artifactId: koupleless-adapter-xxx-2.1.0
+      groupId: yyy
+      version: 1.0.0
+```
