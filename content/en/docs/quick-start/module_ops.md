@@ -100,10 +100,10 @@ spec:
           containerPort: 1238
       env:
         - name: MODULE_CONTROLLER_ADDRESS
-          value: {YOUR_MODULE_CONTROLLER_IP} # 127.0.0.1:7777
+          value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT} # 127.0.0.1:7777
 ```
 
-Replace `{YOUR_MODULE_CONTROLLER_IP}` with the actual Module Controller Pod IP in the YAML.
+Replace `{YOUR_MODULE_CONTROLLER_IP_AND_PORT}` with the actual Module Controller Pod IP and Port in the YAML.
 
 Apply the modified YAML to the K8S cluster and wait for the Base Pod to reach the Running state.
 

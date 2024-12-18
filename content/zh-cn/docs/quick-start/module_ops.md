@@ -100,10 +100,10 @@ spec:
           containerPort: 1238
       env:
         - name: MODULE_CONTROLLER_ADDRESS
-          value: {YOUR_MODULE_CONTROLLER_IP}   # 127.0.0.1:7777
+          value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT}   # 127.0.0.1:7777
 ```
 
-同上一步，将yaml中的 `{YOUR_MODULE_CONTROLLER_IP}` 替换为实际 Module Controller 的Pod IP。
+同上一步，将yaml中的 `{YOUR_MODULE_CONTROLLER_IP_AND_PORT}` 替换为实际 Module Controller 的Pod IP 和 端口。
 
 apply 更改后的 yaml 到 K8S 集群，等待 Base Pod 变成 Running 状态。
 
