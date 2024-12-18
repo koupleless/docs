@@ -100,7 +100,7 @@ spec:
           containerPort: 1238
       env:
         - name: MODULE_CONTROLLER_ADDRESS
-          value: {YOUR_MODULE_CONTROLLER_IP} # 127.0.0.1
+          value: {YOUR_MODULE_CONTROLLER_IP} # 127.0.0.1:7777
 ```
 
 Replace `{YOUR_MODULE_CONTROLLER_IP}` with the actual Module Controller Pod IP in the YAML.
