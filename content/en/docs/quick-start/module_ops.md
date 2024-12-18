@@ -91,7 +91,7 @@ metadata:
 spec:
   containers:
     - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.1.1 # Pre-packaged image
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.3.3 # Pre-packaged image
       imagePullPolicy: Always
       ports:
         - name: base
