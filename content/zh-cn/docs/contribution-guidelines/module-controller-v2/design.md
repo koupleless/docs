@@ -34,7 +34,7 @@ metadata:
     virtual-kubelet.koupleless.io/env: dev # vnode环境标记
     base.koupleless.io/name: base # 基座 Metadata 中的 Name 配置
     vnode.koupleless.io/tunnel: mqtt_tunnel_provider # 基座当前归属 tunnel
-    vnode.koupleless.io/version: 1.0.0 # 基座版本号
+    base.koupleless.io/version: 1.0.0 # 基座版本号
   name: vnode.2ce92dca-032e-4956-bc91-27b43406dad2 # vnode name， 后半部分为基座运维管道所生成的 uuid
 spec:
   taints:
@@ -77,7 +77,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms: # 基座node选择
           - matchExpressions:
-              - key: vnode.koupleless.io/version # 基座版本筛选
+              - key: base.koupleless.io/version # 基座版本筛选
                 operator: In
                 values:
                   - 1.0.0 # 模块可能只能被调度到一些特殊版本的基座上，如有这种限制，则必须有这个字段。

@@ -52,10 +52,10 @@ spec: # 资源规范字段
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/version
+                  - key: base.koupleless.io/cluster-name
                     operator: In
                     values:
-                      - 1.1.1 # 指定的基座版本，必填，至少需要一个
+                      - default
                   - key: base.koupleless.io/name
                     operator: In
                     values:
