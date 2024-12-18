@@ -164,14 +164,16 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/version
-                    operator: In
-                    values:
-                      - 1.0.0
+                  # these labels in vnode generated in base `https://github.com/koupleless/runtime/blob/main/arklet-core/src/main/java/com/alipay/sofa/koupleless/arklet/core/hook/base/BaseMetadataHookImpl.java`
+                  # you can define your own labels by implementing your own BaseMetadataHookImpl
                   - key: base.koupleless.io/name
                     operator: In
                     values:
-                      - koupleless-sample
+                      - TO_BE_IMPLEMENTED
+                  - key: base.koupleless.io/cluster-name
+                    operator: In
+                    values:
+                      - default
       tolerations:
         - key: "schedule.koupleless.io/virtual-node"
           operator: "Equal"

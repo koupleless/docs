@@ -32,7 +32,7 @@ metadata:
     virtual-kubelet.koupleless.io/env: dev # vnode environment marker
     base.koupleless.io/name: base # Name from base Metadata configuration
     vnode.koupleless.io/tunnel: mqtt_tunnel_provider # Current tunnel ownership of the base
-    vnode.koupleless.io/version: 1.0.0 # Base version number
+    base.koupleless.io/version: 1.0.0 # Base version number
   name: vnode.2ce92dca-032e-4956-bc91-27b43406dad2 # vnode name, latter part is UUID from the base maintenance pipeline
 spec:
   taints:
@@ -75,7 +75,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms: # Base node selection
           - matchExpressions:
-              - key: vnode.koupleless.io/version # Base version filtering
+              - key: base.koupleless.io/version # Base version filtering
                 operator: In
                 values:
                   - 1.0.0 # Module may only be schedulable to certain versions of bases; if restricted, this field is required.
