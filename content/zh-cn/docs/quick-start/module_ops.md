@@ -91,7 +91,7 @@ metadata:
 spec:
   containers:
     - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像, 镜像来源 https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
       imagePullPolicy: Always
       ports:
         - name: base
