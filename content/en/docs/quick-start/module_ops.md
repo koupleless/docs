@@ -91,7 +91,7 @@ metadata:
 spec:
   containers:
     - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.3.3 # Pre-packaged image
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # Pre-packaged image
       imagePullPolicy: Always
       ports:
         - name: base
@@ -100,7 +100,7 @@ spec:
           containerPort: 1238
       env:
         - name: MODULE_CONTROLLER_ADDRESS
-          value: {YOUR_MODULE_CONTROLLER_IP}
+          value: {YOUR_MODULE_CONTROLLER_IP} # 127.0.0.1
 ```
 
 Replace `{YOUR_MODULE_CONTROLLER_IP}` with the actual Module Controller Pod IP in the YAML.

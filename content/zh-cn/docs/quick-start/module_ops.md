@@ -91,7 +91,7 @@ metadata:
 spec:
   containers:
     - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.3.3 # 已经打包好的镜像
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像
       imagePullPolicy: Always
       ports:
         - name: base
@@ -100,7 +100,7 @@ spec:
           containerPort: 1238
       env:
         - name: MODULE_CONTROLLER_ADDRESS
-          value: {YOUR_MODULE_CONTROLLER_IP}
+          value: {YOUR_MODULE_CONTROLLER_IP}   # 127.0.0.1
 ```
 
 同上一步，将yaml中的 `{YOUR_MODULE_CONTROLLER_IP}` 替换为实际 Module Controller 的Pod IP。
