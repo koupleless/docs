@@ -8,7 +8,7 @@ weight: 210
 本上手指南主要介绍基于 Module Controller V2 的模块运维。本上手指南包含：
 
 1. 环境准备
-2. Module Controller V2 部署
+2. Module Controller V2 >= v2.1.2， Koupleless runtime >= 1.4.1-SNAPSHOT, SOFAArk >= 2.2.16, 
 3. 测试基座准备
 4. 模块发布与状态查看
 
@@ -99,7 +99,7 @@ spec:
         - name: arklet
           containerPort: 1238
       env:
-        - name: MODULE_CONTROLLER_ADDRESS
+        - name: MODULE_CONTROLLER_ADDRESS # 在 base-web 的 koupleless runtime 里是 `koupleless.arklet.http.heartbeat.endpoint`
           value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT}   # 127.0.0.1:7777
 ```
 
