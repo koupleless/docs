@@ -8,7 +8,7 @@ weight: 210
 This quick start guide mainly introduces Module operations based on Module Controller V2. It includes:
 
 1. Environment Preparation
-2. Module Controller V2 Deployment
+2. Module Controller V2 >= v2.1.2， Koupleless runtime >= 1.4.1-SNAPSHOT, SOFAArk >= 2.2.16
 3. Test Base Preparation
 4. Module Deployment and Status Checking
 
@@ -99,7 +99,7 @@ spec:
         - name: arklet
           containerPort: 1238
       env:
-        - name: MODULE_CONTROLLER_ADDRESS
+        - name: MODULE_CONTROLLER_ADDRESS # which is `koupleless.arklet.http.heartbeat.endpoint` in koupleless runtime in the base-web
           value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT} # 127.0.0.1:7777
 ```
 
