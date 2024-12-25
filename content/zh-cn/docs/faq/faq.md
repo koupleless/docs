@@ -399,15 +399,16 @@ springboot 打包插件里增加配置 `<loaderImplementation>CLASSIC</loaderImp
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-maven-plugin</artifactId>
       <executions>
-        <execution>
-          <goals>
-            <goal>repackage</goal>
-          </goals>
-          <configuration>
-            <loaderImplementation>CLASSIC</loaderImplementation>
-          </configuration>
-        </execution>
-      </executions>
+  					<execution>
+  						<id>repackage</id>
+  						<goals>
+  							<goal>repackage</goal>
+  						</goals>
+  						<configuration>
+  							<loaderImplementation>CLASSIC</loaderImplementation>
+  						</configuration>
+  					</execution>
+  				</executions>
     </plugin>
   </plugins>
 </build>
