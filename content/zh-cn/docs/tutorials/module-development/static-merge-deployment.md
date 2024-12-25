@@ -146,4 +146,4 @@ com.alipay.sofa.ark.support.common.AddBizInResourcesHook
 
 ### 步骤三：启动基座
 
-JVM 添加参数，配置： `-Dsofa.ark.embed.static.biz.enable=true`
+JVM 添加参数，配置： `-Dsofa.ark.embed.static.biz.enable=true`, 或者在基座 main 方法里增加这行代码 `ArkConfigs.setEmbedStaticBizEnable(true);`
