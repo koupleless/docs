@@ -43,7 +43,8 @@ curl --location --request POST 'localhost:1238/installBiz' \
 3. 模块复用基座服务
 
 ### 模块如何禁止启动部分服务
-Koupleless 1.1.0 版本开始，提供了如下的配置能力：
+
+Koupleless 1.1.0 版本开始，在 application.properties 里提供了如下的配置能力：
 ```properties
 koupleless.module.autoconfigure.exclude=xxx,xxxx,xxx # 模块启动时不需要启动的服务 AutoConfiguration
 koupleless.module.autoconfigure.include=xxx,xxx,xxx # 模块启动时需要启动的服务 AutoConfiguration，如果某个服务同时配置了 include 和 exclude，则会启动该服务
