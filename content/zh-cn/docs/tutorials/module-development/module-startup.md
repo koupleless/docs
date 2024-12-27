@@ -43,12 +43,11 @@ curl --location --request POST 'localhost:1238/installBiz' \
 3. 模块复用基座服务
 
 ### 模块如何禁止启动部分服务
-
+#### 跳过 AutoConfiguration
 Koupleless 1.1.0 版本开始，在 application.properties 里提供了如下的配置能力：
 ```properties
 koupleless.module.autoconfigure.exclude=xxx,xxxx,xxx # 模块启动时不需要启动的服务 AutoConfiguration
 koupleless.module.autoconfigure.include=xxx,xxx,xxx # 模块启动时需要启动的服务 AutoConfiguration，如果某个服务同时配置了 include 和 exclude，则会启动该服务
-koupleless.module.initializer.skip=xxx,xxx,xxx # 模块启动时需要跳过的 initializer
 ```
 
 该配置可以在基座里配置，也可以在模块里配置。如果在基座里配置，则所有模块都会生效，如果在模块里配置，则只有该模块生效，并且模块里的配置会覆盖基座的配置。基座里的配置方式：
@@ -56,9 +55,10 @@ koupleless.module.initializer.skip=xxx,xxx,xxx # 模块启动时需要跳过的 
 ark.common.env.share.keys=koupleless.module.autoconfigure.exclude,koupleless.module.autoconfigure.include,koupleless.module.initializer.skip
 koupleless.module.autoconfigure.exclude=xxx,xxxx,xxx # 所有模块启动时不需要启动的服务 AutoConfiguration
 koupleless.module.autoconfigure.include=xxx,xxx,xxx # 所有模块启动时需要启动的服务 AutoConfiguration，如果某个服务同时配置了 include 和 exclude，则会启动该服务
-koupleless.module.initializer.skip=xxx,xxx,xxx # 所有模块启动时需要跳过的 initializer
 ```
-
+#### 跳过 initializer
+跳过启动的 initializer 目前只能在基座中配置
+koupleless.module.initializer.skip=xxx,xxx,xxx # 模块启动时需要跳过的 initializer
 
 
 ## benchmark
