@@ -58,7 +58,9 @@ koupleless.module.autoconfigure.include=xxx,xxx,xxx # 所有模块启动时需�
 ```
 #### 跳过 initializer
 跳过启动的 initializer 目前只能在基座中配置
+```properties
 koupleless.module.initializer.skip=xxx,xxx,xxx # 模块启动时需要跳过的 initializer
+```
 
 
 ## benchmark
