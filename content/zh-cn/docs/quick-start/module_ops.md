@@ -8,7 +8,7 @@ weight: 210
 本上手指南主要介绍基于 Module Controller V2 的模块运维。本上手指南包含：
 
 1. 环境准备
-2. Module Controller V2 部署
+2. Module Controller V2 >= v2.1.2， Koupleless runtime >= 1.4.1-SNAPSHOT, SOFAArk >= 2.2.16, 
 3. 测试基座准备
 4. 模块发布与状态查看
 
@@ -29,36 +29,6 @@ Module Controller V2 基于 K8S 构建模块运维能力，因此，首先需要
 完成 Docker 安装并完成 Docker daemon 启动之后，我们就完成了所有 Minikube 的安装准备工作。
 
 Minikube 的安装可以参考[官方文档](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Farm64%2Fstable%2Fbinary+download)
-
-## MQTT 环境准备
-
-Module Controller V2 包含一个基于 MQTT 的运维管道，依赖 MQTT 进行运维指令的下发与数据同步，因此需要准备一个 MQTT 服务。
-
-**如果已经有可用的 MQTT 服务，请跳过本节。**
-
-这里推荐直接使用 NanoMQ 的 MQTT 服务镜像进行测试， 使用 [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/mqtt.yaml) 在 K8S 中部署 MQTT 服务：
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mqtt
-  labels:
-    app: mqtt
-spec:
-  containers:
-    - name: mqtt
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/base/emqx/nanomq:latest
-      resources:
-        limits:
-          cpu: "200m"
-          memory: "100Mi"
-      ports:
-        - name: mqtt
-          containerPort: 1883
-```
-
-发布之后通过 `kubectl get pods -o wide` 来查看部署情况，容器状态转为 Running 之后保存下来查看到的 Pod IP 信息，用于后续操作。
 
 # Module Controller V2 部署
 
@@ -89,26 +59,19 @@ spec:
   serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
   containers:
     - name: module-controller
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module_controller:2.0.0 # 已经打包好的镜像
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.2 # 已经打包好的镜像
       imagePullPolicy: Always
       resources:
         limits:
           cpu: "1000m"
           memory: "400Mi"
+      ports:
+        - name: httptunnel
+          containerPort: 7777
       env:
-        - name: MQTT_BROKER # mqtt broker url
-          value: YOUR_MQTT_BROKER
-        - name: MQTT_PORT # mqtt port
-          value: "1883"
-        - name: MQTT_USERNAME # mqtt username
-          value: koupleless
-        - name: MQTT_PASSWORD # mqtt password
-          value: public
-        - name: MQTT_CLIENT_PREFIX # mqtt client prefix
-          value: koupleless
+        - name: ENABLE_HTTP_TUNNEL
+          value: "true"
 ```
-
-注意，请将上面 Yaml 中 env 下的 YOUR_MQTT_BROKER 替换成为实际 MQTT 服务的端点，如果按照教程部署了 NanoMQ 服务，将此处替换为 MQTT 环境准备中获得的 mqtt Pod 的 IP。
 
 apply 上述 Module Controller 的 yaml 到 K8S 集群，等待 Module Controller Pod 变成 Running 状态。
 
@@ -126,33 +89,21 @@ metadata:
   labels:
     app: base
 spec:
-  serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
   containers:
     - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base # 已经打包好的镜像
+      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像, 镜像来源 https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
       imagePullPolicy: Always
-      resources:
-        limits:
-          cpu: "1000m"
-          memory: "400Mi"
+      ports:
+        - name: base
+          containerPort: 8080
+        - name: arklet
+          containerPort: 1238
       env:
-        - name: KUPLELESS_ARKLET_MQTT_BROKER
-          value: YOUR_MQTT_BROKER
-        - name: KUPLELESS_ARKLET_MQTT_PORT
-          value: "1883"
-        - name: KUPLELESS_ARKLET_MQTT_USERNAME
-          value: koupleless_base
-        - name: KUPLELESS_ARKLET_MQTT_PASSWORD
-          value: public
-        - name: KUPLELESS_ARKLET_MQTT_CLIENT_PREFIX
-          value: koupleless
-        - name: KUPLELESS_ARKLET_CUSTOM_TUNNEL_CLASSNAME
-          value: com.alipay.sofa.koupleless.arklet.tunnel.mqtt.MqttTunnel
-        - name: KUPLELESS_ARKLET_CUSTOM_BASE_METADATA_CLASSNAME
-          value: com.alipay.sofa.web.base.metadata.MetadataHook
+        - name: MODULE_CONTROLLER_ADDRESS # 在 base-web 的 koupleless runtime 里是 `koupleless.arklet.http.heartbeat.endpoint`
+          value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT}   # 127.0.0.1:7777
 ```
 
-同上一步，将yaml中的 `YOUR_MQTT_BROKER` 替换为实际 MQTT 服务的端点，如果按照教程部署了 NanoMQ 服务，将此处替换为 MQTT 环境准备中获得的 mqtt Pod 的 IP。
+同上一步，将yaml中的 `{YOUR_MODULE_CONTROLLER_IP_AND_PORT}` 替换为实际 Module Controller 的Pod IP 和 端口。
 
 apply 更改后的 yaml 到 K8S 集群，等待 Base Pod 变成 Running 状态。
 
@@ -162,7 +113,7 @@ apply 更改后的 yaml 到 K8S 集群，等待 Base Pod 变成 Running 状态�
 kubectl get nodes
 ```
 
-看到存在名为 vnode.{uuid} 的 node，并且状态为 Ready，则说明基座已经成功启动并完成映射。
+看到存在名为 vnode.test-base.dev 的 node，并且状态为 Ready，则说明基座已经成功启动并完成映射。
 
 > 上述 uuid 是在基座启动时生成的，每一次重新启动都会不同
 
@@ -213,18 +164,16 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/stack
+                  # these labels in vnode generated in base `https://github.com/koupleless/runtime/blob/main/arklet-core/src/main/java/com/alipay/sofa/koupleless/arklet/core/hook/base/BaseMetadataHookImpl.java`
+                  # you can define your own labels by implementing your own BaseMetadataHookImpl
+                  - key: base.koupleless.io/name
                     operator: In
                     values:
-                      - java
-                  - key: vnode.koupleless.io/version
+                      - TO_BE_IMPLEMENTED
+                  - key: base.koupleless.io/cluster-name
                     operator: In
                     values:
-                      - 1.0.0
-                  - key: vnode.koupleless.io/name
-                    operator: In
-                    values:
-                      - koupleless-sample
+                      - default
       tolerations:
         - key: "schedule.koupleless.io/virtual-node"
           operator: "Equal"

@@ -52,14 +52,10 @@ spec: # 资源规范字段
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/stack
+                  - key: base.koupleless.io/cluster-name
                     operator: In
                     values:
-                      - java # 多语言环境下可能有其他技术栈，必填
-                  - key: base.koupleless.io/version
-                    operator: In
-                    values:
-                      - 1.1.1 # 指定的基座版本，必填，至少需要一个
+                      - default
                   - key: base.koupleless.io/name
                     operator: In
                     values:
@@ -72,6 +68,18 @@ spec: # 资源规范字段
 ```
 
 其中所有的配置与普通Deployment一致，除必填项外，可添加其他Deployment的配置实现自定义能力。
+
+后续模块的更新也可以直接通过更新模块 Deployment 的 Container Image 和 BIZ_VERSION 来实现，复用 Deployment 的 RollingUpdate 来实现分批更新。
+
+Module Controller 通过控制同一个基座上的 Pod 状态更新顺序实现了滚动更新过程中的模块流量无损，具体过程为：
+
+1. Deployment 更新后会根据更新策略配置先创建出新版本模块的 Pod
+2. K8S Scheduler 将这些 Pod 调度到 VNode 上，此时这些 VNode 上安装了老版本的模块
+3. Module Controller 监听到 Pod 成功调度，发起新版本模块的安装
+4. 安装完成之后，Module Controller 会检查当前基座上所有模块的状态，然后对所关联的 Pod 根据创建时间进行排序，按序更新状态，从而使得旧版本模块对应的 Pod 会先变成 Not Ready 状态，其后新版本模块对应的 Pod 才会变成 Ready
+5. Deployment 控制器在监听到新创建出来的 Pod Ready 之后会开始清理旧版本 Pod，在这一过程中 Deployment 会优先选择当前状态为 Not Ready 的 Pod 进行删除，而此时同一个基座上的老版本 Pod 已经 Not Ready，会被删除，从而避免其他基座上的 Ready 状态的旧版本模块 Pod 先被删除
+
+在上述过程中，不会出现某一个基座上无模块的情况，从而保证了模块更新过程中的流量无损。
 
 ## 查看模块状态
 

@@ -28,12 +28,11 @@ apiVersion: v1
 kind: Node
 metadata:
   labels:
-    base.koupleless.io/stack: java # Currently default, future support for more languages
     virtual-kubelet.koupleless.io/component: vnode # vnode marker
     virtual-kubelet.koupleless.io/env: dev # vnode environment marker
-    vnode.koupleless.io/name: base # Name from base Metadata configuration
+    base.koupleless.io/name: base # Name from base Metadata configuration
     vnode.koupleless.io/tunnel: mqtt_tunnel_provider # Current tunnel ownership of the base
-    vnode.koupleless.io/version: 1.0.0 # Base version number
+    base.koupleless.io/version: 1.0.0 # Base version number
   name: vnode.2ce92dca-032e-4956-bc91-27b43406dad2 # vnode name, latter part is UUID from the base maintenance pipeline
 spec:
   taints:
@@ -76,15 +75,11 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms: # Base node selection
           - matchExpressions:
-              - key: base.koupleless.io/stack # Future multi-language support
-                operator: In
-                values:
-                  - java
-              - key: vnode.koupleless.io/version # Base version filtering
+              - key: base.koupleless.io/version # Base version filtering
                 operator: In
                 values:
                   - 1.0.0 # Module may only be schedulable to certain versions of bases; if restricted, this field is required.
-              - key: vnode.koupleless.io/name # Base name filtering
+              - key: base.koupleless.io/name # Base name filtering
                 operator: In
                 values:
                   - base # Module may only be schedulable to certain specific bases; if restricted, this field is required.

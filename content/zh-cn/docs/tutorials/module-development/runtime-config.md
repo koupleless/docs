@@ -214,6 +214,59 @@ excludeGroupIds:
 excludeArtifactIds:
   - sofa-ark-spi
 ```
+
+对于部分依赖，即使模块和基座使用的依赖版本一致，但模块打包时也需要保留该依赖，即需要配置模块瘦身依赖白名单。
+
+配置方式：在「模块项目根目录/conf/ark/bootstrap.properties」 或 「模块项目根目录/conf/ark/bootstrap.yml」中增加需要保留的依赖，如果该文件不存在，可自行新增目录和文件。
+
+**bootstrap.properties**
+
+```properties
+# includes config ${groupId}:${artifactId}, split by ','
+includes=org.apache.commons:commons-lang3,commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}, split by ','
+includeGroupIds=org.springframework
+# includeArtifactIds config ${artifactId}, split by ','
+includeArtifactIds=sofa-ark-spi
+```
+
+**bootstrap.yml**
+
+```yaml
+# includes config ${groupId}:${artifactId}
+includes:
+  - org.apache.commons:commons-lang3
+  - commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}
+includeGroupIds:
+  - org.springframework
+# includeArtifactIds config ${artifactId}
+includeArtifactIds:
+  - sofa-ark-spi
+```
+
+### declaredMode 白名单配置
+
+在 declaredMode 下，限制只有模块里声明过的依赖才可以委托给基座加载。 但在一些特殊场景下，即使模块没有声明过某个依赖，但仍需要查找到基座中该依赖中的资源/类。此时，可以在模块的 ark 配置文件中（`conf/ark/bootstrap.properties` 或 `conf/ark/bootstrap.yml`） 配置 declaredMode 白名单。
+
+**bootstrap.properties**
+
+```properties
+# declared libraries whitelist config {groupId:artifactId}, split by ','
+declared.libraries.whitelist=com.ark:ark-common,com.biz:biz-common
+```
+
+**bootstrap.yml**
+
+```yaml
+# declared libraries whitelist config {groupId:artifactId}
+
+declared:
+  libraries:
+    whitelist:
+      - com.ark.yml:ark-common-yml
+```
+
 # 开发阶段
 ## Arklet 配置
 ### 端口配置
@@ -224,7 +277,7 @@ excludeArtifactIds:
 ```
 
 ## 模块运行时配置
-### 健康检查的配置
+### 健康检查配置
 基座的 application.properties 配置：
 
 ```properties
@@ -297,3 +350,7 @@ koupleless.web.gateway.forwards[2].paths[1].from=/t1
 koupleless.web.gateway.forwards[2].paths[1].to=/timestamp
 
 ```
+
+此外，当 koupleless 满足以下版本，模块可以在自己的 application.properties 或 application.yaml 中配置转发规则：
+- jdk8: koupleless.runtime.version >= 1.3.3
+- jdk17: koupleless.runtime.version >= 2.1.8

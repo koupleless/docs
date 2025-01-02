@@ -47,7 +47,7 @@ Requirements:
 
 #### Method 1: Using Official Default Retrieval Method, Supporting Local Directory, Local File URL, Remote URL
 ##### 1. Base Configuration of Local Directory, Local File URL, Remote URL
-Developers need to specify the Ark Biz package that needs to be merged and deployed in the base's ark configuration file (`conf/ark/ark.properties` or `conf/ark/ark.yml`), supporting:
+Developers need to specify the Ark Biz package that needs to be merged and deployed in the base's ark configuration file (`conf/ark/bootstrap.properties` or `conf/ark/bootstrap.yml`), supporting:
 - Local directory
 - Local file URL (windows system as `file:\\`, linux system as `file://`)
 - Remote URL (supporting `http://`,`https://`)

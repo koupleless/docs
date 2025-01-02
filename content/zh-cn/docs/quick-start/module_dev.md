@@ -41,7 +41,7 @@ git clone git@github.com:koupleless/samples.git
 mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clean package -DskipTests
 ```
 
-构建完之后可以看到模块打出的模块 jar 包
+如果构建失败，请检查 maven 版本是否 >= 3.9.x（可将公共 bundle 自动 install），构建完之后可以看到模块打出的模块 jar 包
 
 <div style="text-align: center;">  
     <img align="center" width="400px" src="/img/quick-start/ark-jar-list.png" />  
@@ -52,12 +52,12 @@ mvn -pl web/tomcat/biz1-web-single-host,web/tomcat/biz2-web-single-host -am clea
 2. 安装模块1
 
 ```shell
-arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz1-web-single-host/target/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 2. 安装模块2
 
 ```shell
-arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT.jar
+arkctl deploy /xxx/path/to/biz2-web-single-host/target/biz2-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
 ```
 3. 测试验证
 

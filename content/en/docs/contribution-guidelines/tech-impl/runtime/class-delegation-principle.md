@@ -84,9 +84,6 @@ During module startup, the Spring framework has some scanning logic. If these sc
 2. Module enabling declaredMode.
 3. Preload dependencies in the base.
 
-
-## declaredMode 开启方式
-
 ## declaredMode Activation Procedure
 
 ### Activation Conditions

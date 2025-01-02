@@ -160,6 +160,7 @@ excludeArtifactIds=sofa-ark-spi
 ```
 **bootstrap.yml**
 In the `module project root directory/conf/ark/bootstrap.yml`, configure the commonly used packages of the framework and middleware that need to be down to the base as follows:
+
 ```yaml
 # excludes 中配置 ${groupId}:{artifactId}:{version}, 不同依赖以 - 隔开
 # excludeGroupIds 中配置 ${groupId}, 不同依赖以 - 隔开
@@ -172,6 +173,59 @@ excludeGroupIds:
 excludeArtifactIds:
   - sofa-ark-spi
 ```
+
+For partial dependencies, even if the dependency versions used by the module and the base are consistent, the dependency must still be retained when the module is packaged. This means you need to configure a whitelist for module dependency trimming.
+
+Configuration method: Add the dependencies that need to be retained in the `module project root directory/conf/ark/bootstrap.properties` or `module project root directory/conf/ark/bootstrap.yml`. If these files do not exist, you can create the directories and files yourself.
+
+**bootstrap.properties**
+
+```properties
+# includes config ${groupId}:${artifactId}, split by ','
+includes=org.apache.commons:commons-lang3,commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}, split by ','
+includeGroupIds=org.springframework
+# includeArtifactIds config ${artifactId}, split by ','
+includeArtifactIds=sofa-ark-spi
+```
+
+**bootstrap.yml**
+
+```yaml
+# includes config ${groupId}:${artifactId}
+includes:
+  - org.apache.commons:commons-lang3
+  - commons-beanutils:commons-beanutils
+# includeGroupIds config ${groupId}
+includeGroupIds:
+  - org.springframework
+# includeArtifactIds config ${artifactId}
+includeArtifactIds:
+  - sofa-ark-spi
+```
+
+### declaredMode Whitelist Configuration
+
+Under the declaredMode setting, only dependencies declared in the module can be delegated to the base when loading classes or resources. However, in some special scenarios, even if a dependency is not declared in the module, it may still be necessary to access resources/classes from that dependency in the base. In such cases, you can configure a declaredMode whitelist in the module's ark configuration file (`conf/ark/bootstrap.properties` or `conf/ark/bootstrap.yml`).
+
+**bootstrap.properties**
+
+```properties
+# declared libraries whitelist config {groupId:artifactId}, split by ','
+declared.libraries.whitelist=com.ark:ark-common,com.biz:biz-common
+```
+
+**bootstrap.yml**
+
+```yaml
+# declared libraries whitelist config {groupId:artifactId}
+
+declared:
+  libraries:
+    whitelist:
+      - com.ark.yml:ark-common-yml
+```
+
 # Development Phase
 ## Arklet Configuration
 ### Port Configuration
@@ -244,3 +298,7 @@ koupleless.web.gateway.forwards[2].paths[0].to=/
 koupleless.web.gateway.forwards[2].paths[1].from=/t1
 koupleless.web.gateway.forwards[2].paths[1].to=/timestamp
 ```
+
+In addition, when Koupleless meets the following versions, the module can configure forwarding rules in its own `application.properties` or `application.yaml`:
+- JDK 8: `koupleless.runtime.version` >= 1.3.3
+- JDK 17: `koupleless.runtime.version` >= 2.1.8

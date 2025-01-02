@@ -52,10 +52,6 @@ spec:  # Specification field of the resource
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: base.koupleless.io/stack
-                    operator: In
-                    values:
-                      - java # Mandatory in a multi-language environment, specifies the tech stack
                   - key: base.koupleless.io/version
                     operator: In
                     values:
@@ -72,6 +68,18 @@ spec:  # Specification field of the resource
 ```
 
 All configurations align with a regular Deployment, except for mandatory fields; additional Deployment configurations can be added for custom functionality.
+
+Subsequent module updates can be achieved by updating the module Deployment's Container Image and BIZ_VERSION, utilizing the Deployment's RollingUpdate for phased updates.
+
+The Module Controller ensures lossless module traffic during rolling updates by controlling the Pod status update sequence on the same base. The process is as follows:
+
+1. After updating the Deployment, new version module Pods are created based on the update strategy.
+2. The K8S Scheduler schedules these Pods to the VNode, where the old module version is still installed.
+3. The Module Controller detects the successful scheduling of Pods and initiates the installation of the new module version.
+4. Once the installation is complete, the Module Controller checks the status of all modules on the current base, sorts the associated Pods by creation time, and updates their statuses in sequence. This causes the Pods corresponding to the old module version to become Not Ready first, followed by the new version Pods becoming Ready.
+5. The Deployment controller, upon detecting that the new Pods are Ready, begins cleaning up old version Pods. It prioritizes deleting Pods that are Not Ready. At this point, the old version Pods on the same base are already Not Ready and are deleted, preventing Ready state old version Pods on other bases from being deleted first.
+
+Throughout this process, there is no instance where a base lacks a module, ensuring lossless traffic during the module update.
 
 ## Checking Module Status
 
