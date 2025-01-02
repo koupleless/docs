@@ -11,102 +11,12 @@ weight: 200
 3. [直接脚手架创建模块](/docs/tutorials/module-create/init-by-archetype/)
 4. [普通代码片段改造成一个模块](/docs/tutorials/module-create/main-biz/)
 
-本文介绍存量 SpringBoot 或 SOFABoot 如何低成本升级为模块的操作和验证步骤，仅需加一个 ark 打包插件 + 配置模块瘦身 即可实现普通应用一键升级为模块应用，并且能做到同一套代码分支，既能像原来 SpringBoot 一样独立启动，也能作为模块与其它应用合并部署在一起启动。
+本文介绍存量 SpringBoot 或 SOFABoot 如何低成本升级为模块的操作和验证步骤，仅需加一个 ark 打包插件 + 配置模块瘦身 即可实现普通应用一键升级为模块应用，并且能做到同一套代码分支，既能像原来 SpringBoot 一样独立启动，也能作为模块与其它应用合并部署在一起启动。改造提供手动和自动两种方式
 
 ## 前提条件
 
 1. SpringBoot 版本 >= 2.1.9.RELEASE（针对 SpringBoot 用户）
 2. SOFABoot >= 3.9.0 或 SOFABoot >= 4.0.0（针对 SOFABoot 用户）
-
-## 自动化改造工具
-
-除了手动步骤，我们还提供了自动化工具 arkctl 来快速将存量应用改造成模块。以下是使用 arkctl 进行自动改造的详细说明。
-
-### 1. 简介
-
-对于存量应用自动改造成模块的实现方法依赖于arkctl create， 其中arkctl create 是 Koupleless 工具集中的一个命令，用于自动将现有的 SpringBoot 或 SOFABoot 应用转换为 Koupleless 模块。这个命令封装了 koupleless-ext-module-auto-convertor JAR 文件的功能，提供了更便捷的命令行界面。
-
-### 2. 功能特点
-
-- 自动修改 POM 文件，添加必要的依赖和插件
-- 自动更新 application.properties 文件
-- 自动创建 bootstrap.properties 文件（如果需要）
-- 自动处理模块瘦身配置
-
-### 3. 使用前提
-
-- 已安装 arkctl 工具
-- Java 8 或更高版本
-
-### 4. 使用步骤
-
-#### 4.1 运行命令
-首先go build编译项目 
-这一步会生成 `arkctl.exe`（Windows）或 `arkctl`（Linux/Mac）可执行文件。
-
-在命令行中执行以下命令：
-
-```
-./arkctl create -p <项目路径> -a <应用名称>
-```
-
-参数说明：
-- -p 或 --projectPath: 待改造项目的根目录路径（必填）
-- -a 或 --applicationName: 应用名称（必填）
-
-示例（Windows）：
-```
-./arkctl create -p "/path/to/your/project" -a "myapp"
-```
-Linux/Mac：
-```
-./arkctl create -p "/path/to/project" -a "myapp"
-```
-
-#### 4.2 确认改造结果
-
-命令执行完成后，检查项目中的以下变更：
-
-1. POM 文件：查看是否已添加必要的依赖和插件
-2. application.properties：确认是否已更新应用名称
-3. bootstrap.properties：如果创建了此文件，检查其内容是否正确
-4. 模块瘦身配置：查看是否已添加相关配置
-
-#### 4.3 手动调整（如需）
-
-虽然 arkctl create 命令会自动处理大部分改造工作，但可能仍需要进行一些手动调整。请仔细检查改造后的项目，确保所有配置都符合您的需求。
-
-### 5. 工作原理
-
-#### arkctl create 命令的工作流程如下：
-
-1. 接收用户输入的项目路径和应用名称
-2. 将嵌入的 JAR 文件解压到临时目录
-3. 使用 Java 执行该 JAR 文件，传入项目路径和应用名称作为参数
-4. 捕获并显示 JAR 文件的输出信息
-5. 完成后清理临时文件
-#### JAR包（koupleless-ext-module-auto-convertor）内部的工作流程：
-1. 接收并验证输入的项目路径和应用名称
-2. 分析项目结构，确定项目类型（SpringBoot 或 SOFABoot）
-3. 修改 POM 文件：
-   - 添加 SOFAArk 相关依赖
-   - 配置 SOFAArk 打包插件
-   - 添加 Koupleless 运行时依赖
-4. 更新 application.properties 文件：
-   - 设置应用名称
-   - 添加必要的 Koupleless 配置项
-5. 创建 bootstrap.properties 文件（如果需要）：
-   - 添加模块瘦身所需的配置
-6. 处理模块瘦身配置：
-   - 分析项目依赖
-   - 在 POM 文件中添加适当的排除配置
-
-
-### 6. 注意事项
-
-- 在使用 arkctl create 命令之前，请确保已备份您的项目。
-- 某些特殊项目可能需要额外的手动配置，请根据实际情况进行调整。
-- 如果项目使用了特定的框架或库，可能需要额外的适配工作。
 
 ## 手动接入步骤
 
@@ -181,6 +91,56 @@ _扩展阅读_：如果模块不做依赖瘦身[独立引入 SpringBoot 框架�
 
 **小贴士**：[模块中支持的完整中间件清单](/docs/tutorials/module-development/runtime-compatibility-list/)。
 
+## 自动化改造工具
+
+除了手动步骤，我们还提供了自动化工具 [arkctl](https://github.com/koupleless/arkctl/releases) 来快速将存量应用改造成模块。arkctl 中的 create 命令封装了 `koupleless-ext-module-auto-convertor` JAR 文件的功能，提供了更便捷的命令行界面，能自动完成手动改造过程的如下步骤：
+
+- 自动修改 POM 文件，添加必要的依赖和插件
+- 自动更新 application.properties 文件
+- 自动创建 bootstrap.properties 文件（如果需要）
+- 自动处理模块瘦身配置
+
+
+### 使用前提
+
+- 已安装 arkctl >= 0.2.3 工具
+- Java 8 或更高版本
+
+### 使用步骤
+
+#### 步骤1： 运行命令
+``` shell
+./arkctl create -p <项目路径> -a <应用名称>
+```
+
+参数说明：
+- -p 或 --projectPath: 待改造项目的根目录路径（必填）
+- -a 或 --applicationName: 应用名称（必填）
+
+示例（Windows）：
+```
+./arkctl create -p "/path/to/your/project" -a "myapp"
+```
+Linux/Mac：
+```
+./arkctl create -p "/path/to/project" -a "myapp"
+```
+
+#### 步骤2： 确认改造结果
+
+命令执行完成后，检查项目中的以下变更：
+
+1. POM 文件：查看是否已添加必要的依赖和插件
+2. application.properties：确认是否已更新应用名称
+3. bootstrap.properties：如果创建了此文件，检查其内容是否正确
+4. 模块瘦身配置：查看是否已添加相关配置
+
+虽然 arkctl create 命令会自动处理大部分改造工作，但可能仍需要进行一些手动调整。请仔细检查改造后的项目，确保所有配置都符合您的需求。
+
+### 使用注意事项
+- 在使用 arkctl create 命令之前，请确保已备份您的项目。
+- 某些特殊项目可能需要额外的手动配置，请根据实际情况进行调整。
+
 ## 实验：验证模块既能独立启动，也能被合并部署
 
 增加模块打包插件（sofa-ark-maven-plugin）进行打包后，只会新增 ark-biz.jar 构建产物，与原生 spring-boot-maven-plugin 打包的可执行Jar 互相不冲突、不影响。
@@ -243,3 +203,4 @@ curl --location --request POST 'localhost:1238/uninstallBiz' \
 <div style="text-align: center;">
     <img align="center" width="600px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695032642009-a5248a99-d91b-4420-b830-600b35eaa402.png#clientId=u4eb3445f-d3dc-4&from=paste&height=606&id=ued085b28&originHeight=1212&originWidth=1676&originalType=binary&ratio=2&rotation=0&showTitle=false&size=169283&status=done&style=none&taskId=u78d21e68-c71c-42d1-ac4c-8b41381bfa4&title=&width=838" />
 </div>
+
