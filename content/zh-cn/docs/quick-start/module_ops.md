@@ -49,28 +49,35 @@ Module Controller V2 有两种部署方式：
 接下来我们需要准备 Module Controller 部署的 [Pod Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module-controller.yaml)：
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: module-controller
-  labels:
-    app: module-controller
 spec:
-  serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
-  containers:
-    - name: module-controller
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.2 # 已经打包好的镜像
-      imagePullPolicy: Always
-      resources:
-        limits:
-          cpu: "1000m"
-          memory: "400Mi"
-      ports:
-        - name: httptunnel
-          containerPort: 7777
-      env:
-        - name: ENABLE_HTTP_TUNNEL
-          value: "true"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: module-controller
+  template:
+    metadata:
+      labels:
+        app: module-controller
+    spec:
+      serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
+      containers:
+        - name: module-controller
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.3 # 已经打包好的镜像
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "400Mi"
+          ports:
+            - name: httptunnel
+              containerPort: 7777
+          env:
+            - name: ENABLE_HTTP_TUNNEL
+              value: "true"
 ```
 
 apply 上述 Module Controller 的 yaml 到 K8S 集群，等待 Module Controller Pod 变成 Running 状态。
@@ -82,25 +89,32 @@ apply 上述 Module Controller 的 yaml 到 K8S 集群，等待 Module Controlle
 为了方便上手，我们这里也准备好了测试基座的 Docker 镜像，首先下载[基座 Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/base.yaml)
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: base
-  labels:
-    app: base
 spec:
-  containers:
-    - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像, 镜像来源 https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
-      imagePullPolicy: Always
-      ports:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: base
+  template:
+    metadata:
+      labels:
+        app: base
+    spec:
+      containers:
         - name: base
-          containerPort: 8080
-        - name: arklet
-          containerPort: 1238
-      env:
-        - name: MODULE_CONTROLLER_ADDRESS # 在 base-web 的 koupleless runtime 里是 `koupleless.arklet.http.heartbeat.endpoint`
-          value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT}   # 127.0.0.1:7777
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # 已经打包好的镜像, 镜像来源 https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
+          imagePullPolicy: Always
+          ports:
+            - name: base
+              containerPort: 8080
+            - name: arklet
+              containerPort: 1238
+          env:
+            - name: MODULE_CONTROLLER_ADDRESS # 在 base-web 的 koupleless runtime 里是 `koupleless.arklet.http.heartbeat.endpoint`
+              value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT} # 127.0.0.1:7777
 ```
 
 同上一步，将yaml中的 `{YOUR_MODULE_CONTROLLER_IP_AND_PORT}` 替换为实际 Module Controller 的Pod IP 和 端口。
@@ -133,29 +147,29 @@ kubectl port-forward base 8080:8080
 
 此时应当返回错误页，表明模块还未安装。
 
-接下来我们将使用 Deployment 对模块进行发布，将下面的模块 [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) apply 到 K8S ，即可进行模块发布。这里以单个模块发布为例：
+接下来我们将使用 Deployment 对模块进行发布，将下面的模块 [yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) apply 到 K8S ，即可进行模块发布。这里以单个模块发布为例，注意容器名一定要与jar包里定义的模块名一致：
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: biz1
+  name: biz1-web-single-host
   labels:
     virtual-kubelet.koupleless.io/component: module-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      module: biz1
+      module: biz1-web-single-host
   template:
     metadata:
       labels:
-        module: biz1
+        module: biz1-web-single-host
         virtual-kubelet.koupleless.io/component: module
     spec:
       containers:
-        - name: biz1
-          image: https://serverless-opensource.oss-cn-shanghai.aliyuncs.com/module-packages/stable/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
+        - name: biz1-web-single-host  # this name must same with the biz name defined in the jar
+          image: https://koupleless-dosc.oss-cn-hongkong.aliyuncs.com/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
           env:
             - name: BIZ_VERSION
               value: 0.0.1-SNAPSHOT

@@ -49,28 +49,35 @@ Then apply the above three YAML files to set permissions and bindings for the se
 Next, prepare the [Pod Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module-controller.yaml) for Module Controller deployment:
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: module-controller
-  labels:
-    app: module-controller
 spec:
-  serviceAccountName: virtual-kubelet # Service Account configured in the previous step
-  containers:
-    - name: module-controller
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.2
-      imagePullPolicy: Always
-      resources:
-        limits:
-          cpu: "1000m"
-          memory: "400Mi"
-      ports:
-        - name: httptunnel
-          containerPort: 7777
-      env:
-        - name: ENABLE_HTTP_TUNNEL
-          value: "true"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: module-controller
+  template:
+    metadata:
+      labels:
+        app: module-controller
+    spec:
+      serviceAccountName: virtual-kubelet # Service Account configured in the previous step
+      containers:
+        - name: module-controller
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.3 # already upload to image registry
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "400Mi"
+          ports:
+            - name: httptunnel
+              containerPort: 7777
+          env:
+            - name: ENABLE_HTTP_TUNNEL
+              value: "true"
 ```
 
 Apply the above YAML to the K8S cluster, and wait for the Module Controller Pod to reach the Running state.
@@ -82,25 +89,32 @@ The Module operations capability is now set up. Next, prepare the test base and 
 To facilitate onboarding, a Docker image of a test base is provided. First, download the [Base Yaml](https://github.com/koupleless/module-controller/tree/main/example/quick-start/base.yaml):
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: base
-  labels:
-    app: base
 spec:
-  containers:
-    - name: base
-      image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # Pre-packaged image, from https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
-      imagePullPolicy: Always
-      ports:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: base
+  template:
+    metadata:
+      labels:
+        app: base
+    spec:
+      containers:
         - name: base
-          containerPort: 8080
-        - name: arklet
-          containerPort: 1238
-      env:
-        - name: MODULE_CONTROLLER_ADDRESS # which is `koupleless.arklet.http.heartbeat.endpoint` in koupleless runtime in the base-web
-          value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT} # 127.0.0.1:7777
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/base-web:1.4.0 # Pre-packaged image, from https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/Dockerfile
+          imagePullPolicy: Always
+          ports:
+            - name: base
+              containerPort: 8080
+            - name: arklet
+              containerPort: 1238
+          env:
+            - name: MODULE_CONTROLLER_ADDRESS # which is `koupleless.arklet.http.heartbeat.endpoint` in koupleless runtime in the base-web
+              value: {YOUR_MODULE_CONTROLLER_IP_AND_PORT} # 127.0.0.1:7777
 ```
 
 Replace `{YOUR_MODULE_CONTROLLER_IP_AND_PORT}` with the actual Module Controller Pod IP and Port in the YAML.
@@ -133,29 +147,29 @@ First, verify the state before Module installation by visiting the base service:
 
 It should return an error page indicating the Module is not installed.
 
-Next, deploy the Module using a Deployment. Apply the [Module YAML](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) to K8S for Module deployment. Here is an example for a single Module:
+Next, deploy the Module using a Deployment. Apply the [Module YAML](https://github.com/koupleless/module-controller/tree/main/example/quick-start/module.yaml) to K8S for Module deployment. Here is an example for a single Module, notice that the container name must be the same with the biz name defined in the jar:
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: biz1
+  name: biz1-web-single-host
   labels:
     virtual-kubelet.koupleless.io/component: module-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      module: biz1
+      module: biz1-web-single-host
   template:
     metadata:
       labels:
-        module: biz1
+        module: biz1-web-single-host
         virtual-kubelet.koupleless.io/component: module
     spec:
       containers:
-        - name: biz1
-          image: https://serverless-opensource.oss-cn-shanghai.aliyuncs.com/module-packages/stable/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
+        - name: biz1-web-single-host  # this name must same with the biz name defined in the jar
+          image: https://koupleless-dosc.oss-cn-hongkong.aliyuncs.com/biz1-web-single-host-0.0.1-SNAPSHOT-ark-biz.jar
           env:
             - name: BIZ_VERSION
               value: 0.0.1-SNAPSHOT
