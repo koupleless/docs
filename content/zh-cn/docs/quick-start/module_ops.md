@@ -8,7 +8,7 @@ weight: 210
 本上手指南主要介绍基于 Module Controller V2 的模块运维。本上手指南包含：
 
 1. 环境准备
-2. Module Controller V2 >= v2.1.2， Koupleless runtime >= 1.4.1-SNAPSHOT, SOFAArk >= 2.2.16, 
+2. Module Controller V2 >= v2.1.3， Koupleless runtime >= 1.4.1-SNAPSHOT, SOFAArk >= 2.2.16, 
 3. 测试基座准备
 4. 模块发布与状态查看
 
