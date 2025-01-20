@@ -1,6 +1,6 @@
 ---
 title: 线上应用 10 秒启动、只占 20M 内存不再是想象～SOFAServerless 为你带来极致研发体验
-date: 2024-01-25T10:28:32+08:00
+date: 2024-25-01T10:28:32+08:00
 description: 线上应用 10 秒启动、只占 20M 内存不再是想象～SOFAServerless 为你带来极致研发体验
 weight: 200
 author: 赵真灵

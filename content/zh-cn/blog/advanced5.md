@@ -1,5 +1,5 @@
 ---
-title: 怎么在一个基座上安装更多的 Koupleless 模块？
+title: Koupleless 内科系列 ｜怎么在一个基座上安装更多的 Koupleless 模块？
 date: 2024-12-05T10:28:32+08:00
 description: 怎么在一个基座上安装更多的 Koupleless 模块？
 weight: 403
@@ -15,6 +15,7 @@ author: 梁栎鹏
 
 进阶系列四：[Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么](http://koupleless.io/blog/2024/01/25/koupleless-%E5%8F%AF%E6%BC%94%E8%BF%9B%E6%9E%B6%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5%E5%BD%93%E6%88%91%E4%BB%AC%E8%B0%88%E9%99%8D%E6%9C%AC%E6%97%B6%E6%88%91%E4%BB%AC%E8%B0%88%E4%BA%9B%E4%BB%80%E4%B9%88/)
 
+进阶系列五：[Koupleless 内科系列 ｜怎么在一个基座上安装更多的 Koupleless 模块？](https://koupleless.io/blog/2024/12/05/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%BA%A7%E4%B8%8A%E5%AE%89%E8%A3%85%E6%9B%B4%E5%A4%9A%E7%9A%84-koupleless-%E6%A8%A1%E5%9D%97/)
 
 在往期文章中，我们已经介绍了 Koupleless 的收益、挑战、应对方式及存量应用的改造成本，帮助大家了解到 Koupleless 是如何低成本地给业务研发带来效率提升和资源下降的。在实践中，开发者将多个 Koupleless 模块部署在同一个基座上，从而降低资源成本。那么，如何在一个基座上安装更多的模块呢？
 
