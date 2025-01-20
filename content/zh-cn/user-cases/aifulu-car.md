@@ -1,6 +1,6 @@
 ---
 title: 高效降本｜深度案例解读 Koupleless 在南京爱福路的落地实践
-date: 2024-01-25T10:28:32+08:00
+date: 2024-25-01T10:28:32+08:00
 description: 高效降本｜深度案例解读 Koupleless 在南京爱福路的落地实践
 weight: 1200
 type: docs

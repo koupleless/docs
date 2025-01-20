@@ -1,6 +1,6 @@
 ---
 title: 阿里国际数字商业集团中台业务三倍提效
-date: 2024-01-25T10:28:32+08:00
+date: 2024-25-01T10:28:32+08:00
 description: Koupelelss 阿里国际数字商业集团中台业务三倍提效
 weight: 1100
 type: docs
