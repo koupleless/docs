@@ -115,8 +115,8 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(40.000000, 0.000000)">
-                        <a xlink:href="/user-cases/" target="_blank">
-                        <text id="2024 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
+                        <a xlink:href="/blog/2024-to-2025" target="_blank">
+                        <text id="2025 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="30" y="21">企业案例列表</tspan>
                         </text>
                         </a>
@@ -136,9 +136,9 @@ url: "/home/"
                 </g>
                 <g id="编组-59" transform="translate(457.000000, 29.000000)">
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
-                        <a xlink:href="/user-cases/all-users/" target="_blank">
+                        <a xlink:href="/blog/2024-to-2025" target="_blank">
                         <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
-                            <tspan x="30.67" y="21">2024 年规划</tspan>
+                            <tspan x="30.67" y="21">2025 年规划</tspan>
                         </text>
                         </a>
                         <g id="编组-18" transform="translate(0.000000, 2.000000)">
