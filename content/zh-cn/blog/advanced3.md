@@ -1,6 +1,6 @@
 ---
 title: Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？
-date: 2024-25-01T10:28:32+08:00
+date: 2024-01-25T10:28:32+08:00
 description: Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？
 weight: 402
 author: 梁栎鹏
@@ -16,7 +16,7 @@ author: 梁栎鹏
 
 进阶系列四：[Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么](http://koupleless.io/blog/2024/01/25/koupleless-%E5%8F%AF%E6%BC%94%E8%BF%9B%E6%9E%B6%E6%9E%84%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5%E5%BD%93%E6%88%91%E4%BB%AC%E8%B0%88%E9%99%8D%E6%9C%AC%E6%97%B6%E6%88%91%E4%BB%AC%E8%B0%88%E4%BA%9B%E4%BB%80%E4%B9%88/)
 
-进阶系列五：[Koupleless 内科系列 ｜怎么在一个基座上安装更多的 Koupleless 模块？](https://koupleless.io/blog/2024/12/05/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%BA%A7%E4%B8%8A%E5%AE%89%E8%A3%85%E6%9B%B4%E5%A4%9A%E7%9A%84-koupleless-%E6%A8%A1%E5%9D%97/)
+进阶系列五：[Koupleless 内核系列 ｜怎么在一个基座上安装更多的 Koupleless 模块？](https://koupleless.io/blog/2024/12/05/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9F%BA%E5%BA%A7%E4%B8%8A%E5%AE%89%E8%A3%85%E6%9B%B4%E5%A4%9A%E7%9A%84-koupleless-%E6%A8%A1%E5%9D%97/)
 
 <br>
 

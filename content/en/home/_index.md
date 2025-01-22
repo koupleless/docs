@@ -115,7 +115,7 @@ url: "/en/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(90.000000, 0.000000)">
-                        <a xlink:href="/blog/2024-to-2025" target="_blank">
+                        <a xlink:href="/blog/2025/01/22/koupleless-2024-年度报告-2025-规划展望/" target="_blank">
                         <text id="2025 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="30" y="21">Year 2024 Plan</tspan>
                         </text>
