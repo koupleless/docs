@@ -1,6 +1,6 @@
 ---
 title: Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么
-date: 2024-25-01T10:28:32+08:00
+date: 2024-01-25T10:28:32+08:00
 description: Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么
 weight: 403
 author: 赵真灵

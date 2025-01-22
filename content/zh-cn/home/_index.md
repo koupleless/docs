@@ -115,7 +115,7 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(40.000000, 0.000000)">
-                        <a xlink:href="/blog/2024-to-2025" target="_blank">
+                        <a xlink:href="/blog/2025/01/22/koupleless-2024-年度报告-2025-规划展望/" target="_blank">
                         <text id="2025 年规划" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="30" y="21">企业案例列表</tspan>
                         </text>
@@ -136,7 +136,7 @@ url: "/home/"
                 </g>
                 <g id="编组-59" transform="translate(457.000000, 29.000000)">
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
-                        <a xlink:href="/blog/2024-to-2025" target="_blank">
+                        <a xlink:href="/blog/2025/01/22/koupleless-2024-年度报告-2025-规划展望/" target="_blank">
                         <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="30.67" y="21">2025 年规划</tspan>
                         </text>
@@ -151,7 +151,7 @@ url: "/home/"
                     </g>
                     <a xlink:href="/user-cases/aifulu-car/" target="_blank">
                     <text id="最新案例：阿里国际数字商业集团研发运维三" opacity="0.45" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#FFFFFF">
-                        <tspan x="5" y="52">欢迎一起探讨 2024 及更长远规划</tspan>
+                        <tspan x="5" y="52">欢迎一起探讨 2025 及更长远规划</tspan>
                     </text>
                     </a>
                 </g>

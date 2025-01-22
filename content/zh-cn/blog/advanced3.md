@@ -1,6 +1,6 @@
 ---
 title: Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？
-date: 2024-25-01T10:28:32+08:00
+date: 2024-01-25T10:28:32+08:00
 description: Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？
 weight: 402
 author: 梁栎鹏
