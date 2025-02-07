@@ -38,7 +38,7 @@ adapterMappings:
 
 其中，adapter 配置文件分两种：
 - koupleless 管理的配置文件：在打包时，koupleless-base-build-plugin 插件会尝试拉取最新版本的 adapter 配置文件；如果拉取失败，则报错。目前，由 koupleless 管理的开源三方包补丁在 [koupleless-adapter](https://github.com/koupleless/adapter) 仓库中，目前已有 20+ 个补丁包。
-- 用户自定义的配置文件：用户可以自行在基座中添加 adapter 配置文件，该配置文件会和 koupleless 管理的通用配置文件同时生效。
+- 用户自定义的配置文件：用户可以自行在基座中添加 adapter 配置文件，该配置文件会和 koupleless 管理的通用配置文件同时生效。**注意：** 这个自定义 yml 配置文件内容要放到基座工程 bootstrap/conf/ark/adapter-mapping.yaml 文件里，并且要按照 1 中的 yaml 格式来配置。
 
 # 怎么开发开源三方包的补丁包
 👏 欢迎大家一起建设开源三方包补丁：
