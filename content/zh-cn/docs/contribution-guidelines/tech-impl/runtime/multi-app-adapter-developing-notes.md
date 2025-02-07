@@ -42,7 +42,8 @@ adapterMappings:
 
 # 怎么开发开源三方包的补丁包
 👏 欢迎大家一起建设开源三方包补丁：
-1. 开发补丁代码文件：复制需要补丁的文件，修改其中的代码，使其符合多应用的场景
+1. 开发补丁代码文件：复制需要补丁的文件，修改其中的代码，使其符合多应用的场景。<br/>
+**特别注意：**有些 SDK，自己使用 reshade 和 relocation 方式在构建阶段重命名了 SDK 里的类名，典型如 MyBatis 里把 ognl 包重命名为了 org.apache.ibatis.ognl，这就导致你在适配覆写 MyBatis OgnlCache 类的时候，文件开头的 import 语句，要从 MyBatis 源代码里的 import ognl.xxx 都改成 import org.apache.ibatis.ognl.xxx ，否则就会遇到运行期 ClassNotDef 报错。具体案例详见对 [MyBatis 的适配](https://github.com/koupleless/adapter/tree/e9a86fdc1a3ac7097bbc2a2713401734f424ee0e/koupleless-adapter-mybatis-3.5.15/src/main/java/org/apache/ibatis)。
 2. 确认该补丁生效的依赖包版本范围（即：在该版本范围内，开源包的该代码文件完全相同），如，对于版本范围在：[2.5.1, 2.7.14] 的 org.springframework.boot:spring-boot 的 `org.springframework.boot.logging.logback.LogbackLoggingSystem` 文件都相同。
 3. 在 [koupleless-adapter](https://github.com/koupleless/adapter) 仓库中，创建补丁包模块，如：`koupleless-adapter-spring-boot-logback-2.7.14`，在该模块中覆盖写需要补丁的文件，如：`org.springframework.boot.logging.logback.LogbackLoggingSystem`
 4. 在 `koupleless-adapter-spring-boot-logback-2.7.14` 根目录下，创建 `conf/adapter-mappings.yaml` 文件，描述该补丁生效的匹配规则，并完成单测。
