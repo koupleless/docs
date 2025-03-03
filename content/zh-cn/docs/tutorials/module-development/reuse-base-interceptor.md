@@ -39,7 +39,7 @@ public class FacadeAroundHandler implements AnnotionService {
 ### 步骤 3：
 在模块里使用 @Aspect 注解实现一个 Aspect，SOFABoot 通过 @SofaReference 注入基座上的 FacadeAroundHandler。如果是 SpringBoot，则使用 @AutowiredFromBase 注入基座上的 FacadeAroundHandler
 
-**注意**：这里不要声明成一个 Bean，不要加 @Component 或者 @Service 注解，主需要 @Aspect 注解。
+**注意**：这里不要声明成一个 Bean，不要加 @Component 或者 @Service 注解，只需要 @Aspect 注解。
 ```java
 //注意，这里不必申明成一个bean，不要加@Component或者@Service
 @Aspect
