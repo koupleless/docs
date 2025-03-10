@@ -60,6 +60,10 @@ K8S中原有的运行在Node上的Kubelet就是对VK的一种实现，通过实�
 1. 基座VNode的管理（非核心能力，因为其本身就是底层K8S中的一个Pod，可以由底层K8S来维护状态，但作为Node也将包含更多的信息）
 2. VPod的管理（核心能力：包含模块运维，模块调度、模块生命周期状态维护等）
 
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png"/>
+</div>
+
 ### 多租户VK架构
 
 原生的VK基于K8S的Informer机制和ListWatch实现当前vode上pod事件的监听。但是这样也就意味着每一个vnode都需要启动一套监听逻辑，这样，随着基座数量的增加，APIServer的压力会增长的非常快，不利于规模的横向扩展。
