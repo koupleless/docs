@@ -62,6 +62,10 @@ This abstraction allows utilizing K8S's native scheduling and management capabil
 1. Management of base VNodes (not a core capability since they are already Pods in the underlying K8S but contain more information as Nodes)
 2. Management of VPods (core capability: including Module operations, Module scheduling, Module lifecycle status maintenance, etc.)
 
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png"/>
+</div>
+
 ### Multi-Tenant VK Architecture
 
 Native VK uses K8S's Informer mechanism and ListWatch to monitor pod events on the current VNode. This means each VNode requires its own monitoring logic. As the number of bases increases, API Server pressure grows rapidly, hindering horizontal scaling.

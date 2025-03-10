@@ -130,3 +130,57 @@ The following illustrates the entire module operations workflow using the Deploy
 5. Concurrently, the base continuously reports its health status. The Module Controller maps Metaspace capacity and usage to Node Memory, updating this information in Kubernetes. 
 
 <br/>
+
+## Implementation Logic
+
+The core logic involved in the implementation is as follows:
+
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png" />  
+</div>
+
+
+Model definition and logical relationships:
+
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/impl_structure.png" />  
+</div>
+
+## how to debug
+
+1. start module-controller test version in minikube, `serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:youji-dev`, the image has been configured with dlv remote debug environment, debug port is 2345
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: module-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: module-controller
+  template:
+    metadata:
+      labels:
+        app: module-controller
+    spec:
+      serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
+      containers:
+        - name: module-controller
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3 # 已经打包好的镜像
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "400Mi"
+          ports:
+            - name: httptunnel
+              containerPort: 7777
+            - name: debug
+              containerPort: 2345
+          env:
+            - name: ENABLE_HTTP_TUNNEL
+              value: "true"
+```

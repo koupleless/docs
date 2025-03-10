@@ -132,3 +132,56 @@ spec:
 5. 同时，基座也会持续上报健康状态，Module Controller 会将 Metaspace 容量以及使用量映射为 Node Memory，更新到 K8S
 
 <br/>
+
+## 实现逻辑
+
+实现中涉及的核心逻辑如下：
+
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png" />  
+</div>
+
+
+模型定义与逻辑关系：
+
+<div style="text-align: center;">  
+    <img align="center" width="800px" src="/img/module-controller-v2/impl_structure.png" />  
+</div>
+
+## 如何 debug
+1. minikube 中启动 module-controller test 版本，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:youji-dev`，该镜像已经配置了 dlv 远程 debug 环境，debug 端口为 2345
+
+```yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: module-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: module-controller
+  template:
+    metadata:
+      labels:
+        app: module-controller
+    spec:
+      serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
+      containers:
+        - name: module-controller
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3 # 已经打包好的镜像
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "400Mi"
+          ports:
+            - name: httptunnel
+              containerPort: 7777
+            - name: debug
+              containerPort: 2345
+          env:
+            - name: ENABLE_HTTP_TUNNEL
+              value: "true"
+```
