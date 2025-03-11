@@ -136,7 +136,7 @@ The following illustrates the entire module operations workflow using the Deploy
 The core logic involved in the implementation is as follows:
 
 <div style="text-align: center;">  
-    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png" />  
+    <img align="center" width="800px" src="/img/module-controller-v2/roles.png" />  
 </div>
 
 
@@ -148,7 +148,7 @@ Model definition and logical relationships:
 
 ## how to debug
 
-1. start module-controller test version in minikube, `serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:youji-dev`, the image has been configured with dlv remote debug environment, debug port is 2345
+1. start module-controller test version in minikube, `serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3`, the image has been configured with [go-delve](https://github.com/go-delve/delve) remote debug environment, debug port is 2345
 
 ```yaml
 
