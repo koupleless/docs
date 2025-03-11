@@ -138,7 +138,7 @@ spec:
 实现中涉及的核心逻辑如下：
 
 <div style="text-align: center;">  
-    <img align="center" width="800px" src="/img/module-controller-v2/base_biz_to_vpod_vnode.png" />  
+    <img align="center" width="800px" src="/img/module-controller-v2/roles.png" />  
 </div>
 
 
@@ -149,7 +149,7 @@ spec:
 </div>
 
 ## 如何 debug
-1. minikube 中启动 module-controller test 版本，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:youji-dev`，该镜像已经配置了 dlv 远程 debug 环境，debug 端口为 2345
+1. minikube 中启动 module-controller test 版本，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3`，该镜像已经配置了 [go-delve](https://github.com/go-delve/delve) 远程 debug 环境，debug 端口为 2345
 
 ```yaml
 
