@@ -169,7 +169,7 @@ spec:
       serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
       containers:
         - name: module-controller
-          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3 # 已经打包好的镜像
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3 # 已经打包好的镜像，镜像在 Module-controller 根目录的 debug.Dockerfile
           imagePullPolicy: Always
           resources:
             limits:
@@ -184,3 +184,20 @@ spec:
             - name: ENABLE_HTTP_TUNNEL
               value: "true"
 ```
+
+2. Log in to the started container
+```shell
+kubectl exec module-controller-544c965c78-mp758 -it -- /bin/sh
+```
+
+3. Enter the container and start delve
+```shell
+dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec ./module_controller
+```
+
+4. Exit the container and set up port forwarding for port 2345
+```shell
+kubectl port-forward module-controller-76bdbcdd8d-fhvfd 2345:2345
+```
+
+5. Start remote debugging in Goland or IDEA, with Host as `localhost` and Port as `2345`.
