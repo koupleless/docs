@@ -9,7 +9,7 @@ weight: 600
 基座中会定义很多 Aspect 切面（Spring 拦截器），你可能希望复用到模块中，但是模块和基座的 Spring 上下文是隔离的，就导致 Aspect 切面不会在模块中生效。<br/><br/>
 
 # 解法
-为原有的切面类创建一个代理对象，让模块能调用到这个代理对象，然后模块通过 AutoConfiguration 注解初始化出这个代理对象。完整步骤和示例代码如下：
+为原有的切面类创建一个代理对象，让模块能调用到这个代理对象，然后模块通过 AutoConfiguration 注解初始化出这个代理对象。完整步骤和示例代码，可以查看 [aop samples](https://github.com/koupleless/samples/tree/main/springboot-samples/aop) 工程，具体改动如下：
 
 ### 步骤 1：
 基座代码定义一个接口，定义切面的执行方法。这个接口需要对模块可见（在模块里引用相关依赖）：
