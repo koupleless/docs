@@ -148,7 +148,7 @@ Model definition and logical relationships:
 
 ## how to debug
 
-1. start module-controller test version in minikube, `serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3`, the image has been configured with [go-delve](https://github.com/go-delve/delve) remote debug environment, debug port is 2345
+1. start module-controller test version in minikube, `serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.4`, the image has been configured with [go-delve](https://github.com/go-delve/delve) remote debug environment, debug port is 2345
 
 ```yaml
 
@@ -169,7 +169,7 @@ spec:
       serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
       containers:
         - name: module-controller
-          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3 # 已经打包好的镜像，镜像在 Module-controller 根目录的 debug.Dockerfile
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.4 # 已经打包好的镜像，镜像在 Module-controller 根目录的 debug.Dockerfile
           imagePullPolicy: Always
           resources:
             limits:

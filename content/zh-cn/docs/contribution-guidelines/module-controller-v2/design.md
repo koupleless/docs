@@ -149,7 +149,7 @@ spec:
 </div>
 
 ## 如何 debug
-1. minikube 中启动 module-controller test 版本，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.3`，该镜像已经配置了 [go-delve](https://github.com/go-delve/delve) 远程 debug 环境，debug 端口为 2345
+1. minikube 中启动 module-controller test 版本，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.4`，该镜像已经配置了 [go-delve](https://github.com/go-delve/delve) 远程 debug 环境，debug 端口为 2345
 
 ```yaml
 
