@@ -66,7 +66,7 @@ spec:
       serviceAccountName: virtual-kubelet # 上一步中配置好的 Service Account
       containers:
         - name: module-controller
-          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.3 # 已经打包好的镜像
+          image: serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/release/module-controller-v2:v2.1.4 # 已经打包好的镜像
           imagePullPolicy: Always
           resources:
             limits:
