@@ -160,12 +160,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      module: biz1-web-single-host
+      virtual-kubelet.koupleless.io/component: module
+      module.koupleless.io/name: biz1-web-single-host
+      module.koupleless.io/version: 0.0.1-SNAPSHOT
   template:
     metadata:
       labels:
-        module: biz1-web-single-host
         virtual-kubelet.koupleless.io/component: module
+        module.koupleless.io/name: biz1-web-single-host
+        module.koupleless.io/version: 0.0.1-SNAPSHOT
     spec:
       containers:
         - name: biz1-web-single-host  # this name must same with the biz name defined in the jar
@@ -188,6 +191,14 @@ spec:
                     operator: In
                     values:
                       - default
+        podAntiAffinity: # 打散调度核心配置
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                  virtual-kubelet.koupleless.io/component: module
+                  module.koupleless.io/name: biz1-web-single-host
+                  module.koupleless.io/version: 0.0.1-SNAPSHOT
+            topologyKey: topology.kubernetes.io/zone
       tolerations:
         - key: "schedule.koupleless.io/virtual-node"
           operator: "Equal"
