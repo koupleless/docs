@@ -19,9 +19,10 @@ weight: 210
 
 ## 代码下载
 
-```shell
+```
 git clone git@github.com:koupleless/samples.git
 ```
+
 
 这个仓库包含了多个框架的 samples，基座和模块都在同一个代码仓库里，如图所示
 
