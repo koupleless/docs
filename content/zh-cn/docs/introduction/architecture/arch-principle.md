@@ -120,18 +120,16 @@ SOFAArk 的隔离方式和 OSGI 是一致的，但是在共享方面 OSGI 和 JP
 <br />在研发阶段，需要提供基座接入能力，模块创建能力，更重要的是模块的本地快速构建与联调能力；在运维阶段，提供快速的模块发布能力，在模块发布基础上提供 A/B 测试和秒级扩缩容能力；在运行阶段，提供模块的可靠性能力，模块可观测、流量精细化控制、调度和伸缩能力。
 
 <div style="text-align: center;">
-    <img align="center" width="900px" src="https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695182125970-f9529014-0386-4922-b8eb-5d0c82a7e5d8.png#clientId=u9014394b-3a6a-4&from=paste&height=370&id=uf365ffd8&originHeight=740&originWidth=2096&originalType=binary&ratio=2&rotation=0&showTitle=false&size=242246&status=done&style=none&taskId=uf07de18d-931e-4ffd-9540-d4be10de3e7&title=&width=1048" />
+    <img align="center" width="900px" src="https://intranetproxy.alipay.com/skylark/lark/0/2025/png/144256539/1748936679737-4f09f2ab-88ea-477a-b148-753ed30fbb42.png?x-oss-process=image%2Fformat%2Cwebp" />
 </div>
+
 
 <br />组件视图
 
-在整个平台里，需要四个组件：
-
-1. 研发工具 Arkctl, 提供模块创建、快速联调测试等能力
-2. 运行组件 SOFAArk, Arklet，提供模块运维、模块生命周期管理，多模块运行环境
-3. 控制面组件 ModuleController
-    1. ModuleDeployment 提供模块发布与运维能力
-    2. ModuleScheduler 提供模块调度能力
-    3. ModuleScaler 提供模块伸缩能力
+在整个平台里，需要四个部分：
+1. 开发工具链：包含应用拆分、应用合并、模块瘦身、模块构建、代码扫描等能力，帮助开发者快速搭建基座与模块应用
+2. 研发工具 Arkctl： 提供模块创建、快速联调测试等能力
+3. 运行组件 SOFAArk, Arklet：提供模块运维、模块生命周期管理，多模块运行环境，目前已完成 Java 生态 36 种常用框架的适配
+4. 控制面组件 ModuleController：提供基座发现、模块部署、模块状态同步等能力，基于 Virtual-Kubelet 实现 基座/模块 与 K8S 中 Node/Pod 之间的状态映射
 
 <br/>

@@ -59,15 +59,13 @@ When compared to traditional applications, the data below show more than a 10x i
 ## Platform Architecture
 Just having application architecture is not enough. It is necessary to provide complete supporting capabilities from the development stage to the operation and runtime stages to truly realize the advantages of modular application architecture to developers.<br />![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695182073971-12b14861-b6fa-470c-a140-737d40ff0b3e.png#clientId=u9014394b-3a6a-4&from=paste&height=192&id=ub53430b2&originHeight=384&originWidth=1720&originalType=binary&ratio=2&rotation=0&showTitle=false&size=79335&status=done&style=none&taskId=u1eb2a897-c2ca-437f-8d56-7067be175e2&title=&width=860)<br />During the development stage, it is necessary to provide capabilities for base access, module creation, and more importantly, local rapid build and debugging capabilities for modules; during the operation stage, provide fast module deployment capabilities, and on top of module deployment, provide A/B testing and second-level scaling capabilities; during the runtime stage, provide reliability capabilities for modules, fine-grained control of observability, traffic, scheduling, and scaling.
 
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2023/png/149473/1695182125970-f9529014-0386-4922-b8eb-5d0c82a7e5d8.png#clientId=u9014394b-3a6a-4&from=paste&height=370&id=uf365ffd8&originHeight=740&originWidth=2096&originalType=binary&ratio=2&rotation=0&showTitle=false&size=242246&status=done&style=none&taskId=uf07de18d-931e-4ffd-9540-d4be10de3e7&title=&width=1048)<br />Component View
+![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2025/png/144256539/1748936679737-4f09f2ab-88ea-477a-b148-753ed30fbb42.png?x-oss-process=image%2Fformat%2Cwebp)<br />Component View
 
 Within the entire platform, four components are needed:
 
-1. Development tool Arkctl, providing module creation, rapid debugging testing, and other capabilities.
-2. Runtime components SOFAArk, Arklet, providing module operation, module lifecycle management, and multi-module runtime environment.
-3. Control plane components ModuleController
-   1. ModuleDeployment provides module deployment and operation capabilities.
-   2. ModuleScheduler provides module scheduling capabilities.
-   3. ModuleScaler provides module scaling capabilities.
+1. Development Toolchain: including application splitting, application merging, module slimming, module building, code scanning and other capabilities, helping developers quickly build base and module applications.
+2. Development Tool Arkctl: providing module creation, rapid debugging testing, and other capabilities.
+3. Runtime Components SOFAArk, Arklet: providing module operation, module lifecycle management, and multi-module runtime environment, currently supporting 36 common frameworks in the Java ecosystem.
+4. Control Plane Components ModuleController: providing base discovery, module deployment, module state synchronization and other capabilities, implementing state mapping between base/module and K8S Node/Pod based on Virtual-Kubelet.
 
 <br/>
