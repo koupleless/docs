@@ -30,10 +30,22 @@ module-controller 开发方式和标准 K8S Operator 开发方式完全一样，
 
 如果想要通过 minikube 部署 ModuleController 来对 Pod 远程调试代码，可以参考以下步骤。
 
-1. 在 modue-controller 项目里构建 minikube Debug 镜像。
+1. 在 module-controller 项目里构建 minikube Debug 镜像。
 
 ```bash
 minikube image build -f debug.Dockerfile -t serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:latest .
+```
+
+或者
+
+```bash
+make minikube-build
+```
+
+也可以直接使用已经构建好的镜像，`serverless-registry.cn-shanghai.cr.aliyuncs.com/opensource/test/module-controller-v2:v2.1.4`，该镜像已经配置了 [go-delve](https://github.com/go-delve/delve) 远程 debug 环境，debug 端口为 2345。如果使用该构建好的镜像，需要修改 module-controller-test.yaml 中的拉取镜像策略从 Never 改为 Always。
+
+```yaml
+imagePullPolicy: Always
 ```
 
 2. 应用 Debug deployment。
@@ -42,13 +54,43 @@ minikube image build -f debug.Dockerfile -t serverless-registry.cn-shanghai.cr.a
 kubectl apply -f example/quick-start/module-controller-test.yaml
 ```
 
-3. 暴露 module-controller 远程调试端口。
+或者
+
+```bash
+make minikube-deploy
+```
+
+3. 登录到启动后的容器
+
+```bash
+kubectl exec deployments/module-controller -it -- /bin/sh
+```
+
+4. 进入容器内部，启动 delve
+
+```bash
+dlv --listen=:2345 --headless=true --api-version=2 --accept-multiclient exec ./module_controller
+```
+
+第三步和第四步也可以用下面命令快速启动 delve。
+
+```bash
+make minikube-debug
+```
+
+5. 暴露 module-controller 远程调试端口。
 
 ```bash
 kubectl port-forward deployments/module-controller 2345:2345
 ```
 
-4. 在本地 IDE 上开启远程调试。参考 vscode 调试设置。
+或者
+
+```bash
+make minikube-port-forward
+```
+
+6. 在本地 IDE 上开启远程调试。参考 vscode 调试设置。
 
 ```json
 {
@@ -74,12 +116,13 @@ kubectl port-forward deployments/module-controller 2345:2345
 }
 ```
 
-5. 在 ide 打断点后运行调试，看看程序是否成功在断点处暂停。
+7. 在 IDE 打断点后运行调试，看看程序是否成功在断点处暂停。
 
-上面的第一步和第二步可以使用下面的命令来快速构建调试。
+8. 当修改代码后需要调试生效时，需要先关闭连接，然后关闭占用 2345 的端口转发，再 make 以下命令。
 
-```
-make minikube-debug
+```bash
+make minikube-restart
+make minikube-port-forward
 ```
 
 ## Arkctl
