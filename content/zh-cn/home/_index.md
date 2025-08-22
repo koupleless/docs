@@ -115,7 +115,7 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(40.000000, 0.000000)">
-                        <a xlink:href="/blog/2025/01/22/koupleless-2024-年度报告-2025-规划展望/" target="_blank">
+                        <a xlink:href="https://github.com/koupleless/koupleless/issues/416" target="_blank">
                         <text id="支持 Python" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="15" y="21">支持 Python 技术栈，正在 PoC，欢迎讨论与共建！</tspan>
                         </text>
