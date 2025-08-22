@@ -73,6 +73,13 @@ Below are some configurable environment variables and their explanations:
 - **CLIENT_ID**
     - Meaning: Optional, Module Controller instance ID. need to be unique in one env, will generate a random UUID in default.
 
+- **KUBELET_PROXY_ENABLED**
+    - Meaning: Flag to enable Kubelet proxy. If `true`, the Kubelet proxy will be enabled. For prerequisites to enable,
+      please refer to documentation [here](/docs/tutorials/module-operation-v2/enable-virtual-kubelet-proxy/).
+
+- **KUBELET_PROXY_PORT**
+    - Meaning: Port for Kubelet proxy. Default is 10250.
+
 ### Documentation Reference
 
 For detailed structure and implementation, refer to the [documentation](/docs/contribution-guidelines/module-controller-v2/architecture/).  

@@ -73,6 +73,13 @@ weight: 800
 - **CLIENT_ID**
 - 含义: 可选配置，Module Controller 实例ID，需保证同环境中全局唯一，默认情况下会生成随机UUID
 
+- **KUBELET_PROXY_ENABLED**
+- 含义: Kubelet 代理启用标志，若为 `true`，将启用 kubelet
+  代理。启用方式，请参考[文档](/docs/tutorials/module-operation-v2/enable-virtual-kubelet-proxy/)。
+
+- **KUBELET_PROXY_PORT**
+- 含义: Kubelet 代理端口，当 KUBELET_PROXY_ENABLED 设置为 `true` 时生效，默认值为 10250。
+
 ### 文档参考
 
 具体的结构和实现介绍请参考[文档](/docs/contribution-guidelines/module-controller-v2/architecture/)
