@@ -115,7 +115,7 @@ url: "/home/"
                 </g>
                 <g id="编组-60" transform="translate(26.000000, 29.000000)">
                     <g id="编组-11" transform="translate(40.000000, 0.000000)">
-                        <a xlink:href="https://github.com/koupleless/koupleless/issues/416" target="_blank">
+                        <a xlink:href="https://koupleless.io/user-cases/all-users/" target="_blank">
                         <text id="支持 Python" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="15" y="21">企业成功案例</tspan>
                         </text>
@@ -136,7 +136,7 @@ url: "/home/"
                 </g>
                 <g id="编组-59" transform="translate(457.000000, 29.000000)">
                     <g id="编组-69" transform="translate(62.000000, 0.000000)">
-                        <a xlink:href="/blog/2025/01/22/koupleless-2024-年度报告-2025-规划展望/" target="_blank">
+                        <a xlink:href="https://github.com/koupleless/koupleless/issues/416" target="_blank">
                         <text id="企业案例合集" opacity="0.95" font-family="PingFangSC-Medium, PingFang SC" font-size="20" font-weight="400" line-spacing="28" fill="#FFFFFF">
                             <tspan x="30.67" y="21">支持 Python</tspan>
                         </text>
