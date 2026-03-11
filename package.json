@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "markdown-link-check": "^3.12.1",
-    "pagefind": "1.0.4"
+    "pagefind": "1.1.1"
   }
 }
